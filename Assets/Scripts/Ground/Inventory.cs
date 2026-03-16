@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public DialougeSO dialogue;
+    public bool FoundFirstScrap = false;
+
     public List<Item> items = new List<Item>();
     public static event Action<Item> OnItemAdded;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,5 +25,11 @@ public class Inventory : MonoBehaviour
     {
         items.Add(item);
         OnItemAdded?.Invoke(item);
+    }
+
+    public void StartFirstScrapFoundEvent()
+    {
+        DialogueTextManager.Instance.currentDialouge = dialogue;
+        DialogueTextManager.Instance.StartDialouge();
     }
 }
