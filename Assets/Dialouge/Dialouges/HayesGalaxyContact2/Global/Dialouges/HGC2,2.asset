@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d145281873616314eabf77c7718bad03, type: 3}
+  m_Name: HGC2,2
+  m_EditorClassIdentifier: Assembly-CSharp::DialougeSO
+  <DialougeName>k__BackingField: HGC2,2
+  <CharacterNameKey>k__BackingField: Hayes
+  <CharacterIcon>k__BackingField: {fileID: 0}
+  <TextKey>k__BackingField: Our scans indicate the main ship is protected by shield
+    pylons and a fleet of skirmishers.
+  <Choices>k__BackingField:
+  - <Name>k__BackingField: 
+    <TextKey>k__BackingField: Next Dialouge
+    <Requirements>k__BackingField: 
+    <NextDialouge>k__BackingField: {fileID: 11400000, guid: a8fb428dcc5f9364d8f5469e86c05856, type: 2}
+  <DialougeTypes>k__BackingField: 0
+  <IsStartingDialouge>k__BackingField: 0

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0339091ce14bb0640878a4b65c6c98e9, type: 3}
+  m_Name: HayesGalaxyContact1GraphData
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::DialougeGraphSavaDataSO
+  <FileName>k__BackingField: HayesGalaxyContact1
+  <Nodes>k__BackingField:
+  - <Name>k__BackingField: HGC1
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: "Vanguard. I don\u2019t know who or what these aliens
+      are. "
+    <ID>k__BackingField: 5ae5fea7-d233-4b3f-a894-1cf13e43b8d9
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 4980fb80-3b7b-414d-a120-6a70a01cf93d
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: -2.4, y: 118.399994}
+  - <Name>k__BackingField: HGC2
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: But we are gonna send em back to wherever the hell they
+      came from.
+    <ID>k__BackingField: 4980fb80-3b7b-414d-a120-6a70a01cf93d
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: cbe88c22-f97a-4389-b053-879b454194c2
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: -2.4, y: 287.2}
+  - <Name>k__BackingField: HGC3
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: "We\u2019re gonna disable that mothership of theirs. We
+      need your help."
+    <ID>k__BackingField: cbe88c22-f97a-4389-b053-879b454194c2
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: -2.4, y: 508}
+  <OldUngroupedNodeNames>k__BackingField:
+  - HGC1
+  - HGC2
+  - HGC3

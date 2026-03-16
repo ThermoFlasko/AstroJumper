@@ -109,6 +109,7 @@ public class DialogueTextManager : MonoBehaviour
 
         
         DisableTextClick();
+        print("starting dialouge: " + currentDialouge.DialougeName);
 
         StartDialouge();
     }
@@ -143,7 +144,12 @@ public class DialogueTextManager : MonoBehaviour
     public void StartDialouge()
     {
         // display anything related to dialouge here
-        DisablePlayerInput();
+        print("Starting dialouge: " + currentDialouge.DialougeName);
+        if (player != null)
+        {
+            
+            DisablePlayerInput();
+        }
 
         dialogueText.enabled = true;
         dialogueText.text = GetTranslatedText(currentDialouge.TextKey);
@@ -227,7 +233,10 @@ public class DialogueTextManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        EnablePlayerInput();   
+        if (player != null)
+        {
+            EnablePlayerInput();   
+        }
         print("Dialogue ended" + isInDialouge);
         StartCoroutine(moveDialogueBox());
         onDialogueEnd?.Invoke();
