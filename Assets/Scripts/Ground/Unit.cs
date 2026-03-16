@@ -39,6 +39,9 @@ public class Unit : MonoBehaviour
     private bool useProjectilePool = true;
     public GameObject DeathDrop;
 
+    [Header("Melee Animator")]
+    public Animator meleeAnimator;
+
     void Start()
     {
         if(useProjectilePool)
@@ -166,7 +169,6 @@ public class Unit : MonoBehaviour
     private GameObject GenerateAttackSprite(GameObject hitBoxPrefab)
     {
         GameObject attackSprite = new GameObject("AttackSprite");
-
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
 
         //GroundMovement groundMovement = GetComponent<GroundMovement>();
@@ -185,7 +187,19 @@ public class Unit : MonoBehaviour
         attackSprite.transform.localScale = hitBoxPrefab.transform.localScale;//makes it so white box matches actual hitbox
         if (hitBoxInfo.GetIsMelee())
         {
-            attackSprite.transform.parent = transform; 
+            attackSprite.transform.parent = transform;
+
+            if (!IsFacingRight())
+            {
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.flipX = true;
+                    spriteRenderer.flipY = true;
+                }
+            }
+
+            Animator anim = attackSprite.AddComponent<Animator>();
+            anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
         }
         else
         {
