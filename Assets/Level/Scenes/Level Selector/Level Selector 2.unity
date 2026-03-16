@@ -571,6 +571,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &693869164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5719242088231187832, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+  m_PrefabInstance: {fileID: 702257080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &702257080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1034,6 +1045,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!114 &702257090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5036457405984487423, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+  m_PrefabInstance: {fileID: 702257080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702257081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &712705445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6225501570031321330, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+  m_PrefabInstance: {fileID: 702257080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &748625737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,15 +1378,15 @@ MonoBehaviour:
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: UI
   dialougeContainer: {fileID: 0}
-  currentDialouge: {fileID: 11400000, guid: 6a2e532c0b6abc5428bbaf1bc6c011af, type: 2}
-  dialogueText: {fileID: 0}
-  nameTextGO: {fileID: 0}
-  nameText: {fileID: 0}
-  characterIconRenderer: {fileID: 0}
+  currentDialouge: {fileID: 11400000, guid: 418436105b588954db090b9f143f9db7, type: 2}
+  dialogueText: {fileID: 693869164}
+  nameTextGO: {fileID: 712705445}
+  nameText: {fileID: 2036158558}
+  characterIconRenderer: {fileID: 702257090}
   offscreenPosition: {x: 0, y: 0, z: 0}
   onscreenPosition: {x: 0, y: 0, z: 0}
   duration: 1
-  TextContainer: {fileID: 0}
+  TextContainer: {fileID: 1171064092}
   isInDialouge: 0
   isDialogueBoxOnScreen: 0
   player: {fileID: 0}
@@ -1699,6 +1726,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeBtn
   upgradeUIPrefab: {fileID: 534934891179183298, guid: e588dc810abefeb40ae7d0b85352e182, type: 3}
+--- !u!1 &1171064092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626896301787443470, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+  m_PrefabInstance: {fileID: 702257080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1361977982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,6 +1958,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2036158558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7797925540362716547, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+  m_PrefabInstance: {fileID: 702257080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &2137545620
 PrefabInstance:
   m_ObjectHideFlags: 0
