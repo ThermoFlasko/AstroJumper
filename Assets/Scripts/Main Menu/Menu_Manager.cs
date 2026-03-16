@@ -12,9 +12,9 @@ public class Menu_Manager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject creditsPanel;
     public GameObject keybindPanel;
-    public GameObject upgradesPanel;
+    //public GameObject upgradesPanel;
 
-    [Header("Other stuff")] public TMP_Text upgradesScrapCounterText;
+    //[Header("Other stuff")] public TMP_Text upgradesScrapCounterText;
 
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
@@ -23,12 +23,12 @@ public class Menu_Manager : MonoBehaviour
 
     private void OnEnable()
     {
-        SaveManager.NewMoneyChanged += UpdateUpgradesScrapCounter;
+        //SaveManager.NewMoneyChanged += UpdateUpgradesScrapCounter;
     }
 
     private void OnDisable()
     {
-        SaveManager.NewMoneyChanged -= UpdateUpgradesScrapCounter;
+        //SaveManager.NewMoneyChanged -= UpdateUpgradesScrapCounter;
 
         if (volumeSlider != null)
         {
@@ -61,8 +61,6 @@ public class Menu_Manager : MonoBehaviour
 
             SetMasterVolume(savedVolume);
         }
-
-        RefreshUpgradesScrapCounter();
     }
 
     public void SetMasterVolume(float sliderValue)
@@ -96,7 +94,7 @@ public class Menu_Manager : MonoBehaviour
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         keybindPanel.SetActive(false);
-        upgradesPanel.SetActive(false);
+        //upgradesPanel.SetActive(false);
     }
 
     public void ShowMainMenu()
@@ -131,8 +129,8 @@ public class Menu_Manager : MonoBehaviour
     public void ShowUpgradePannelsMenu()
     {
         CloseAllMenus();
-        upgradesPanel.SetActive(true);
-        RefreshUpgradesScrapCounter();
+        //upgradesPanel.SetActive(true);
+        //RefreshUpgradesScrapCounter();
     }
 
     System.Collections.IEnumerator LoadSavedLanguage(string savedLanguage)
@@ -151,20 +149,20 @@ public class Menu_Manager : MonoBehaviour
         }
     }
 
-    private void RefreshUpgradesScrapCounter()
-    {
-        if (upgradesScrapCounterText == null)
-            return;
+    //private void RefreshUpgradesScrapCounter()
+    //{
+    //    if (upgradesScrapCounterText == null)
+    //        return;
 
-        int currentMoney = SaveManager.instance != null ? SaveManager.instance.GetNewMoney() : 0;
-        upgradesScrapCounterText.text = currentMoney.ToString();
-    }
+    //    int currentMoney = SaveManager.instance != null ? SaveManager.instance.GetNewMoney() : 0;
+    //    upgradesScrapCounterText.text = currentMoney.ToString();
+    //}
 
-    private void UpdateUpgradesScrapCounter(int currentMoney)
-    {
-        if (upgradesScrapCounterText == null)
-            return;
+    //private void UpdateUpgradesScrapCounter(int currentMoney)
+    //{
+    //    if (upgradesScrapCounterText == null)
+    //        return;
 
-        upgradesScrapCounterText.text = currentMoney.ToString();
-    }
+    //    upgradesScrapCounterText.text = currentMoney.ToString();
+    //}
 }
