@@ -7,6 +7,7 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance { get; private set; }
+    public static event Action<int> NewMoneyChanged;
 
     [Header("Defualts + Files")] [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
@@ -126,6 +127,8 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning($"Save file at {SaveFilePath} was missing upgrade data. Restored defaults for that section.");
             WriteToDisk();
         }
+
+        NotifyMoneyChanged();
     }
 
     public void SaveGame()
@@ -184,6 +187,7 @@ public class SaveManager : MonoBehaviour
         if (CurrentSaveData == null) return;
 
         CurrentSaveData.newMoney = newMoney;
+        NotifyMoneyChanged();
         MakeDirty();
     }
 
@@ -193,6 +197,7 @@ public class SaveManager : MonoBehaviour
         if (CurrentSaveData == null) return;
 
         CurrentSaveData.newMoney += amount;
+        NotifyMoneyChanged();
         MakeDirty();
     }
 
@@ -278,5 +283,14 @@ public class SaveManager : MonoBehaviour
         CurrentSaveData = SaveData.CreateDefualtSaveData(defualtGameSaveSO);
         Debug.LogWarning($"{reason} Created a new save file at {SaveFilePath}.");
         WriteToDisk();
+        NotifyMoneyChanged();
+    }
+
+    private void NotifyMoneyChanged()
+    {
+        if (CurrentSaveData == null)
+            return;
+
+        NewMoneyChanged?.Invoke(CurrentSaveData.newMoney);
     }
 }

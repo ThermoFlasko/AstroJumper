@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
-using System;
 using UnityEngine.Localization.Settings;
 
 public class Menu_Manager : MonoBehaviour
@@ -13,11 +12,29 @@ public class Menu_Manager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject creditsPanel;
     public GameObject keybindPanel;
+    public GameObject upgradesPanel;
+
+    [Header("Other stuff")] public TMP_Text upgradesScrapCounterText;
 
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
     public Slider volumeSlider;
     public TMP_Text volumeText;
+
+    private void OnEnable()
+    {
+        SaveManager.NewMoneyChanged += UpdateUpgradesScrapCounter;
+    }
+
+    private void OnDisable()
+    {
+        SaveManager.NewMoneyChanged -= UpdateUpgradesScrapCounter;
+
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +61,8 @@ public class Menu_Manager : MonoBehaviour
 
             SetMasterVolume(savedVolume);
         }
+
+        RefreshUpgradesScrapCounter();
     }
 
     public void SetMasterVolume(float sliderValue)
@@ -71,12 +90,19 @@ public class Menu_Manager : MonoBehaviour
         }
     }
 
-    public void ShowMainMenu()
+    private void CloseAllMenus()
     {
-        mainMenuPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         keybindPanel.SetActive(false);
+        upgradesPanel.SetActive(false);
+    }
+
+    public void ShowMainMenu()
+    {
+        CloseAllMenus();
+        mainMenuPanel.SetActive(true);
     }
 
     public void StartGame()
@@ -86,26 +112,27 @@ public class Menu_Manager : MonoBehaviour
 
     public void ShowOptionsMenu()
     {
-        mainMenuPanel.SetActive(false);
+        CloseAllMenus();
         optionsPanel.SetActive(true);
-        creditsPanel.SetActive(false);
-        keybindPanel.SetActive(false);
     }
 
     public void ShowCreditsMenu()
     {
-        mainMenuPanel.SetActive(false);
-        optionsPanel.SetActive(false);
+        CloseAllMenus();
         creditsPanel.SetActive(true);
-        keybindPanel.SetActive(false);
     }
 
     public void ShowKeybindMenu()
     {
-        mainMenuPanel.SetActive(false);
-        optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
-        keybindPanel.SetActive(true); 
+        CloseAllMenus();
+        keybindPanel.SetActive(true);
+    }
+
+    public void ShowUpgradePannelsMenu()
+    {
+        CloseAllMenus();
+        upgradesPanel.SetActive(true);
+        RefreshUpgradesScrapCounter();
     }
 
     System.Collections.IEnumerator LoadSavedLanguage(string savedLanguage)
@@ -122,5 +149,22 @@ public class Menu_Manager : MonoBehaviour
         {
             Debug.LogWarning("Saved language not found: " + savedLanguage);
         }
+    }
+
+    private void RefreshUpgradesScrapCounter()
+    {
+        if (upgradesScrapCounterText == null)
+            return;
+
+        int currentMoney = SaveManager.instance != null ? SaveManager.instance.GetNewMoney() : 0;
+        upgradesScrapCounterText.text = currentMoney.ToString();
+    }
+
+    private void UpdateUpgradesScrapCounter(int currentMoney)
+    {
+        if (upgradesScrapCounterText == null)
+            return;
+
+        upgradesScrapCounterText.text = currentMoney.ToString();
     }
 }
