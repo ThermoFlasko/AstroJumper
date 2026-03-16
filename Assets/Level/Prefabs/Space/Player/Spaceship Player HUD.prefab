@@ -238,6 +238,9 @@ MonoBehaviour:
   playerFlagshipTeamId: 0
   enemyFlagshipTeamId: 1
   flagshipLookupInterval: 0.5
+  defaultFont: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
+  koreanFont: {fileID: 11400000, guid: ef5222abbaa684154ae80e36379c4248, type: 2}
+  chineseFont: {fileID: 11400000, guid: 1a77308f398b6470cbe730947eb244f4, type: 2}
 --- !u!223 &7023339647511468553
 Canvas:
   m_ObjectHideFlags: 0
@@ -369,8 +372,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
+  m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -549,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1492, y: 1021}
+  m_AnchoredPosition: {x: -85, y: 608}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &259075142635987714
@@ -761,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1492, y: 919}
+  m_AnchoredPosition: {x: -85, y: 506}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3237078306423263089
@@ -2193,10 +2196,12 @@ MonoBehaviour:
   radarRect: {fileID: 5714302213844257538}
   dotsRoot: {fileID: 8268801312178878721}
   dotPrefab: {fileID: 4362369425224724195, guid: f8b96360e0481ca4f9f08c70ab3cdae4, type: 3}
+  autoFindPlayer: 1
+  playerTag: Player
   enemyMasl:
     serializedVersion: 2
     m_Bits: 4096
-  radarRangeWorld: 150
+  radarRangeWorld: 200
   maxEnemies: 67
   refreshRate: 0.016666668
   limitToSingleEnemyTeam: 1
@@ -2210,6 +2215,12 @@ MonoBehaviour:
   flagshipScaleMultiplier: 1.9
   flagshipDotColor: {r: 0.22, g: 0.03, b: 0.03, a: 1}
   friendlyFlagshipDotColor: {r: 0.14, g: 0.82, b: 0.31, a: 1}
+  flagshipEdgeMinScale: 0.6
+  flagshipEdgeMaxScale: 1.35
+  flagshipEdgeScaleDistanceMultiplier: 4
+  showPlayerMarker: 1
+  playerMarkerScale: 0.9
+  playerMarkerColor: {r: 0.12, g: 0.94, b: 0.38, a: 1}
 --- !u!1 &8649298041764895367
 GameObject:
   m_ObjectHideFlags: 0

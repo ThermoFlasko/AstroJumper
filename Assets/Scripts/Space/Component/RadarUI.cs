@@ -9,6 +9,8 @@ public class RadarUI : MonoBehaviour
     [SerializeField] private RectTransform radarRect;
     [SerializeField] private RectTransform dotsRoot;
     [SerializeField] private GameObject dotPrefab;
+    [SerializeField] private bool autoFindPlayer = true;
+    [SerializeField] private string playerTag = "Player";
 
     [Header("scan")]
     [SerializeField] private LayerMask enemyMasl;
@@ -32,11 +34,20 @@ public class RadarUI : MonoBehaviour
     [SerializeField] private float flagshipScaleMultiplier = 1.9f;
     [SerializeField] private Color flagshipDotColor = new Color(0.22f, 0.03f, 0.03f, 1f);
     [SerializeField] private Color friendlyFlagshipDotColor = new Color(0.14f, 0.82f, 0.31f, 1f);
+    [SerializeField] private float flagshipEdgeMinScale = 0.85f;
+    [SerializeField] private float flagshipEdgeMaxScale = 1.35f;
+    [SerializeField] private float flagshipEdgeScaleDistanceMultiplier = 4f;
+
+    [Header("Player Marker")]
+    [SerializeField] private bool showPlayerMarker = true;
+    [SerializeField] private float playerMarkerScale = 0.9f;
+    [SerializeField] private Color playerMarkerColor = new Color(0.12f, 0.94f, 0.38f, 1f);
 
     private readonly Collider2D[] hits = new Collider2D[256];
     private readonly List<DotVisual> dotPool = new List<DotVisual>();
 
     private float timer;
+    private DotVisual playerDot;
 
     private sealed class DotVisual
     {
@@ -60,11 +71,18 @@ public class RadarUI : MonoBehaviour
     private void Awake()
     {
         if (!radarRect) radarRect = GetComponent<RectTransform>();
+        if (!dotsRoot) dotsRoot = radarRect;
     }
 
     private void Update()
     {
-        if (!player) return;
+        ResolvePlayerReference();
+
+        if (!player)
+        {
+            HideAllDots();
+            return;
+        }
 
         timer -= Time.unscaledDeltaTime;
         if (timer > 0f) return;
@@ -120,6 +138,7 @@ public class RadarUI : MonoBehaviour
 
         AddFlagshipDot(ref dotIndex, friendlyFlagship, playerPosition, range, radiusPx, invRot, friendlyFlagshipDotColor);
         AddFlagshipDot(ref dotIndex, hostileFlagship, playerPosition, range, radiusPx, invRot, flagshipDotColor);
+        UpdatePlayerDot();
     }
 
     private int CountRegularEnemyDots(int hitCount, int playerTeamId)
@@ -251,18 +270,15 @@ public class RadarUI : MonoBehaviour
             return;
 
         Vector2 offset = (Vector2)flagship.transform.position - playerPosition;
-        bool clampToEdge = pinFlagshipsToEdge;
         float dist = offset.magnitude;
+        bool isOutsideRange = dist > range;
+        bool clampToEdge = isOutsideRange && (pinFlagshipsToEdge || showOUtOfRangeEdg);
+        float baseScale = clampToEdge ? EvaluateFlagshipEdgeScale(dist, range) : 1f;
 
-        if (!clampToEdge && dist > range)
-        {
-            if (!showOUtOfRangeEdg)
-                return;
+        if (isOutsideRange && !clampToEdge)
+            return;
 
-            clampToEdge = true;
-        }
-
-        AddDot(ref dotIndex, offset, range, radiusPx, invRot, true, clampToEdge, 1f, true, dotColor);
+        AddDot(ref dotIndex, offset, range, radiusPx, invRot, true, clampToEdge, baseScale, true, dotColor);
     }
 
     private void AddDot(
@@ -327,29 +343,110 @@ public class RadarUI : MonoBehaviour
             dot.Sprite.color = spriteColor;
     }
 
+    private void UpdatePlayerDot()
+    {
+        if (!showPlayerMarker)
+        {
+            SetPlayerDotActive(false);
+            return;
+        }
+
+        EnsurePlayerDot();
+        if (playerDot == null || playerDot.Root == null)
+            return;
+
+        playerDot.Root.SetActive(true);
+
+        if (playerDot.Rect != null)
+            playerDot.Rect.anchoredPosition = Vector2.zero;
+        else if (playerDot.Transform != null)
+            playerDot.Transform.localPosition = Vector3.zero;
+
+        ApplyDotStyle(playerDot, false, playerMarkerScale, true, playerMarkerColor);
+        playerDot.Transform.SetAsLastSibling();
+    }
+
     private void EnsurePool(int needed)
     {
         while (dotPool.Count < needed)
         {
-            GameObject dot = Instantiate(dotPrefab, dotsRoot);
-
-            DotVisual view = new DotVisual
-            {
-                Root = dot,
-                Transform = dot.transform,
-                Rect = dot.GetComponent<RectTransform>(),
-                Image = dot.GetComponentInChildren<Image>(true),
-                Sprite = dot.GetComponentInChildren<SpriteRenderer>(true)
-            };
-
-            if (view.Image != null)
-                view.ImageBaseColor = view.Image.color;
-
-            if (view.Sprite != null)
-                view.SpriteBaseColor = view.Sprite.color;
+            DotVisual view = CreateDotVisual();
+            if (view == null)
+                return;
 
             dotPool.Add(view);
         }
+    }
+
+    private void EnsurePlayerDot()
+    {
+        if (playerDot != null && playerDot.Root != null)
+            return;
+
+        playerDot = CreateDotVisual();
+    }
+
+    private DotVisual CreateDotVisual()
+    {
+        if (dotPrefab == null || dotsRoot == null)
+            return null;
+
+        GameObject dot = Instantiate(dotPrefab, dotsRoot);
+
+        DotVisual view = new DotVisual
+        {
+            Root = dot,
+            Transform = dot.transform,
+            Rect = dot.GetComponent<RectTransform>(),
+            Image = dot.GetComponentInChildren<Image>(true),
+            Sprite = dot.GetComponentInChildren<SpriteRenderer>(true)
+        };
+
+        if (view.Image != null)
+        {
+            view.ImageBaseColor = view.Image.color;
+            view.Image.raycastTarget = false;
+        }
+
+        if (view.Sprite != null)
+            view.SpriteBaseColor = view.Sprite.color;
+
+        return view;
+    }
+
+    private float EvaluateFlagshipEdgeScale(float distance, float range)
+    {
+        float safeRange = Mathf.Max(0.0001f, range);
+        float maxScaleDistance = Mathf.Max(safeRange, safeRange * flagshipEdgeScaleDistanceMultiplier);
+        float closenessToRange = 1f - Mathf.InverseLerp(safeRange, maxScaleDistance, distance);
+        return Mathf.Lerp(flagshipEdgeMinScale, flagshipEdgeMaxScale, closenessToRange);
+    }
+
+    private void ResolvePlayerReference()
+    {
+        if (player != null || !autoFindPlayer || string.IsNullOrWhiteSpace(playerTag))
+            return;
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
+        if (playerObject != null)
+            player = playerObject.transform;
+    }
+
+    private void SetPlayerDotActive(bool isActive)
+    {
+        if (playerDot != null && playerDot.Root != null)
+            playerDot.Root.SetActive(isActive);
+    }
+
+    private void HideAllDots()
+    {
+        for (int i = 0; i < dotPool.Count; i++)
+        {
+            if (dotPool[i] != null && dotPool[i].Root != null)
+                dotPool[i].Root.SetActive(false);
+        }
+
+        SetPlayerDotActive(false);
     }
 
 #if UNITY_EDITOR
@@ -360,6 +457,10 @@ public class RadarUI : MonoBehaviour
         maxEnemies = Mathf.Clamp(maxEnemies, 1, 67);
         trackedEnemyTeamId = Mathf.Max(0, trackedEnemyTeamId);
         flagshipScaleMultiplier = Mathf.Max(1f, flagshipScaleMultiplier);
+        flagshipEdgeMinScale = Mathf.Max(0.1f, flagshipEdgeMinScale);
+        flagshipEdgeMaxScale = Mathf.Max(flagshipEdgeMinScale, flagshipEdgeMaxScale);
+        flagshipEdgeScaleDistanceMultiplier = Mathf.Max(1f, flagshipEdgeScaleDistanceMultiplier);
+        playerMarkerScale = Mathf.Max(0.1f, playerMarkerScale);
     }
 #endif
 }
