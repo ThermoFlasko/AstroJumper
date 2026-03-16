@@ -168,7 +168,16 @@ public class DialogueTextManager : MonoBehaviour
         {
             characterIconRenderer.enabled = false;
         }
-        
+
+        if(currentDialouge.CharacterNameKey != "")
+        {
+            nameTextGO.SetActive(true);
+        }
+        else
+        {
+            nameTextGO.SetActive(false);
+        }
+
         onDialogueStart?.Invoke();
         StartCoroutine(moveDialogueBox());
     }
@@ -188,7 +197,14 @@ public class DialogueTextManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        if(currentDialouge.CharacterNameKey != "")
+        {
+            nameTextGO.SetActive(true);
+        }
+        else
+        {
+            nameTextGO.SetActive(false);
+        }
         currentDialouge = currentDialouge.Choices[0].NextDialouge;
         // check if the next dialouge has multiple choices
         if(currentDialouge.Choices.Count > 1)
