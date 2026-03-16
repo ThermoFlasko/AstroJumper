@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 ////TODO: localization support
 
@@ -212,9 +214,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     displayString = action.GetBindingDisplayString(bindingIndex, out deviceLayoutName, out controlPath, displayStringOptions);
             }
 
-            // Set on label (if any).
+            string currentText = m_BindingText != null ? m_BindingText.text : "";
+            string translatedDisplayString = TranslateKeyName(displayString);
+            
             if (m_BindingText != null)
-                m_BindingText.text = displayString;
+            {
+                m_BindingText.text = translatedDisplayString;
+                m_StoredBindingText = translatedDisplayString;
+            }
 
             // Give listeners a chance to configure UI in response.
             m_UpdateBindingUIEvent?.Invoke(this, displayString, deviceLayoutName, controlPath);
@@ -271,6 +278,20 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         /// </summary>
         public void StartInteractiveRebind()
         {
+            // Check if action reference exists
+            if (m_Action == null)
+            {
+                Debug.LogError("Action reference is null!");
+                return;
+            }
+            
+            // Check if the action itself exists
+            if (m_Action.action == null)
+            {
+                Debug.LogError("Action is null!");
+                return;
+            }
+            m_IsRebinding = true;
             m_Action.action.Disable();
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
@@ -309,6 +330,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 // Restore action enabled state based on state prior to rebind
                 if (actionWasEnabledPriorToRebind)
                     action.actionMap.Enable();
+
+                m_IsRebinding = false;
+                UpdateBindingDisplay();
             }
 
             // An "InvalidOperationException: Cannot rebind action x while it is enabled" will
@@ -365,16 +389,34 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // If it's a part binding, show the name of the part in the UI.
             var partName = default(string);
             if (action.bindings[bindingIndex].isPartOfComposite)
+            {
+                #if UNITY_LOCALIZATION
+                partName = GetTranslatedText("REBIND_BINDING_PREFIX", action.bindings[bindingIndex].name);
+                #else
                 partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
+                #endif
+            }
+
 
             // Bring up rebind overlay, if we have one.
             m_RebindOverlay?.SetActive(true);
             if (m_RebindText != null)
             {
+                #if UNITY_LOCALIZATION
+                if (!string.IsNullOrEmpty(m_RebindOperation.expectedControlType))
+                {
+                    m_RebindText.text = partName + GetTranslatedText("REBIND_WAITING", m_RebindOperation.expectedControlType);
+                }
+                else
+                {
+                    m_RebindText.text = partName + GetTranslatedText("REBIND_WAITING_GENERIC");
+                }
+                #else
                 var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
                     ? $"{partName}Waiting for {m_RebindOperation.expectedControlType} input..."
                     : $"{partName}Waiting for input...";
                 m_RebindText.text = text;
+                #endif
             }
 
             // Optionally allow canceling rebind via a button if it applicable for the use-case
@@ -393,7 +435,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // If we have no rebind overlay and no callback but we have a binding text label,
             // temporarily set the binding text label to "<Waiting>".
             if (m_RebindOverlay == null && m_RebindText == null && m_RebindStartEvent == null && m_BindingText != null)
+            {
+                #if UNITY_LOCALIZATION
+                m_BindingText.text = GetTranslatedText("REBIND_WAITING_SHORT");
+                #else
                 m_BindingText.text = "<Waiting...>";
+                #endif
+            }
 
             // Give listeners a chance to act on the rebind starting.
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
@@ -411,10 +459,21 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (remainingTimeoutWholeSeconds == m_LastRemainingTimeoutSeconds)
                 return;
 
+            #if UNITY_LOCALIZATION
+            if (m_RebindOperation.timeout > 0.0f)
+            {
+                m_RebindInfo.text = GetTranslatedText("REBIND_CANCEL_INFO", remainingTimeoutWholeSeconds);
+            }
+            else
+            {
+                m_RebindInfo.text = string.Empty;
+            }
+            #else
             var text = (m_RebindOperation.timeout > 0.0f)
                 ? $"Cancels in <b>{remainingTimeoutWholeSeconds}</b> seconds if no matching input is provided."
                 : string.Empty;
             m_RebindInfo.text = text;
+            #endif
             m_LastRemainingTimeoutSeconds = remainingTimeoutWholeSeconds;
         }
 
@@ -436,6 +495,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             s_RebindActionUIs.Add(this);
             if (s_RebindActionUIs.Count == 1)
                 InputSystem.onActionChange += OnActionChange;
+            #if UNITY_LOCALIZATION
+            LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+            #endif
             UpdateBindingDisplay();
         }
 
@@ -450,8 +512,19 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 s_RebindActionUIs = null;
                 InputSystem.onActionChange -= OnActionChange;
             }
+            #if UNITY_LOCALIZATION
+            LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+            #endif
             UpdateBindingDisplay();
         }
+
+        #if UNITY_LOCALIZATION
+        private void OnLocaleChanged(Locale newLocale)
+        {
+            Debug.Log($"RebindActionUI detected language change to: {newLocale.Identifier.Code}");
+            UpdateBindingDisplay();
+        }
+        #endif
 
         // When the action system re-resolves bindings, we want to update our UI in response. While this will
         // also trigger from changes we made ourselves, it ensures that we react to changes made elsewhere. If
@@ -478,6 +551,96 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     referencedAction.actionMap?.asset == actionAsset)
                     component.UpdateBindingDisplay();
             }
+        }
+
+        private static Dictionary<string, string> englishToKorean = new Dictionary<string, string>()
+        {
+            { "Space", "스페이스" },
+            { "LMB", "왼쪽 마우스 버튼" },
+            { "RMB", "오른쪽 마우스 버튼" },
+            { "Left Shift", "왼쪽 시프트" },
+            { "Right Shift", "오른쪽 시프트" },
+            { "Left Ctrl", "왼쪽 컨트롤" },
+            { "Right Ctrl", "오른쪽 컨트롤" },
+            { "Left Alt", "왼쪽 알트" },
+            { "Right Alt", "오른쪽 알트" },
+            { "W", "W" },  // Letters often stay as-is
+            { "A", "A" },
+            { "S", "S" },
+            { "D", "D" },
+            { "↑", "위쪽 화살표" },
+            { "↓", "아래쪽 화살표" },
+            { "←", "왼쪽 화살표" },
+            { "→", "오른쪽 화살표" },
+        };
+
+        private static Dictionary<string, string> englishToChinese = new Dictionary<string, string>()
+        {
+            { "Space", "空格键" },
+            { "LMB", "鼠标左键" },
+            { "RMB", "鼠标右键" },
+            { "Left Shift", "左Shift" },
+            { "Right Shift", "右Shift" },
+            { "Left Ctrl", "左Ctrl" },
+            { "Right Ctrl", "右Ctrl" },
+            { "Left Alt", "左Alt" },
+            { "Right Alt", "右Alt" },
+            { "W", "W" },
+            { "A", "A" },
+            { "S", "S" },
+            { "D", "D" },
+            { "↑", "上箭头" },
+            { "↓", "下箭头" },
+            { "←", "左箭头" },
+            { "→", "右箭头" },
+        };
+
+        private string TranslateKeyName(string englishKeyName)
+        {
+            #if UNITY_LOCALIZATION
+            // Don't translate empty strings
+            if (string.IsNullOrEmpty(englishKeyName))
+                return englishKeyName;
+                
+            var locale = LocalizationSettings.SelectedLocale.Identifier.Code;
+            Debug.Log($"Translating '{englishKeyName}' for locale: {locale}");
+            
+            if (locale.StartsWith("ko"))
+            {
+                if (englishToKorean.ContainsKey(englishKeyName))
+                {
+                    string translated = englishToKorean[englishKeyName];
+                    Debug.Log($"Translated to Korean: '{translated}'");
+                    return translated;
+                }
+            }
+            else if (locale.StartsWith("zh"))
+            {
+                if (englishToChinese.ContainsKey(englishKeyName))
+                {
+                    string translated = englishToChinese[englishKeyName];
+                    Debug.Log($"Translated to Chinese: '{translated}'");
+                    return translated;
+                }
+            }
+            #endif
+            
+            Debug.Log($"No translation found, keeping: '{englishKeyName}'");
+            return englishKeyName;
+        }
+
+        private string GetTranslatedText(string key, params object[] args)
+        {
+            #if UNITY_LOCALIZATION
+            string text = LocalizationSettings.StringDatabase.GetLocalizedString("UI Text", key);
+            if (args.Length > 0)
+            {
+                return string.Format(text, args);
+            }
+            return text;
+            #else
+            return key;
+            #endif
         }
 
         [Tooltip("Reference to action that is to be rebound from the UI.")]
@@ -540,6 +703,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
         private double m_RebindStartTime = -1;
         private int m_LastRemainingTimeoutSeconds;
+
+        private string m_StoredBindingText = "";
+        private bool m_IsRebinding = false;
 
         // We want the label for the action name to update in edit mode, too, so
         // we kick that off from here.

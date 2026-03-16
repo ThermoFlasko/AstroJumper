@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using TMPro;
 using System;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 public class Menu_Manager : MonoBehaviour
 {
@@ -105,7 +106,22 @@ public class Menu_Manager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        keybindPanel.SetActive(true); 
+        keybindPanel.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+    }
+
+    private void OnDisable()
+    {
+        LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+    }
+
+    private void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        Debug.Log($"Menu_Manager detected language change to: {newLocale.Identifier.Code}");
     }
 
     System.Collections.IEnumerator LoadSavedLanguage(string savedLanguage)
@@ -117,6 +133,7 @@ public class Menu_Manager : MonoBehaviour
         {
             LocalizationSettings.SelectedLocale = locale;
             Debug.Log("Loaded saved language: " + savedLanguage);
+            OnLocaleChanged(locale);
         }
         else
         {

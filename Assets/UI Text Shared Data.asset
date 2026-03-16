@@ -176,19 +176,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4799091262349312
-    m_Key: LMB
+    m_Key: REBIND_WAITING
     m_Metadata:
       m_Items: []
   - m_Id: 4799095913832448
-    m_Key: RMB
+    m_Key: REBIND_WAITING_GENERIC
     m_Metadata:
       m_Items: []
   - m_Id: 4799101018300416
-    m_Key: Left_Shift
+    m_Key: REBIND_WAITING_SHORT
     m_Metadata:
       m_Items: []
   - m_Id: 4799102641496064
-    m_Key: Space
+    m_Key: REBIND_CANCEL_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5057674386333696
+    m_Key: REBIND_BINDING_PREFIX
     m_Metadata:
       m_Items: []
   m_Metadata:
