@@ -99,7 +99,7 @@ public class DialogueTextManager : MonoBehaviour
         offscreenPosition.x = Screen.width /2 + TextContainer.GetComponent<RectTransform>().rect.width / 2;
         onscreenPosition.x = Screen.width /2 + TextContainer.GetComponent<RectTransform>().rect.width / 2;
         offscreenPosition.y = (Screen.height/2 + TextContainer.GetComponent<RectTransform>().rect.height / 2 )* -1;
-        onscreenPosition.y = SetToBottomOfScreen(TextContainer).y;
+        onscreenPosition.y = SetToBottomOfScreen(TextContainer).y- Screen.height;
 
         TextContainer.GetComponent<RectTransform>().position = offscreenPosition;
         dialogueText.enabled = false;
@@ -168,7 +168,16 @@ public class DialogueTextManager : MonoBehaviour
         {
             characterIconRenderer.enabled = false;
         }
-        
+
+        if(currentDialouge.CharacterNameKey != "")
+        {
+            nameTextGO.SetActive(true);
+        }
+        else
+        {
+            nameTextGO.SetActive(false);
+        }
+
         onDialogueStart?.Invoke();
         StartCoroutine(moveDialogueBox());
     }
@@ -188,7 +197,14 @@ public class DialogueTextManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        if(currentDialouge.CharacterNameKey != "")
+        {
+            nameTextGO.SetActive(true);
+        }
+        else
+        {
+            nameTextGO.SetActive(false);
+        }
         currentDialouge = currentDialouge.Choices[0].NextDialouge;
         // check if the next dialouge has multiple choices
         if(currentDialouge.Choices.Count > 1)
@@ -266,7 +282,24 @@ public class DialogueTextManager : MonoBehaviour
         DisableTextClick();
         offscreenPosition.x = 0f;
         onscreenPosition.x = 0f;
-        onscreenPosition.y =  -1 *(Screen.height / 2 - TextContainer.GetComponent<RectTransform>().rect.height) + 140;
+        if(Screen.height == 1080)
+        {
+            onscreenPosition.y =  -1 *(Screen.height / 2 - TextContainer.GetComponent<RectTransform>().rect.height) + 140;
+        }
+        else if (Screen.height == 1440)
+        {
+            onscreenPosition.y =  -1 *(Screen.height / 2 - TextContainer.GetComponent<RectTransform>().rect.height) + 330;
+
+        }
+        else if (Screen.height == 2160)
+        {
+            onscreenPosition.y =  0 -140;
+        }
+        else
+        {
+            onscreenPosition.y =  0 -140;
+        }
+        
         float timeElapsed = 0f;
         if (!isDialogueBoxOnScreen)
         {
