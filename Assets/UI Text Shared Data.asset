@@ -195,6 +195,10 @@ MonoBehaviour:
     m_Key: REBIND_BINDING_PREFIX
     m_Metadata:
       m_Items: []
+  - m_Id: 5049247173619712
+    m_Key: UpgradesText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

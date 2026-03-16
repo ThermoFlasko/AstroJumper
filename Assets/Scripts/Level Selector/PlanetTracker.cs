@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 public class PlanetTracker : MonoBehaviour
 {
     [SerializeField] GameObject UIpanelPrefab;
+    [SerializeField] GameObject UpgradePanel;
     [SerializeField] List<GameObject> planets = new List<GameObject>();
     Vector3 mousePos;
     [SerializeField] Vector3 mouseWorldPos;
@@ -24,9 +25,14 @@ public class PlanetTracker : MonoBehaviour
         // get all planets in the scene using the tag system
         planets.AddRange(GameObject.FindGameObjectsWithTag("Planet"));
     }
-    void Update() 
+    void Update()
     {
         if (GameObject.FindAnyObjectByType<PlanetUIBtn>() != null)
+        {
+            return;
+        }
+
+        if (UpgradePanel.GetComponent<Canvas>().enabled == true)
         {
             return;
         }
