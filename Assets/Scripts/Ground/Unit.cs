@@ -104,7 +104,13 @@ public class Unit : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            Instantiate(DeathDrop, transform.position, Quaternion.identity);
+            GameObject enemyDrop = Instantiate(DeathDrop, transform.position, Quaternion.identity);
+            Inventory inventory = FindFirstObjectByType<Inventory>();
+            if (!inventory.FoundFirstScrap)
+            {
+                inventory.FoundFirstScrap = true;
+                inventory.StartFirstScrapFoundEvent();
+            }
         }
     }
 

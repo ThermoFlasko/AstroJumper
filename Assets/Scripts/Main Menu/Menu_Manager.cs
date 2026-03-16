@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 public class Menu_Manager : MonoBehaviour
 {
@@ -23,13 +24,12 @@ public class Menu_Manager : MonoBehaviour
 
     private void OnEnable()
     {
-        //SaveManager.NewMoneyChanged += UpdateUpgradesScrapCounter;
+        LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
 
     private void OnDisable()
     {
-        //SaveManager.NewMoneyChanged -= UpdateUpgradesScrapCounter;
-
+        LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
         if (volumeSlider != null)
         {
             volumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
@@ -94,7 +94,6 @@ public class Menu_Manager : MonoBehaviour
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         keybindPanel.SetActive(false);
-        //upgradesPanel.SetActive(false);
     }
 
     public void ShowMainMenu()
@@ -126,11 +125,9 @@ public class Menu_Manager : MonoBehaviour
         keybindPanel.SetActive(true);
     }
 
-    public void ShowUpgradePannelsMenu()
+    private void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)
     {
-        CloseAllMenus();
-        //upgradesPanel.SetActive(true);
-        //RefreshUpgradesScrapCounter();
+        Debug.Log($"Menu_Manager detected language change to: {newLocale.Identifier.Code}");
     }
 
     System.Collections.IEnumerator LoadSavedLanguage(string savedLanguage)
@@ -142,6 +139,7 @@ public class Menu_Manager : MonoBehaviour
         {
             LocalizationSettings.SelectedLocale = locale;
             Debug.Log("Loaded saved language: " + savedLanguage);
+            OnLocaleChanged(locale);
         }
         else
         {

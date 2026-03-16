@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0339091ce14bb0640878a4b65c6c98e9, type: 3}
+  m_Name: HayesGalaxyContact2GraphData
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::DialougeGraphSavaDataSO
+  <FileName>k__BackingField: HayesGalaxyContact2
+  <Nodes>k__BackingField:
+  - <Name>k__BackingField: HGC2,1
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: "Just sent you the location for their fleet. We\u2019re
+      taking these lizards down."
+    <ID>k__BackingField: 2cc86648-c6bf-499d-bb1b-a71d6fb1eb83
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 5166ae20-2feb-4de3-95b2-295a5edf0906
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: 32.8, y: 143.2}
+  - <Name>k__BackingField: HGC2,2
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: Our scans indicate the main ship is protected by shield
+      pylons and a fleet of skirmishers.
+    <ID>k__BackingField: 5166ae20-2feb-4de3-95b2-295a5edf0906
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 10c6b2d6-5598-4948-91e7-b95fb43df1d1
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: 17.6, y: 343.2}
+  - <Name>k__BackingField: HGC2,3
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: We need to take down those shields. Then, slip through
+      their defenses and disable it from the inside.
+    <ID>k__BackingField: 10c6b2d6-5598-4948-91e7-b95fb43df1d1
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: f73d81f6-24e9-4058-bc97-82158e469703
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: 32.8, y: 536}
+  - <Name>k__BackingField: HGC2,4
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: "Before we begin the assault, it looks like you have picked
+      up some scrap. Let\u2019s upgrade our weapons. We\u2019ll need the firepower
+      boost."
+    <ID>k__BackingField: f73d81f6-24e9-4058-bc97-82158e469703
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 2c541cb0-8fe1-494c-9955-60413c31fb69
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: 48.8, y: 725.6}
+  - <Name>k__BackingField: HGC2,5
+    <CharacterName>k__BackingField: Hayes
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Text>k__BackingField: Alright. Our fleets have mobilized, and are waiting for
+      your signal.
+    <ID>k__BackingField: 2c541cb0-8fe1-494c-9955-60413c31fb69
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialouge
+      <Requirements>k__BackingField: 
+      <NodeID>k__BackingField: 
+    <DialougeType>k__BackingField: 0
+    <Position>k__BackingField: {x: 68, y: 984.8}
+  <OldUngroupedNodeNames>k__BackingField:
+  - HGC2,1
+  - HGC2,2
+  - HGC2,3
+  - HGC2,4
+  - HGC2,5

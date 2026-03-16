@@ -216,19 +216,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4799091262349312
-    m_Localized: LMB
+    m_Localized: Waiting for {0} input...
     m_Metadata:
       m_Items: []
   - m_Id: 4799095913832448
-    m_Localized: RMB
+    m_Localized: Waiting for input...
     m_Metadata:
       m_Items: []
   - m_Id: 4799101018300416
-    m_Localized: Left Shift
+    m_Localized: <Waiting...>
     m_Metadata:
       m_Items: []
   - m_Id: 4799102641496064
-    m_Localized: Space
+    m_Localized: Cancels in {0} seconds if no matching input is provided.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5057674386333696
+    m_Localized: Binding '{0}'.
     m_Metadata:
       m_Items: []
   - m_Id: 5049247173619712
