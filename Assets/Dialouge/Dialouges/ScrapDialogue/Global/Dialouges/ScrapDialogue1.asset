@@ -15,8 +15,7 @@ MonoBehaviour:
   <DialougeName>k__BackingField: ScrapDialogue1
   <CharacterNameKey>k__BackingField: 
   <CharacterIcon>k__BackingField: {fileID: 0}
-  <TextKey>k__BackingField: "Hmmm. Looks like they dropped some scrap. This might
-    be useful\u2026"
+  <TextKey>k__BackingField: DIALOG_SCRAP_DROPPED
   <Choices>k__BackingField:
   - <Name>k__BackingField: 
     <TextKey>k__BackingField: Next Dialouge

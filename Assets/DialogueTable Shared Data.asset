@@ -31,6 +31,46 @@ MonoBehaviour:
     m_Key: D1Ground2_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 1262339633438720
+    m_Key: DIALOG_ASTROJUMPER_HOPE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262342598811648
+    m_Key: DIALOG_SCRAP_DROPPED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262344872124416
+    m_Key: DIALOG_VANGUARD_ALIENS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1267418142859264
+    m_Key: DIALOG_SEND_BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1267422433632256
+    m_Key: DIALOG_DISABLE_MOTHERSHIP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269217792876544
+    m_Key: DIALOG_SENT_LOCATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269219185385472
+    m_Key: DIALOG_SHIELD_PYLONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269220389150720
+    m_Key: DIALOG_DISABLE_FROM_INSIDE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269221685190656
+    m_Key: DIALOG_UPGRADE_WEAPONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269222977036288
+    m_Key: DIALOG_FLEETS_MOBILIZED
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

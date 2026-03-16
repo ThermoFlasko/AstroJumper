@@ -239,6 +239,10 @@ MonoBehaviour:
     m_Localized: Upgrades
     m_Metadata:
       m_Items: []
+  - m_Id: 5152066698731520
+    m_Localized: Level Selector
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
