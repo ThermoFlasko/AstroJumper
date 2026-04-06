@@ -45,5 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   defualtGameSaveSO: {fileID: 11400000, guid: ef8e371a6450619439d65de206072931, type: 2}
+  saveFolderName: Saves
+  saveFileName: savegame.json
   autoSave: 1
   autoSaveDelay: 2

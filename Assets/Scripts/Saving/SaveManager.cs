@@ -12,9 +12,14 @@ public class SaveManager : MonoBehaviour
     [Header("Defualts + Files")] [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
 
-    private string saveFileName = "importantYAaaaa.json";
+    [SerializeField] private string saveFolderName = "Saves";
+    [SerializeField] private string saveFileName = "savegame.json";
 
-    private string SaveFilePath => Path.Combine(Application.persistentDataPath, saveFileName);
+    private const string LegacySaveFileName = "importantYAaaaa.json";
+
+    private string SaveDirectoryPath => Path.Combine(Application.persistentDataPath, saveFolderName);
+    private string SaveFilePath => Path.Combine(SaveDirectoryPath, saveFileName);
+    private string LegacySaveFilePath => Path.Combine(Application.persistentDataPath, LegacySaveFileName);
 
     public SaveData CurrentSaveData { get; private set; }
 
@@ -36,7 +41,6 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(Application.persistentDataPath);
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -46,6 +50,7 @@ public class SaveManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
+        Debug.Log($"Save root: {Application.persistentDataPath}");
         LoadGame();
 
         if (autoSave)
@@ -95,6 +100,8 @@ public class SaveManager : MonoBehaviour
 
     private void LoadGame()
     {
+        TryMigrateLegacySaveFile();
+
         if (!File.Exists(SaveFilePath))
         {
             CreateDefaultSaveFile("No save file found.");
@@ -104,28 +111,31 @@ public class SaveManager : MonoBehaviour
         try
         {
             string json = File.ReadAllText(SaveFilePath);
+            bool repairedMissingSpaceshipUpgradeData = !json.Contains("\"spaceshipUpgradeData\"");
+            bool repairedMissingGroundUpgradeData = !json.Contains("\"groundTrooperUpgradeData\"");
 
             CurrentSaveData = JsonUtility.FromJson<SaveData>(json);
+
+            if (CurrentSaveData == null)
+            {
+                CreateDefaultSaveFile($"Save file was empty or invalid JSON at {SaveFilePath}.");
+                return;
+            }
+
+            bool upgradedSaveVersion = CurrentSaveData.version < SaveData.CurrentVersion;
+            CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
+            CurrentSaveData.version = SaveData.CurrentVersion;
+
+            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || upgradedSaveVersion)
+            {
+                Debug.LogWarning($"Save file at {SaveFilePath} was missing migrated data or was on an older version. Rewriting it with the current schema.");
+                WriteToDisk();
+            }
         }
         catch (Exception ex)
         {
             CreateDefaultSaveFile($"Failed reading save file at {SaveFilePath}. {ex.Message}");
             return;
-        }
-
-        if (CurrentSaveData == null)
-        {
-            CreateDefaultSaveFile($"Save file was empty or invalid JSON at {SaveFilePath}.");
-            return;
-        }
-
-        bool repairedMissingUpgradeData = CurrentSaveData.spaceshipUpgradeData == null;
-        CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
-
-        if (repairedMissingUpgradeData)
-        {
-            Debug.LogWarning($"Save file at {SaveFilePath} was missing upgrade data. Restored defaults for that section.");
-            WriteToDisk();
         }
 
         NotifyMoneyChanged();
@@ -147,14 +157,35 @@ public class SaveManager : MonoBehaviour
 
         try
         {
-            Directory.CreateDirectory(Application.persistentDataPath);
+            Directory.CreateDirectory(SaveDirectoryPath);
             string json = JsonUtility.ToJson(CurrentSaveData, true);
-            File.WriteAllText(SaveFilePath, json);
+            string tempSavePath = SaveFilePath + ".tmp";
+
+            File.WriteAllText(tempSavePath, json);
+
+            if (File.Exists(SaveFilePath))
+            {
+                File.Copy(tempSavePath, SaveFilePath, true);
+                File.Delete(tempSavePath);
+            }
+            else
+            {
+                File.Move(tempSavePath, SaveFilePath);
+            }
+
             Debug.Log($"Saved game to {SaveFilePath}. Money={CurrentSaveData.newMoney}");
         }
         catch (Exception ex)
         {
             Debug.LogError($"Failed writing save file at {SaveFilePath}. {ex}");
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (instance == this && dirty)
+        {
+            SaveGame();
         }
     }
 
@@ -266,6 +297,86 @@ public class SaveManager : MonoBehaviour
         MakeDirty();
     }
 
+    public float GetGroundMoveSpeedUpgradeBoost()
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData?.groundTrooperUpgradeData == null || defualtGameSaveSO == null)
+            return 0f;
+
+        return CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel *
+               defualtGameSaveSO.groundTrooperDefaults.moveSpeedUpgradePerLevel;
+    }
+
+    public float GetGroundJumpVelocityUpgradeBoost()
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData?.groundTrooperUpgradeData == null || defualtGameSaveSO == null)
+            return 0f;
+
+        return CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel *
+               defualtGameSaveSO.groundTrooperDefaults.jumpVelocityUpgradePerLevel;
+    }
+
+    public int GetGroundMaxHealthUpgradeBoost()
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData?.groundTrooperUpgradeData == null || defualtGameSaveSO == null)
+            return 0;
+
+        return CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel *
+               defualtGameSaveSO.groundTrooperDefaults.maxHealthUpgradePerLevel;
+    }
+
+    public int GetGroundUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData?.groundTrooperUpgradeData == null)
+            return 0;
+
+        switch (upgradeType)
+        {
+            case GroundTrooperUpgradeType.MoveSpeed:
+                return CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel;
+            case GroundTrooperUpgradeType.JumpVelocity:
+                return CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel;
+            case GroundTrooperUpgradeType.MaxHealth:
+                return CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel;
+        }
+
+        return 0;
+    }
+
+    public int GetGroundUpgradeCost(GroundTrooperUpgradeType upgradeType)
+    {
+        EnsureCurrentSaveData();
+        if (defualtGameSaveSO?.groundTrooperDefaults == null)
+            return 0;
+
+        return defualtGameSaveSO.groundTrooperDefaults.universalUpgradeCostPerLevel;
+    }
+
+    public void AddGroundUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData?.groundTrooperUpgradeData == null)
+            return;
+
+        switch (upgradeType)
+        {
+            case GroundTrooperUpgradeType.MoveSpeed:
+                CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel++;
+                break;
+            case GroundTrooperUpgradeType.JumpVelocity:
+                CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel++;
+                break;
+            case GroundTrooperUpgradeType.MaxHealth:
+                CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel++;
+                break;
+        }
+
+        MakeDirty();
+    }
+
     #endregion
 
     private void EnsureCurrentSaveData()
@@ -276,6 +387,7 @@ public class SaveManager : MonoBehaviour
         }
 
         CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
+        CurrentSaveData.version = SaveData.CurrentVersion;
     }
 
     private void CreateDefaultSaveFile(string reason)
@@ -284,6 +396,23 @@ public class SaveManager : MonoBehaviour
         Debug.LogWarning($"{reason} Created a new save file at {SaveFilePath}.");
         WriteToDisk();
         NotifyMoneyChanged();
+    }
+
+    private void TryMigrateLegacySaveFile()
+    {
+        if (File.Exists(SaveFilePath) || !File.Exists(LegacySaveFilePath))
+            return;
+
+        try
+        {
+            Directory.CreateDirectory(SaveDirectoryPath);
+            File.Copy(LegacySaveFilePath, SaveFilePath);
+            Debug.Log($"Migrated legacy save file from {LegacySaveFilePath} to {SaveFilePath}.");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"Failed to migrate legacy save file from {LegacySaveFilePath} to {SaveFilePath}. {ex.Message}");
+        }
     }
 
     private void NotifyMoneyChanged()

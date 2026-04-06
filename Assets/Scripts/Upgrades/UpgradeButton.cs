@@ -1,7 +1,6 @@
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -13,31 +12,85 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeLabel;
     [SerializeField] private TextMeshProUGUI upgradeCostLabel;
     [SerializeField] private TextMeshProUGUI currentLevelLabel;
+    private Button cachedButton;
+
+    private void Awake()
+    {
+        cachedButton = upgradeButton != null ? upgradeButton.GetComponent<Button>() : GetComponent<Button>();
+    }
+
+    private void OnEnable()
+    {
+        SaveManager.NewMoneyChanged += HandleMoneyChanged;
+        RefreshView();
+    }
+
+    private void OnDisable()
+    {
+        SaveManager.NewMoneyChanged -= HandleMoneyChanged;
+    }
 
     public void Start()
     {
-        InitButtonInit();
+        RefreshView();
     }
 
     public void PrintToConsole()
     {
         print($"Player clickd on {this.upgradeType.ToString()} type button.");
-        if (SaveManager.instance != null)
+
+        if (SaveManager.instance == null || upgradesSO == null)
         {
-            if (SaveManager.instance.GetNewMoney() >= upgradesSO.GetUpgradeCost(upgradeType))
-            {
-                print("can afford upgrade");
-                SaveManager.instance.AddNewMoney(-(int)(upgradesSO.GetUpgradeCost(upgradeType)));
-                SaveManager.instance.AddUpgradeLevel(upgradeType);
-                InitButtonInit();
-            }
+            RefreshView();
+            return;
         }
+
+        int upgradeCost = Mathf.RoundToInt(upgradesSO.GetUpgradeCost(upgradeType));
+        if (SaveManager.instance.GetNewMoney() >= upgradeCost)
+        {
+            print("can afford upgrade");
+            SaveManager.instance.AddNewMoney(-upgradeCost);
+            SaveManager.instance.AddUpgradeLevel(upgradeType);
+        }
+
+        RefreshView();
     }
 
-    private void InitButtonInit()
+    public void RefreshView()
     {
-        upgradeLabel.text = upgradeType.ToString();
-        upgradeCostLabel.text = ($"Cost: {upgradesSO.GetUpgradeCost(upgradeType).ToString()}");
-        currentLevelLabel.text = $"Lv.  {SaveManager.instance.GetUpgradeLevel(upgradeType).ToString()}";
+        if (upgradeLabel != null)
+            upgradeLabel.text = upgradeType.ToString();
+
+        if (SaveManager.instance == null || upgradesSO == null)
+        {
+            if (upgradeCostLabel != null)
+                upgradeCostLabel.text = "Cost: -";
+
+            if (currentLevelLabel != null)
+                currentLevelLabel.text = "Lv. 0";
+
+            if (cachedButton != null)
+                cachedButton.interactable = false;
+
+            return;
+        }
+
+        int upgradeCost = Mathf.RoundToInt(upgradesSO.GetUpgradeCost(upgradeType));
+        int currentLevel = SaveManager.instance.GetUpgradeLevel(upgradeType);
+        int currentMoney = SaveManager.instance.GetNewMoney();
+
+        if (upgradeCostLabel != null)
+            upgradeCostLabel.text = $"Cost: {upgradeCost}";
+
+        if (currentLevelLabel != null)
+            currentLevelLabel.text = $"Lv. {currentLevel}";
+
+        if (cachedButton != null)
+            cachedButton.interactable = currentMoney >= upgradeCost;
+    }
+
+    private void HandleMoneyChanged(int _)
+    {
+        RefreshView();
     }
 }

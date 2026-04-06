@@ -32,7 +32,7 @@ public class PlanetTracker : MonoBehaviour
             return;
         }
 
-        if (UpgradePanel.GetComponent<Canvas>().enabled == true)
+        if (UpgradePanel != null && UpgradePanel.activeInHierarchy)
         {
             return;
         }

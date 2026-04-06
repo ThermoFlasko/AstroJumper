@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   UIpanelPrefab: {fileID: 3785556831217526800, guid: 20e6c419f9544474c9dd046509b2cc3e, type: 3}
-  UpgradePanel: {fileID: 1663781115}
+  UpgradePanel: {fileID: 880001001}
   planets: []
   mouseWorldPos: {x: 0, y: 0, z: 0}
   planetBaseScale: {x: 2, y: 2, z: 1}
@@ -1636,6 +1636,7 @@ GameObject:
   - component: {fileID: 1088386848}
   - component: {fileID: 1088386847}
   - component: {fileID: 1088386846}
+  - component: {fileID: 1088386849}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -1707,22 +1708,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1663781119}
-        m_TargetAssemblyTypeName: UnityEngine.Canvas, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1088386844}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1088386849}
+        m_TargetAssemblyTypeName: UpgradeMenuLauncher, Assembly-CSharp
+        m_MethodName: OpenMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1769,6 +1758,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088386844}
   m_CullTransparentMesh: 1
+--- !u!114 &1088386849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088386844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d8d1bf7417425aa19dc35fbcc8aa91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeMenuLauncher
+  existingMenuInstance: {fileID: 880001002}
+  hideWhileMenuOpen:
+  - {fileID: 1361977982}
 --- !u!1 &1171623760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1922,6 @@ GameObject:
   - component: {fileID: 1361977985}
   - component: {fileID: 1361977984}
   - component: {fileID: 1361977983}
-  - component: {fileID: 1361977987}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -2010,19 +2013,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1361977987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361977982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec94440cb7f883945b1e71adaa4418fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UpgradeMenu
-  upgradesScrapCounterText: {fileID: 1171623762}
 --- !u!1001 &1366236922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2143,12 +2133,12 @@ GameObject:
   - component: {fileID: 1663781120}
   - component: {fileID: 1663781121}
   m_Layer: 5
-  m_Name: Upgrades Menu
+  m_Name: Upgrades Menu Legacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1663781116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3281,6 +3271,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 6.4, y: 6.4}
   m_EdgeRadius: 0
+--- !u!1001 &880001000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+--- !u!1 &880001001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4332809526372530583, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 880001000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &880001002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6529840576393318420, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 880001000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3298,3 +3311,4 @@ SceneRoots:
   - {fileID: 1727644613}
   - {fileID: 381037741}
   - {fileID: 1007052419}
+  - {fileID: 880001000}
