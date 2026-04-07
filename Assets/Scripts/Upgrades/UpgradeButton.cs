@@ -59,15 +59,15 @@ public class UpgradeButton : MonoBehaviour
     public void RefreshView()
     {
         if (upgradeLabel != null)
-            upgradeLabel.text = upgradeType.ToString();
+            upgradeLabel.text = upgradesSO != null ? upgradesSO.GetUpgradeDisplayName(upgradeType) : upgradeType.ToString();
 
         if (SaveManager.instance == null || upgradesSO == null)
         {
             if (upgradeCostLabel != null)
-                upgradeCostLabel.text = "Cost: -";
+                upgradeCostLabel.text = "Cost: -\nNext: -";
 
             if (currentLevelLabel != null)
-                currentLevelLabel.text = "Lv. 0";
+                currentLevelLabel.text = "Lv. 0\nNow: Base";
 
             if (cachedButton != null)
                 cachedButton.interactable = false;
@@ -78,12 +78,14 @@ public class UpgradeButton : MonoBehaviour
         int upgradeCost = Mathf.RoundToInt(upgradesSO.GetUpgradeCost(upgradeType));
         int currentLevel = SaveManager.instance.GetUpgradeLevel(upgradeType);
         int currentMoney = SaveManager.instance.GetNewMoney();
+        string currentSummary = upgradesSO.GetUpgradeSummary(upgradeType, currentLevel);
+        string nextSummary = upgradesSO.GetUpgradeSummary(upgradeType, currentLevel + 1);
 
         if (upgradeCostLabel != null)
-            upgradeCostLabel.text = $"Cost: {upgradeCost}";
+            upgradeCostLabel.text = $"Cost: {upgradeCost}\nNext: {nextSummary}";
 
         if (currentLevelLabel != null)
-            currentLevelLabel.text = $"Lv. {currentLevel}";
+            currentLevelLabel.text = $"Lv. {currentLevel}\nNow: {currentSummary}";
 
         if (cachedButton != null)
             cachedButton.interactable = currentMoney >= upgradeCost;

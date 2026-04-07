@@ -13,6 +13,7 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private Canvas[] canvasesToToggle;
     [SerializeField] private CanvasGroup menuCanvasGroup;
     [SerializeField] private bool deactivateGameObjectWhenClosed;
+    [SerializeField] private bool openOnStart;
 
     public bool DeactivateGameObjectWhenClosed
     {
@@ -20,9 +21,12 @@ public class UpgradeMenu : MonoBehaviour
         set => deactivateGameObjectWhenClosed = value;
     }
 
+    public bool IsOpen => gameObject.activeInHierarchy && (menuCanvasGroup == null || menuCanvasGroup.alpha > 0.001f);
+
     private void Awake()
     {
         RefreshReferences();
+        ApplyInitialState();
     }
 
     private void OnEnable()
@@ -48,6 +52,14 @@ public class UpgradeMenu : MonoBehaviour
 
         upgradeButtons = GetComponentsInChildren<UpgradeButton>(true);
         canvasesToToggle = GetComponentsInChildren<Canvas>(true);
+    }
+
+    private void ApplyInitialState()
+    {
+        SetMenuVisible(openOnStart);
+
+        if (!openOnStart && deactivateGameObjectWhenClosed && gameObject.activeSelf)
+            gameObject.SetActive(false);
     }
 
     public void OpenMenu()
