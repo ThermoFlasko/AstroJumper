@@ -57,9 +57,6 @@ public class UpgradeMenu : MonoBehaviour
     private void ApplyInitialState()
     {
         SetMenuVisible(openOnStart);
-
-        if (!openOnStart && deactivateGameObjectWhenClosed && gameObject.activeSelf)
-            gameObject.SetActive(false);
     }
 
     public void OpenMenu()

@@ -32,7 +32,7 @@ public class PlanetTracker : MonoBehaviour
             return;
         }
 
-        if (UpgradePanel != null && UpgradePanel.activeInHierarchy)
+        if (IsUpgradeMenuOpen())
         {
             return;
         }
@@ -119,6 +119,21 @@ public class PlanetTracker : MonoBehaviour
         UI.GetComponent<RectTransform>().SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
 
+    }
+
+    private bool IsUpgradeMenuOpen()
+    {
+        if (UpgradePanel != null && UpgradePanel.activeInHierarchy)
+            return true;
+
+        UpgradeMenu[] upgradeMenus = FindObjectsByType<UpgradeMenu>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (UpgradeMenu upgradeMenu in upgradeMenus)
+        {
+            if (upgradeMenu != null && upgradeMenu.IsOpen)
+                return true;
+        }
+
+        return false;
     }
 
     public void expandPlanet(GameObject planet)

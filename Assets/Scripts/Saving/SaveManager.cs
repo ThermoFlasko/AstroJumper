@@ -22,6 +22,7 @@ public class SaveManager : MonoBehaviour
     private string LegacySaveFilePath => Path.Combine(Application.persistentDataPath, LegacySaveFileName);
 
     public SaveData CurrentSaveData { get; private set; }
+    public DefualtGameSaveSO DefaultGameSaveSO => defualtGameSaveSO;
 
 
     [SerializeField] private float dirtyDelaySaveTime = 2.0f;

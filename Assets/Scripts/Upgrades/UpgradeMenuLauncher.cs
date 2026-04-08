@@ -9,7 +9,9 @@ public class UpgradeMenuLauncher : MonoBehaviour
 
     private void Awake()
     {
-        existingMenuInstance = ResolveExistingMenu();
+        if (existingMenuInstance == null && menuPrefab == null)
+            existingMenuInstance = ResolveExistingMenu();
+
         SubscribeToMenu(existingMenuInstance);
         SetHiddenObjects(!IsMenuOpen());
     }
@@ -52,23 +54,22 @@ public class UpgradeMenuLauncher : MonoBehaviour
         if (existingMenuInstance != null)
             return existingMenuInstance;
 
-        existingMenuInstance = ResolveExistingMenu();
-        if (existingMenuInstance != null)
+        if (menuPrefab != null)
         {
+            Transform parent = ResolveMenuParent();
+            existingMenuInstance = parent != null ? Instantiate(menuPrefab, parent) : Instantiate(menuPrefab);
+            existingMenuInstance.name = menuPrefab.name;
+            existingMenuInstance.DeactivateGameObjectWhenClosed = true;
+            existingMenuInstance.gameObject.SetActive(false);
+
             SubscribeToMenu(existingMenuInstance);
             return existingMenuInstance;
         }
 
-        if (menuPrefab == null)
-            return null;
+        existingMenuInstance = ResolveExistingMenu();
+        if (existingMenuInstance != null)
+            SubscribeToMenu(existingMenuInstance);
 
-        Transform parent = ResolveMenuParent();
-        existingMenuInstance = parent != null ? Instantiate(menuPrefab, parent) : Instantiate(menuPrefab);
-        existingMenuInstance.name = menuPrefab.name;
-        existingMenuInstance.DeactivateGameObjectWhenClosed = true;
-        existingMenuInstance.gameObject.SetActive(false);
-
-        SubscribeToMenu(existingMenuInstance);
         return existingMenuInstance;
     }
 
@@ -82,15 +83,7 @@ public class UpgradeMenuLauncher : MonoBehaviour
 
     private Transform ResolveMenuParent()
     {
-        if (menuParent != null)
-            return menuParent;
-
-        Canvas parentCanvas = GetComponentInParent<Canvas>();
-        if (parentCanvas != null)
-            return parentCanvas.transform;
-
-        Canvas sceneCanvas = FindFirstObjectByType<Canvas>(FindObjectsInactive.Include);
-        return sceneCanvas != null ? sceneCanvas.transform : null;
+        return menuParent;
     }
 
     private bool IsMenuOpen()
