@@ -65,4 +65,86 @@ public class PlayerSpaceshipUpgradesSO : ScriptableObject
 
         return -1;
     }
+
+    public string GetUpgradeDisplayName(PlayerUpgradeState.UpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+                return "Thrust";
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+                return "Max Speed";
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+                return "Boost Power";
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+                return "Roll Distance";
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+                return "Roll Speed";
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return "Fire Rate";
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return "Max Health";
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return "Max Shields";
+        }
+
+        return upgradeType.ToString();
+    }
+
+    public string GetUpgradeSummary(PlayerUpgradeState.UpgradeType upgradeType, int level)
+    {
+        if (level <= 0)
+            return "Base";
+
+        float totalUpgrade = GetUpgradeAmountForLevel(upgradeType, level);
+
+        switch (upgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+                return $"+{totalUpgrade:0.##} thrust";
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+                return $"+{totalUpgrade:0.##} speed";
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+                return $"+{totalUpgrade:0.##} boost";
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+                return $"+{totalUpgrade:0.##} roll dist";
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+                return $"-{totalUpgrade:0.##}s roll time";
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return $"-{totalUpgrade:0.##}s shot delay";
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return $"+{totalUpgrade:0} health";
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return $"+{totalUpgrade:0.##} shield";
+        }
+
+        return $"+{totalUpgrade:0.##}";
+    }
+
+    private float GetUpgradeAmountForLevel(PlayerUpgradeState.UpgradeType upgradeType, int level)
+    {
+        int clampedLevel = Mathf.Max(0, level);
+
+        switch (upgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+                return clampedLevel * moveForceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+                return clampedLevel * maxSpeedUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+                return clampedLevel * boostForceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+                return clampedLevel * barrelRollDistanceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+                return clampedLevel * barrelRollSpeedUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return clampedLevel * fireRateUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return clampedLevel * maxHealthUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return clampedLevel * maxShieldsPerLevel;
+        }
+
+        return 0f;
+    }
 }
