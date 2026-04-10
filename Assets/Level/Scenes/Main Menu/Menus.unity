@@ -3168,7 +3168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem.RebindingUI::UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI
   m_Action: {fileID: 835076447}
-  m_BindingId: 8e749682-34d9-4b42-9aa9-eb08bb4a62c8
+  m_BindingId: 8e5e015a-7097-49a6-99fa-33890dc5e939
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1148673133}
   m_BindingText: {fileID: 761645570}
@@ -4860,7 +4860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: RMB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -5673,7 +5673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem.RebindingUI::UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI
   m_Action: {fileID: 444829612}
-  m_BindingId: 8e749682-34d9-4b42-9aa9-eb08bb4a62c8
+  m_BindingId: a1f7b18f-d35e-4b0f-928e-72e76e54f816
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1177865475}
   m_BindingText: {fileID: 1159581296}
@@ -7571,7 +7571,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148673130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
@@ -7802,7 +7802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: LMB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -7927,7 +7927,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177865472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
