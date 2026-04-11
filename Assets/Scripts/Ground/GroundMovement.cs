@@ -168,13 +168,14 @@ public class GroundMovement : MonoBehaviour
 
     private void HandleHorizontal()
     {
-        float targetSpeed = xInput * moveSpeed;
+        float upgradedMoveSpeed = GetMoveSpeedWithUpgrades();
+        float targetSpeed = xInput * upgradedMoveSpeed;
         float speedDiff = targetSpeed - rb.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
 
         rb.AddForce(new Vector2(speedDiff * accelRate, 0f));
 
-        float clampedX = Mathf.Clamp(rb.linearVelocity.x, -moveSpeed, moveSpeed);
+        float clampedX = Mathf.Clamp(rb.linearVelocity.x, -upgradedMoveSpeed, upgradedMoveSpeed);
         rb.linearVelocity = new Vector2(clampedX, rb.linearVelocity.y);
 
         // Only update facing direction when not knocked back so sprite doesn't flip
@@ -205,7 +206,7 @@ public class GroundMovement : MonoBehaviour
 
         if (canGroundJump || canAirJump)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, GetJumpVelocityWithUpgrades());
             jumpBufferTimer = 0f;
 
             if (canGroundJump)
@@ -248,5 +249,17 @@ public class GroundMovement : MonoBehaviour
         if (groundCheck == null) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    }
+
+    private float GetMoveSpeedWithUpgrades()
+    {
+        float moveSpeedUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundMoveSpeedUpgradeBoost() : 0f;
+        return moveSpeed + moveSpeedUpgrade;
+    }
+
+    private float GetJumpVelocityWithUpgrades()
+    {
+        float jumpVelocityUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundJumpVelocityUpgradeBoost() : 0f;
+        return jumpVelocity + jumpVelocityUpgrade;
     }
 }

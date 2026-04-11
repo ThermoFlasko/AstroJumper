@@ -27,10 +27,12 @@ public class Player : Unit
     [Header("Damage Settings")]
     [SerializeField] private float damageCooldown = 0.5f;
     private float lastDamageTime = -999f;
+    private int startingHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        startingHealth = Health;
         var map = actionsAsset.FindActionMap(actionMapName, true);
         attackAction = map.FindAction(attackActionName);
         if (attackAction == null)
@@ -51,9 +53,12 @@ public class Player : Unit
         }
         hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
+        ApplyGroundTrooperDefaultUpgrades();
     }
     private void OnEnable()
     {
+        ApplyGroundTrooperDefaultUpgrades();
+
         attackAction.Enable();
         attackAction.performed += OnAttack;
 
@@ -182,8 +187,26 @@ public class Player : Unit
     // This should NOT be final, it is only meant to be used for the playtest
     private void Reset()
     {
-        Health = 100;
+        ApplyGroundTrooperDefaultUpgrades();
         transform.position = playerSpawn.transform.position;
         GetComponent<SpriteRenderer>().flipX = false;
+    }
+
+    private void ApplyGroundTrooperDefaultUpgrades()
+    {
+        int healthUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundMaxHealthUpgradeBoost() : 0;
+        Health = startingHealth + healthUpgrade;
+    }
+
+    public void DisableInputs()
+    {
+        attackAction.Disable();
+        attackAction2.Disable();
+    }
+
+    public void EnableInputs()
+    {
+        attackAction.Enable();
+        attackAction2.Enable();
     }
 }

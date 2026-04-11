@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization;
+using System.Collections;
 
 public class Menu_Manager : MonoBehaviour
 {
@@ -123,6 +124,17 @@ public class Menu_Manager : MonoBehaviour
     {
         CloseAllMenus();
         keybindPanel.SetActive(true);
+    }
+
+    public void StartQuitGame()
+    {
+        StartCoroutine(QuitGame());
+    }
+
+    public IEnumerator QuitGame()
+    {
+        Application.Quit();
+        yield return null;
     }
 
     private void OnLocaleChanged(UnityEngine.Localization.Locale newLocale)

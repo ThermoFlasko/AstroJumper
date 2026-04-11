@@ -14,3 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DefualtGameSaveSO
   startingNewMoney: 0
   playerSpaceshipUpgradesSO: {fileID: 11400000, guid: b43615e77a7fd4346afdbf572deb5e3d, type: 2}
+  groundTrooperDefaults:
+    universalUpgradeCostPerLevel: 5
+    moveSpeedStartingLevel: 1
+    moveSpeedUpgradePerLevel: 0.75
+    jumpVelocityStartingLevel: 0
+    jumpVelocityUpgradePerLevel: 0.75
+    maxHealthStartingLevel: 0
+    maxHealthUpgradePerLevel: 10

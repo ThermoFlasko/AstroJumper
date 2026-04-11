@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using System.Collections;
 
 public class PauseManager : MonoBehaviour
 {
@@ -85,6 +86,11 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("Menus"); // Load the main menu scene
     }
 
+    public void StartQuitGame()
+    {
+        StartCoroutine(QuitGame());
+    }
+
     void UpdateVolumeText(float sliderValue)
     {
         if (volumeText != null)
@@ -92,5 +98,12 @@ public class PauseManager : MonoBehaviour
             int volumePercent = Mathf.RoundToInt(sliderValue * 100);
             volumeText.text = volumePercent.ToString() + "%";
         }
+    }
+
+    public IEnumerator QuitGame()
+    {
+        // call all cleanup functions here
+        Application.Quit();
+        yield return null;
     }
 }

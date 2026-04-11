@@ -4,12 +4,15 @@ using System;
 [System.Serializable]
 public class SaveData
 {
-    public float version = 0.67f;
+    public const float CurrentVersion = 0.68f;
+
+    public float version = CurrentVersion;
 
     public int newMoney; //Important
 
     //------Upgrades (Player Spaceship current levels)-------
     public SpaceshipUpgradeData spaceshipUpgradeData = new SpaceshipUpgradeData();
+    public GroundTrooperUpgradeData groundTrooperUpgradeData = new GroundTrooperUpgradeData();
 
     [Serializable]
     public class SpaceshipUpgradeData
@@ -25,11 +28,24 @@ public class SaveData
         public int maxHealthLevel;
     }
 
+    [Serializable]
+    public class GroundTrooperUpgradeData
+    {
+        public int moveSpeedLevel;
+        public int jumpVelocityLevel;
+        public int maxHealthLevel;
+    }
+
     public void EnsureInitialized(DefualtGameSaveSO defaults)
     {
         if (spaceshipUpgradeData == null)
         {
             spaceshipUpgradeData = CreateDefaultUpgradeData(defaults != null ? defaults.playerSpaceshipUpgradesSO : null);
+        }
+
+        if (groundTrooperUpgradeData == null)
+        {
+            groundTrooperUpgradeData = CreateDefaultGroundTrooperUpgradeData(defaults != null ? defaults.groundTrooperDefaults : null);
         }
     }
 
@@ -39,6 +55,7 @@ public class SaveData
         //Init everything to the defualt value
         d.newMoney = (defaults != null) ? defaults.startingNewMoney : 0;
         d.spaceshipUpgradeData = CreateDefaultUpgradeData(defaults != null ? defaults.playerSpaceshipUpgradesSO : null);
+        d.groundTrooperUpgradeData = CreateDefaultGroundTrooperUpgradeData(defaults != null ? defaults.groundTrooperDefaults : null);
 
         return d;
     }
@@ -57,6 +74,20 @@ public class SaveData
             upgradeData.fireRateLevel = upgradeDefaults.fireRateStartingLevel;
             upgradeData.maxHealthLevel = upgradeDefaults.maxHealthStartingLevel;
             upgradeData.maxShieldsLevel = upgradeDefaults.maxShieldsStartingLevel;
+        }
+
+        return upgradeData;
+    }
+
+    private static GroundTrooperUpgradeData CreateDefaultGroundTrooperUpgradeData(GroundTrooperUpgradeDefaults upgradeDefaults)
+    {
+        var upgradeData = new GroundTrooperUpgradeData();
+
+        if (upgradeDefaults != null)
+        {
+            upgradeData.moveSpeedLevel = upgradeDefaults.moveSpeedStartingLevel;
+            upgradeData.jumpVelocityLevel = upgradeDefaults.jumpVelocityStartingLevel;
+            upgradeData.maxHealthLevel = upgradeDefaults.maxHealthStartingLevel;
         }
 
         return upgradeData;

@@ -361,6 +361,7 @@ public class DialogueTextManager : MonoBehaviour
     public void DisablePlayerInput()
     {
         playerMovement.enabled = false;
+        player.DisableInputs();
         //player.enabled = false;
         player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // stop player movement immediately
     }
@@ -368,6 +369,7 @@ public class DialogueTextManager : MonoBehaviour
     public void EnablePlayerInput()
     {
         playerMovement.enabled = true;
+        player.EnableInputs();
         //player.enabled = true;  
     }
 }
