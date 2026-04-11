@@ -15,7 +15,7 @@ public class Planet : MonoBehaviour
 
     public void displayName()
     {
-        print("Displaying name for " + planetName);
+        //print("Displaying name for " + planetName);
         Vector3 textPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(2f, -1.5f, 0));
         nameText = Instantiate(nameTextPrefab, textPos, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
         nameText.transform.SetAsFirstSibling();

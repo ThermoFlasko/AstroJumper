@@ -197,4 +197,16 @@ public class Player : Unit
         int healthUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundMaxHealthUpgradeBoost() : 0;
         Health = startingHealth + healthUpgrade;
     }
+
+    public void DisableInputs()
+    {
+        attackAction.Disable();
+        attackAction2.Disable();
+    }
+
+    public void EnableInputs()
+    {
+        attackAction.Enable();
+        attackAction2.Enable();
+    }
 }
