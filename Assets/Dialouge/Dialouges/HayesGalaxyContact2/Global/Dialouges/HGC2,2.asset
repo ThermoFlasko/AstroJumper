@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: HGC2,2
   m_EditorClassIdentifier: Assembly-CSharp::DialougeSO
   <DialougeName>k__BackingField: HGC2,2
-  <CharacterNameKey>k__BackingField: Hayes
+  <CharacterNameKey>k__BackingField: CHAR_GENERAL_HAYES
   <CharacterIcon>k__BackingField: {fileID: 0}
-  <TextKey>k__BackingField: Our scans indicate the main ship is protected by shield
-    pylons and a fleet of skirmishers.
+  <TextKey>k__BackingField: DIALOG_SHIELD_PYLONS
   <Choices>k__BackingField:
   - <Name>k__BackingField: 
     <TextKey>k__BackingField: Next Dialouge

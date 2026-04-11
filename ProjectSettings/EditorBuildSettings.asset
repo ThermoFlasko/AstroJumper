@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/Space/Space Level 1.unity
     guid: 18851b618b925b443be2c40a40da73e2
-  - enabled: 0
-    path: Assets/Level/Scenes/Tutorial/Tutorial Space.unity
-    guid: 0d1a6170d45014642acec9ac34f9dc57
   - enabled: 1
     path: Assets/Level/Scenes/Game Over/GameOver.unity
     guid: 6168794fc4c184e2ea64f885b43506fd
@@ -30,8 +27,8 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/You Win/YouWin.unity
     guid: 1842be48908d64e1c962eda39e481db9
   - enabled: 1
-    path: Assets/Level/Scenes/Level Selector/LevelSelect.unity
-    guid: a4059f98cd74408498e8e16692840e3b
+    path: Assets/Level/Scenes/Level Selector/Level Selector 2.unity
+    guid: bf750768fd4eecc4d964fbd945b8ea84
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 795312e927ba943bd96421b21c2ea4f0, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -5,7 +5,7 @@ public class GameOverManager : MonoBehaviour
 {
     [Header("UI Panels")] public GameObject gameOverPanel;
 
-    [Header("Buttons")] public string levelSelectScene = "LevelSelect";
+    [Header("Buttons")] public string levelSelectScene = "Level Selector 2";
     public string mainMenuScene = "MainMenu";
 
     void Start()
@@ -32,7 +32,7 @@ public class GameOverManager : MonoBehaviour
     // Called by Level Select button
     public void GoToLevelSelect()
     {
-        SceneLoader.Instance.LoadNextScene("LevelSelect");
+        SceneLoader.Instance.LoadNextScene("Level Selector 2");
     }
 
     // Called by Main Menu button

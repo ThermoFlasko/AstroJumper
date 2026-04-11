@@ -34,6 +34,50 @@ MonoBehaviour:
     m_Localized: ???
     m_Metadata:
       m_Items: []
+  - m_Id: 1262339633438720
+    m_Localized: Hope my Astrojumper still works. I'll need all the help I can get.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262342598811648
+    m_Localized: "Hmmm. Looks like they dropped some scrap. This might be useful\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1262344872124416
+    m_Localized: "Vanguard. I don\u2019t know who or what these aliens are. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1267418142859264
+    m_Localized: But we are gonna send 'em back to wherever the hell they came from.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1267422433632256
+    m_Localized: We're gonna disable that mothership of theirs. We need your help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269217792876544
+    m_Localized: Just sent you the location for their fleet. We're taking these lizards
+      down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269219185385472
+    m_Localized: Our scans indicate the main ship is protected by shield pylons and
+      a fleet of skirmishers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269220389150720
+    m_Localized: We need to take down those shields. Then, slip through their defenses
+      and disable it from the inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269221685190656
+    m_Localized: Before we begin the assault, it looks like you have picked up some
+      scrap. Let's upgrade our weapons. We'll need the firepower boost.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1269222977036288
+    m_Localized: Alright. Our fleets have mobilized, and are waiting for your signal.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

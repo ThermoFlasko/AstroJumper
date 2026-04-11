@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: HGC2,1
   m_EditorClassIdentifier: Assembly-CSharp::DialougeSO
   <DialougeName>k__BackingField: HGC2,1
-  <CharacterNameKey>k__BackingField: Hayes
+  <CharacterNameKey>k__BackingField: CHAR_GENERAL_HAYES
   <CharacterIcon>k__BackingField: {fileID: 0}
-  <TextKey>k__BackingField: "Just sent you the location for their fleet. We\u2019re
-    taking these lizards down."
+  <TextKey>k__BackingField: DIALOG_SENT_LOCATION
   <Choices>k__BackingField:
   - <Name>k__BackingField: 
     <TextKey>k__BackingField: Next Dialouge
