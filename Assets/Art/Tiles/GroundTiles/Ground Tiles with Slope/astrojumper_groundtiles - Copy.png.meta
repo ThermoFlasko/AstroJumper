@@ -1,0 +1,2312 @@
+fileFormatVersion: 2
+guid: f29c7569d286e8a4c97340749c82139e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4899ea543c3d9f24880bfe46e5019509
+      internalID: 1804644089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e48188aeb173c741ba76ed5d7e29aeb
+      internalID: 228125755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d13d09ff9ef1d47aea2ddb3819fc07
+      internalID: 1357659806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02552956325ab1e45a92252e55dcd067
+      internalID: 736928207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07629324a5a47654b945bbe59acff3de
+      internalID: -111604212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7d27589284cd841b8891eb237e0d6e
+      internalID: 886407719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_6
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705f71a4c9a05a340ac79f9b822abc5b
+      internalID: 1431809751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd9d10f73d68db47b831dc3983120b9
+      internalID: -1644662802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b25050c9f8be08f419a97ad35d08cfb7
+      internalID: -1192996312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_9
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce5efbf8c6d71134faaae5852865800d
+      internalID: 1928962545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_10
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8619b71f486339e49990dc5cb20aae6b
+      internalID: 1457003178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_11
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fa5eb4798295d4ea643b2dba862bfe
+      internalID: -450167953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_12
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 592
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b81528ee2971db40973434b8cc8594a
+      internalID: 13775036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3d4d08da33c6740b11d8362d316234
+      internalID: -181946100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c75c9fde3753a4dada21e514143c82
+      internalID: 205765256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51578461ccaeabe499a4e7c2c4351af7
+      internalID: 824044140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad80d59e61e28744a862c2dc52f9eda8
+      internalID: 777551235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_17
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9321fcd70d31dc141b51b52e07b86ff3
+      internalID: 834251632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0e0f58c7dcdba48987962535053c09
+      internalID: -1645781354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_19
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ededd8635503048aeb376e75b36439
+      internalID: 1263718904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_20
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd6c6a6095d2a346a14b9a40a028db3
+      internalID: 853427433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_21
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1abe626d1c24047b802c565e6c1bf4
+      internalID: -1808013738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_22
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06035cd457dd9354c8eaacf153bdce4d
+      internalID: -2080827828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_23
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261eee84cc2dea54d8ed319639cf51d8
+      internalID: 543198852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_24
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d44a95782e46f947896baf05b532f1d
+      internalID: 231889694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_25
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9b5c9750d8f014abc385a35079cecc
+      internalID: -361414394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9c752b1e3b57b4695fa70761700168
+      internalID: 184101093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_27
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6e0cbdb1f96924fb243558a3481fca
+      internalID: -1009653374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_28
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274f0694255a18249b75c6e0562f1e4c
+      internalID: -1149810968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fab67514a89ff47bc498d91e30573c
+      internalID: 691527926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_30
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4220e068268de1b4e94ef3d1ac00f90b
+      internalID: -1579751446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 392f1853e0a963048b5c33f03e889b52
+      internalID: 144135066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_32
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17129e359dd8d747b59d35c9b1515ea
+      internalID: 287066067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_33
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b3e0c28a84de549a733c53114826e0
+      internalID: 1478662181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_34
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f434e8e8a53df57409be0da3639686be
+      internalID: 1534391463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_35
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db570e01e48c4034f8521c4811fe724b
+      internalID: -1868849403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_36
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b550ddbf9d366440ab6ed44792f557d
+      internalID: -1020612631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_37
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e67a33a703f0f2458c211b1273f69f3
+      internalID: 881328401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_38
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 496
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23555f2da5d6d9144b5d89e80eb514ef
+      internalID: 1463568436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_39
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f2f9e801f714e4184de8a2d6b44803
+      internalID: 626489564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4ea0ec0ca8c234ea525cdb0b52a94f
+      internalID: -661446373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc54b9eb884e99b4c8c773d876335fcc
+      internalID: -184307636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e3735cda3c8f847a275d8935610de7
+      internalID: 1897289490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_43
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb57cff0f6dd39649b5249ab0f7ebc04
+      internalID: -352652970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232602644c9b78445b634a0c6625a090
+      internalID: 695008641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_45
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27851bd479f039944805ebadbb9cffe6
+      internalID: 541167010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_46
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20433e9e8f9bf0e4c9f1228773303f49
+      internalID: -1774935911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_47
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 677e9183fe978b24c8f7fa43ff93d145
+      internalID: 1266230498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_48
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d4784e40e7a974e972f487c69d2347
+      internalID: 1923509551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_49
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a92e20c700afc34688a04136c4eb618
+      internalID: -1249520198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_50
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758ee83dcb2937d49b9c39cd83a18a30
+      internalID: -1904204782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_51
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7e435f0b1d36c4b8883ae526e2c475
+      internalID: 1389994819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_52
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 406
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e242b8c6495794086cb303b6e37ac8
+      internalID: -1493476653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_53
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 406
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25d87ef56dcddf48bb6c5c483e252e8
+      internalID: 872041996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_54
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 406
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5c756e591be374e818d44d875e3e0a
+      internalID: 763945507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_55
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d74b0aabdf4a8844948c9fe20d2c1ea
+      internalID: -247381720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_56
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 566c9ce2416bfc94b8c46817b16e4d32
+      internalID: -2118686743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e884683e923414ca33ba7bf64363e7
+      internalID: 1397998177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_58
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f471a9b51e34d2e48a341cdf78fca1cf
+      internalID: 1770422957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_59
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112af6c10169edc4a85fc02a73dadd9a
+      internalID: -885974736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_60
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0219cb6b59cdc854bb335068deaff161
+      internalID: -1080876049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_61
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93479ffbdead3c44ba895ea2cdfd57f8
+      internalID: 1413103675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_62
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 400
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ed69e66b574dc4297f9ff95c3b8486
+      internalID: 407217489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_63
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 400
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -15.5, y: -16}
+        - {x: 16.5, y: -16}
+        - {x: 16.5, y: 16}
+        - {x: 0.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1c984360ae4ab4d9c82786b9b4768e
+      internalID: 94677748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_64
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 400
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -16.5, y: -16}
+        - {x: 15.5, y: -16}
+        - {x: 1.5, y: -2}
+        - {x: -16.5, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 175783b39a9e07b439d65e8c26c553b4
+      internalID: -1450478903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_65
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c8f13230e3604440836654eef323ff4
+      internalID: 156609911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_66
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 441688d048ca18d45888a35abf97ad2d
+      internalID: 529340234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_67
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18a918e4aa59f904b97fee0c9d89979e
+      internalID: 170395193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_68
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 188aef0e69e54b54a879f4bf6d0df5ec
+      internalID: -1436248185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_69
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5e3c5fb3e31d342a4b5e4ef1d4bac9
+      internalID: 1804796553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_70
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfccd731163898459249687b32cec3c
+      internalID: -624995812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_71
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196177d11339e184a9d92e958b5f340b
+      internalID: 1215821974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_72
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38fe1dce280fbd14a8051af3d606f0d6
+      internalID: 1226249858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_73
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8003e7c0a5b6a4dbd53b7935762c37
+      internalID: 470902105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_74
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a536d471604258a41b093adcb6a45218
+      internalID: -1854332070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_75
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b89c56792142ac4688dff371a96d456
+      internalID: 2118751238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_76
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501652ac11181c14480df4e2ae6c06d6
+      internalID: -417013522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_77
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f630a588fe0a0ac46bed17dad2b52cc9
+      internalID: -257881905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_78
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fbd79dbc929de9439bbd876b7fcca08
+      internalID: -1751809234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_79
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b78999c7dbc4641a168c626830761f
+      internalID: 524954935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_80
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d0ccf57c5b3c94081096323381b130
+      internalID: 1129448585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_81
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2190b5c270e42444a9416b54b7eb113b
+      internalID: 1663235084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_82
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1461428912d3fd246a8c34347543e19c
+      internalID: 65333189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_83
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03bb8d60107084e42b528f2536bfff41
+      internalID: -770070880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_84
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c35934b7760cae469bf9d9eb8ba5798
+      internalID: -1432677545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_85
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09050308be52b9f4cacaf6f9053655b1
+      internalID: -1296637721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_86
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6530a699798524c4096aad6ec6b54ded
+      internalID: 1213532429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_87
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2ab4db9984c94548a0b1bdc63e9c9b0
+      internalID: -414003469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_88
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e9969c2c75d9741917b0a0aaa9a9c4
+      internalID: 1795320133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_89
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20941b9e7881a744b84d54b2b0a87830
+      internalID: 1472272449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_90
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dc4d1309e5b0b4ebc7e786d5b3bd16
+      internalID: -1859720887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_91
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6afb86f217344f4689319c3125cc9f9
+      internalID: -1291472092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_92
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18147847b2aeb34498ce1f532536a916
+      internalID: 445026281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_93
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d792bc3431ebcd24cb1e33175098129b
+      internalID: 1400004835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: astrojumper_groundtiles - Copy_94
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb7b63acd274f5a4590cc4b87505034e
+      internalID: 1396939919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 536a84b728eb78d4da02528aeaddf11d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      astrojumper_groundtiles - Copy_0: 1804644089
+      astrojumper_groundtiles - Copy_1: 228125755
+      astrojumper_groundtiles - Copy_10: 1457003178
+      astrojumper_groundtiles - Copy_11: -450167953
+      astrojumper_groundtiles - Copy_12: 13775036
+      astrojumper_groundtiles - Copy_13: -181946100
+      astrojumper_groundtiles - Copy_14: 205765256
+      astrojumper_groundtiles - Copy_15: 824044140
+      astrojumper_groundtiles - Copy_16: 777551235
+      astrojumper_groundtiles - Copy_17: 834251632
+      astrojumper_groundtiles - Copy_18: -1645781354
+      astrojumper_groundtiles - Copy_19: 1263718904
+      astrojumper_groundtiles - Copy_2: 1357659806
+      astrojumper_groundtiles - Copy_20: 853427433
+      astrojumper_groundtiles - Copy_21: -1808013738
+      astrojumper_groundtiles - Copy_22: -2080827828
+      astrojumper_groundtiles - Copy_23: 543198852
+      astrojumper_groundtiles - Copy_24: 231889694
+      astrojumper_groundtiles - Copy_25: -361414394
+      astrojumper_groundtiles - Copy_26: 184101093
+      astrojumper_groundtiles - Copy_27: -1009653374
+      astrojumper_groundtiles - Copy_28: -1149810968
+      astrojumper_groundtiles - Copy_29: 691527926
+      astrojumper_groundtiles - Copy_3: 736928207
+      astrojumper_groundtiles - Copy_30: -1579751446
+      astrojumper_groundtiles - Copy_31: 144135066
+      astrojumper_groundtiles - Copy_32: 287066067
+      astrojumper_groundtiles - Copy_33: 1478662181
+      astrojumper_groundtiles - Copy_34: 1534391463
+      astrojumper_groundtiles - Copy_35: -1868849403
+      astrojumper_groundtiles - Copy_36: -1020612631
+      astrojumper_groundtiles - Copy_37: 881328401
+      astrojumper_groundtiles - Copy_38: 1463568436
+      astrojumper_groundtiles - Copy_39: 626489564
+      astrojumper_groundtiles - Copy_4: -111604212
+      astrojumper_groundtiles - Copy_40: -661446373
+      astrojumper_groundtiles - Copy_41: -184307636
+      astrojumper_groundtiles - Copy_42: 1897289490
+      astrojumper_groundtiles - Copy_43: -352652970
+      astrojumper_groundtiles - Copy_44: 695008641
+      astrojumper_groundtiles - Copy_45: 541167010
+      astrojumper_groundtiles - Copy_46: -1774935911
+      astrojumper_groundtiles - Copy_47: 1266230498
+      astrojumper_groundtiles - Copy_48: 1923509551
+      astrojumper_groundtiles - Copy_49: -1249520198
+      astrojumper_groundtiles - Copy_5: 886407719
+      astrojumper_groundtiles - Copy_50: -1904204782
+      astrojumper_groundtiles - Copy_51: 1389994819
+      astrojumper_groundtiles - Copy_52: -1493476653
+      astrojumper_groundtiles - Copy_53: 872041996
+      astrojumper_groundtiles - Copy_54: 763945507
+      astrojumper_groundtiles - Copy_55: -247381720
+      astrojumper_groundtiles - Copy_56: -2118686743
+      astrojumper_groundtiles - Copy_57: 1397998177
+      astrojumper_groundtiles - Copy_58: 1770422957
+      astrojumper_groundtiles - Copy_59: -885974736
+      astrojumper_groundtiles - Copy_6: 1431809751
+      astrojumper_groundtiles - Copy_60: -1080876049
+      astrojumper_groundtiles - Copy_61: 1413103675
+      astrojumper_groundtiles - Copy_62: 407217489
+      astrojumper_groundtiles - Copy_63: 94677748
+      astrojumper_groundtiles - Copy_64: -1450478903
+      astrojumper_groundtiles - Copy_65: 156609911
+      astrojumper_groundtiles - Copy_66: 529340234
+      astrojumper_groundtiles - Copy_67: 170395193
+      astrojumper_groundtiles - Copy_68: -1436248185
+      astrojumper_groundtiles - Copy_69: 1804796553
+      astrojumper_groundtiles - Copy_7: -1644662802
+      astrojumper_groundtiles - Copy_70: -624995812
+      astrojumper_groundtiles - Copy_71: 1215821974
+      astrojumper_groundtiles - Copy_72: 1226249858
+      astrojumper_groundtiles - Copy_73: 470902105
+      astrojumper_groundtiles - Copy_74: -1854332070
+      astrojumper_groundtiles - Copy_75: 2118751238
+      astrojumper_groundtiles - Copy_76: -417013522
+      astrojumper_groundtiles - Copy_77: -257881905
+      astrojumper_groundtiles - Copy_78: -1751809234
+      astrojumper_groundtiles - Copy_79: 524954935
+      astrojumper_groundtiles - Copy_8: -1192996312
+      astrojumper_groundtiles - Copy_80: 1129448585
+      astrojumper_groundtiles - Copy_81: 1663235084
+      astrojumper_groundtiles - Copy_82: 65333189
+      astrojumper_groundtiles - Copy_83: -770070880
+      astrojumper_groundtiles - Copy_84: -1432677545
+      astrojumper_groundtiles - Copy_85: -1296637721
+      astrojumper_groundtiles - Copy_86: 1213532429
+      astrojumper_groundtiles - Copy_87: -414003469
+      astrojumper_groundtiles - Copy_88: 1795320133
+      astrojumper_groundtiles - Copy_89: 1472272449
+      astrojumper_groundtiles - Copy_9: 1928962545
+      astrojumper_groundtiles - Copy_90: -1859720887
+      astrojumper_groundtiles - Copy_91: -1291472092
+      astrojumper_groundtiles - Copy_92: 445026281
+      astrojumper_groundtiles - Copy_93: 1400004835
+      astrojumper_groundtiles - Copy_94: 1396939919
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
