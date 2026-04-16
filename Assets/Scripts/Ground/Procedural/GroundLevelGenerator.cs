@@ -236,6 +236,7 @@ public class GroundLevelGenerator : MonoBehaviour
         return candidates[candidates.Count - 1];
     }
 
+    //make sure we have a parent for the chunk
     private bool EnsureChunkParent()
     {
         if (generatedChunkParent != null)
