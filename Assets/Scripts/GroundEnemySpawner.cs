@@ -4,27 +4,32 @@ using UnityEngine.InputSystem;
 
 public class GroundEnemySpawner : MonoBehaviour
 {
-    private InputAction spawnEnemy;
+    //private InputAction spawnEnemy;
     public GameObject MeleeEnemyPrefab;
     public GameObject RangedEnemyPrefab;
 
     public List<GameObject> MeleeSpawnLocations;
     public List<GameObject> RangedSpawnLocations;
 
-    private void Start()
+    private void Awake()
     {
         MeleeSpawnLocations = new List<GameObject>();
         RangedSpawnLocations = new List<GameObject>();
-        spawnEnemy = InputSystem.actions.FindAction("SpawnEnemy");
-
+        //spawnEnemy = InputSystem.actions.FindAction("SpawnEnemy");
     }
+    private void Start()
+    {
+        SpawnEnemy(MeleeSpawnLocations, "MeleeSpawner", MeleeEnemyPrefab);
+        SpawnEnemy(RangedSpawnLocations, "RangedSpawner", RangedEnemyPrefab);
+    }
+
     private void Update()
     {
-        if(spawnEnemy.WasReleasedThisFrame())
-        {
-            SpawnEnemy(MeleeSpawnLocations, "MeleeSpawner", MeleeEnemyPrefab);
-            SpawnEnemy(RangedSpawnLocations, "RangedSpawner", RangedEnemyPrefab);
-        }
+        //if(spawnEnemy.WasReleasedThisFrame())
+        //{
+        //    SpawnEnemy(MeleeSpawnLocations, "MeleeSpawner", MeleeEnemyPrefab);
+        //    SpawnEnemy(RangedSpawnLocations, "RangedSpawner", RangedEnemyPrefab);
+        //}
     }
 
     private void SpawnEnemy(List<GameObject> spawnLocations, string enemyTypeTagName, GameObject enemyPrefab)
