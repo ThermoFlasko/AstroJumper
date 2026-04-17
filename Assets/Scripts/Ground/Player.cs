@@ -87,21 +87,21 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
         {
-            print("Projectile attack from pool");
+            //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab);
             return;
         }
         else if(hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
         {
-            print("melee attack");
+            //print("melee attack");
             BeginAttack(hitBoxPrefab);
             isAttacking = true;
             return;
         }
         else if(projectileCount < maxProjectile)
         {
-            print("no projectile pool, creating projectile");
+            //print("no projectile pool, creating projectile");
             BeginAttack(hitBoxPrefab);
             return;
         }
@@ -115,21 +115,21 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
         {
-            print("Projectile attack from pool");
+            //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab2);
             return;
         }
         else if(hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
         {
-            print("melee attack");
+            //print("melee attack");
             BeginAttack(hitBoxPrefab2);
             isAttacking2 = true;
             return;
         }
         else if(projectileCount < maxProjectile)
         {
-            print("no projectile pool, creating projectile");
+            //print("no projectile pool, creating projectile");
             BeginAttack(hitBoxPrefab2);
             return;
         }
@@ -142,7 +142,7 @@ public class Player : Unit
             return;
         lastDamageTime = Time.time;
 
-        print("Taking damage");
+        //print("Taking damage");
         Health -= amount;
 
         if (Health <= 0)
