@@ -29,16 +29,19 @@ public class PlanetTracker : MonoBehaviour
     {
         if (GameObject.FindAnyObjectByType<PlanetUIBtn>() != null)
         {
+            print("Planet UI button exists, skipping planet hover");
             return;
         }
 
         if (IsUpgradeMenuOpen())
         {
+            print("Upgrade menu is open, skipping planet hover");
             return;
         }
         mousePos = Mouse.current.position.ReadValue();
         mousePos.z = Camera.main.nearClipPlane;
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        print("mouse world pos: " + mouseWorldPos);
 
         // use raycast to see if it hits any planet colliders
         Ray ray = Camera.main.ScreenPointToRay(mouseWorldPos);
@@ -53,6 +56,7 @@ public class PlanetTracker : MonoBehaviour
                     // mouse is hovering over planet, do some stuff, rn make bigger
                     planetExpanding = planet.name;
                     expandPlanet(planet);
+                    print("Hovering over " + planet.name);
                 }
             }
         }
@@ -123,7 +127,7 @@ public class PlanetTracker : MonoBehaviour
 
     private bool IsUpgradeMenuOpen()
     {
-        if (UpgradePanel != null && UpgradePanel.activeInHierarchy)
+        if (UpgradePanel != null && UpgradePanel.GetComponent<Canvas>().enabled)
             return true;
 
         UpgradeMenu[] upgradeMenus = FindObjectsByType<UpgradeMenu>(FindObjectsInactive.Include, FindObjectsSortMode.None);
