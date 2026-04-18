@@ -53,6 +53,7 @@ public class PlanetTracker : MonoBehaviour
                     // mouse is hovering over planet, do some stuff, rn make bigger
                     planetExpanding = planet.name;
                     expandPlanet(planet);
+                    print("Hovering over " + planet.name);
                 }
             }
         }
@@ -118,12 +119,14 @@ public class PlanetTracker : MonoBehaviour
 
         UI.GetComponent<RectTransform>().SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
+        UI.GetComponent<PlanetUI>().sceneToLoad = planet.sceneToLoad;
 
+        
     }
 
     private bool IsUpgradeMenuOpen()
     {
-        if (UpgradePanel != null && UpgradePanel.activeInHierarchy)
+        if (UpgradePanel != null && UpgradePanel.GetComponent<Canvas>().enabled)
             return true;
 
         UpgradeMenu[] upgradeMenus = FindObjectsByType<UpgradeMenu>(FindObjectsInactive.Include, FindObjectsSortMode.None);

@@ -116,11 +116,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 5752469978975890727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8152021390371160774}
+        m_TargetAssemblyTypeName: PlanetUI, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3785556831217526800
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1234b5a219f0fd4cadee1814acb8492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetUI
+  sceneToLoad: 
 --- !u!1 &4281565479553802823
 GameObject:
   m_ObjectHideFlags: 0
