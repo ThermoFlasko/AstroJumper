@@ -11,6 +11,7 @@ public class Planet : MonoBehaviour
     public string dificulty;
     public string faction;
     private GameObject nameText;
+    public string sceneToLoad;
     [SerializeField] GameObject nameTextPrefab;
 
     public void displayName()
