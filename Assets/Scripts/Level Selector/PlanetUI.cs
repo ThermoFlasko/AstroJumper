@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlanetUI : MonoBehaviour
 {
+    public string sceneToLoad;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +13,11 @@ public class PlanetUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LoadScene()
+    {
+        print("Loading scene: " + sceneToLoad);
+        SceneLoader.Instance.LoadNextScene(sceneToLoad);
     }
 }
