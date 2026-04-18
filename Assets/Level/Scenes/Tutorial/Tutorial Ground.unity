@@ -9652,6 +9652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101900305}
   - component: {fileID: 1101900306}
+  - component: {fileID: 1101900307}
   m_Layer: 0
   m_Name: Background 5 Layer 2
   m_TagString: Untagged
@@ -9668,7 +9669,7 @@ Transform:
   m_GameObject: {fileID: 1101900304}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 74.86}
+  m_LocalPosition: {x: 0, y: 0.33, z: 79.4}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9733,6 +9734,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1101900307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101900304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1335b52ab227c43a183cc1f82ebe94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxScript
+  cam: {fileID: 919830589}
+  subject: {fileID: 2014226425}
 --- !u!1001 &1173072212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72996,6 +73011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499993133}
   - component: {fileID: 1499993134}
+  - component: {fileID: 1499993135}
   m_Layer: 0
   m_Name: Background 5 Layer 3
   m_TagString: Untagged
@@ -73012,7 +73028,7 @@ Transform:
   m_GameObject: {fileID: 1499993132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 50}
+  m_LocalPosition: {x: 0, y: 0.33, z: 38.7}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73077,6 +73093,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1499993135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499993132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1335b52ab227c43a183cc1f82ebe94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxScript
+  cam: {fileID: 919830589}
+  subject: {fileID: 2014226425}
 --- !u!1 &1536437105
 GameObject:
   m_ObjectHideFlags: 0
@@ -73087,6 +73117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1536437106}
   - component: {fileID: 1536437107}
+  - component: {fileID: 1536437108}
   m_Layer: 0
   m_Name: Background 5 Layer 4
   m_TagString: Untagged
@@ -73103,7 +73134,7 @@ Transform:
   m_GameObject: {fileID: 1536437105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 30}
+  m_LocalPosition: {x: 0, y: 0.33, z: 6.5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73168,6 +73199,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1536437108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536437105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1335b52ab227c43a183cc1f82ebe94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxScript
+  cam: {fileID: 919830589}
+  subject: {fileID: 2014226425}
 --- !u!1 &1564872309
 GameObject:
   m_ObjectHideFlags: 0
@@ -73996,7 +74041,7 @@ Transform:
   m_GameObject: {fileID: 1809628796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 100}
+  m_LocalPosition: {x: 0, y: 0.33, z: 122.5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
