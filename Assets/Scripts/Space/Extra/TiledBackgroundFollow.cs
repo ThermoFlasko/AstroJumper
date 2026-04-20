@@ -25,7 +25,7 @@ public class InfiniteTiledBackground2D : MonoBehaviour
         if (!cam) cam = Camera.main;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (!cam) return;
 
