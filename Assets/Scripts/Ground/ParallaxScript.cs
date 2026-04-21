@@ -26,7 +26,7 @@ public class ParallaxScript : MonoBehaviour
    {
       Vector2 newPos = startPosition + travel * parallaxFactor;
 
-      transform.position = new Vector3(newPos.x, cam.transform.position.y, startZ);
+      transform.position = new Vector3(newPos.x, newPos.y, startZ);
 
    }
 
