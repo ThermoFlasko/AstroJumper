@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.0752, y: -2.89, z: 0}
-  m_LocalScale: {x: 1.3953615, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.9999998, y: 2.1499803, z: 2.1499803}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,13 +109,13 @@ MonoBehaviour:
   damage: 10
   isPermanent: 0
   duration: 1
-  knockbackForce: 5
+  knockbackForce: 10
   knockbackVerticalForce: 3
   isMelee: 1
   projectileSpeed: 5
   targetLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4097
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 0

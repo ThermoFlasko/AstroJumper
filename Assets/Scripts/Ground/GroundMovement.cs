@@ -39,6 +39,7 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private string moveActionName = "Move";
     [SerializeField] private string jumpActionName = "Jump";
     [SerializeField] private string dropActionName = "Drop";
+    [SerializeField] private string sprintActionName = "Sprint";
 
     [Header("Knockback")]
     [SerializeField] private float knockbackDuration = 0.3f;
@@ -52,6 +53,7 @@ public class GroundMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction dropAction;
+    private InputAction sprintAction;
 
     private float xInput;
     private float coyoteTimer;
@@ -83,6 +85,7 @@ public class GroundMovement : MonoBehaviour
         moveAction = map.FindAction(moveActionName, true);
         jumpAction = map.FindAction(jumpActionName, true);
         dropAction = map.FindAction(dropActionName, true);
+        sprintAction = map.FindAction(sprintActionName, true);
     }
 
     private void OnEnable()
@@ -90,10 +93,13 @@ public class GroundMovement : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         dropAction.Enable();
+        sprintAction.Enable();
 
         jumpAction.performed += OnJump;
         jumpAction.canceled += OnJumpCanceled;
         dropAction.performed += OnDrop;
+        sprintAction.performed += ctx => moveSpeed *= 1.67f; // simple sprint implementation, can be expanded with upgrades or stamina system
+        sprintAction.canceled += ctx => moveSpeed /= 1.67f;
 
         Unit.onKnockedBack += OnKnockedBack;
     }
