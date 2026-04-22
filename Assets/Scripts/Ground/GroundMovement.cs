@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class GroundMovement : MonoBehaviour
 {
+    //hello
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float acceleration = 60f;
@@ -321,27 +322,7 @@ public class GroundMovement : MonoBehaviour
         //RaycastHit2D raycastHit2D = Physics2D.BoxCast
     }
 
-    void OnDrawGizmos()
-    {
-        
-    }
 
-    private void CheckIfOnSlope()
-    {
-        if (!isGrounded)
-        {
-            print("not grounded");
-            IsOnSlope = false;
-            return;
-        }
-        IsOnSlope = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckSize.y /2 + 0.5f, slopeMask);
-        //RaycastHit2D raycastHit2D = Physics2D.BoxCast
-    }
-
-    void OnDrawGizmos()
-    {
-        
-    }
 
     private void TryDropThrough()
     {
