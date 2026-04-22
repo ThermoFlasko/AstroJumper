@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
 
     //leash distance that makes the enemy give up and return back to home point
     [Header("Return")]
-    [SerializeField] private Transform homePoint;
+    public Transform homePoint;
     [SerializeField] private float homeTolerance = 0.2f;
     [SerializeField] private float maxLeashDistance = 15f;
 
@@ -118,10 +118,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (state == newState) return;
 
-        Debug.Log(
-            $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
-            this
-        );
+        //Debug.Log(
+        //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
+        //    this
+        //);
 
         state = newState;
     }

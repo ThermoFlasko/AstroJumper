@@ -226,6 +226,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnEnemy"",
+                    ""type"": ""Button"",
+                    ""id"": ""c20a50f2-c887-415f-a3de-5fcf4b0a1567"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -622,6 +631,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83318027-b4df-4a6b-81c7-042b02129dbc"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnEnemy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1211,6 +1231,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_BarrelRoll = m_Player.FindAction("BarrelRoll", throwIfNotFound: true);
         m_Player_PrimaryFire = m_Player.FindAction("PrimaryFire", throwIfNotFound: true);
         m_Player_SecondaryFire = m_Player.FindAction("SecondaryFire", throwIfNotFound: true);
+        m_Player_SpawnEnemy = m_Player.FindAction("SpawnEnemy", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1320,6 +1341,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_BarrelRoll;
     private readonly InputAction m_Player_PrimaryFire;
     private readonly InputAction m_Player_SecondaryFire;
+    private readonly InputAction m_Player_SpawnEnemy;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1392,6 +1414,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
         /// <summary>
+        /// Provides access to the underlying input action "Player/SpawnEnemy".
+        /// </summary>
+        public InputAction @SpawnEnemy => m_Wrapper.m_Player_SpawnEnemy;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1462,6 +1488,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SecondaryFire.started += instance.OnSecondaryFire;
             @SecondaryFire.performed += instance.OnSecondaryFire;
             @SecondaryFire.canceled += instance.OnSecondaryFire;
+            @SpawnEnemy.started += instance.OnSpawnEnemy;
+            @SpawnEnemy.performed += instance.OnSpawnEnemy;
+            @SpawnEnemy.canceled += instance.OnSpawnEnemy;
         }
 
         /// <summary>
@@ -1518,6 +1547,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SecondaryFire.started -= instance.OnSecondaryFire;
             @SecondaryFire.performed -= instance.OnSecondaryFire;
             @SecondaryFire.canceled -= instance.OnSecondaryFire;
+            @SpawnEnemy.started -= instance.OnSpawnEnemy;
+            @SpawnEnemy.performed -= instance.OnSpawnEnemy;
+            @SpawnEnemy.canceled -= instance.OnSpawnEnemy;
         }
 
         /// <summary>
@@ -1934,6 +1966,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSecondaryFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SpawnEnemy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpawnEnemy(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

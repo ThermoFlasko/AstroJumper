@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - Terrain
   - OptionButton
+  - MeleeSpawner
+  - RangedSpawner
   layers:
   - Default
   - TransparentFX
