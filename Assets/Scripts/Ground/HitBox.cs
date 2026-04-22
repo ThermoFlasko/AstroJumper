@@ -12,18 +12,19 @@ public class HitBox : MonoBehaviour
     [Header("HitBox Settings")]
     [SerializeField] private string hitBoxName = "BaseHitBox";
     [SerializeField] private int damage = 10;
+    [SerializeField] private bool destroyEnemyProjectile = false; // if the hitbox should destroy enemy projectile when it hits it, for player hitbox, it should be false, for enemy hitbox, it should be true
     [SerializeField] private bool isPermanent = false; // for hitboxes you attach to the enemy itself
     [SerializeField] private float duration = 1f;
 
     [SerializeField] private float knockbackForce = 5f;
     [SerializeField] private float knockbackVerticalForce = 3f;
 
-    [SerializeField] private bool isMelee = true; 
+    [SerializeField] private bool isMelee = true;
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private LayerMask targetLayer; // which layer the hitbox should interact with (player, enemy, etc.)
     [SerializeField] private LayerMask ignoreLayer; // which layer the hitbox should ignore 
     [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // offset to tell where the hitbox should be based on the parent object
-    [SerializeField] private Sprite sprite; 
+    [SerializeField] private Sprite sprite;
     private Collider2D hitBoxCollider;
     [SerializeField] private float currentHitboxActiveDurration = 0f; // how long has the hitbox out
     [SerializeField] private bool displayHitbox = false;
@@ -51,7 +52,7 @@ public class HitBox : MonoBehaviour
         }
         else
         {
-            spriteRenderer.sprite = sprite;    
+            spriteRenderer.sprite = sprite;
         }
         StartCoroutine(ResetCollider());
         if (animateBaseSprite)
@@ -77,9 +78,9 @@ public class HitBox : MonoBehaviour
         {
             DestroyAttack();
         }
-        if(!isMelee)
+        if (!isMelee)
         {
-            
+
         }
 
     }
@@ -89,6 +90,13 @@ public class HitBox : MonoBehaviour
     {
 
         GameObject otherObject = other.gameObject;
+
+        //if enemy projecitle desotry it 
+        if (destroyEnemyProjectile && otherObject.GetComponent<EnemyProjectile>() != null)
+        {
+            otherObject.GetComponent<EnemyProjectile>().ReturnToPool();
+            return;
+        }
 
         //self protection can not hit itself
         if (other.transform.IsChildOf(transform.root) ||
@@ -138,13 +146,12 @@ public class HitBox : MonoBehaviour
     public void DestroyAttack()
     {
         onDurationOver?.Invoke(attackListIndex);
-        if(!isMelee)
+        if (!isMelee)
         {
             projectilePool.ReturnProjectile(transform.parent.gameObject);
             resetDuration();
             return;
         }
-        print($"destroying {gameObject.name}");
         Destroy(transform.parent.gameObject); 
         Destroy(gameObject);
         
@@ -165,7 +172,7 @@ public class HitBox : MonoBehaviour
     {
         currentHitboxActiveDurration = 0f;
     }
-    
+
     public float GetProjectileSpeed()
     {
         return projectileSpeed;
