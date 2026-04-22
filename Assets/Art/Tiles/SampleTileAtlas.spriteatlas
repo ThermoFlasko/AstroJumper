@@ -33,10 +33,15 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
+    - {fileID: 2800000, guid: e429490e1af6f2b46965c79ee1fe749e, type: 3}
+    - {fileID: 2800000, guid: 4c39ccff7a8496b46b789b1f1dfc614d, type: 3}
+    - {fileID: 2800000, guid: 507ee8cfc1e931e46912d6a8712f7da5, type: 3}
+    - {fileID: 2800000, guid: 14a9384006c424740851edb2b6feda10, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 14a9384006c424740851edb2b6feda10: 21300000
     - c185543c8d7fe7348b5b526799578ab2: 767981099
     - c185543c8d7fe7348b5b526799578ab2: 5688404
     - c185543c8d7fe7348b5b526799578ab2: -597658888
@@ -124,8 +129,12 @@ SpriteAtlas:
     - c185543c8d7fe7348b5b526799578ab2: 1249107259
     - c185543c8d7fe7348b5b526799578ab2: -1028617207
     - c185543c8d7fe7348b5b526799578ab2: 746680749
+    - e429490e1af6f2b46965c79ee1fe749e: 21300000
+    - 507ee8cfc1e931e46912d6a8712f7da5: 21300000
+    - 4c39ccff7a8496b46b789b1f1dfc614d: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 14a9384006c424740851edb2b6feda10, type: 3}
   - {fileID: 767981099, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
   - {fileID: 5688404, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
   - {fileID: -597658888, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
@@ -213,7 +222,11 @@ SpriteAtlas:
   - {fileID: 1249107259, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
   - {fileID: -1028617207, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
   - {fileID: 746680749, guid: c185543c8d7fe7348b5b526799578ab2, type: 3}
+  - {fileID: 21300000, guid: e429490e1af6f2b46965c79ee1fe749e, type: 3}
+  - {fileID: 21300000, guid: 507ee8cfc1e931e46912d6a8712f7da5, type: 3}
+  - {fileID: 21300000, guid: 4c39ccff7a8496b46b789b1f1dfc614d, type: 3}
   m_PackedSpriteNamesToIndex:
+  - BackgroundLayer4
   - astrojumper_groundtiles_10
   - astrojumper_groundtiles_11
   - astrojumper_groundtiles_12
@@ -301,6 +314,9 @@ SpriteAtlas:
   - astrojumper_groundtiles_6
   - astrojumper_groundtiles_9
   - astrojumper_groundtiles_8
+  - BackgroundLayer1
+  - BackgroundLayer3
+  - BackgroundLayer2
   m_RenderDataMap: {}
   m_Tag: SampleTileAtlas
   m_IsVariant: 0
