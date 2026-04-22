@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/Level Selector/Level Selector 2.unity
     guid: bf750768fd4eecc4d964fbd945b8ea84
+  - enabled: 1
+    path: Assets/Level/Scenes/Planet Levels/Planet 1.unity
+    guid: 127b06e92616c8b4fa21869f80fc7083
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 795312e927ba943bd96421b21c2ea4f0, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

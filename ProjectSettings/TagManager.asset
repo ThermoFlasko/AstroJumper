@@ -14,6 +14,7 @@ TagManager:
   - OptionButton
   - MeleeSpawner
   - RangedSpawner
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Enemy
   - Ground
   - OneWayPlay
-  - 
+  - Slope
   - 
   - 
   - 
@@ -48,6 +49,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background 1
+    uniqueID: 2923540171
+    locked: 0
+  - name: Background 2
+    uniqueID: 1699908783
+    locked: 0
+  - name: Background 3
+    uniqueID: 2728129473
+    locked: 0
+  - name: Background 4
+    uniqueID: 1064222241
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

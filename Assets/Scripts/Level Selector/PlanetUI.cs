@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlanetUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public string sceneToLoad;
 
-    // Update is called once per frame
-    void Update()
+    public void LoadScene()
     {
+
+        if(sceneToLoad == null)
+        {
+            Debug.LogWarning("Attempted Scene Load That Does Not Exist");
+            return;
+        }
         
+        print("Loading scene: " + sceneToLoad);
+        SceneLoader.Instance.LoadNextScene(sceneToLoad);
     }
 }

@@ -26,7 +26,7 @@ public class GroundMovement : MonoBehaviour
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.6f, 0.1f);
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.6f, 0.6f);
     [SerializeField] private LayerMask groundMask;   // Ground + OneWayPlatform for jumping 
     [SerializeField] private LayerMask oneWayMask;   // OneWayPlatform only for dropping through select platforms
 
@@ -44,6 +44,10 @@ public class GroundMovement : MonoBehaviour
     [Header("Knockback")]
     [SerializeField] private float knockbackDuration = 0.3f;
 
+    [Header("Slope Handling")]
+    [SerializeField] private LayerMask slopeMask;
+    [SerializeField] private bool IsOnSlope;
+    
     private bool isKnockedBack;
     private Unit unit;
 
@@ -152,7 +156,8 @@ public class GroundMovement : MonoBehaviour
 
         // Ground check + timers
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundMask);
-
+        //isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckSize.y /2 + 0.5f, slopeMask);
+        
         if (isGrounded)
         {
             coyoteTimer = coyoteTime;
@@ -174,6 +179,8 @@ public class GroundMovement : MonoBehaviour
             HandleHorizontal();
 
         HandleJumpBuffered();
+        CheckIfOnSlope();
+        
 
         if (rb.linearVelocity.y > 0f && isJumpPressed)
         {
@@ -237,7 +244,22 @@ public class GroundMovement : MonoBehaviour
         rb.AddForce(new Vector2(speedDiff * accelRate, 0f));
 
         float clampedX = Mathf.Clamp(rb.linearVelocity.x, -upgradedMoveSpeed, upgradedMoveSpeed);
-        rb.linearVelocity = new Vector2(clampedX, rb.linearVelocity.y);
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        if (IsOnSlope)
+        {
+            if (xInput == 0f && moveAction.ReadValue<Vector2>().y == 0f)
+            {
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.linearVelocity = Vector2.zero; 
+            }
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(clampedX, rb.linearVelocity.y);
+        }
+
+
 
         // Only update facing direction when not knocked back so sprite doesn't flip
         if (!isKnockedBack)
@@ -287,6 +309,40 @@ public class GroundMovement : MonoBehaviour
         }
     }
 
+    private void CheckIfOnSlope()
+    {
+        if (!isGrounded)
+        {
+            print("not grounded");
+            IsOnSlope = false;
+            return;
+        }
+        IsOnSlope = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckSize.y /2 + 0.5f, slopeMask);
+        //RaycastHit2D raycastHit2D = Physics2D.BoxCast
+    }
+
+    void OnDrawGizmos()
+    {
+        
+    }
+
+    private void CheckIfOnSlope()
+    {
+        if (!isGrounded)
+        {
+            print("not grounded");
+            IsOnSlope = false;
+            return;
+        }
+        IsOnSlope = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckSize.y /2 + 0.5f, slopeMask);
+        //RaycastHit2D raycastHit2D = Physics2D.BoxCast
+    }
+
+    void OnDrawGizmos()
+    {
+        
+    }
+
     private void TryDropThrough()
     {
         if (isDropping) return;
@@ -316,6 +372,8 @@ public class GroundMovement : MonoBehaviour
         if (groundCheck == null) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+
+        Gizmos.DrawRay(groundCheck.position, Vector2.down * (groundCheckSize.y /2 + 0.5f)); // slope
     }
 
     private float GetMoveSpeedWithUpgrades()

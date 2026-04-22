@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+// NOTE: csv files can be found in Assets/Level/Prefabs/Level Selector/Planet CSV
 
 public class InfoManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class InfoManager : MonoBehaviour
             planet.resources = data[(i + 1) + 5 * 2];
             planet.dificulty = data[(i + 1) + 5 * 3];
             planet.faction = data[(i + 1) + 5 * 4];
+            planet.sceneToLoad = data[(i + 1) + 5 * 5];
             planet.displayName();
         }
     }
