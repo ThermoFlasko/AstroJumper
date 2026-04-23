@@ -12628,6 +12628,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &417233813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417233815}
+  - component: {fileID: 417233814}
+  m_Layer: 0
+  m_Name: CheatKeyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417233814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417233813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9a810c6fd52e049b7d91925d1edb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadBossScene
+--- !u!4 &417233815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417233813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.42208, y: 12.60442, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479005360
 GameObject:
   m_ObjectHideFlags: 0
@@ -16232,9 +16276,11 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 9182795490261890898, guid: 40d4276b2bf35db479ce03eae1f133cc, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
+  StartSprite: {fileID: 0}
 --- !u!114 &1201777337 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -17329,9 +17375,11 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 174109804372061078, guid: 05a35a75a8dc26c4ca15539b1f41f66e, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
+  StartSprite: {fileID: 0}
 --- !u!114 &1701850139 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -17734,9 +17782,11 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 174109804372061078, guid: 05a35a75a8dc26c4ca15539b1f41f66e, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
+  StartSprite: {fileID: 0}
 --- !u!114 &1876838180 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -18999,3 +19049,4 @@ SceneRoots:
   - {fileID: 932794776}
   - {fileID: 2109725645}
   - {fileID: 249938893}
+  - {fileID: 417233815}
