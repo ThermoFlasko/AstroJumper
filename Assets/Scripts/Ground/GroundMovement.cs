@@ -246,7 +246,6 @@ public class GroundMovement : MonoBehaviour
     {
         if (!isGrounded)
         {
-            print("not grounded");
             IsOnSlope = false;
             return;
         }

@@ -27,10 +27,12 @@ public class HitBox : MonoBehaviour
     private Collider2D hitBoxCollider;
     [SerializeField] private float currentHitboxActiveDurration = 0f; // how long has the hitbox out
     [SerializeField] private bool displayHitbox = false;
-    
+    public bool animateBaseSprite = false;
+    public Animator attackAnimation;
     public static event Action<int> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
+    public GameObject owner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,7 +53,10 @@ public class HitBox : MonoBehaviour
             spriteRenderer.sprite = sprite;    
         }
         StartCoroutine(ResetCollider());
-
+        if (animateBaseSprite)
+        {
+            gameObject.transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        }
     }
 
     //resets collider so that when player continues to be in the hitbox after it is created, it can still trigger the hitbox
@@ -78,8 +83,10 @@ public class HitBox : MonoBehaviour
 
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         GameObject otherObject = other.gameObject;
 
         //self protection can not hit itself
@@ -87,7 +94,6 @@ public class HitBox : MonoBehaviour
         other.transform == transform.root)
             return;
 
-        //print("hitbox: Hit " + other.name);
         if ((targetLayer.value & (1 << otherObject.layer)) == 0 || (ignoreLayer.value & (1 << otherObject.layer)) != 0) // Checks if objects layer is in the layer mask, found from https://discussions.unity.com/t/checking-if-a-layer-is-in-a-layer-mask/860331
         {
             //print("hit wrong layer, ignoring");
@@ -103,6 +109,11 @@ public class HitBox : MonoBehaviour
 
             }
         }
+    }
+
+    public void SetOwner(GameObject go)
+    {
+        owner = go;
     }
 
     public bool GetIsMelee()
@@ -132,8 +143,10 @@ public class HitBox : MonoBehaviour
             resetDuration();
             return;
         }
+        print("destroying");
         Destroy(transform.parent.gameObject); 
         Destroy(gameObject);
+        
     }
     public void ForceDestroy()
     {
