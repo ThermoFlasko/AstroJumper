@@ -3493,6 +3493,7 @@ GameObject:
   - component: {fileID: 748060030}
   - component: {fileID: 748060031}
   - component: {fileID: 748060032}
+  - component: {fileID: 748060033}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -3826,6 +3827,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.24, y: 0.18}
   m_EdgeRadius: 0
+--- !u!114 &748060033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748060022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6a6cfe4c71f4246bd1615b28e3a3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_Heath_Script
+  health: 500
 --- !u!1 &751489299
 GameObject:
   m_ObjectHideFlags: 0
