@@ -15,6 +15,7 @@ public class HitBox : MonoBehaviour
     [SerializeField] private bool destroyEnemyProjectile = false; // if the hitbox should destroy enemy projectile when it hits it, for player hitbox, it should be false, for enemy hitbox, it should be true
     [SerializeField] private bool isPermanent = false; // for hitboxes you attach to the enemy itself
     [SerializeField] private float duration = 1f;
+    [SerializeField] private float activationDelay = 0f;
 
     [SerializeField] private float knockbackForce = 5f;
     [SerializeField] private float knockbackVerticalForce = 3f;
@@ -23,18 +24,20 @@ public class HitBox : MonoBehaviour
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private LayerMask targetLayer; // which layer the hitbox should interact with (player, enemy, etc.)
     [SerializeField] private LayerMask ignoreLayer; // which layer the hitbox should ignore 
-    [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // offset to tell where the hitbox should be based on the parent object
+    [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // gameplay spawn offset for the whole attack
+    [SerializeField] private Vector3 visualOffset = Vector3.zero; // art-only offset used by melee visuals
     [SerializeField] private Sprite sprite;
     private Collider2D hitBoxCollider;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private float currentHitboxActiveDurration = 0f; // how long has the hitbox out
     [SerializeField] private bool displayHitbox = false;
+    private Coroutine activationCoroutine;
 
     public static event Action<int> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         hitBoxCollider = GetComponent<Collider2D>();
         if (hitBoxCollider == null)
@@ -42,17 +45,57 @@ public class HitBox : MonoBehaviour
             Debug.LogError("HitBox: No Collider2D found on the GameObject.");
         }
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (!displayHitbox)
-        {
-            spriteRenderer.sprite = null;
-        }
-        else
-        {
-            spriteRenderer.sprite = sprite;
-        }
-        StartCoroutine(ResetCollider());
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        ApplyHitBoxSprite();
+    }
 
+    private void OnEnable()
+    {
+        currentHitboxActiveDurration = 0f;
+        ApplyHitBoxSprite();
+
+        if (hitBoxCollider == null)
+        {
+            return;
+        }
+
+        hitBoxCollider.enabled = false;
+        activationCoroutine = StartCoroutine(EnableColliderAfterDelay());
+    }
+
+    private void OnDisable()
+    {
+        if (activationCoroutine != null)
+        {
+            StopCoroutine(activationCoroutine);
+            activationCoroutine = null;
+        }
+
+        if (hitBoxCollider != null)
+        {
+            hitBoxCollider.enabled = false;
+        }
+    }
+
+    private void ApplyHitBoxSprite()
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
+
+        spriteRenderer.sprite = displayHitbox ? sprite : null;
+    }
+
+    private IEnumerator EnableColliderAfterDelay()
+    {
+        if (activationDelay > 0f)
+        {
+            yield return new WaitForSeconds(activationDelay);
+        }
+
+        yield return ResetCollider();
+        activationCoroutine = null;
     }
 
     //resets collider so that when player continues to be in the hitbox after it is created, it can still trigger the hitbox
@@ -123,6 +166,11 @@ public class HitBox : MonoBehaviour
         return offset;
     }
 
+    public Vector3 GetVisualOffset()
+    {
+        return visualOffset;
+    }
+
     public Sprite GetSprite()
     {
         return sprite;
@@ -130,6 +178,7 @@ public class HitBox : MonoBehaviour
 
     public float GetKnockbackForce() => knockbackForce;
     public float GetKnockbackVerticalForce() => knockbackVerticalForce;
+    public float GetActivationDelay() => activationDelay;
 
     public void DestroyAttack()
     {

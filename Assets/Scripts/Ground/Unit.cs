@@ -166,53 +166,65 @@ public class Unit : MonoBehaviour
     private void GenerateHitBox(GameObject hitBoxPrefab, GameObject attackSprite)
     {
         GameObject hitBox = Instantiate(hitBoxPrefab, transform.position, Quaternion.identity);
-        hitBox.transform.parent = attackSprite.transform; 
-
-        hitBox.transform.position = attackSprite.transform.position;
-        hitBox.transform.parent = attackSprite.transform;
+        hitBox.transform.SetParent(attackSprite.transform, false);
+        hitBox.transform.localPosition = Vector3.zero;
+        hitBox.transform.localRotation = Quaternion.identity;
     }
 
     private GameObject GenerateAttackSprite(GameObject hitBoxPrefab)
     {
-        GameObject attackSprite = new GameObject("AttackSprite");
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
 
-        //GroundMovement groundMovement = GetComponent<GroundMovement>();
-        //Vector3 offsetDirection = groundMovement.isFacingRight ? Vector3.right : Vector3.left;
-        //Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x * offsetDirection.x, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
-
         // Use IsFacingRight() instead of GroundMovement
-        Vector3 offsetDirection = IsFacingRight() ? Vector3.right : Vector3.left;
-        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x * offsetDirection.x, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
-       
-        
-        SpriteRenderer spriteRenderer = attackSprite.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = hitBoxInfo.GetSprite();
-        
-        attackSprite.transform.position = transform.position + offset;
-        attackSprite.transform.localScale = hitBoxPrefab.transform.localScale;//makes it so white box matches actual hitbox
+        float facingSign = IsFacingRight() ? 1f : -1f;
+        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x * facingSign, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
+
         if (hitBoxInfo.GetIsMelee())
         {
-            attackSprite.transform.parent = transform;
+            GameObject attackRoot = new GameObject("AttackRoot");
+            attackRoot.transform.SetParent(transform, false);
+            attackRoot.transform.localPosition = offset;
+            attackRoot.transform.localRotation = Quaternion.identity;
+            attackRoot.transform.localScale = Vector3.one;
 
-            if (!IsFacingRight())
+            Transform visualPivot = new GameObject("VisualPivot").transform;
+            visualPivot.SetParent(attackRoot.transform, false);
+            visualPivot.localPosition = new Vector3(hitBoxInfo.GetVisualOffset().x * facingSign, hitBoxInfo.GetVisualOffset().y, hitBoxInfo.GetVisualOffset().z);
+            visualPivot.localRotation = Quaternion.identity;
+            visualPivot.localScale = new Vector3(facingSign, 1f, 1f);
+
+            GameObject attackVisual = new GameObject("AttackVisual");
+            attackVisual.transform.SetParent(visualPivot, false);
+            attackVisual.transform.localPosition = Vector3.zero;
+            attackVisual.transform.localRotation = Quaternion.identity;
+            attackVisual.transform.localScale = hitBoxPrefab.transform.localScale;
+
+            SpriteRenderer spriteRenderer = attackVisual.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = hitBoxInfo.GetSprite();
+
+            Animator anim = attackVisual.AddComponent<Animator>();
+            if (meleeAnimator != null)
             {
-                if (spriteRenderer != null)
-                {
-                    spriteRenderer.flipX = true;
-                    spriteRenderer.flipY = true;
-                }
+                anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
+            }
+            else
+            {
+                Debug.LogWarning($"{name} is missing a meleeAnimator reference.", this);
             }
 
-            Animator anim = attackSprite.AddComponent<Animator>();
-            anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
+            return attackRoot;
         }
-        else
-        {
-            Projectile projectile = attackSprite.AddComponent<Projectile>();
-            projectile.SetDirection(IsFacingRight() ? 1 : -1);
-            projectile.SetYValue(transform.position.y);
-        }
+
+        GameObject attackSprite = new GameObject("AttackSprite");
+        SpriteRenderer projectileSpriteRenderer = attackSprite.AddComponent<SpriteRenderer>();
+        projectileSpriteRenderer.sprite = hitBoxInfo.GetSprite();
+
+        attackSprite.transform.position = transform.position + offset;
+        attackSprite.transform.localScale = hitBoxPrefab.transform.localScale;//makes it so white box matches actual hitbox
+
+        Projectile projectile = attackSprite.AddComponent<Projectile>();
+        projectile.SetDirection(IsFacingRight() ? 1 : -1);
+        projectile.SetYValue(transform.position.y);
 
         return attackSprite;
     }
