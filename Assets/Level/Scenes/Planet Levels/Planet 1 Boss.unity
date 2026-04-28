@@ -17492,6 +17492,7 @@ MonoBehaviour:
   player: {fileID: 2014226424}
   PlayerInZone: 0
   animator: {fileID: 1366134589}
+  currentAttack: 
 --- !u!95 &1366134589
 Animator:
   serializedVersion: 7
@@ -20406,11 +20407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3189189260960329626, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -116.24
+      value: -123.8
       objectReference: {fileID: 0}
     - target: {fileID: 3189189260960329626, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.8
+      value: -50.1
       objectReference: {fileID: 0}
     - target: {fileID: 3189189260960329626, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: m_LocalPosition.z

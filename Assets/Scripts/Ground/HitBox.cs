@@ -28,11 +28,12 @@ public class HitBox : MonoBehaviour
     [SerializeField] private float currentHitboxActiveDurration = 0f; // how long has the hitbox out
     [SerializeField] private bool displayHitbox = false;
     public bool animateBaseSprite = false;
-    public Animator attackAnimation;
     public static event Action<int> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
     public GameObject owner;
+    [SerializeField] string AnimatorTriggerName;
+    [SerializeField] UnityEditor.Animations.AnimatorController animatorController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -143,7 +144,7 @@ public class HitBox : MonoBehaviour
             resetDuration();
             return;
         }
-        print("destroying");
+        print($"destroying {gameObject.name}");
         Destroy(transform.parent.gameObject); 
         Destroy(gameObject);
         
@@ -168,5 +169,10 @@ public class HitBox : MonoBehaviour
     public float GetProjectileSpeed()
     {
         return projectileSpeed;
+    }
+
+    public string GetAnimatorTrigger()
+    {
+        return AnimatorTriggerName;
     }
 }

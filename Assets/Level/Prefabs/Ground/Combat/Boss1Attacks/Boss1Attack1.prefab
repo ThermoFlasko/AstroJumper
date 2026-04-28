@@ -124,10 +124,11 @@ MonoBehaviour:
   currentHitboxActiveDurration: 0
   displayHitbox: 1
   animateBaseSprite: 1
-  attackAnimation: {fileID: 4144720731330400138, guid: 4a9b0c19f0ee1124d985b873d61b9020, type: 3}
   projectilePool: {fileID: 0}
   attackListIndex: 2
   owner: {fileID: 0}
+  AnimatorTriggerName: 
+  animatorController: {fileID: 0}
 --- !u!61 &3819204273591480950
 BoxCollider2D:
   m_ObjectHideFlags: 0

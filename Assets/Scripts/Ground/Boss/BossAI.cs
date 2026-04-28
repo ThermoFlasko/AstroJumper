@@ -1,9 +1,11 @@
 using System.Collections;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 // This is where the boss decision making will go
 public class BossAI : Unit
 {
+    private static WaitForSeconds _waitForSeconds0_4 = new WaitForSeconds(0.4f);
     public GameObject[] BossZones;
     public Transform[] BossPlacementTransforms;
     public Transform AttackOneTransform;
@@ -11,6 +13,7 @@ public class BossAI : Unit
     public Player player;
     public int PlayerInZone;
     public Animator animator;
+    public string currentAttack;
 
     private void OnDisable()
     {
@@ -105,7 +108,7 @@ public class BossAI : Unit
         BossRoomZone currZone = zone.GetComponent<BossRoomZone>();
         if (!currZone)
         {
-            print("gave room gameobject");
+            print("give room gameobject");
             return false;
         }
 
@@ -114,6 +117,20 @@ public class BossAI : Unit
             return true;
         }
         return false;
+    }
+
+    public GameObject GetZonePlayerIn()
+    {
+        foreach (GameObject zone in BossZones)
+        {
+            BossRoomZone currZone = zone.GetComponent<BossRoomZone>();
+
+            if (currZone.PlayerInZone)
+            {
+                return zone;
+            }
+        }
+        return null;
     }
 
     public int WhatZoneIsPlayer()
@@ -149,87 +166,73 @@ public class BossAI : Unit
 
     public IEnumerator DoAttackOne()
     {
+        currentAttack = "Attack1";
         animator.SetTrigger("Vanish");
-
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0 && animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "VanishDelay");
+        yield return new WaitForSecondsRealtime(1.6f);
         Transform bossPos = gameObject.GetComponent<Transform>();
         bossPos.position = AttackOneTransform.position;
-        yield return new WaitForSeconds(0.2f);
-        animator.ResetTrigger("Vanish");
-        animator.SetTrigger("Appear");
 
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Stationary attack");
 
-        yield return new WaitForSeconds(0.5f);
-
-        animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(0.5f);
-
+        print("attack ready");
         BeginAttack(hitBoxPrefab);
-
-        yield return new WaitForSeconds(1f);
-        animator.SetTrigger("AttackOver");
+        yield return null;
+        
     }
 
     public IEnumerator DoAttackTwo()
     {
+        currentAttack = "Attack2";
         animator.SetTrigger("Vanish");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0);
+        yield return new WaitForSeconds(1.6f);
         Transform goToTransform = FindNearestLocationToPlayer();
         Transform bossPos = gameObject.GetComponent<Transform>();
         bossPos.position = goToTransform.position;
-        yield return new WaitForSeconds(0.2f);
-        animator.ResetTrigger("Vanish");
-        animator.SetTrigger("Appear");
-
-
-        yield return new WaitForSeconds(0.5f);
-        animator.SetTrigger("Attack2");
-        yield return new WaitForSeconds(0.2f);
-
+        
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Move Attack");
         print("doing actually hitbox");
         BeginAttack(hitBoxPrefab2);
-    
-        yield return new WaitForSeconds(0.5f);
-        animator.SetTrigger("AttackOver");
+        yield return null;
     }
 
     public IEnumerator DoAttackThree()
     {
+        currentAttack = "Attack3";
         animator.SetTrigger("Vanish");
-
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0);
+        yield return new WaitForSeconds(1.6f);
         Transform bossPos = gameObject.GetComponent<Transform>();
         bossPos.position = AttackThreeTransform.position;
-        yield return new WaitForSeconds(0.2f);
-        animator.ResetTrigger("Vanish");
-        animator.SetTrigger("Appear");
 
-        animator.ResetTrigger("Attack2");
-        animator.ResetTrigger("Attack1");
-        animator.SetTrigger("Attack3");
-        yield return new WaitForSeconds(2.5f);
-
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Air Attack_Clip");
+        yield return new WaitForSeconds(1.5f);
         BeginAttack(hitBoxPrefab3);
 
-        yield return new WaitForSeconds(0.5f);
         animator.SetTrigger("AttackOver");
     }
 
     public Transform FindNearestLocationToPlayer()
     {
         // Find nearest possible boss location
-        Transform nearestToPlayer = null;
-        float minDis = 100000.0f;
-        foreach(Transform transform in BossPlacementTransforms)
-        {
-            float dis = Vector3.Distance(transform.position, player.GetComponent<Transform>().position);
+        // Transform nearestToPlayer = null;
+        // float minDis = 100000.0f;
+        // foreach(Transform transform in BossPlacementTransforms)
+        // {
+        //     float dis = Vector3.Distance(transform.position, player.GetComponent<Transform>().position);
 
-            if (dis < minDis)
-            {
-                minDis = dis;
-                nearestToPlayer = transform;
-            }                
-        }
+        //     if (dis < minDis)
+        //     {
+        //         minDis = dis;
+        //         nearestToPlayer = transform;
+        //     }                
+        // }
+        // return nearestToPlayer;
+
+        GameObject playerInZone = GetZonePlayerIn();
+        Transform nearestToPlayer = playerInZone.transform.GetChild(0).transform;
+        print($"nearest transform is {nearestToPlayer.name}");
         return nearestToPlayer;
     }
 

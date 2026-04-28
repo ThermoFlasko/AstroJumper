@@ -215,59 +215,13 @@ public class Unit : MonoBehaviour
             {
                 print("asd");
             }
-            if (hitBoxInfo.attackAnimation != null && gameObject.name != "Boss")
+            if(!hitBoxInfo.animateBaseSprite)
             {
-                print("attack animation");
-                if (!hitBoxInfo.animateBaseSprite)
-                {
-                    
-                    Animator anim = gameObject.GetComponent<Animator>();
-                    if (anim == null)
-                    {
-                        anim = gameObject.AddComponent<Animator>();
-                        
-                    }
-                    anim.runtimeAnimatorController = hitBoxInfo.attackAnimation.runtimeAnimatorController;
-                }
-                else
-                {
-                    // animating actual character sprite
-                        
-                    Animator anim = gameObject.GetComponent<Animator>();
-                    if (anim == null)
-                    {
-                        anim = gameObject.AddComponent<Animator>();
-                        
-                    }
-                    anim.runtimeAnimatorController = hitBoxInfo.attackAnimation.runtimeAnimatorController;
-                }
+                
+                Animator anim = attackSprite.AddComponent<Animator>();
+                anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
             }
-            else if (gameObject.name != "Boss")
-            {
-                if (!hitBoxInfo.animateBaseSprite)
-                {
-                    
-                    Animator anim = gameObject.GetComponent<Animator>();
-                    if (anim == null)
-                    {
-                        anim = gameObject.AddComponent<Animator>();
-                        
-                    }
-                    anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
-                }
-                else
-                {
-                    // animating actual character sprite
-                        
-                    Animator anim = gameObject.GetComponent<Animator>();
-                    if (anim == null)
-                    {
-                        anim = gameObject.AddComponent<Animator>();
-                        
-                    }
-                    anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
-                } 
-            }
+
             
         }
         else
