@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scrap
   itemName: Scrap
   itemIcon: {fileID: -1454010366, guid: dfadb386740b7d740b942af9b80caaaa, type: 3}
+  isStorable: 1
+  isFirstDrop: 0
