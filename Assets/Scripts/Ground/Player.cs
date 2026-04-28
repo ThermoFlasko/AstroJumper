@@ -12,7 +12,6 @@ public class Player : Unit
     [SerializeField] private string attackActionName2 = "Attack2";
     private InputAction attackAction;
     private InputAction attackAction2;
-
     public static event Action<Unit> onPlayerDeath;
     public static event Action<Unit> onPlayerDamaged;
     private bool isAttacking2 = false;
@@ -27,7 +26,27 @@ public class Player : Unit
     [Header("Damage Settings")]
     [SerializeField] private float damageCooldown = 0.5f;
     private float lastDamageTime = -999f;
-    private int startingHealth;
+    [SerializeField] public int startingHealth;
+    public new int Health
+    {
+        get {return _health;}
+        set 
+        {
+            _health = value;
+            if(_health >= startingHealth)
+            {
+                _health = startingHealth;
+            }
+            print("health changed");
+            onPlayerDamaged?.Invoke(this);
+            if (Health <= 0)
+            {
+                onPlayerDeath?.Invoke(this);
+                //Reset();
+                return;
+            }
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -145,13 +164,6 @@ public class Player : Unit
         //print("Taking damage");
         Health -= amount;
 
-        if (Health <= 0)
-        {
-            onPlayerDeath?.Invoke(this);
-            //Reset();
-            return;
-        }
-
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         InvokeKnockback(this, knockbackVector);
@@ -161,7 +173,6 @@ public class Player : Unit
             StartCoroutine(DamageEffect(spriteRenderer)); //Im not sure why it plays twice after taking dmg once It was like this before and flashes twice im not sure where it is, 
         Debug.Log("Invoking onPlayerDamaged animation");// the animation plays an extra time after taking dmg like a second later, but this isn't being called twice so its most likely a sprite issue
 
-        onPlayerDamaged?.Invoke(this);
     }
 
     private void OnHitBoxDurationOver(int attackIndex)

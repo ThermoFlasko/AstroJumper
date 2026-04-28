@@ -22,7 +22,6 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collided with: " + collision.gameObject.name);
         if (collision.CompareTag("Player"))
         {
             Inventory inventory = collision.GetComponent<Inventory>();
