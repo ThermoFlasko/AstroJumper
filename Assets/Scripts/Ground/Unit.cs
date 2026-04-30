@@ -34,6 +34,7 @@ public class Unit : MonoBehaviour
 
     public GameObject hitBoxPrefab;
     public GameObject hitBoxPrefab2;
+    public GameObject hitBoxPrefab3;
 
     public ProjectilePool unitProjectilePool;
     private bool useProjectilePool = true;
@@ -41,6 +42,9 @@ public class Unit : MonoBehaviour
 
     [Header("Melee Animator")]
     public Animator meleeAnimator;
+    public Sprite StartSprite;
+
+    public StateMachine stateMachine = new StateMachine();
 
     void Start()
     {
@@ -59,7 +63,7 @@ public class Unit : MonoBehaviour
             }
             
         }
-        
+        StartSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
     protected virtual bool IsFacingRight()
@@ -69,6 +73,8 @@ public class Unit : MonoBehaviour
 
         var motor = GetComponent<EnemyMotor>();
         if (motor != null) return motor.FacingDir == 1;
+
+
 
         return true; // fallback
     }
@@ -167,6 +173,7 @@ public class Unit : MonoBehaviour
     {
         GameObject hitBox = Instantiate(hitBoxPrefab, transform.position, Quaternion.identity);
         hitBox.transform.parent = attackSprite.transform; 
+        hitBox.GetComponent<HitBox>().SetOwner(gameObject);
 
         hitBox.transform.position = attackSprite.transform.position;
         hitBox.transform.parent = attackSprite.transform;
@@ -174,6 +181,7 @@ public class Unit : MonoBehaviour
 
     private GameObject GenerateAttackSprite(GameObject hitBoxPrefab)
     {
+        print("generating sprite");
         GameObject attackSprite = new GameObject("AttackSprite");
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
 
@@ -203,9 +211,18 @@ public class Unit : MonoBehaviour
                     spriteRenderer.flipY = true;
                 }
             }
+            if(gameObject.name == "Boss")
+            {
+                print("asd");
+            }
+            if(!hitBoxInfo.animateBaseSprite)
+            {
+                
+                Animator anim = attackSprite.AddComponent<Animator>();
+                anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
+            }
 
-            Animator anim = attackSprite.AddComponent<Animator>();
-            anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
+            
         }
         else
         {
