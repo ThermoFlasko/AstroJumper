@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor;
 public class Player : Unit
 {
     
@@ -221,3 +222,21 @@ public class Player : Unit
         attackAction2.Enable();
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(Player))]
+public class PlayerInspector : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        if(GUILayout.Button("Deal Damage"))
+        {
+            Player player = (Player)target;
+
+            player.Health -= 20;
+        }
+    }
+}
+#endif
