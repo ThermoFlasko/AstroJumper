@@ -882,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2162,6 +2162,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c408d1be629c404a88b3bc91f3ca708, type: 3}
+--- !u!1 &905167635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
+  m_PrefabInstance: {fileID: 2137545620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &959332346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2432,6 +2437,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994590210}
   m_CullTransparentMesh: 1
+--- !u!1 &997587514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
+  m_PrefabInstance: {fileID: 1727644613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1006893033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,7 +2675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3791,8 +3801,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98c179425c68ae4caa23ac1df46218f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoManager
-  textAssetData: {fileID: 4900000, guid: c52da964837535d44b40cab49ac730b7, type: 3}
-  planets: []
+  textAssetData: {fileID: 4900000, guid: be146adf085b5e94c9007134f89482e6, type: 3}
+  planets:
+  - {fileID: 997587514}
+  - {fileID: 905167635}
+  - {fileID: 2082169963}
+  - {fileID: 567649269}
 --- !u!4 &1757461891
 Transform:
   m_ObjectHideFlags: 0
@@ -4133,6 +4147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &2082169963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
+  m_PrefabInstance: {fileID: 1037500531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2137545620
 PrefabInstance:
   m_ObjectHideFlags: 0
