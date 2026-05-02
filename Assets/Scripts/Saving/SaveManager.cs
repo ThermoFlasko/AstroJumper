@@ -9,7 +9,8 @@ public class SaveManager : MonoBehaviour
     public static SaveManager instance { get; private set; }
     public static event Action<int> NewMoneyChanged;
 
-    [Header("Defualts + Files")] [SerializeField]
+    [Header("Defualts + Files")]
+    [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
 
     [SerializeField] private string saveFolderName = "Saves";
@@ -30,7 +31,7 @@ public class SaveManager : MonoBehaviour
     private bool dirty;
     private float dirtyTimer;
 
-    [Header("AutoSave")] [SerializeField] private bool autoSave = true;
+    [Header("AutoSave")][SerializeField] private bool autoSave = true;
     [FormerlySerializedAs("autoSaveDelay")]
     [SerializeField] private float autoSaveDelaySaveTime = 10.0f;
 
@@ -256,7 +257,7 @@ public class SaveManager : MonoBehaviour
                 return CurrentSaveData.spaceshipUpgradeData.maxHealthLevel;
             case PlayerUpgradeState.UpgradeType.MaxShields:
                 return CurrentSaveData.spaceshipUpgradeData.maxShieldsLevel;
-            
+
         }
 
         return 0;
@@ -374,6 +375,31 @@ public class SaveManager : MonoBehaviour
                 CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel++;
                 break;
         }
+
+        MakeDirty();
+    }
+
+    public string GetEquipedGroundAttackId(GroundAttackType attackType)
+    {
+        EnsureCurrentSaveData();
+
+        if (CurrentSaveData?.groundEquipmentData == null)
+            return string.Empty;
+
+        return attackType == GroundAttackType.Melee ? CurrentSaveData.groundEquipmentData.equippedMeleeAttackId : CurrentSaveData.groundEquipmentData.equippedRangedAttackId;
+    }
+
+    public void SetEquipedGroundAttackId(GroundAttackType attackType, string attackId)
+    {
+        EnsureCurrentSaveData();
+
+        if(CurrentSaveData!.groundEquipmentData==null)
+            return;
+        
+        if (attackType==GroundAttackType.Melee)
+            CurrentSaveData.groundEquipmentData.equippedMeleeAttackId=attackId;
+        else
+            CurrentSaveData.groundEquipmentData.equippedRangedAttackId=attackId;
 
         MakeDirty();
     }

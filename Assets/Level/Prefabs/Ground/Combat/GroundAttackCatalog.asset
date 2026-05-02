@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819041f0560785f468f295c2e7648907, type: 3}
+  m_Name: GroundAttackCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::GroundAttackCatalogSO
+  attacks:
+  - {fileID: 11400000, guid: 7fb7db984f0bced4a873a59425a88261, type: 2}
+  - {fileID: 11400000, guid: 271a34ff79fb8724fa51217064f9a3c7, type: 2}
+  - {fileID: 11400000, guid: e93067509fa38f44189c75cd9740e40a, type: 2}
+  deufaltMeleeAttack: {fileID: 11400000, guid: 7fb7db984f0bced4a873a59425a88261, type: 2}
+  deufaltRangedAttack: {fileID: 11400000, guid: 271a34ff79fb8724fa51217064f9a3c7, type: 2}
