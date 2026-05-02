@@ -228,7 +228,7 @@ public class Unit : MonoBehaviour
             return attackRoot;
         }
 
-        GameObject attackSprite = new GameObject("AttackSprite");
+
         SpriteRenderer projectileSpriteRenderer = attackSprite.AddComponent<SpriteRenderer>();
         projectileSpriteRenderer.sprite = hitBoxInfo.GetSprite();
 
