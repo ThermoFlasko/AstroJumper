@@ -55,7 +55,7 @@ public class EnemyProjectile : MonoBehaviour
         ReturnToPool();
     }
 
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         rb.linearVelocity = Vector2.zero;
         if (pool != null)
@@ -64,4 +64,5 @@ public class EnemyProjectile : MonoBehaviour
             gameObject.SetActive(false); 
         // fallback if pool ref is lost
     }
+    
 }

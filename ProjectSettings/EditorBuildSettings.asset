@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/Planet Levels/Planet 1.unity
     guid: 127b06e92616c8b4fa21869f80fc7083
+  - enabled: 1
+    path: Assets/Level/Scenes/Ground/Boss scene/Boss Scene.unity
+    guid: 632960cee5b61d64483a43bf50c5a941
+  - enabled: 1
+    path: Assets/Level/Scenes/Ground/Procedural/PCG_Sample.unity
+    guid: ad4a28e8e57c47d47a5a8713c68b4e4f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 795312e927ba943bd96421b21c2ea4f0, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

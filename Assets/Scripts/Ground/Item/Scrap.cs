@@ -5,4 +5,9 @@ using UnityEngine;
 public class Scrap : Item
 {
     public bool isFirstDrop = false;
+
+    public override void OnItemPickUp()
+    {
+        return;
+    }
 }

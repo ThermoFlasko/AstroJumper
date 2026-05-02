@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.0752, y: -2.89, z: 0}
-  m_LocalScale: {x: 1.3953615, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.9999998, y: 2.1499803, z: 2.1499803}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,22 +109,26 @@ MonoBehaviour:
   damage: 10
   isPermanent: 0
   duration: 1
-  knockbackForce: 5
+  knockbackForce: 10
   knockbackVerticalForce: 3
   isMelee: 1
   projectileSpeed: 5
   targetLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4097
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 0
   offset: {x: 1, y: 0, z: 0}
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   currentHitboxActiveDurration: 0
-  displayHitbox: 1
+  displayHitbox: 0
+  animateBaseSprite: 0
   projectilePool: {fileID: 0}
   attackListIndex: 2
+  owner: {fileID: 0}
+  AnimatorTriggerName: 
+  animatorController: {fileID: 0}
 --- !u!61 &3405425898676861640
 BoxCollider2D:
   m_ObjectHideFlags: 0
