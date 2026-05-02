@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 // NOTE: csv files can be found in Assets/Level/Prefabs/Level Selector/Planet CSV
@@ -12,10 +13,10 @@ public class InfoManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        planets = GameObject.FindGameObjectsWithTag("Planet");
+        //planets = GameObject.FindGameObjectsWithTag("Planet");
+        textAssetData = Resources.Load<TextAsset>("Astro Jumper Planets Data - Sheet1");
 
-        infoText = System.IO.File.ReadAllText(Application.dataPath + "/Level/Prefabs/Level Selector/Planet CSV/Astrojumper Planet Data - Sheet B.csv");
-        print(infoText);
+        print(textAssetData.text);
 
         readCSV();
     }
