@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class GroundMovement : MonoBehaviour
 {
+    //hello
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float acceleration = 60f;
@@ -20,6 +21,10 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private int maxAirJumps = 1; // 1 = double jump, 2 = triple . . .
     private int airJumpsRemaining;
 
+    [Header("Variable Jump Height")]
+    [SerializeField] private float max_jumpHoldTime = 0.2f; // how long the player can hold the jump button to reach max jump height
+
+
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.6f, 0.6f);
@@ -30,11 +35,12 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private float dropDuration = 0.5f;
 
     [Header("Input Actions")]
-    [SerializeField] private InputActionAsset actionsAsset; 
+    [SerializeField] private InputActionAsset actionsAsset;
     [SerializeField] private string actionMapName = "Player";
     [SerializeField] private string moveActionName = "Move";
     [SerializeField] private string jumpActionName = "Jump";
     [SerializeField] private string dropActionName = "Drop";
+    [SerializeField] private string sprintActionName = "Sprint";
 
     [Header("Knockback")]
     [SerializeField] private float knockbackDuration = 0.3f;
@@ -52,14 +58,21 @@ public class GroundMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction dropAction;
+    private InputAction sprintAction;
 
     private float xInput;
     private float coyoteTimer;
     private float jumpBufferTimer;
 
+    private float jumpHoldTimer;
+    private bool isJumpPressed = false;
+    private bool isJumpReleased = false;
+
     private bool isGrounded;
     private bool isDropping;
-    public bool isFacingRight = true; 
+    public bool isFacingRight = true;
+
+
 
     private void Awake()
     {
@@ -77,6 +90,7 @@ public class GroundMovement : MonoBehaviour
         moveAction = map.FindAction(moveActionName, true);
         jumpAction = map.FindAction(jumpActionName, true);
         dropAction = map.FindAction(dropActionName, true);
+        sprintAction = map.FindAction(sprintActionName, true);
     }
 
     private void OnEnable()
@@ -84,9 +98,13 @@ public class GroundMovement : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         dropAction.Enable();
+        sprintAction.Enable();
 
         jumpAction.performed += OnJump;
+        jumpAction.canceled += OnJumpCanceled;
         dropAction.performed += OnDrop;
+        sprintAction.performed += ctx => moveSpeed *= 1.67f; // simple sprint implementation, can be expanded with upgrades or stamina system
+        sprintAction.canceled += ctx => moveSpeed /= 1.67f;
 
         Unit.onKnockedBack += OnKnockedBack;
     }
@@ -94,12 +112,13 @@ public class GroundMovement : MonoBehaviour
     private void OnDisable()
     {
         jumpAction.performed -= OnJump;
+        jumpAction.canceled -= OnJumpCanceled;
         dropAction.performed -= OnDrop;
 
         moveAction.Disable();
         jumpAction.Disable();
         dropAction.Disable();
-        
+
         Unit.onKnockedBack -= OnKnockedBack;
 
     }
@@ -146,6 +165,8 @@ public class GroundMovement : MonoBehaviour
 
             // Reset air jumps when you touch the ground
             airJumpsRemaining = enableDoubleJump ? maxAirJumps : 0;
+
+            ResetVariableJump();
         }
         else
         {
@@ -161,11 +182,52 @@ public class GroundMovement : MonoBehaviour
         HandleJumpBuffered();
         CheckIfOnSlope();
         
+
+        if (rb.linearVelocity.y > 0f && isJumpPressed)
+        {
+            //if the player is still holding the jump button and hasn't exceeded max hold time, apply extra gravity to allow for variable jump height
+            if (!isJumpReleased && jumpHoldTimer < max_jumpHoldTime)
+            {
+                jumpHoldTimer += Time.fixedDeltaTime;
+                //velocity.y += gravity_y * held_jump_gravity_scale * delta
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (rb.gravityScale - 5) * Time.fixedDeltaTime);
+            }
+            //if the player realsezes jump earlier than the max hold time, apply extra gravity immediately to create a snappier jump feel
+            else
+            {
+                if (jumpHoldTimer < max_jumpHoldTime && isJumpReleased)
+                {
+                    //apply extra gravity immediately on jump release for snappier feel
+                    //velocity.y += gravity_y * released_jump_gravity_scale * delta
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (rb.gravityScale - 5) * Time.fixedDeltaTime);
+                }    //velocity.y += gravity_y * released_jump_gravity_scale * delta
+                isJumpReleased = false; // reset for next jump
+            }
+
+        }
+        else
+        {
+            isJumpPressed = false;
+            jumpHoldTimer = 0f;
+        }
+    }
+
+    private void ResetVariableJump()
+    {
+        isJumpPressed = false;
+        isJumpReleased = false;
+        jumpHoldTimer = 0f;
     }
 
     private void OnJump(InputAction.CallbackContext ctx)
     {
         jumpBufferTimer = jumpBufferTime; // buffer jump press
+
+    }
+
+    private void OnJumpCanceled(InputAction.CallbackContext ctx)
+    {
+        isJumpReleased = true;
     }
 
     private void OnDrop(InputAction.CallbackContext ctx)
@@ -229,16 +291,22 @@ public class GroundMovement : MonoBehaviour
         if (canGroundJump || canAirJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, GetJumpVelocityWithUpgrades());
+
             jumpBufferTimer = 0f;
+            isJumpPressed = true;
+            isJumpReleased = false;
+            jumpHoldTimer = 0f; // reset jump hold timer on new jump press
 
             if (canGroundJump)
             {
+
                 coyoteTimer = 0f; // saftey to prevent double jump within coyote time
             }
             else
             {
                 airJumpsRemaining--;
             }
+
         }
     }
 
@@ -253,10 +321,7 @@ public class GroundMovement : MonoBehaviour
         //RaycastHit2D raycastHit2D = Physics2D.BoxCast
     }
 
-    void OnDrawGizmos()
-    {
-        
-    }
+
 
     private void TryDropThrough()
     {
