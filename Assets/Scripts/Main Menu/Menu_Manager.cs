@@ -10,10 +10,10 @@ using System.Collections;
 public class Menu_Manager : MonoBehaviour
 {
     [Header("Menu Panels")]
-    public GameObject mainMenuPanel;
-    public GameObject optionsPanel;
-    public GameObject creditsPanel;
-    public GameObject keybindPanel;
+    public Canvas mainMenuPanel;
+    public Canvas optionsPanel;
+    public Canvas creditsPanel;
+    public Canvas keybindPanel;
     //public GameObject upgradesPanel;
 
     //[Header("Other stuff")] public TMP_Text upgradesScrapCounterText;
@@ -91,16 +91,16 @@ public class Menu_Manager : MonoBehaviour
 
     private void CloseAllMenus()
     {
-        mainMenuPanel.SetActive(false);
-        optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
-        keybindPanel.SetActive(false);
+        mainMenuPanel.enabled = false;
+        optionsPanel.enabled = false;
+        creditsPanel.enabled = false;
+        keybindPanel.enabled = false;
     }
 
     public void ShowMainMenu()
     {
         CloseAllMenus();
-        mainMenuPanel.SetActive(true);
+        mainMenuPanel.enabled = true;
     }
 
     public void StartGame()
@@ -111,19 +111,19 @@ public class Menu_Manager : MonoBehaviour
     public void ShowOptionsMenu()
     {
         CloseAllMenus();
-        optionsPanel.SetActive(true);
+        optionsPanel.enabled = true;
     }
 
     public void ShowCreditsMenu()
     {
         CloseAllMenus();
-        creditsPanel.SetActive(true);
+        creditsPanel.enabled = true;
     }
 
     public void ShowKeybindMenu()
     {
         CloseAllMenus();
-        keybindPanel.SetActive(true);
+        keybindPanel.enabled = true;
     }
 
     public void StartQuitGame()
