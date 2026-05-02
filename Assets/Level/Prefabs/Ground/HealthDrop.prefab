@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8329644689151798110}
   - component: {fileID: 7121406787825812491}
   m_Layer: 0
-  m_Name: Scrap
+  m_Name: HealthDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1454010366, guid: dfadb386740b7d740b942af9b80caaaa, type: 3}
+  m_Sprite: {fileID: 21300012, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.28}
+    oldSize: {x: 0.25, y: 0.29}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79ed02e3c39fbe49b2c8e5a9ea95e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  item: {fileID: 11400000, guid: 758c282f4a8398549be050e6119b318d, type: 2}
+  item: {fileID: 11400000, guid: bce46c0c5cc196f4a993e377e7cb4b1b, type: 2}
   PickupSound: {fileID: 5241908447769906276}
 --- !u!114 &5241908447769906276
 MonoBehaviour:

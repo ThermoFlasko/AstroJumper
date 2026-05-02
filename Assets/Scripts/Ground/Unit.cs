@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private string _unitName;
     public string UnitName
     {get; set;}
-    [SerializeField] private int _health = 100;
+    [SerializeField] protected int _health = 100;
     public int Health
     {
         get { return _health; }

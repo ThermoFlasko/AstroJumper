@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
@@ -17,9 +18,10 @@ public class ItemPickup : MonoBehaviour
         
     }
 
+       
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collided with: " + collision.gameObject.name);
         if (collision.CompareTag("Player"))
         {
             Inventory inventory = collision.GetComponent<Inventory>();
@@ -33,6 +35,13 @@ public class ItemPickup : MonoBehaviour
                     Destroy(gameObject); // Destroy the pickup after adding it to the inventory
                 }
             }
+        }
+
+        if (collision.CompareTag("Terrain"))
+        {
+            FloatingEffect floatingEffect = gameObject.GetComponent<FloatingEffect>();
+
+            floatingEffect.enabled = true;
         }
     }
 }

@@ -16860,11 +16860,9 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 9182795490261890898, guid: 40d4276b2bf35db479ce03eae1f133cc, type: 3}
-  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
-  StartSprite: {fileID: 0}
 --- !u!114 &1201777337 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -17452,12 +17450,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossAI
   _unitName: 
+  <UnitName>k__BackingField: 
   _health: 550
   _damage: 10
+  isDamageAnimation: 0
+  isAttacking: 0
   hitBoxPrefab: {fileID: 756742671545739062, guid: 2c415c7fdc6b71245a044e79889f1ed4, type: 3}
   hitBoxPrefab2: {fileID: 4015680580933214233, guid: 3d3c171c79199954cb90ece34403078e, type: 3}
   hitBoxPrefab3: {fileID: 5759179807618740437, guid: 80b73831ec4b4024c9d170fe579c429a, type: 3}
   unitProjectilePool: {fileID: 0}
+  useProjectilePool: 1
   DeathDrop: {fileID: 0}
   meleeAnimator: {fileID: 4144720731330400138, guid: b32d703601f4dfc4382501d0faba16b7, type: 3}
   StartSprite: {fileID: -3784504298225160003, guid: 823781358ba55af4f95db1bcbe5fae60, type: 3}
@@ -18443,11 +18445,9 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 174109804372061078, guid: 05a35a75a8dc26c4ca15539b1f41f66e, type: 3}
-  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
-  StartSprite: {fileID: 0}
 --- !u!114 &1701850139 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -18974,11 +18974,9 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 174109804372061078, guid: 05a35a75a8dc26c4ca15539b1f41f66e, type: 3}
-  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
-  StartSprite: {fileID: 0}
 --- !u!114 &1876838180 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6100491850485219385, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
@@ -19616,6 +19614,10 @@ PrefabInstance:
     - target: {fileID: 5862821998221709667, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862821998221709667, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6245293552459302686, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
       propertyPath: m_BodyType
