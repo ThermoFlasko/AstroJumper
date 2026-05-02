@@ -4,22 +4,9 @@ public class ItemPickup : MonoBehaviour
 {
     public Item item;
     public PickupSound PickupSound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collided with: " + collision.gameObject.name);
         if (collision.CompareTag("Player"))
         {
             Inventory inventory = collision.GetComponent<Inventory>();
@@ -33,6 +20,13 @@ public class ItemPickup : MonoBehaviour
                     Destroy(gameObject); // Destroy the pickup after adding it to the inventory
                 }
             }
+        }
+
+        if (collision.CompareTag("Terrain"))
+        {
+            FloatingEffect floatingEffect = gameObject.GetComponent<FloatingEffect>();
+
+            floatingEffect.enabled = true;
         }
     }
 }
