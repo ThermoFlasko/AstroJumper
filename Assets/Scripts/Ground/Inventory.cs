@@ -24,9 +24,15 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        items.Add(item);
+        item.OnItemPickUp();
         OnItemAdded?.Invoke(item);
+        
+        if(!item.isStorable)
+        return;
+
+        items.Add(item);
         OnInventoryChanged?.Invoke();
+        
     }
 
     public int GetScrapCount()

@@ -14,7 +14,7 @@ public class InfoManager : MonoBehaviour
     {
         planets = GameObject.FindGameObjectsWithTag("Planet");
 
-        infoText = System.IO.File.ReadAllText(Application.dataPath + "/Level/Prefabs/Level Selector/Planet CSV/Astro Jumper Planets Data - Sheet1.csv");
+        infoText = System.IO.File.ReadAllText(Application.dataPath + "/Level/Prefabs/Level Selector/Planet CSV/Astrojumper Planet Data - Sheet B.csv");
         print(infoText);
 
         readCSV();
