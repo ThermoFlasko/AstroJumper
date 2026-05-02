@@ -2,7 +2,6 @@
 // WARNING: Not supposed to used as the visible object, meant to attach to other sprite object
 // WARNING: One of the objects which is interacting has to have a rigidbody2D for OnTriggerEnter2D to work
 // I might just add a rigidbody2D to the hitbox if more problems appear.
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using System;
@@ -34,7 +33,7 @@ public class HitBox : MonoBehaviour
     public int attackListIndex = 0;
     public GameObject owner;
     [SerializeField] string AnimatorTriggerName;
-    [SerializeField] UnityEditor.Animations.AnimatorController animatorController;
+    [SerializeField] RuntimeAnimatorController animatorController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
