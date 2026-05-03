@@ -133,6 +133,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1151599820599234869
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +456,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1914622701005059046
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +481,7 @@ GameObject:
   - component: {fileID: 7048984415339474448}
   - component: {fileID: 7290081369353414522}
   m_Layer: 5
-  m_Name: SDpaceship PAge Button (2)
+  m_Name: Astrojumper Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +614,7 @@ GameObject:
   - component: {fileID: 8057650448730720788}
   - component: {fileID: 1379837879299113062}
   m_Layer: 5
-  m_Name: Buttons SDpacesjip
+  m_Name: Astrojumper Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +723,7 @@ GameObject:
   - component: {fileID: 6995942024638504450}
   - component: {fileID: 2055859912949509264}
   m_Layer: 5
-  m_Name: Panel(Clone)
+  m_Name: OverlayBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +936,7 @@ GameObject:
   - component: {fileID: 6973910731605955821}
   - component: {fileID: 4133001860178270053}
   m_Layer: 5
-  m_Name: Buttons Player
+  m_Name: Exosuit Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1041,7 @@ GameObject:
   - component: {fileID: 8265226920733501898}
   - component: {fileID: 3310468818234542737}
   m_Layer: 5
-  m_Name: Player PAge Button (1)
+  m_Name: Exosuit Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,12 +1170,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2504044188616228847}
+  - component: {fileID: 3312711245802683978}
   - component: {fileID: 1807995558640093333}
   - component: {fileID: 535556415317314621}
   - component: {fileID: 5137646870394720327}
   - component: {fileID: 4699269792434298501}
   - component: {fileID: 6529840576393318420}
-  - component: {fileID: 3312711245802683978}
   - component: {fileID: 1674689781485805465}
   - component: {fileID: 6595132984833739605}
   m_Layer: 5
@@ -1186,6 +1210,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3312711245802683978
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4332809526372530583}
+  m_CullTransparentMesh: 1
 --- !u!223 &1807995558640093333
 Canvas:
   m_ObjectHideFlags: 0
@@ -1193,21 +1225,21 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4332809526372530583}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &535556415317314621
 MonoBehaviour:
@@ -1293,14 +1325,6 @@ MonoBehaviour:
   menuCanvasGroup: {fileID: 4699269792434298501}
   deactivateGameObjectWhenClosed: 1
   openOnStart: 0
---- !u!222 &3312711245802683978
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4332809526372530583}
-  m_CullTransparentMesh: 1
 --- !u!114 &1674689781485805465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,7 +1693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2307556302267602578}
   m_Layer: 5
-  m_Name: Scrap Counter(Clone)
+  m_Name: Scrap Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
