@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,9 +122,13 @@ MonoBehaviour:
   offset: {x: 1, y: 0, z: 0}
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   currentHitboxActiveDurration: 0
-  displayHitbox: 1
+  displayHitbox: 0
+  animateBaseSprite: 0
   projectilePool: {fileID: 0}
   attackListIndex: 2
+  owner: {fileID: 0}
+  AnimatorTriggerName: 
+  animatorController: {fileID: 0}
 --- !u!61 &3405425898676861640
 BoxCollider2D:
   m_ObjectHideFlags: 0
