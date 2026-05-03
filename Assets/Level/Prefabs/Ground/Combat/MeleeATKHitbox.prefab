@@ -107,8 +107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
   hitBoxName: BaseHitBox
   damage: 10
+  destroyEnemyProjectile: 1
   isPermanent: 0
   duration: 0.3
+  activationDelay: 0
   knockbackForce: 5
   knockbackVerticalForce: 3
   isMelee: 1
@@ -120,6 +122,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   offset: {x: 1, y: 0, z: 0}
+  visualOffset: {x: 0, y: 0, z: 0}
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   currentHitboxActiveDurration: 0
   displayHitbox: 0

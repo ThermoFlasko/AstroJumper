@@ -371,6 +371,7 @@ MonoBehaviour:
   jumpBufferTime: 0.1
   enableDoubleJump: 1
   maxAirJumps: 1
+  max_jumpHoldTime: 0.2
   groundCheck: {fileID: 5682925755960935691}
   groundCheckSize: {x: 0.6, y: 0.1}
   groundMask:
@@ -385,7 +386,12 @@ MonoBehaviour:
   moveActionName: Move
   jumpActionName: Jump
   dropActionName: Drop
+  sprintActionName: Sprint
   knockbackDuration: 0.3
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  IsOnSlope: 0
   isFacingRight: 1
 --- !u!114 &9184704342594544888
 MonoBehaviour:
@@ -406,6 +412,7 @@ MonoBehaviour:
   hitBoxPrefab2: {fileID: 1306917755038486874, guid: 0386b52ded88e344d8bdb8cb69e044e7, type: 3}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 0}
+  meleeAnimator: {fileID: 0}
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: Player
   attackActionName: Attack
@@ -465,6 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec71cf4959e9649a8a669747c3b4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  dialogue: {fileID: 0}
+  FoundFirstScrap: 0
   items: []
 --- !u!82 &2442551665834918446
 AudioSource:
