@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private string _unitName;
     public string UnitName
     {get; set;}
-    [SerializeField] private int _health = 100;
+    [SerializeField] protected int _health = 100;
     public int Health
     {
         get { return _health; }
@@ -34,6 +34,7 @@ public class Unit : MonoBehaviour
 
     public GameObject hitBoxPrefab;
     public GameObject hitBoxPrefab2;
+    public GameObject hitBoxPrefab3;
 
     public ProjectilePool unitProjectilePool;
     private bool useProjectilePool = true;
@@ -41,7 +42,9 @@ public class Unit : MonoBehaviour
 
     [Header("Melee Animator")]
     public Animator meleeAnimator;
+    public Sprite StartSprite;
 
+    public StateMachine stateMachine = new StateMachine();
     void Start()
     {
         if(useProjectilePool)
