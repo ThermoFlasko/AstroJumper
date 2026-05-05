@@ -115,6 +115,7 @@ public class SaveManager : MonoBehaviour
             string json = File.ReadAllText(SaveFilePath);
             bool repairedMissingSpaceshipUpgradeData = !json.Contains("\"spaceshipUpgradeData\"");
             bool repairedMissingGroundUpgradeData = !json.Contains("\"groundTrooperUpgradeData\"");
+            bool repairedMissingGroundEquipmentData = !json.Contains("\"groundEquipmentData\"");
 
             CurrentSaveData = JsonUtility.FromJson<SaveData>(json);
 
@@ -128,7 +129,7 @@ public class SaveManager : MonoBehaviour
             CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
             CurrentSaveData.version = SaveData.CurrentVersion;
 
-            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || upgradedSaveVersion)
+            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || repairedMissingGroundEquipmentData || upgradedSaveVersion)
             {
                 Debug.LogWarning($"Save file at {SaveFilePath} was missing migrated data or was on an older version. Rewriting it with the current schema.");
                 WriteToDisk();
@@ -379,7 +380,7 @@ public class SaveManager : MonoBehaviour
         MakeDirty();
     }
 
-    public string GetEquipedGroundAttackId(GroundAttackType attackType)
+    public string GetEquippedGroundAttackId(GroundAttackType attackType)
     {
         EnsureCurrentSaveData();
 
@@ -389,17 +390,18 @@ public class SaveManager : MonoBehaviour
         return attackType == GroundAttackType.Melee ? CurrentSaveData.groundEquipmentData.equippedMeleeAttackId : CurrentSaveData.groundEquipmentData.equippedRangedAttackId;
     }
 
-    public void SetEquipedGroundAttackId(GroundAttackType attackType, string attackId)
+    public void SetEquippedGroundAttackId
+(GroundAttackType attackType, string attackId)
     {
         EnsureCurrentSaveData();
 
-        if(CurrentSaveData!.groundEquipmentData==null)
+        if (CurrentSaveData?.groundEquipmentData == null)
             return;
-        
-        if (attackType==GroundAttackType.Melee)
-            CurrentSaveData.groundEquipmentData.equippedMeleeAttackId=attackId;
+
+        if (attackType == GroundAttackType.Melee)
+            CurrentSaveData.groundEquipmentData.equippedMeleeAttackId = attackId;
         else
-            CurrentSaveData.groundEquipmentData.equippedRangedAttackId=attackId;
+            CurrentSaveData.groundEquipmentData.equippedRangedAttackId = attackId;
 
         MakeDirty();
     }
@@ -448,5 +450,20 @@ public class SaveManager : MonoBehaviour
             return;
 
         NewMoneyChanged?.Invoke(CurrentSaveData.newMoney);
+    }
+
+    [ContextMenu("Debug Equip Green Blast Melee")]
+    private void DebugEquipGreenBlastMelee()
+    {
+        SetEquippedGroundAttackId(GroundAttackType.Melee, "Green Blast");
+        SaveGame();
+    }
+
+    [ContextMenu("Debug Clear Ground Equipment")]
+    private void DebugClearGroundEquipment()
+    {
+        SetEquippedGroundAttackId(GroundAttackType.Melee, string.Empty);
+        SetEquippedGroundAttackId(GroundAttackType.Ranged, string.Empty);
+        SaveGame();
     }
 }
