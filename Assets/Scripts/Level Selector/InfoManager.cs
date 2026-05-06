@@ -14,7 +14,7 @@ public class InfoManager : MonoBehaviour
     void Start()
     {
         //planets = GameObject.FindGameObjectsWithTag("Planet");
-        textAssetData = Resources.Load<TextAsset>("Astro Jumper Planets Data - Sheet1");
+        //textAssetData = Resources.Load<TextAsset>("Astro Jumper Planets Data - Sheet1");
 
         print(textAssetData.text);
 
