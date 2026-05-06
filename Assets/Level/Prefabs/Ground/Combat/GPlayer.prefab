@@ -410,17 +410,21 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 1306917755038486874, guid: fdbd44605c9d2e541af42a308779a614, type: 3}
   hitBoxPrefab2: {fileID: 1306917755038486874, guid: 0386b52ded88e344d8bdb8cb69e044e7, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 0}
   meleeAnimator: {fileID: 0}
+  StartSprite: {fileID: 0}
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: Player
   attackActionName: Attack
   attackActionName2: Attack2
+  groundAttackCatalog: {fileID: 11400000, guid: 75b837e76c42aee47b2ee5e434a914a5, type: 2}
   projectileCount: 0
   maxProjectile: 3
   playerSpawn: {fileID: 0}
   damageCooldown: 0.5
+  startingHealth: 0
 --- !u!95 &7305848108096325183
 Animator:
   serializedVersion: 7
