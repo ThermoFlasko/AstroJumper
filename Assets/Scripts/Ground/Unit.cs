@@ -181,7 +181,6 @@ public class Unit : MonoBehaviour
 
     private GameObject GenerateAttackSprite(GameObject hitBoxPrefab)
     {
-        print("generating sprite");
         GameObject attackSprite = new GameObject("AttackSprite");
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
 

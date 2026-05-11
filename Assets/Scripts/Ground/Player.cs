@@ -38,7 +38,6 @@ public class Player : Unit
             {
                 _health = startingHealth;
             }
-            print("health changed");
             onPlayerDamaged?.Invoke(this);
             if (Health <= 0)
             {
@@ -59,19 +58,12 @@ public class Player : Unit
         {
             Debug.LogError("Player: Attack action not found in the InputActionAsset.");
         }
-        else        {
-            Debug.Log("Player: Attack action found successfully.");
-        }
         attackAction2 = map.FindAction(attackActionName2);
         if (attackAction2 == null)
         {
             Debug.LogError("Player: Attack2 action not found in the InputActionAsset.");
         }
-        else
-        {
-            Debug.Log("Player: Attack2 action found successfully.");
-        }
-        hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
+            hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
         ApplyGroundTrooperDefaultUpgrades();
     }
