@@ -12,18 +12,22 @@ public class UGS_Analytics : MonoBehaviour
     private void OnEnable()
     {
         Player.onPlayerDeath += PlayerDeathCustomEvent;
+        Inventory.OnItemAdded += ItemPickUpCustomEvent;
     }
 
     private void OnDisable()
     {
         Player.onPlayerDeath -= PlayerDeathCustomEvent;
+        Inventory.OnItemAdded -= ItemPickUpCustomEvent;
     }
 
     async void Start()
     {
-            await UnityServices.InitializeAsync();
-            GiveConsent(); //Get user consent according to various legislations
+        await UnityServices.InitializeAsync();
+        GiveConsent(); //Get user consent according to various legislations
     }
+
+    #region Metric Event Functions
 
     public void PlayerDeathCustomEvent(Unit unit)
     {
@@ -33,9 +37,27 @@ public class UGS_Analytics : MonoBehaviour
         };
 
         AnalyticsService.Instance.RecordEvent(myEvent);
-        AnalyticsService.Instance.Flush();
 
     }
+    
+
+    public void ItemPickUpCustomEvent(Item item)
+    {
+        if (item is not Scrap)
+        {
+            print("item is not scrap");
+            return;
+        }
+
+        CustomEvent myEvent = new CustomEvent("scrapGained")
+        {
+            
+        };
+
+        AnalyticsService.Instance.RecordEvent(myEvent);
+    }
+
+    #endregion
 
     public void GiveConsent()
     {
@@ -46,4 +68,5 @@ public class UGS_Analytics : MonoBehaviour
         });
         Debug.Log($"Consent has been provided. The SDK is now collecting data!");
     }
+
 }
