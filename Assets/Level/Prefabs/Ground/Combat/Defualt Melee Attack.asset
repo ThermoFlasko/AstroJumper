@@ -15,6 +15,6 @@ MonoBehaviour:
   attackId: Melee Defualt
   displayName: Melee Attack
   attackType: 0
-  hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
+  hitBoxPrefab: {fileID: 1306917755038486874, guid: 0386b52ded88e344d8bdb8cb69e044e7, type: 3}
   meleeAttackAnimation: {fileID: 4144720731330400138, guid: b9f00aa44aee55a469c961d8f52d8e8f, type: 3}
   icon: {fileID: 0}

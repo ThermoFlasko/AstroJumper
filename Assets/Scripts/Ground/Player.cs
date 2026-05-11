@@ -78,7 +78,8 @@ public class Player : Unit
         hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
         ApplyGroundTrooperDefaultUpgrades();
-        ApplyGroundEquipmentLoadout();
+        if (!ApplyGroundEquipmentLoadout())
+            StartCoroutine(ApplyGroundEquipmentLoadoutWhenSaveReady());
 
     }
     private void OnEnable()
@@ -228,33 +229,45 @@ public class Player : Unit
         attackAction2.Enable();
     }
 
-    private void ApplyGroundEquipmentLoadout()
+    private IEnumerator ApplyGroundEquipmentLoadoutWhenSaveReady()
+    {
+        float waitTime = 0f;
+        while (SaveManager.instance == null && waitTime < 1f)
+        {
+            waitTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        ApplyGroundEquipmentLoadout();
+    }
+
+    private bool ApplyGroundEquipmentLoadout()
     {
         if (groundAttackCatalog == null)
-            return;
+            return false;
 
-        string meleeAttackId = SaveManager.instance != null
-            ? SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Melee)
-            : string.Empty;
+        if (SaveManager.instance == null)
+            return false;
 
-        string rangedAttackId = SaveManager.instance != null
-            ? SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Ranged)
-            : string.Empty;
+        string meleeAttackId = SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Melee);
+
+        string rangedAttackId = SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Ranged);
 
         GroundAttackDefinition meleeAttack = groundAttackCatalog.GetSafeAttack(meleeAttackId, GroundAttackType.Melee);
         GroundAttackDefinition rangedAttack = groundAttackCatalog.GetSafeAttack(rangedAttackId, GroundAttackType.Ranged);
 
+        // Existing ground controls use hitBoxPrefab for Attack/ranged and hitBoxPrefab2 for Attack2/melee.
+        if (rangedAttack != null)
+        {
+            hitBoxPrefab = rangedAttack.HitBoxPrefab;
+        }
+
         if (meleeAttack != null)
         {
-            hitBoxPrefab = meleeAttack.HitBoxPrefab;
+            hitBoxPrefab2 = meleeAttack.HitBoxPrefab;
 
             if (meleeAttack.MeleeAttackAnimation != null)
                 meleeAnimator = meleeAttack.MeleeAttackAnimation;
-        }
-
-        if (rangedAttack != null)
-        {
-            hitBoxPrefab2 = rangedAttack.HitBoxPrefab;
         }
 
         if (hitBoxPrefab != null)
@@ -262,6 +275,8 @@ public class Player : Unit
 
         if (hitBoxPrefab2 != null)
             hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
+
+        return true;
     }
     
 }
