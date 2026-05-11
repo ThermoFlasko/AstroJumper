@@ -6,27 +6,48 @@ using Unity.Services.Core;
 using Unity.Services.Core.Analytics;
 using UnityEngine.UnityConsent;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 public class UGS_Analytics : MonoBehaviour
 {
 
+    private float currentSceneTimeDuration = 0f;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
+        // metric event actions
         Player.onPlayerDeath += PlayerDeathCustomEvent;
         Unit.onDeath += GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded += ItemPickUpCustomEvent;
+        SceneTransition.OnSceneChanged += LevelCompleteCustomEvent;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     private void OnDisable()
     {
+        // metric event actions
         Player.onPlayerDeath -= PlayerDeathCustomEvent;
         Unit.onDeath -= GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded -= ItemPickUpCustomEvent;
+        SceneTransition.OnSceneChanged -= LevelCompleteCustomEvent;
+    
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     async void Start()
     {
         await UnityServices.InitializeAsync();
         GiveConsent(); //Get user consent according to various legislations
+    }
+
+    private void Update()
+    {
+        currentSceneTimeDuration += Time.deltaTime;
     }
 
     #region Metric Event Functions
@@ -74,6 +95,17 @@ public class UGS_Analytics : MonoBehaviour
         AnalyticsService.Instance.RecordEvent(myEvent);
     }
 
+    public void LevelCompleteCustomEvent(string levelName)
+    {
+        CustomEvent myEvent = new CustomEvent("levelComplete")
+        {
+            {"levelName", levelName},
+            {"levelDuration", currentSceneTimeDuration}
+        };
+
+        AnalyticsService.Instance.RecordEvent(myEvent);
+    }
+
     #endregion
 
     public void GiveConsent()
@@ -84,6 +116,11 @@ public class UGS_Analytics : MonoBehaviour
              AnalyticsIntent = ConsentStatus.Granted,
         });
         Debug.Log($"Consent has been provided. The SDK is now collecting data!");
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentSceneTimeDuration = 0f;
     }
 
 }
