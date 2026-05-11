@@ -9,7 +9,8 @@ public class SaveManager : MonoBehaviour
     public static SaveManager instance { get; private set; }
     public static event Action<int> NewMoneyChanged;
 
-    [Header("Defualts + Files")] [SerializeField]
+    [Header("Defualts + Files")]
+    [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
 
     [SerializeField] private string saveFolderName = "Saves";
@@ -30,7 +31,7 @@ public class SaveManager : MonoBehaviour
     private bool dirty;
     private float dirtyTimer;
 
-    [Header("AutoSave")] [SerializeField] private bool autoSave = true;
+    [Header("AutoSave")][SerializeField] private bool autoSave = true;
     [FormerlySerializedAs("autoSaveDelay")]
     [SerializeField] private float autoSaveDelaySaveTime = 10.0f;
 
@@ -114,6 +115,7 @@ public class SaveManager : MonoBehaviour
             string json = File.ReadAllText(SaveFilePath);
             bool repairedMissingSpaceshipUpgradeData = !json.Contains("\"spaceshipUpgradeData\"");
             bool repairedMissingGroundUpgradeData = !json.Contains("\"groundTrooperUpgradeData\"");
+            bool repairedMissingGroundEquipmentData = !json.Contains("\"groundEquipmentData\"");
 
             CurrentSaveData = JsonUtility.FromJson<SaveData>(json);
 
@@ -127,7 +129,7 @@ public class SaveManager : MonoBehaviour
             CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
             CurrentSaveData.version = SaveData.CurrentVersion;
 
-            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || upgradedSaveVersion)
+            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || repairedMissingGroundEquipmentData || upgradedSaveVersion)
             {
                 Debug.LogWarning($"Save file at {SaveFilePath} was missing migrated data or was on an older version. Rewriting it with the current schema.");
                 WriteToDisk();
@@ -256,7 +258,7 @@ public class SaveManager : MonoBehaviour
                 return CurrentSaveData.spaceshipUpgradeData.maxHealthLevel;
             case PlayerUpgradeState.UpgradeType.MaxShields:
                 return CurrentSaveData.spaceshipUpgradeData.maxShieldsLevel;
-            
+
         }
 
         return 0;
@@ -378,6 +380,32 @@ public class SaveManager : MonoBehaviour
         MakeDirty();
     }
 
+    public string GetEquippedGroundAttackId(GroundAttackType attackType)
+    {
+        EnsureCurrentSaveData();
+
+        if (CurrentSaveData?.groundEquipmentData == null)
+            return string.Empty;
+
+        return attackType == GroundAttackType.Melee ? CurrentSaveData.groundEquipmentData.equippedMeleeAttackId : CurrentSaveData.groundEquipmentData.equippedRangedAttackId;
+    }
+
+    public void SetEquippedGroundAttackId
+(GroundAttackType attackType, string attackId)
+    {
+        EnsureCurrentSaveData();
+
+        if (CurrentSaveData?.groundEquipmentData == null)
+            return;
+
+        if (attackType == GroundAttackType.Melee)
+            CurrentSaveData.groundEquipmentData.equippedMeleeAttackId = attackId;
+        else
+            CurrentSaveData.groundEquipmentData.equippedRangedAttackId = attackId;
+
+        MakeDirty();
+    }
+
     #endregion
 
     private void EnsureCurrentSaveData()
@@ -422,5 +450,20 @@ public class SaveManager : MonoBehaviour
             return;
 
         NewMoneyChanged?.Invoke(CurrentSaveData.newMoney);
+    }
+
+    [ContextMenu("Debug Equip Green Blast Melee")]
+    private void DebugEquipGreenBlastMelee()
+    {
+        SetEquippedGroundAttackId(GroundAttackType.Melee, "Green Blast");
+        SaveGame();
+    }
+
+    [ContextMenu("Debug Clear Ground Equipment")]
+    private void DebugClearGroundEquipment()
+    {
+        SetEquippedGroundAttackId(GroundAttackType.Melee, string.Empty);
+        SetEquippedGroundAttackId(GroundAttackType.Ranged, string.Empty);
+        SaveGame();
     }
 }

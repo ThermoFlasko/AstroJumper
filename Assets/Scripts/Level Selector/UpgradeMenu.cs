@@ -9,6 +9,11 @@ public class UpgradeMenu : MonoBehaviour
 
     public TMP_Text upgradesScrapCounterText;
 
+    [Header("Ground Weapon Selection")]
+    [SerializeField] private GroundAttackCatalogSO groundAttackCatalog;
+    [SerializeField] private TextMeshProUGUI equippedMeleeAttackLabel;
+    [SerializeField] private TextMeshProUGUI equippedRangedAttackLabel;
+
     [SerializeField] private UpgradeButton[] upgradeButtons;
     [SerializeField] private Canvas[] canvasesToToggle;
     [SerializeField] private CanvasGroup menuCanvasGroup;
@@ -85,6 +90,34 @@ public class UpgradeMenu : MonoBehaviour
 
         RefreshUpgradesScrapCounter();
         RefreshUpgradeButtons();
+        RefreshGroundWeaponSelection();
+    }
+
+    public void EquipGroundAttack(string attackIdOrDisplayName)
+    {
+        GroundAttackDefinition attack = FindGroundAttack(attackIdOrDisplayName);
+        if (attack == null)
+        {
+            Debug.LogWarning($"Could not equip ground attack '{attackIdOrDisplayName}'. It was not found in the ground attack catalog.", this);
+            return;
+        }
+
+        if (groundAttackCatalog == null || !groundAttackCatalog.IsValidAttack(attack, attack.AttackType))
+        {
+            Debug.LogWarning($"Could not equip ground attack '{attack.DisplayName}'. The attack does not match its configured type or prefab.", this);
+            return;
+        }
+
+        if (SaveManager.instance == null)
+        {
+            Debug.LogWarning($"Could not equip ground attack '{attack.DisplayName}' because there is no SaveManager in the scene.", this);
+            RefreshGroundWeaponSelection();
+            return;
+        }
+
+        SaveManager.instance.SetEquippedGroundAttackId(attack.AttackType, attack.AttackId);
+        SaveManager.instance.SaveGame();
+        RefreshGroundWeaponSelection();
     }
 
     private void RefreshUpgradeButtons()
@@ -139,6 +172,60 @@ public class UpgradeMenu : MonoBehaviour
             return;
 
         upgradesScrapCounterText.text = currentMoney.ToString();
+    }
+
+    private void RefreshGroundWeaponSelection()
+    {
+        SetGroundWeaponLabel(equippedMeleeAttackLabel, GroundAttackType.Melee);
+        SetGroundWeaponLabel(equippedRangedAttackLabel, GroundAttackType.Ranged);
+    }
+
+    private void SetGroundWeaponLabel(TextMeshProUGUI label, GroundAttackType attackType)
+    {
+        if (label == null)
+            return;
+
+        GroundAttackDefinition attack = GetEquippedGroundAttack(attackType);
+        string slotName = attackType == GroundAttackType.Melee ? "Melee" : "Ranged";
+        string weaponName = attack != null ? attack.DisplayName : "None";
+
+        label.text = $"{slotName} Slot: {weaponName}";
+    }
+
+    private GroundAttackDefinition GetEquippedGroundAttack(GroundAttackType attackType)
+    {
+        if (groundAttackCatalog == null)
+            return null;
+
+        string equippedAttackId = SaveManager.instance != null
+            ? SaveManager.instance.GetEquippedGroundAttackId(attackType)
+            : string.Empty;
+
+        return groundAttackCatalog.GetSafeAttack(equippedAttackId, attackType);
+    }
+
+    private GroundAttackDefinition FindGroundAttack(string attackIdOrDisplayName)
+    {
+        if (groundAttackCatalog == null || string.IsNullOrWhiteSpace(attackIdOrDisplayName))
+            return null;
+
+        GroundAttackDefinition attack = groundAttackCatalog.GetAttackById(attackIdOrDisplayName);
+        if (attack != null)
+            return attack;
+
+        foreach (GroundAttackDefinition catalogAttack in groundAttackCatalog.Attacks)
+        {
+            if (catalogAttack == null)
+                continue;
+
+            if (string.Equals(catalogAttack.AttackId, attackIdOrDisplayName, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(catalogAttack.DisplayName, attackIdOrDisplayName, StringComparison.OrdinalIgnoreCase))
+            {
+                return catalogAttack;
+            }
+        }
+
+        return null;
     }
 
 #if UNITY_EDITOR

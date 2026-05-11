@@ -2,6 +2,7 @@
 // WARNING: Not supposed to used as the visible object, meant to attach to other sprite object
 // WARNING: One of the objects which is interacting has to have a rigidbody2D for OnTriggerEnter2D to work
 // I might just add a rigidbody2D to the hitbox if more problems appear.
+using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using System;
@@ -14,6 +15,7 @@ public class HitBox : MonoBehaviour
     [SerializeField] private bool destroyEnemyProjectile = false; // if the hitbox should destroy enemy projectile when it hits it, for player hitbox, it should be false, for enemy hitbox, it should be true
     [SerializeField] private bool isPermanent = false; // for hitboxes you attach to the enemy itself
     [SerializeField] private float duration = 1f;
+    [SerializeField] private float activationDelay = 0f;
 
     [SerializeField] private float knockbackForce = 5f;
     [SerializeField] private float knockbackVerticalForce = 3f;
@@ -22,21 +24,20 @@ public class HitBox : MonoBehaviour
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private LayerMask targetLayer; // which layer the hitbox should interact with (player, enemy, etc.)
     [SerializeField] private LayerMask ignoreLayer; // which layer the hitbox should ignore 
-    [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // offset to tell where the hitbox should be based on the parent object
+    [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // gameplay spawn offset for the whole attack
+    [SerializeField] private Vector3 visualOffset = Vector3.zero; // art-only offset used by melee visuals
     [SerializeField] private Sprite sprite;
     private Collider2D hitBoxCollider;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private float currentHitboxActiveDurration = 0f; // how long has the hitbox out
     [SerializeField] private bool displayHitbox = false;
-    public bool animateBaseSprite = false;
+    private Coroutine activationCoroutine;
+
     public static event Action<int> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
-    public GameObject owner;
-    [SerializeField] string AnimatorTriggerName;
-    [SerializeField] RuntimeAnimatorController animatorController;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         hitBoxCollider = GetComponent<Collider2D>();
         if (hitBoxCollider == null)
@@ -44,20 +45,57 @@ public class HitBox : MonoBehaviour
             Debug.LogError("HitBox: No Collider2D found on the GameObject.");
         }
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (!displayHitbox)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        ApplyHitBoxSprite();
+    }
+
+    private void OnEnable()
+    {
+        currentHitboxActiveDurration = 0f;
+        ApplyHitBoxSprite();
+
+        if (hitBoxCollider == null)
         {
-            spriteRenderer.sprite = null;
+            return;
         }
-        else
+
+        hitBoxCollider.enabled = false;
+        activationCoroutine = StartCoroutine(EnableColliderAfterDelay());
+    }
+
+    private void OnDisable()
+    {
+        if (activationCoroutine != null)
         {
-            spriteRenderer.sprite = sprite;
+            StopCoroutine(activationCoroutine);
+            activationCoroutine = null;
         }
-        StartCoroutine(ResetCollider());
-        if (animateBaseSprite)
+
+        if (hitBoxCollider != null)
         {
-            gameObject.transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+            hitBoxCollider.enabled = false;
         }
+    }
+
+    private void ApplyHitBoxSprite()
+    {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
+
+        spriteRenderer.sprite = displayHitbox ? sprite : null;
+    }
+
+    private IEnumerator EnableColliderAfterDelay()
+    {
+        if (activationDelay > 0f)
+        {
+            yield return new WaitForSeconds(activationDelay);
+        }
+
+        yield return ResetCollider();
+        activationCoroutine = null;
     }
 
     //resets collider so that when player continues to be in the hitbox after it is created, it can still trigger the hitbox
@@ -84,10 +122,8 @@ public class HitBox : MonoBehaviour
 
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         GameObject otherObject = other.gameObject;
 
         //if enemy projecitle desotry it 
@@ -102,6 +138,7 @@ public class HitBox : MonoBehaviour
         other.transform == transform.root)
             return;
 
+        //print("hitbox: Hit " + other.name);
         if ((targetLayer.value & (1 << otherObject.layer)) == 0 || (ignoreLayer.value & (1 << otherObject.layer)) != 0) // Checks if objects layer is in the layer mask, found from https://discussions.unity.com/t/checking-if-a-layer-is-in-a-layer-mask/860331
         {
             //print("hit wrong layer, ignoring");
@@ -119,11 +156,6 @@ public class HitBox : MonoBehaviour
         }
     }
 
-    public void SetOwner(GameObject go)
-    {
-        owner = go;
-    }
-
     public bool GetIsMelee()
     {
         return isMelee;
@@ -134,6 +166,11 @@ public class HitBox : MonoBehaviour
         return offset;
     }
 
+    public Vector3 GetVisualOffset()
+    {
+        return visualOffset;
+    }
+
     public Sprite GetSprite()
     {
         return sprite;
@@ -141,6 +178,7 @@ public class HitBox : MonoBehaviour
 
     public float GetKnockbackForce() => knockbackForce;
     public float GetKnockbackVerticalForce() => knockbackVerticalForce;
+    public float GetActivationDelay() => activationDelay;
 
     public void DestroyAttack()
     {
@@ -151,9 +189,8 @@ public class HitBox : MonoBehaviour
             resetDuration();
             return;
         }
-        Destroy(transform.parent.gameObject); 
+        Destroy(transform.parent.gameObject);
         Destroy(gameObject);
-        
     }
     public void ForceDestroy()
     {
@@ -175,10 +212,5 @@ public class HitBox : MonoBehaviour
     public float GetProjectileSpeed()
     {
         return projectileSpeed;
-    }
-
-    public string GetAnimatorTrigger()
-    {
-        return AnimatorTriggerName;
     }
 }

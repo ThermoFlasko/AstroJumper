@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEditor;
 public class Player : Unit
 {
-    
+
     [SerializeField] private InputActionAsset actionsAsset; //this is jsut to test, will move to GroundMovement when it is updated
     [SerializeField] private string actionMapName = "Player";
     [SerializeField] private string attackActionName = "Attack";
@@ -17,8 +17,11 @@ public class Player : Unit
     public static event Action<Unit> onPlayerDamaged;
     private bool isAttacking2 = false;
 
+    [Header("Ground Equipment")]
+    [SerializeField] private GroundAttackCatalogSO groundAttackCatalog;
+
     [Header("Projectile Variables")]
-    [SerializeField] private int projectileCount = 0; 
+    [SerializeField] private int projectileCount = 0;
     [SerializeField] private int maxProjectile = 3;
 
     [Header("Player Spawnpoint")]
@@ -30,11 +33,11 @@ public class Player : Unit
     [SerializeField] public int startingHealth;
     public new int Health
     {
-        get {return _health;}
-        set 
+        get { return _health; }
+        set
         {
             _health = value;
-            if(_health >= startingHealth)
+            if (_health >= startingHealth)
             {
                 _health = startingHealth;
             }
@@ -59,7 +62,8 @@ public class Player : Unit
         {
             Debug.LogError("Player: Attack action not found in the InputActionAsset.");
         }
-        else        {
+        else
+        {
             Debug.Log("Player: Attack action found successfully.");
         }
         attackAction2 = map.FindAction(attackActionName2);
@@ -74,6 +78,9 @@ public class Player : Unit
         hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
         ApplyGroundTrooperDefaultUpgrades();
+        if (!ApplyGroundEquipmentLoadout())
+            StartCoroutine(ApplyGroundEquipmentLoadoutWhenSaveReady());
+
     }
     private void OnEnable()
     {
@@ -105,21 +112,21 @@ public class Player : Unit
             return;
 
         // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+        if (unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
         {
             //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab);
             return;
         }
-        else if(hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+        else if (hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
         {
             //print("melee attack");
             BeginAttack(hitBoxPrefab);
             isAttacking = true;
             return;
         }
-        else if(projectileCount < maxProjectile)
+        else if (projectileCount < maxProjectile)
         {
             //print("no projectile pool, creating projectile");
             BeginAttack(hitBoxPrefab);
@@ -133,21 +140,21 @@ public class Player : Unit
             return;
 
         // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+        if (unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
         {
             //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab2);
             return;
         }
-        else if(hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+        else if (hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
         {
             //print("melee attack");
             BeginAttack(hitBoxPrefab2);
             isAttacking2 = true;
             return;
         }
-        else if(projectileCount < maxProjectile)
+        else if (projectileCount < maxProjectile)
         {
             //print("no projectile pool, creating projectile");
             BeginAttack(hitBoxPrefab2);
@@ -178,18 +185,18 @@ public class Player : Unit
 
     private void OnHitBoxDurationOver(int attackIndex)
     {
-        if(attackIndex == 1)
+        if (attackIndex == 1)
         {
             isAttacking = false;
-            if(!hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+            if (!hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
             {
                 projectileCount--;
             }
         }
-        else if(attackIndex == 2)
+        else if (attackIndex == 2)
         {
             isAttacking2 = false;
-            if(!hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+            if (!hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
             {
                 projectileCount--;
             }
@@ -221,6 +228,57 @@ public class Player : Unit
         attackAction.Enable();
         attackAction2.Enable();
     }
+
+    private IEnumerator ApplyGroundEquipmentLoadoutWhenSaveReady()
+    {
+        float waitTime = 0f;
+        while (SaveManager.instance == null && waitTime < 1f)
+        {
+            waitTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        ApplyGroundEquipmentLoadout();
+    }
+
+    private bool ApplyGroundEquipmentLoadout()
+    {
+        if (groundAttackCatalog == null)
+            return false;
+
+        if (SaveManager.instance == null)
+            return false;
+
+        string meleeAttackId = SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Melee);
+
+        string rangedAttackId = SaveManager.instance.GetEquippedGroundAttackId(GroundAttackType.Ranged);
+
+        GroundAttackDefinition meleeAttack = groundAttackCatalog.GetSafeAttack(meleeAttackId, GroundAttackType.Melee);
+        GroundAttackDefinition rangedAttack = groundAttackCatalog.GetSafeAttack(rangedAttackId, GroundAttackType.Ranged);
+
+        // Existing ground controls use hitBoxPrefab for Attack/ranged and hitBoxPrefab2 for Attack2/melee.
+        if (rangedAttack != null)
+        {
+            hitBoxPrefab = rangedAttack.HitBoxPrefab;
+        }
+
+        if (meleeAttack != null)
+        {
+            hitBoxPrefab2 = meleeAttack.HitBoxPrefab;
+
+            if (meleeAttack.MeleeAttackAnimation != null)
+                meleeAnimator = meleeAttack.MeleeAttackAnimation;
+        }
+
+        if (hitBoxPrefab != null)
+            hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
+
+        if (hitBoxPrefab2 != null)
+            hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
+
+        return true;
+    }
+    
 }
 
 #if UNITY_EDITOR
@@ -231,7 +289,7 @@ public class PlayerInspector : Editor
     {
         base.OnInspectorGUI();
 
-        if(GUILayout.Button("Deal Damage"))
+        if (GUILayout.Button("Deal Damage"))
         {
             Player player = (Player)target;
 

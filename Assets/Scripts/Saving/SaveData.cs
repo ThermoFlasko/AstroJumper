@@ -1,10 +1,12 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class SaveData
 {
-    public const float CurrentVersion = 0.68f;
+    //Any time we make changes pdate this so the game nows theres no information to be saved 
+    public const float CurrentVersion = 0.69f;
 
     public float version = CurrentVersion;
 
@@ -13,7 +15,7 @@ public class SaveData
     //------Upgrades (Player Spaceship current levels)-------
     public SpaceshipUpgradeData spaceshipUpgradeData = new SpaceshipUpgradeData();
     public GroundTrooperUpgradeData groundTrooperUpgradeData = new GroundTrooperUpgradeData();
-
+    public GroundEquipmentData groundEquipmentData = new GroundEquipmentData();
     [Serializable]
     public class SpaceshipUpgradeData
     {
@@ -36,6 +38,13 @@ public class SaveData
         public int maxHealthLevel;
     }
 
+    [Serializable]
+    public class GroundEquipmentData
+    {
+        public string equippedMeleeAttackId;
+        public string equippedRangedAttackId;
+    }
+
     public void EnsureInitialized(DefualtGameSaveSO defaults)
     {
         if (spaceshipUpgradeData == null)
@@ -47,6 +56,12 @@ public class SaveData
         {
             groundTrooperUpgradeData = CreateDefaultGroundTrooperUpgradeData(defaults != null ? defaults.groundTrooperDefaults : null);
         }
+
+        if (groundEquipmentData == null)
+        {
+            groundEquipmentData = new GroundEquipmentData();
+        }
+
     }
 
     public static SaveData CreateDefualtSaveData(DefualtGameSaveSO defaults)
