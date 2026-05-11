@@ -12,12 +12,14 @@ public class UGS_Analytics : MonoBehaviour
     private void OnEnable()
     {
         Player.onPlayerDeath += PlayerDeathCustomEvent;
+        Unit.onDeath += GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded += ItemPickUpCustomEvent;
     }
 
     private void OnDisable()
     {
         Player.onPlayerDeath -= PlayerDeathCustomEvent;
+        Unit.onDeath -= GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded -= ItemPickUpCustomEvent;
     }
 
@@ -40,6 +42,21 @@ public class UGS_Analytics : MonoBehaviour
 
     }
     
+    public void GroundEnemyDeathCustomEvent(Unit unit)
+    {
+        if (unit is Player)
+        {
+            print("player killed");
+            return;
+        }
+
+        CustomEvent myEvent = new CustomEvent("groundEnemyDeath")
+        {
+            {"enemyName", unit.name}
+        };
+
+        AnalyticsService.Instance.RecordEvent(myEvent);
+    }
 
     public void ItemPickUpCustomEvent(Item item)
     {
