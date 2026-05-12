@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98c179425c68ae4caa23ac1df46218f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoManager
-  textAssetData: {fileID: 4900000, guid: be146adf085b5e94c9007134f89482e6, type: 3}
+  textAssetData: {fileID: 4900000, guid: c52da964837535d44b40cab49ac730b7, type: 3}
   planets:
   - {fileID: 997587514}
   - {fileID: 905167635}
