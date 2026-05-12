@@ -17,6 +17,9 @@ public class Player : Unit
     public static event Action<Unit> onPlayerDamaged;
     private bool isAttacking2 = false;
 
+    public GameObject healthUIGameObject;
+    private Animator  UIhealth;
+
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
     [SerializeField] private int maxProjectile = 3;
@@ -74,7 +77,9 @@ public class Player : Unit
         hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
         ApplyGroundTrooperDefaultUpgrades();
-    }
+        UIhealth = healthUIGameObject.GetComponent<Animator>();
+
+   }
     private void OnEnable()
     {
         ApplyGroundTrooperDefaultUpgrades();
@@ -164,6 +169,7 @@ public class Player : Unit
 
         //print("Taking damage");
         Health -= amount;
+        UIhealth.SetTrigger("IsDamaged");
 
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);

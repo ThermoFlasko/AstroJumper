@@ -256,6 +256,33 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &171995095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1914622701005059046, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 1923952653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &171995100
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171995095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &381037741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1711,6 +1738,7 @@ GameObject:
   - component: {fileID: 1088386848}
   - component: {fileID: 1088386847}
   - component: {fileID: 1088386846}
+  - component: {fileID: 1088386849}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -1757,7 +1785,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1826,8 +1854,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -661817789, guid: 8fa6384c946cd5843b9432ff04cf957b, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1844,6 +1872,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088386844}
   m_CullTransparentMesh: 1
+--- !u!95 &1088386849
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088386844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1171064092 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5626896301787443470, guid: d6562edf502f3364589e55703c281cf7, type: 3}
@@ -2219,6 +2269,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3310468818234542737, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4332809526372530583, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Name
       value: Upgrade Menu Screen
@@ -2227,10 +2281,35 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1088386844}
+    - target: {fileID: 6375855798790158146, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+    - target: {fileID: 7048984415339474448, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+    - target: {fileID: 7290081369353414522, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265226920733501898, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1395580684873375093, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2045790725}
+    - targetCorrespondingSourceObject: {fileID: 3976807336649606150, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2100124635}
+    - targetCorrespondingSourceObject: {fileID: 1914622701005059046, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 171995100}
   m_SourcePrefab: {fileID: 100100000, guid: 67e84647156c45d4b8759885a744e658, type: 3}
 --- !u!114 &1923952657 stripped
 MonoBehaviour:
@@ -2254,11 +2333,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &2045790720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1395580684873375093, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 1923952653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2045790725
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045790720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2082169963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
   m_PrefabInstance: {fileID: 1037500531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100124630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3976807336649606150, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 1923952653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2100124635
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100124630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2137545620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2403,7 +2536,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3f070d84945acb84a9a4e0abf1e3ca0f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ab5fc8fbd2ecf249be275cc85884251, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2422,8 +2555,8 @@ Transform:
   m_GameObject: {fileID: 2142428394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.99, z: 0}
-  m_LocalScale: {x: 2.9658, y: 1.8812, z: 1}
+  m_LocalPosition: {x: -0.31, y: 0.99, z: 0}
+  m_LocalScale: {x: 2.99, y: 2.79, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2466,7 +2599,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 6.4}
+    oldSize: {x: 6.4, y: 3.6}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
