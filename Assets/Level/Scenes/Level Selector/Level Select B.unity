@@ -297,15 +297,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d37ebee00e5d62b47976156bbd171b8c, type: 3}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.b
-      value: 0.254717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.g
-      value: 0.254717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.r
-      value: 0.254717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925794667870993622, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -349,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6934221053434327442, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Name
@@ -2162,15 +2162,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7950ddc3d08a95949b73408118e6376c, type: 3}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 5925794667870993622, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2212,6 +2212,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6934221053434327442, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Name
       value: Planet 1
@@ -2250,7 +2254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98c179425c68ae4caa23ac1df46218f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoManager
-  textAssetData: {fileID: 4900000, guid: c52da964837535d44b40cab49ac730b7, type: 3}
+  textAssetData: {fileID: 4900000, guid: 2e292cd2445e97d478711a8521b516ab, type: 3}
   planets:
   - {fileID: 997587514}
   - {fileID: 905167635}
@@ -2563,15 +2567,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3df763bb22251d740b97a1774ded0098, type: 3}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 4973771182643227411, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 5925794667870993622, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2611,6 +2615,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925794667870993622, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934221053434327442, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
