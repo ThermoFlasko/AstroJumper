@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _unitName: Player
-  _health: 300
+  _health: 100
   _damage: 10
   hitBoxPrefab: {fileID: 1306917755038486874, guid: fdbd44605c9d2e541af42a308779a614, type: 3}
   hitBoxPrefab2: {fileID: 1306917755038486874, guid: 9d34900c7c15ebd40a0fff1c9746b4f3, type: 3}
