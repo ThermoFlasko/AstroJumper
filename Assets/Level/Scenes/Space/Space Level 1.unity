@@ -858,7 +858,7 @@ MonoBehaviour:
   sharedShipPrefab: {fileID: 0}
   playerTeamShipPrefab: {fileID: 5549628142487207619, guid: 17deb750bba116f49b383467560f0c58, type: 3}
   enemyTeamShipPrefab: {fileID: 5549628142487207619, guid: 66b35331de539834f819bbbac8b67800, type: 3}
-  squadsPerTeam: 12
+  squadsPerTeam: 6
   shipsPerSquad: 3
   formationType: 0
   squadState: 1
@@ -873,10 +873,10 @@ MonoBehaviour:
   fleetSpawnRadiusAroundFlagship: 275
   squadSpawnJitter: {x: 20, y: 20}
   enableFlagshipSlowMovement: 1
-  defendRatio: 0.34
-  attackRatio: 0.43
-  defendOrbitRadius: 180
-  attackOrbitRadius: 220
+  defendRatio: 0.5
+  attackRatio: 0.5
+  defendOrbitRadius: 60
+  attackOrbitRadius: 70
   objectiveOrbitSpeedDegPerSec: 14
   roamCorridorHalfWidth: 140
   roamProgressSpeed: 0.18
