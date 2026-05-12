@@ -110,6 +110,7 @@ MonoBehaviour:
   destroyEnemyProjectile: 0
   isPermanent: 0
   duration: 2.5
+  activationDelay: 0
   knockbackForce: 3
   knockbackVerticalForce: 2
   isMelee: 0
@@ -121,6 +122,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   offset: {x: 0.5, y: 0, z: 0}
+  visualOffset: {x: 0, y: 0, z: 0}
   sprite: {fileID: -928775234, guid: 5815b9bdaab236844a911d56fe8a9845, type: 3}
   currentHitboxActiveDurration: 0
   displayHitbox: 1
@@ -170,5 +172,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
