@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pause Button Animations
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -4679613424618841286, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dc77bbaacb215564082e7512afee0681, type: 2}
+  - m_OriginalClip: {fileID: -4398168938517100683, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bf11efa62daf3114894201a90d78eda0, type: 2}
+  - m_OriginalClip: {fileID: -5132762113472001525, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8bfb85ee1abe4e64fb188a5240a3b4f9, type: 2}
+  - m_OriginalClip: {fileID: -5222928649665024039, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 20f34e96a221bb04a928245baa87f2c4, type: 2}
+  - m_OriginalClip: {fileID: 3839920923412396439, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9cd14dbf161692340812b9b9d234a12d, type: 2}
