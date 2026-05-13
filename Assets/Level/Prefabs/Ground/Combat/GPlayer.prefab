@@ -97,12 +97,12 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 1.15
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 5.1, y: 0.1}
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -112,9 +112,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  field of view: 4.979106
+  orthographic: 1
+  orthographic size: 6.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,7 +310,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -371,6 +371,7 @@ MonoBehaviour:
   jumpBufferTime: 0.1
   enableDoubleJump: 1
   maxAirJumps: 1
+  max_jumpHoldTime: 0.2
   groundCheck: {fileID: 5682925755960935691}
   groundCheckSize: {x: 0.6, y: 0.1}
   groundMask:
@@ -385,7 +386,12 @@ MonoBehaviour:
   moveActionName: Move
   jumpActionName: Jump
   dropActionName: Drop
+  sprintActionName: Sprint
   knockbackDuration: 0.3
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  IsOnSlope: 0
   isFacingRight: 1
 --- !u!114 &9184704342594544888
 MonoBehaviour:
@@ -403,17 +409,22 @@ MonoBehaviour:
   _health: 100
   _damage: 10
   hitBoxPrefab: {fileID: 1306917755038486874, guid: fdbd44605c9d2e541af42a308779a614, type: 3}
-  hitBoxPrefab2: {fileID: 1306917755038486874, guid: 0386b52ded88e344d8bdb8cb69e044e7, type: 3}
+  hitBoxPrefab2: {fileID: 1306917755038486874, guid: 9d34900c7c15ebd40a0fff1c9746b4f3, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 0}
+  meleeAnimator: {fileID: 4144720731330400138, guid: d00ea0fa495a8094c80671b5e0ed5e09, type: 3}
+  StartSprite: {fileID: 0}
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: Player
   attackActionName: Attack
   attackActionName2: Attack2
+  groundAttackCatalog: {fileID: 11400000, guid: 75b837e76c42aee47b2ee5e434a914a5, type: 2}
   projectileCount: 0
   maxProjectile: 3
   playerSpawn: {fileID: 0}
   damageCooldown: 0.5
+  startingHealth: 0
 --- !u!95 &7305848108096325183
 Animator:
   serializedVersion: 7
@@ -465,6 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec71cf4959e9649a8a669747c3b4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  dialogue: {fileID: 11400000, guid: 19bcbd3c064e1f541bf3183288af1353, type: 2}
+  FoundFirstScrap: 0
   items: []
 --- !u!82 &2442551665834918446
 AudioSource:

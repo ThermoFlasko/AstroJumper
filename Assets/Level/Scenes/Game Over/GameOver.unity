@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
   gameOverPanel: {fileID: 397349848}
-  levelSelectScene: LevelSelector
+  levelSelectScene: Level Selector 2
   mainMenuScene: MainMenu
 --- !u!4 &1499202408
 Transform:

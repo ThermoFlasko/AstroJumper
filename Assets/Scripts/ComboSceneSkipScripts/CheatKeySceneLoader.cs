@@ -49,6 +49,12 @@ public class CheatKeySceneLoader : MonoBehaviour
         {
             SceneManager.LoadScene("Level Selector 2");
         }
+
+        // load level selector
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Y) && Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene("Level Select B");
+        }
     }
 
 }

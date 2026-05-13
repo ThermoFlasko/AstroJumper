@@ -11,11 +11,15 @@ public class Player : Unit
     [SerializeField] private string actionMapName = "Player";
     [SerializeField] private string attackActionName = "Attack";
     [SerializeField] private string attackActionName2 = "Attack2";
+    [SerializeField] private GroundAttackCatalogSO groundAttackCatalog;
     private InputAction attackAction;
     private InputAction attackAction2;
     public static event Action<Unit> onPlayerDeath;
     public static event Action<Unit> onPlayerDamaged;
     private bool isAttacking2 = false;
+
+    public GameObject healthUIGameObject;
+    private Animator  UIhealth;
 
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
@@ -66,7 +70,16 @@ public class Player : Unit
             hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
         hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
         ApplyGroundTrooperDefaultUpgrades();
-    }
+        if (healthUIGameObject != null)
+        {
+            UIhealth = healthUIGameObject.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogWarning($"{name} is missing a health UI GameObject. Damage UI animations will be skipped.", this);
+        }
+
+   }
     private void OnEnable()
     {
         ApplyGroundTrooperDefaultUpgrades();
@@ -96,15 +109,18 @@ public class Player : Unit
         if (isAttacking)
             return;
 
+        if (!TryGetHitBox(hitBoxPrefab, nameof(hitBoxPrefab), out HitBox hitBoxInfo))
+            return;
+
         // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
             //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab);
             return;
         }
-        else if(hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+        else if(hitBoxInfo.GetIsMelee())
         {
             //print("melee attack");
             BeginAttack(hitBoxPrefab);
@@ -124,15 +140,18 @@ public class Player : Unit
         if (isAttacking2)
             return;
 
+        if (!TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo))
+            return;
+
         // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
             //print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab2);
             return;
         }
-        else if(hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+        else if(hitBoxInfo.GetIsMelee())
         {
             //print("melee attack");
             BeginAttack(hitBoxPrefab2);
@@ -156,6 +175,10 @@ public class Player : Unit
 
         //print("Taking damage");
         Health -= amount;
+        if (UIhealth != null)
+        {
+            UIhealth.SetTrigger("IsDamaged");
+        }
 
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
@@ -173,7 +196,7 @@ public class Player : Unit
         if(attackIndex == 1)
         {
             isAttacking = false;
-            if(!hitBoxPrefab.GetComponent<HitBox>().GetIsMelee())
+            if(TryGetHitBox(hitBoxPrefab, nameof(hitBoxPrefab), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
                 projectileCount--;
             }
@@ -181,7 +204,7 @@ public class Player : Unit
         else if(attackIndex == 2)
         {
             isAttacking2 = false;
-            if(!hitBoxPrefab2.GetComponent<HitBox>().GetIsMelee())
+            if(TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
                 projectileCount--;
             }
@@ -200,6 +223,79 @@ public class Player : Unit
     {
         int healthUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundMaxHealthUpgradeBoost() : 0;
         Health = startingHealth + healthUpgrade;
+    }
+
+    public void RefreshGroundAttackLoadout()
+    {
+        ApplySavedGroundAttackLoadout();
+        AssignAttackListIndices();
+    }
+
+    private void ApplySavedGroundAttackLoadout()
+    {
+        if (groundAttackCatalog == null)
+        {
+            Debug.LogWarning($"{name} is missing a ground attack catalog. Using the hitbox prefabs already assigned on the player.", this);
+            return;
+        }
+
+        ApplyGroundAttackToSlot(GroundAttackType.Ranged, ref hitBoxPrefab);
+        ApplyGroundAttackToSlot(GroundAttackType.Melee, ref hitBoxPrefab2);
+    }
+
+    private void ApplyGroundAttackToSlot(GroundAttackType attackType, ref GameObject slot)
+    {
+        string equippedAttackId = SaveManager.instance != null
+            ? SaveManager.instance.GetEquippedGroundAttackId(attackType)
+            : string.Empty;
+
+        GroundAttackDefinition attack = groundAttackCatalog.GetSafeAttack(equippedAttackId, attackType);
+        if (attack == null)
+        {
+            Debug.LogWarning($"{name} could not resolve a {attackType} ground attack. Check the ground attack catalog defaults.", this);
+            return;
+        }
+
+        slot = attack.HitBoxPrefab;
+
+        if (attackType == GroundAttackType.Melee && attack.MeleeAttackAnimation != null)
+        {
+            meleeAnimator = attack.MeleeAttackAnimation;
+        }
+    }
+
+    private void AssignAttackListIndices()
+    {
+        AssignAttackListIndex(hitBoxPrefab, 1, nameof(hitBoxPrefab));
+        AssignAttackListIndex(hitBoxPrefab2, 2, nameof(hitBoxPrefab2));
+    }
+
+    private void AssignAttackListIndex(GameObject attackPrefab, int attackListIndex, string slotName)
+    {
+        if (!TryGetHitBox(attackPrefab, slotName, out HitBox hitBox))
+            return;
+
+        hitBox.attackListIndex = attackListIndex;
+    }
+
+    private bool TryGetHitBox(GameObject attackPrefab, string slotName, out HitBox hitBox)
+    {
+        hitBox = null;
+
+        if (attackPrefab == null)
+        {
+            Debug.LogWarning($"{name} is missing {slotName}.", this);
+            return false;
+        }
+
+        hitBox = attackPrefab.GetComponent<HitBox>();
+        if (hitBox == null)
+        {
+            Debug.LogWarning($"{name}'s {slotName} does not have a HitBox component.", this);
+            return false;
+        }
+
+        return true;
     }
 
     public void DisableInputs()

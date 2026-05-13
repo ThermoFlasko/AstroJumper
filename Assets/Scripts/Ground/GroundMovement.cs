@@ -321,10 +321,7 @@ public class GroundMovement : MonoBehaviour
         //RaycastHit2D raycastHit2D = Physics2D.BoxCast
     }
 
-    void OnDrawGizmos()
-    {
-        
-    }
+
 
     private void TryDropThrough()
     {

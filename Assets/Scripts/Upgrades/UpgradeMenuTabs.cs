@@ -6,10 +6,13 @@ public class UpgradeMenuTabs : MonoBehaviour
     {
         Spaceship,
         Player,
+        PlayerWeapons,
     }
 
     [SerializeField] private GameObject spaceshipPage;
     [SerializeField] private GameObject playerPage;
+    [SerializeField] private GameObject playerWeaponsPage;
+
     [SerializeField] private UpgradeMenuPage defaultPage = UpgradeMenuPage.Spaceship;
     [SerializeField] private UpgradeMenuPage currentPage = UpgradeMenuPage.Spaceship;
 
@@ -33,6 +36,11 @@ public class UpgradeMenuTabs : MonoBehaviour
         ShowPage(UpgradeMenuPage.Player);
     }
 
+    public void ShowPlayerWeaponsPage()
+    {
+        ShowPage(UpgradeMenuPage.PlayerWeapons);
+    }
+
     public void ShowPage(UpgradeMenuPage page)
     {
         currentPage = page;
@@ -43,18 +51,36 @@ public class UpgradeMenuTabs : MonoBehaviour
         if (playerPage != null)
             playerPage.SetActive(page == UpgradeMenuPage.Player);
 
+        if (playerWeaponsPage != null)
+            playerWeaponsPage.SetActive(page == UpgradeMenuPage.PlayerWeapons);
+
         RefreshButtonsForActivePage();
     }
 
     private void RefreshButtonsForActivePage()
     {
-        GameObject activePage = currentPage == UpgradeMenuPage.Spaceship ? spaceshipPage : playerPage;
+        GameObject activePage = GetActivePage();
         if (activePage == null)
             return;
 
         UpgradeButton[] buttons = activePage.GetComponentsInChildren<UpgradeButton>(true);
         foreach (UpgradeButton button in buttons)
             button?.RefreshView();
+    }
+
+    private GameObject GetActivePage()
+    {
+        switch (currentPage)
+        {
+            case UpgradeMenuPage.Spaceship:
+                return spaceshipPage;
+            case UpgradeMenuPage.Player:
+                return playerPage;
+            case UpgradeMenuPage.PlayerWeapons:
+                return playerWeaponsPage;
+            default:
+                return spaceshipPage;
+        }
     }
 
 #if UNITY_EDITOR
