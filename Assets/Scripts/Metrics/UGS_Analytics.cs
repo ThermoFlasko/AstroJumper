@@ -7,6 +7,8 @@ using Unity.Services.Core.Analytics;
 using UnityEngine.UnityConsent;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
+using System;
+using JetBrains.Annotations;
 public class UGS_Analytics : MonoBehaviour
 {
 
@@ -23,6 +25,7 @@ public class UGS_Analytics : MonoBehaviour
         Unit.onDeath += GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded += ItemPickUpCustomEvent;
         SceneTransition.OnSceneChanged += LevelCompleteCustomEvent;
+        SpaceshipHealthComponent.OnSpaceshipDeath += SpaceshipDeathCustomEvent;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -35,6 +38,7 @@ public class UGS_Analytics : MonoBehaviour
         Unit.onDeath -= GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded -= ItemPickUpCustomEvent;
         SceneTransition.OnSceneChanged -= LevelCompleteCustomEvent;
+        SpaceshipHealthComponent.OnSpaceshipDeath -= SpaceshipDeathCustomEvent;
     
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -77,6 +81,27 @@ public class UGS_Analytics : MonoBehaviour
         };
 
         AnalyticsService.Instance.RecordEvent(myEvent);
+    }
+
+    public void SpaceshipDeathCustomEvent(string name)
+    {
+        if (name == "Player Spaceship")
+        {
+            CustomEvent myEvent = new CustomEvent("playerDeath")
+            {
+                {"levelName", SceneManager.GetActiveScene().name}
+            };
+            AnalyticsService.Instance.RecordEvent(myEvent);
+        }
+        else
+        {
+            CustomEvent myEvent = new CustomEvent("spaceEnemyDeath")
+            {
+                {"enemyName", name}  
+            };
+            AnalyticsService.Instance.RecordEvent(myEvent);
+        }
+        AnalyticsService.Instance.Flush();
     }
 
     public void ItemPickUpCustomEvent(Item item)
