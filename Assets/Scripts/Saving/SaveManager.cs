@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.IO;
 
+[DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance { get; private set; }
