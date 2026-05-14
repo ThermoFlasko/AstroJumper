@@ -176,6 +176,7 @@ public class Unit : MonoBehaviour
 
     private GameObject GenerateAttackSprite(GameObject hitBoxPrefab)
     {
+        GameObject attackSprite = new GameObject("AttackSprite");
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
 
         // Use IsFacingRight() instead of GroundMovement
@@ -218,7 +219,6 @@ public class Unit : MonoBehaviour
             return attackRoot;
         }
 
-        GameObject attackSprite = new GameObject("AttackSprite");
         SpriteRenderer projectileSpriteRenderer = attackSprite.AddComponent<SpriteRenderer>();
         projectileSpriteRenderer.sprite = hitBoxInfo.GetSprite();
 

@@ -50,6 +50,8 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
     public bool HasShields => currentShields > 0.01f;
     public float ShieldRatio => maxShileds <= 0.01f ? 0f : Mathf.Clamp01(currentShields / maxShileds);
 
+    public static event Action<string> OnSpaceshipDeath; 
+
     void Awake()
     {
         _collider2D = GetComponent<Collider2D>();
@@ -202,6 +204,8 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
 
         SpawnDeathVfx();
 
+        OnSpaceshipDeath?.Invoke(gameObject.name);
+        print("Death");
         if (deathSfx != null)
             AudioSource.PlayClipAtPoint(deathSfx, transform.position, deathVolume);
 
@@ -219,6 +223,8 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
         {
             Destroy(gameObject);
         }
+
+
     }
 
     private void SpawnDeathVfx()
