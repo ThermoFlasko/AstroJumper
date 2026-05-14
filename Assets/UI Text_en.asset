@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 866911248384
-    m_Localized: Credits & Controls
+    m_Localized: Credits
     m_Metadata:
       m_Items: []
   - m_Id: 608785391616
@@ -63,26 +63,427 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 72999418978304
-    m_Localized: 'Programming: Jonathan Ng, William Wu, Cody Karigaca, Justin Fong
+    m_Localized: 'Production Leads
 
-      UI:
-      Hojoun Yoon, William Wu
+      
 
-      Audio: Hojoun Yoon, Alfredo Barragan
+      Justin Fong
 
-      Art:
-      Hojoun Yoon, Alfredo Barragan, Justin Fong
-
-      Design: Nikolas Makranyi,
-      Cody Karigaca, Justin Fong
-
-      Writing: Nikolas Makranyi, Alfredo Barragan
-
-      Managing:
       Dylan Paras
 
+      
 
-      External: Denis & Char'
+      
+
+      
+
+      Character
+      Art
+
+      
+
+      Char
+
+      Dennis
+
+      
+
+      
+
+      
+
+      Environmental
+      Art
+
+      
+
+      Char
+
+      Dennis
+
+      Justin Fong
+
+      
+
+      
+
+      
+
+      Animation
+
+      
+
+      Char
+
+      Dennis
+
+      Justin
+      Fong
+
+      
+
+      
+
+      
+
+      UI Art
+
+      
+
+      Char
+
+      Dennis
+
+      Justin
+      Fong
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      VFX Art
+
+      
+
+      Char
+
+      Dennis
+
+      
+
+      
+
+      
+
+      Gameplay
+      Design
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      Systems
+      Design
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      
+
+      
+
+      
+
+      Enemy
+      Design
+
+      
+
+      Justin Fong
+
+      Nikolas Makranyi
+
+      William
+      Wu
+
+      
+
+      
+
+      
+
+      Player Design
+
+      
+
+      Justin
+      Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      UI/UX
+      Design
+
+      
+
+      Jonathan Ng
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      Player
+      Programming
+
+      
+
+      Alfredo Barragan
+
+      Cody Karigaca
+
+      Jonathan
+      Ng
+
+      Dylan Paras
+
+      William Wu
+
+      
+
+      
+
+      
+
+      Enemy
+      AI Programming
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      Boss
+      Programming
+
+      
+
+      Alfredo Barragan
+
+      Jonathan Ng
+
+      
+
+      
+
+      
+
+      Systems
+      Programming
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      Dialogue
+      Programming
+
+      
+
+      Jonathan Ng
+
+      
+
+      
+
+      
+
+      UI
+      Programming
+
+      
+
+      Justin Fong
+
+      Jonathan Ng
+
+      Dylan
+      Paras
+
+      William Wu
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      Sound
+      Programming
+
+      
+
+      Alfredo Barragan
+
+      
+
+      
+
+      
+
+      Asset
+      Implementation
+
+      
+
+      Alfredo Barragan
+
+      Cody Karigaca
+
+      Justin
+      Fong
+
+      
+
+      
+
+      
+
+      Soundtrack Composition
+
+      
+
+      Alfredo
+      Barragan
+
+      
+
+      
+
+      
+
+      SFX Design
+
+      
+
+      Alfredo
+      Barragan
+
+      
+
+      
+
+      
+
+      World & Story Writing
+
+      
+
+      Nikolas
+      Makranyi
+
+      
+
+      
+
+      
+
+      Dialogue Writing
+
+      
+
+      Nikolas
+      Makranyi
+
+      
+
+      
+
+      
+
+      Character Concept Writing
+
+      
+
+      Nikolas
+      Makranyi
+
+      
+
+      
+
+      
+
+      Description Writing
+
+      
+
+      Nikolas
+      Makranyi
+
+      
+
+      
+
+      
+
+      Language Translations
+
+      
+
+      Hojoun
+      Yoon
+
+      
+
+      
+
+      
+
+      Trailer Recording & Editing
+
+      
+
+      Dylan
+      Paras
+
+      
+
+      
+
+      
+
+      Trailer Music Composition
+
+      
+
+      Alfredo
+      Barragan'
     m_Metadata:
       m_Items: []
   - m_Id: 74495699181568
