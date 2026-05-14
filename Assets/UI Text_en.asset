@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 72999418978304
-    m_Localized: 'Production Leads
+    m_Localized: 'PRODUCTION LEADS
 
       
 
@@ -77,8 +77,8 @@ MonoBehaviour:
 
       
 
-      Character
-      Art
+      CHARACTER
+      ART
 
       
 
@@ -92,8 +92,8 @@ MonoBehaviour:
 
       
 
-      Environmental
-      Art
+      ENVIRONMENTAL
+      ART
 
       
 
@@ -109,7 +109,7 @@ MonoBehaviour:
 
       
 
-      Animation
+      ANIMATION
 
       
 
@@ -126,7 +126,7 @@ MonoBehaviour:
 
       
 
-      UI Art
+      UI ART
 
       
 
@@ -145,7 +145,7 @@ MonoBehaviour:
 
       
 
-      VFX Art
+      VFX ART
 
       
 
@@ -159,8 +159,8 @@ MonoBehaviour:
 
       
 
-      Gameplay
-      Design
+      GAMEPLAY
+      DESIGN
 
       
 
@@ -176,8 +176,8 @@ MonoBehaviour:
 
       
 
-      Systems
-      Design
+      SYSTEMS
+      DESIGN
 
       
 
@@ -191,8 +191,8 @@ MonoBehaviour:
 
       
 
-      Enemy
-      Design
+      ENEMY
+      DESIGN
 
       
 
@@ -209,7 +209,7 @@ MonoBehaviour:
 
       
 
-      Player Design
+      PLAYER DESIGN
 
       
 
@@ -227,7 +227,7 @@ MonoBehaviour:
       
 
       UI/UX
-      Design
+      DESIGN
 
       
 
@@ -241,8 +241,8 @@ MonoBehaviour:
 
       
 
-      Player
-      Programming
+      PLAYER
+      PROGRAMMING
 
       
 
@@ -263,8 +263,8 @@ MonoBehaviour:
 
       
 
-      Enemy
-      AI Programming
+      ENEMY
+      AI PROGRAMMING
 
       
 
@@ -278,23 +278,8 @@ MonoBehaviour:
 
       
 
-      Boss
-      Programming
-
-      
-
-      Alfredo Barragan
-
-      Jonathan Ng
-
-      
-
-      
-
-      
-
-      Systems
-      Programming
+      SYSTEMS
+      PROGRAMMING
 
       
 
@@ -308,8 +293,8 @@ MonoBehaviour:
 
       
 
-      Dialogue
-      Programming
+      DIALOGUE
+      PROGRAMMING
 
       
 
@@ -322,7 +307,7 @@ MonoBehaviour:
       
 
       UI
-      Programming
+      PROGRAMMING
 
       
 
@@ -343,8 +328,8 @@ MonoBehaviour:
 
       
 
-      Sound
-      Programming
+      SOUND
+      PROGRAMMING
 
       
 
@@ -356,8 +341,8 @@ MonoBehaviour:
 
       
 
-      Asset
-      Implementation
+      ASSET
+      IMPLEMENTATION
 
       
 
@@ -374,7 +359,7 @@ MonoBehaviour:
 
       
 
-      Soundtrack Composition
+      SOUNDTRACK COMPOSITION
 
       
 
@@ -387,7 +372,7 @@ MonoBehaviour:
 
       
 
-      SFX Design
+      SFX DESIGN
 
       
 
@@ -400,7 +385,7 @@ MonoBehaviour:
 
       
 
-      World & Story Writing
+      WORLD & STORY WRITING
 
       
 
@@ -413,7 +398,7 @@ MonoBehaviour:
 
       
 
-      Dialogue Writing
+      DIALOGUE WRITING
 
       
 
@@ -426,7 +411,7 @@ MonoBehaviour:
 
       
 
-      Character Concept Writing
+      CHARACTER CONCEPT WRITING
 
       
 
@@ -439,7 +424,7 @@ MonoBehaviour:
 
       
 
-      Description Writing
+      DESCRIPTION WRITING
 
       
 
@@ -452,7 +437,7 @@ MonoBehaviour:
 
       
 
-      Language Translations
+      LANGUAGE TRANSLATIONS
 
       
 
@@ -465,7 +450,7 @@ MonoBehaviour:
 
       
 
-      Trailer Recording & Editing
+      TRAILER RECORDING & EDITING
 
       
 
@@ -478,7 +463,7 @@ MonoBehaviour:
 
       
 
-      Trailer Music Composition
+      TRAILER MUSIC COMPOSITION
 
       
 
