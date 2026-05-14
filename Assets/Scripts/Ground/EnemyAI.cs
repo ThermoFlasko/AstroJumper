@@ -122,8 +122,22 @@ public class EnemyAI : MonoBehaviour
         //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
         //    this
         //);
+        ChangeAnimation(newState);
+        
 
         state = newState;
+    }
+
+    private void ChangeAnimation(State state)
+    {
+        switch (state)
+        {
+            case State.Patrol: TickPatrol(); break;
+            case State.Chase: TickChase(); break;
+            case State.Attack: TickAttack(); break;
+            case State.Return: TickReturn(); break;
+            case State.Knockback: break;
+        }
     }
 
     private float GetMeleeEnterRange() => meleeRange + meleeEnterBuffer;
