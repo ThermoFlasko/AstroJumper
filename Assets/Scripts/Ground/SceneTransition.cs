@@ -20,13 +20,13 @@ public class SceneTransition : MonoBehaviour
 
         if (SceneLoader.Instance != null)
         {
-            OnSceneChanged?.Invoke(sceneToLoad);
+            OnSceneChanged?.Invoke(SceneManager.GetActiveScene().name);
             SceneLoader.Instance.LoadNextScene(sceneToLoad);
             return;
         }
 
         Debug.LogWarning("SceneLoader.Instance was null during ground level completion. Loading the next scene directly.");
-        OnSceneChanged?.Invoke(sceneToLoad);
+        OnSceneChanged?.Invoke(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(sceneToLoad);
     }
 }
