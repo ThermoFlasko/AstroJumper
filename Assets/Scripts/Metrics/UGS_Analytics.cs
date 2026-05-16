@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 using System;
 using JetBrains.Annotations;
+using System.Linq;
 public class UGS_Analytics : MonoBehaviour
 {
-    string[] levelNames = { "Space Level 1", "Forest", "BossRoom" };
+    string[] levelNames = { "Tutorial Ground", "Space Level 1", "PCG_Sample" };
     private float currentSceneTimeDuration = 0f;
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class UGS_Analytics : MonoBehaviour
         Unit.onDeath += GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded += ItemPickUpCustomEvent;
         SceneTransition.OnSceneChanged += LevelCompleteCustomEvent;
+        SceneLoader.OnSceneChanged += LevelCompleteCustomEvent;
         SpaceshipHealthComponent.OnSpaceshipDeath += SpaceshipDeathCustomEvent;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -38,6 +40,7 @@ public class UGS_Analytics : MonoBehaviour
         Unit.onDeath -= GroundEnemyDeathCustomEvent;
         Inventory.OnItemAdded -= ItemPickUpCustomEvent;
         SceneTransition.OnSceneChanged -= LevelCompleteCustomEvent;
+        SceneLoader.OnSceneChanged -= LevelCompleteCustomEvent;
         SpaceshipHealthComponent.OnSpaceshipDeath -= SpaceshipDeathCustomEvent;
     
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -122,12 +125,16 @@ public class UGS_Analytics : MonoBehaviour
 
     public void LevelCompleteCustomEvent(string levelName)
     {
+        if (!levelNames.Contains(levelName))
+        {
+            return;
+        }
+        
         CustomEvent myEvent = new CustomEvent("levelComplete")
         {
             {"levelName", levelName},
             {"levelDuration", currentSceneTimeDuration}
         };
-        print($"level name is {levelName}");
         AnalyticsService.Instance.RecordEvent(myEvent);
     }
 

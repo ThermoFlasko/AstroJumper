@@ -47,7 +47,6 @@ public class BossAI : Unit
     public IState DecideAttack()
     {
         // things to look for when deciding attack, player location, recent attacks, current health
-        IState newState;
 
         bool[] validAttacks = new bool[3];
 
