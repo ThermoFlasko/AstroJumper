@@ -11,7 +11,7 @@ using System;
 using JetBrains.Annotations;
 public class UGS_Analytics : MonoBehaviour
 {
-
+    string[] levelNames = { "Space Level 1", "Forest", "BossRoom" };
     private float currentSceneTimeDuration = 0f;
     private void Awake()
     {
@@ -127,7 +127,7 @@ public class UGS_Analytics : MonoBehaviour
             {"levelName", levelName},
             {"levelDuration", currentSceneTimeDuration}
         };
-
+        print($"level name is {levelName}");
         AnalyticsService.Instance.RecordEvent(myEvent);
     }
 
