@@ -251,7 +251,6 @@ public class DialogueTextManager : MonoBehaviour
         {
             EnablePlayerInput();   
         }
-        print("Dialogue ended" + isInDialouge);
         StartCoroutine(moveDialogueBox());
         onDialogueEnd?.Invoke();
         
