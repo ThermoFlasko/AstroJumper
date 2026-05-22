@@ -21,6 +21,8 @@ public class Menu_Manager : MonoBehaviour
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
     public Slider volumeSlider;
+    public Slider musicSlider;
+    public Slider soundSlider;
     public TMP_Text volumeText;
 
     private void OnEnable()
@@ -176,3 +178,100 @@ public class Menu_Manager : MonoBehaviour
     //    upgradesScrapCounterText.text = currentMoney.ToString();
     //}
 }
+
+
+
+
+//public class OptionsScript : MonoBehaviour
+//{
+//    public AudioMixer audioMixer;
+
+//    [SerializeField] private GameObject[] sliders;
+
+//    // Alternate
+//    // [SerializeField] private Slider[] sliders;
+//    private float currSliderVolume;
+
+//    private void Start()
+//    {
+//        GameManager.Instance.OnOptionsAccessed += OptionsAccessed;
+//    }
+
+//    public void SetMasterVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("masterVolume", newVolume);
+//    }
+//    public void SetSFXVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("SFXVolume", newVolume);
+//    }
+//    public void SetMusicVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("musicVolume", newVolume);
+//    }
+
+//    public void SetFullscreen(bool isFullscreen)
+//    {
+//        Screen.fullScreen = isFullscreen;
+//    }
+
+
+//    void OptionsAccessed()
+//    {
+//        foreach (GameObject obj in sliders)
+//        {
+//            Slider slider = obj.GetComponentInChildren<Slider>();
+
+//            if (obj.name == "Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("masterVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//            else if (obj.name == "SFX Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("SFXVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//            else if (obj.name == "Music Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("musicVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//        }
+
+//        // Alternate:
+
+//        //foreach (GameObject obj in sliders)
+//        //{
+//        //    Slider slider = obj.GetComponent<Slider>();
+
+//        //    if (obj.name == "Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("masterVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //    else if (obj.name == "SFX Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("SFXVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //    else if (obj.name == "Music Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("musicVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //}
+//    }
+
+//    // Need to unsubscribe the function after Main Menu loads the Level scene, it is still trying to look at the sliders from the Main Menu
+//    private void OnDestroy()
+//    {
+//        GameManager.Instance.OnOptionsAccessed -= OptionsAccessed;
+//    }
+//}
