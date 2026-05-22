@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance { get; private set;}
+    public static event Action<string> OnSceneChanged;
 
     public string SceneToLoad;
 
@@ -29,6 +31,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadNextScene(string nextScene)
     {
         SceneToLoad = nextScene;
+        OnSceneChanged?.Invoke(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("LoadingScreen");
     }
 }

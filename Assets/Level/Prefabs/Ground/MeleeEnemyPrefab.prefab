@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1196929599, guid: 2fd7b5bd9777c5342961773de5713f7d, type: 3}
+  m_Sprite: {fileID: -604868848, guid: 8fda5fbea84fedb4883cea0cf8b378a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMotor
   moveSpeed: 4
+  chaseSpeedModifier: 2
+  limpSpeedModifier: -1.5
 --- !u!114 &2916840892436311964
 MonoBehaviour:
   m_ObjectHideFlags: 0
