@@ -67,7 +67,19 @@ public class VideoSettings : MonoBehaviour
             }
         }
         resolutionText.text = $"{defaultResolution.resolutionString}";
-        currentResolution = storedResolutions.IndexOf(defaultResolution);
+
+        // look through the list of StoredResolutions, if there is a matching resolution string
+
+        foreach (var res in storedResolutions)
+        {
+            string currResString = res.resolutionString;
+
+            if (currResString == defaultResolution.resolutionString)
+            {
+                currentResolution = storedResolutions.IndexOf(res);
+            }
+        }
+
     }
 
     public void ChangeDisplayModeTextBack()
@@ -107,7 +119,7 @@ public class VideoSettings : MonoBehaviour
         currentResolution--;
         if(currentResolution < 0)
         {
-            currentResolution = 0;
+            currentResolution = storedResolutions.Count - 1;
         }
 
         ChangeResolution(currentResolution);
@@ -118,7 +130,7 @@ public class VideoSettings : MonoBehaviour
         currentResolution++;
         if(currentResolution > storedResolutions.Count - 1)
         {
-            currentResolution = storedResolutions.Count - 1;
+            currentResolution = 0;
         }
 
         ChangeResolution(currentResolution);
