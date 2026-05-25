@@ -109,7 +109,6 @@ public class DialogueTextManager : MonoBehaviour
 
         
         DisableTextClick();
-        print("starting dialouge: " + currentDialouge.DialougeName);
 
         StartDialouge();
     }
@@ -144,7 +143,6 @@ public class DialogueTextManager : MonoBehaviour
     public void StartDialouge()
     {
         // display anything related to dialouge here
-        print("Starting dialouge: " + currentDialouge.DialougeName);
         if (player != null)
         {
             
@@ -253,7 +251,6 @@ public class DialogueTextManager : MonoBehaviour
         {
             EnablePlayerInput();   
         }
-        print("Dialogue ended" + isInDialouge);
         StartCoroutine(moveDialogueBox());
         onDialogueEnd?.Invoke();
         

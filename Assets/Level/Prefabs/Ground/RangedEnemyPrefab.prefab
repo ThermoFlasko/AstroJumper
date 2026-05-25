@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 6569328820202535863}
   - component: {fileID: 6100491850485219385}
   - component: {fileID: 1024968848392739870}
+  - component: {fileID: 7005532629968361342}
   m_Layer: 12
   m_Name: RangedEnemyPrefab
   m_TagString: Enemy
@@ -276,7 +277,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0e6ad6433ecd9fa4fb78dc8af7e13b76, type: 3}
+  m_Sprite: {fileID: -604868848, guid: 8fda5fbea84fedb4883cea0cf8b378a1, type: 3}
   m_Color: {r: 0.8364836, g: 1, b: 0.5587002, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -394,6 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMotor
   moveSpeed: 3
+  chaseSpeedModifier: 2
+  limpSpeedModifier: -1.5
 --- !u!114 &6100491850485219385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,9 +428,33 @@ MonoBehaviour:
   _damage: 10
   hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
   hitBoxPrefab2: {fileID: 9182795490261890898, guid: 40d4276b2bf35db479ce03eae1f133cc, type: 3}
+  hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
   meleeAnimator: {fileID: 0}
+  StartSprite: {fileID: 0}
+--- !u!95 &7005532629968361342
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673901974885723949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: e50270955bbf72443b494954a901840c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &386073407040165042
 PrefabInstance:
   m_ObjectHideFlags: 0
