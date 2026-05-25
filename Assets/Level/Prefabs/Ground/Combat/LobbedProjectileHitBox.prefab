@@ -119,6 +119,9 @@ MonoBehaviour:
   lobInitialVerticalVelocity: 0
   lobGravity: 10
   lobMaxFallSpeed: 18
+  impactEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  impactEffectLifetime: 2
+  impactDamageRadius: 1.5
   targetLayer:
     serializedVersion: 2
     m_Bits: 4096

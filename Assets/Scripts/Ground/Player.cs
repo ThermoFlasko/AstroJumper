@@ -67,8 +67,7 @@ public class Player : Unit
         {
             Debug.LogError("Player: Attack2 action not found in the InputActionAsset.");
         }
-            hitBoxPrefab.GetComponent<HitBox>().attackListIndex = 1;
-        hitBoxPrefab2.GetComponent<HitBox>().attackListIndex = 2;
+        RefreshGroundAttackLoadout();
         ApplyGroundTrooperDefaultUpgrades();
         if (healthUIGameObject != null)
         {

@@ -5,6 +5,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class HitBox : MonoBehaviour
@@ -26,6 +27,9 @@ public class HitBox : MonoBehaviour
     [SerializeField] private float lobInitialVerticalVelocity = 0f;
     [SerializeField] private float lobGravity = 12f;
     [SerializeField] private float lobMaxFallSpeed = 20f;
+    [SerializeField] private GameObject impactEffectPrefab;
+    [SerializeField] private float impactEffectLifetime = 2f;
+    [SerializeField] private float impactDamageRadius = 0f;
     [SerializeField] private LayerMask targetLayer; // which layer the hitbox should interact with (player, enemy, etc.)
     [SerializeField] private LayerMask ignoreLayer; // which layer the hitbox should ignore 
     [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // gameplay spawn offset for the whole attack
@@ -149,14 +153,18 @@ public class HitBox : MonoBehaviour
             return;
         }
         Unit unit = other.GetComponent<Unit>();
-        if (unit != null)
+        if (unit != null && impactDamageRadius <= 0f)
         {
             unit.TakeDamage(damage, knockbackForce, knockbackVerticalForce, transform.position);
-            if (!isMelee)
-            {
-                DestroyAttack();
 
-            }
+        }
+
+        if (!isMelee)
+        {
+            Vector3 impactPosition = other.ClosestPoint(transform.position);
+            impactPosition.z = transform.position.z;
+            SpawnImpactEffect(impactPosition);
+            DestroyAttack();
         }
     }
 
@@ -199,6 +207,43 @@ public class HitBox : MonoBehaviour
     public void ForceDestroy()
     {
         DestroyAttack();
+    }
+
+    public void SpawnImpactEffect(Vector3 position)
+    {
+        if (impactEffectPrefab == null)
+        {
+            DealImpactDamage(position);
+            return;
+        }
+
+        GameObject effect = Instantiate(impactEffectPrefab, position, Quaternion.identity);
+        if (impactEffectLifetime > 0f)
+            Destroy(effect, impactEffectLifetime);
+
+        DealImpactDamage(position);
+    }
+
+    private void DealImpactDamage(Vector3 position)
+    {
+        if (impactDamageRadius <= 0f)
+            return;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(position, impactDamageRadius, targetLayer);
+        HashSet<Unit> damagedUnits = new HashSet<Unit>();
+
+        foreach (Collider2D hit in hits)
+        {
+            if ((ignoreLayer.value & (1 << hit.gameObject.layer)) != 0)
+                continue;
+
+            if (hit.transform.IsChildOf(transform.root) || hit.transform == transform.root)
+                continue;
+
+            Unit unit = hit.GetComponent<Unit>();
+            if (unit != null && damagedUnits.Add(unit))
+                unit.TakeDamage(damage, knockbackForce, knockbackVerticalForce, position);
+        }
     }
 
 

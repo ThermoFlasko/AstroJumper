@@ -50,7 +50,12 @@ public class Projectile : MonoBehaviour
             isDead = true;
             HitBox hitBox = GetComponentInChildren<HitBox>();
             if (hitBox != null)
+            {
+                Vector3 impactPosition = hit.point;
+                impactPosition.z = transform.position.z;
+                hitBox.SpawnImpactEffect(impactPosition);
                 hitBox.ForceDestroy();
+            }
             return;
         }
 
