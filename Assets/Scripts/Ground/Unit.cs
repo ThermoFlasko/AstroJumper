@@ -154,6 +154,7 @@ public class Unit : MonoBehaviour
             proj.SetDirection(IsFacingRight() ? 1 : -1);
             proj.SetYValue(transform.position.y);
             proj.SetSpeed(hitBoxInfo.GetProjectileSpeed());
+            proj.SetLobbedMovement(hitBoxInfo.GetUseLobbedProjectile(), hitBoxInfo.GetLobInitialVerticalVelocity(), hitBoxInfo.GetLobGravity(), hitBoxInfo.GetLobMaxFallSpeed());
 
             proj.SetWallLayers(LayerMask.GetMask("Ground"));
             //Debug.Log("WallLayer mask value: " + LayerMask.GetMask("Ground")); 
@@ -228,6 +229,8 @@ public class Unit : MonoBehaviour
         Projectile projectile = attackSprite.AddComponent<Projectile>();
         projectile.SetDirection(IsFacingRight() ? 1 : -1);
         projectile.SetYValue(transform.position.y);
+        projectile.SetSpeed(hitBoxInfo.GetProjectileSpeed());
+        projectile.SetLobbedMovement(hitBoxInfo.GetUseLobbedProjectile(), hitBoxInfo.GetLobInitialVerticalVelocity(), hitBoxInfo.GetLobGravity(), hitBoxInfo.GetLobMaxFallSpeed());
 
         return attackSprite;
     }

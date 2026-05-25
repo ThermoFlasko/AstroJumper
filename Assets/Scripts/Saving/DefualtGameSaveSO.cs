@@ -20,6 +20,13 @@ public class GroundTrooperUpgradeDefaults
     public int maxHealthUpgradePerLevel = 10;
 }
 
+[Serializable]
+public class GroundEquipmentDefaults
+{
+    public string equippedMeleeAttackId;
+    public string equippedRangedAttackId;
+}
+
 [CreateAssetMenu(fileName = "DefualtGameSaveSO", menuName = "Scriptable Objects/DefualtGameSaveSO")]
 public class DefualtGameSaveSO : ScriptableObject
 {
@@ -28,4 +35,6 @@ public class DefualtGameSaveSO : ScriptableObject
     [Header("Upgrade Defualts   ")] public PlayerSpaceshipUpgradesSO playerSpaceshipUpgradesSO;
 
     [Header("Ground Trooper Defaults")] public GroundTrooperUpgradeDefaults groundTrooperDefaults = new GroundTrooperUpgradeDefaults();
+
+    [Header("Ground Equipment Defaults")] public GroundEquipmentDefaults groundEquipmentDefaults = new GroundEquipmentDefaults();
 }

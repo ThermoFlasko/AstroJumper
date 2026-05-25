@@ -8,12 +8,18 @@ public class Projectile : MonoBehaviour
     private float yValue = 0f;
     private Vector3 desiredTransform;
     private bool isDead = false; // prevent LateUpdate from moving after death
+    private bool useLobbedMovement = false;
+    private float lobInitialVerticalVelocity = 0f;
+    private float lobGravity = 12f;
+    private float lobMaxFallSpeed = 20f;
+    private float verticalVelocity = 0f;
 
     [SerializeField] private LayerMask wallLayers;
 
     void OnEnable()
     {
         isDead = false;
+        verticalVelocity = lobInitialVerticalVelocity;
         desiredTransform = transform.position; // initialize to current position
     }
 
@@ -21,9 +27,21 @@ public class Projectile : MonoBehaviour
     {
         if (isDead) return;
 
-        float moveDistance = speed * Time.deltaTime;
+        float horizontalMove = speed * direction * Time.deltaTime;
+        float verticalMove = 0f;
+
+        if (useLobbedMovement)
+        {
+            verticalVelocity -= lobGravity * Time.deltaTime;
+            if (lobMaxFallSpeed > 0f)
+                verticalVelocity = Mathf.Max(verticalVelocity, -lobMaxFallSpeed);
+            verticalMove = verticalVelocity * Time.deltaTime;
+        }
+
+        Vector3 movement = new Vector3(horizontalMove, verticalMove, 0f);
+        float moveDistance = movement.magnitude;
         Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y);
-        Vector2 rayDir = direction == 1 ? Vector2.right : Vector2.left;
+        Vector2 rayDir = moveDistance > 0f ? (Vector2)movement.normalized : (direction == 1 ? Vector2.right : Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, moveDistance + 0.5f, wallLayers);
 
         if (hit.collider != null)
@@ -36,8 +54,8 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        desiredTransform = new Vector3(transform.position.x + speed * direction * Time.deltaTime, transform.position.y, transform.position.z);
-        transform.position = new Vector3(transform.position.x, yValue, transform.position.z);
+        float nextY = useLobbedMovement ? transform.position.y + verticalMove : yValue;
+        desiredTransform = new Vector3(transform.position.x + horizontalMove, nextY, transform.position.z);
     }
 
     void LateUpdate()
@@ -54,4 +72,12 @@ public class Projectile : MonoBehaviour
     public void SetDirection(int dir) { direction = dir; }
     public void SetYValue(float y) { yValue = y; }
     public void SetSpeed(float newSpeed) { speed = newSpeed; }
+    public void SetLobbedMovement(bool enabled, float initialVerticalVelocity, float gravity, float maxFallSpeed)
+    {
+        useLobbedMovement = enabled;
+        lobInitialVerticalVelocity = initialVerticalVelocity;
+        lobGravity = gravity;
+        lobMaxFallSpeed = maxFallSpeed;
+        verticalVelocity = lobInitialVerticalVelocity;
+    }
 }

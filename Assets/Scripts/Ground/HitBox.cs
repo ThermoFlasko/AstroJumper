@@ -22,6 +22,10 @@ public class HitBox : MonoBehaviour
 
     [SerializeField] private bool isMelee = true;
     [SerializeField] private float projectileSpeed = 5f;
+    [SerializeField] private bool useLobbedProjectile = false;
+    [SerializeField] private float lobInitialVerticalVelocity = 0f;
+    [SerializeField] private float lobGravity = 12f;
+    [SerializeField] private float lobMaxFallSpeed = 20f;
     [SerializeField] private LayerMask targetLayer; // which layer the hitbox should interact with (player, enemy, etc.)
     [SerializeField] private LayerMask ignoreLayer; // which layer the hitbox should ignore 
     [SerializeField] private Vector3 offset = new Vector3(1f, 0f, 0f); // gameplay spawn offset for the whole attack
@@ -212,5 +216,25 @@ public class HitBox : MonoBehaviour
     public float GetProjectileSpeed()
     {
         return projectileSpeed;
+    }
+
+    public bool GetUseLobbedProjectile()
+    {
+        return useLobbedProjectile;
+    }
+
+    public float GetLobInitialVerticalVelocity()
+    {
+        return lobInitialVerticalVelocity;
+    }
+
+    public float GetLobGravity()
+    {
+        return lobGravity;
+    }
+
+    public float GetLobMaxFallSpeed()
+    {
+        return lobMaxFallSpeed;
     }
 }

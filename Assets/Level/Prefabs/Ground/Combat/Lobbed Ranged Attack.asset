@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafe4a07b6a52a543a58b1b2b7c21138, type: 3}
+  m_Name: Lobbed Ranged Attack
+  m_EditorClassIdentifier: Assembly-CSharp::GroundAttackDefinition
+  attackId: Lobbed Ranged
+  displayName: Lobbed Ranged
+  attackType: 1
+  hitBoxPrefab: {fileID: 1306917755038486874, guid: 1df5301d611f4062aaaff5d6497726bd, type: 3}
+  meleeAttackAnimation: {fileID: 0}
+  icon: {fileID: 0}
