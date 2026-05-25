@@ -11,6 +11,8 @@ public class VideoSettings : MonoBehaviour
 
     //does not account for a any fallback should a monitor not be capable of showcasing 1920x1080
 
+    // the start is gonna run anytime options are checked right now
+
     public enum DisplayModes
     {
         Fullscreen,
@@ -89,6 +91,7 @@ public class VideoSettings : MonoBehaviour
             ChangeResolution(currentResolution);
         }
 
+        GetFullScreenModeFromPlayerPref();
         ChangeDisplayMode();
     }
 
@@ -150,19 +153,19 @@ public class VideoSettings : MonoBehaviour
         {
             case DisplayModes.Fullscreen:
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 0);
+                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 1);
                 break;
             case DisplayModes.Maximized:
                 Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
-                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 1);
+                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 2);
                 break;
             case DisplayModes.Windowed:
                 Screen.fullScreenMode = FullScreenMode.Windowed;
-                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 2);
+                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 3);
                 break;
             default:
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 0);
+                PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 1);
                 Debug.LogWarning("Error in changing Display Mode");
                 break;
         }
@@ -188,16 +191,17 @@ public class VideoSettings : MonoBehaviour
     {
         switch (PlayerPrefs.GetInt("Screenmanager Fullscreen mode"))
         {
-            case 0:
+            case 1:
                 currentDisplayMode = DisplayModes.Fullscreen;
                 return FullScreenMode.FullScreenWindow;
-            case 1:
+            case 2:
                 currentDisplayMode = DisplayModes.Maximized;
                 return FullScreenMode.MaximizedWindow;
-            case 2:
+            case 3:
                 currentDisplayMode = DisplayModes.Windowed;
                 return FullScreenMode.Windowed;
             default:
+                currentDisplayMode = DisplayModes.Fullscreen;
                 Debug.LogWarning("Error in locating PlayerPref Display Mode");
                 return FullScreenMode.FullScreenWindow;
         }
@@ -237,7 +241,7 @@ public class VideoSettings : MonoBehaviour
         PlayerPrefs.SetString("Resolution String", defaultResolution.resolutionString);
         PlayerPrefs.SetInt("Screenmanager Resolution Width", defaultResolution.width);
         PlayerPrefs.SetInt("Screenmanager Resolution Height", defaultResolution.height);
-        PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 0);
+        PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 1);
         Screen.SetResolution(defaultResolution.width, defaultResolution.height, FullScreenMode.FullScreenWindow);
     }
 
