@@ -20,10 +20,12 @@ public class Menu_Manager : MonoBehaviour
 
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
-    public Slider volumeSlider;
+    public Slider masterVolumeSlider;
     public Slider musicSlider;
     public Slider soundSlider;
-    public TMP_Text volumeText;
+    public TMP_Text masterVolumeText;
+    public TMP_Text musicVolumeText;
+    public TMP_Text soundVolumeText;
 
     private void OnEnable()
     {
@@ -33,9 +35,17 @@ public class Menu_Manager : MonoBehaviour
     private void OnDisable()
     {
         LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
-        if (volumeSlider != null)
+        if (masterVolumeSlider != null)
         {
-            volumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+            masterVolumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+        }
+        if (musicSlider != null)
+        {
+
+        }
+        if (soundSlider != null)
+        {
+
         }
     }
 
@@ -53,16 +63,28 @@ public class Menu_Manager : MonoBehaviour
         string savedLanguage = PlayerPrefs.GetString("SelectedLanguage", "en");
         StartCoroutine(LoadSavedLanguage(savedLanguage));
 
-        if (volumeSlider != null && volumeText != null)
+        if (masterVolumeSlider != null && masterVolumeText != null)
         {
             float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
-            volumeSlider.value = savedVolume;
+            masterVolumeSlider.value = savedVolume;
 
-            UpdateVolumeText(savedVolume);
+            UpdateVolumeText(savedVolume, masterVolumeText);
 
-            volumeSlider.onValueChanged.AddListener(SetMasterVolume);
+            masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
 
             SetMasterVolume(savedVolume);
+        }
+
+        if (musicSlider != null && musicVolumeText != null)
+        {
+            float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+            musicSlider.value = savedVolume;
+        }
+
+        if (soundSlider != null && soundVolumeText != null)
+        {
+            float savedVolume = PlayerPrefs.GetFloat("SoundVolume", 0.75f);
+            soundSlider.value = savedVolume;
         }
     }
 
@@ -77,17 +99,17 @@ public class Menu_Manager : MonoBehaviour
         float volumedB = Mathf.Log10(sliderValue) * 20;
         audioMixer.SetFloat("MasterVolume", volumedB);
 
-        UpdateVolumeText(sliderValue);
+        UpdateVolumeText(sliderValue, masterVolumeText);
 
         PlayerPrefs.SetFloat("MasterVolume", sliderValue);
     }
 
-    void UpdateVolumeText(float sliderValue)
+    void UpdateVolumeText(float sliderValue, TMP_Text sliderText)
     {
-        if (volumeText != null)
+        if (sliderText != null)
         {
             int volumePercent = Mathf.RoundToInt(sliderValue * 100);
-            volumeText.text = volumePercent.ToString() + "%";
+            sliderText.text = volumePercent.ToString() + "%";
         }
     }
 
