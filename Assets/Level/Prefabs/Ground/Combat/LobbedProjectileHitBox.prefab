@@ -114,7 +114,7 @@ MonoBehaviour:
   knockbackForce: 3
   knockbackVerticalForce: 2
   isMelee: 0
-  projectileSpeed: 9
+  projectileSpeed: 13
   useLobbedProjectile: 1
   lobInitialVerticalVelocity: 0
   lobGravity: 10
