@@ -51,6 +51,7 @@ public class FlagshipController : MonoBehaviour
     public BattleState CurrentState => currentState;
     public string BoardingSceneName => boardingSceneName;
     public bool IsBoardable => currentState == BattleState.Boardable;
+    public static event Action<string> OnSceneChanged;
     public int RemainingShieldNodes
     {
         get
@@ -181,6 +182,7 @@ public class FlagshipController : MonoBehaviour
         if (ShouldAwardSpaceCompletionReward(sceneName))
             LevelCompletionRewards.AwardSpaceCompletionReward();
 
+        OnSceneChanged?.Invoke(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(sceneName);
     }
 
