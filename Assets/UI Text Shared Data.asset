@@ -59,10 +59,6 @@ MonoBehaviour:
     m_Key: Role_Assignments
     m_Metadata:
       m_Items: []
-  - m_Id: 72999418978304
-    m_Key: Tasks
-    m_Metadata:
-      m_Items: []
   - m_Id: 74495699181568
     m_Key: Engine_Tool
     m_Metadata:
@@ -201,6 +197,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5152066698731520
     m_Key: Level_Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72999418978304
+    m_Key: Tasks
     m_Metadata:
       m_Items: []
   m_Metadata:
