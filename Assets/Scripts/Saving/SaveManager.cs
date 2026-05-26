@@ -13,6 +13,7 @@ public class SaveManager : MonoBehaviour
     [Header("Defualts + Files")]
     [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
+    private DefaultLevelSaveSO defaultLevelSaveSO;
 
     [SerializeField] private string saveFolderName = "Saves";
     [SerializeField] private string saveFileName = "savegame.json";
@@ -110,7 +111,7 @@ public class SaveManager : MonoBehaviour
     {
         TryMigrateLegacySaveFile();
 
-        if (!File.Exists(SaveFilePath))
+        if (!File.Exists(SaveFilePath) || !File.Exists(SaveLevelFilePath))
         {
             CreateDefaultSaveFile("No save file found.");
             return;
@@ -144,6 +145,31 @@ public class SaveManager : MonoBehaviour
         catch (Exception ex)
         {
             CreateDefaultSaveFile($"Failed reading save file at {SaveFilePath}. {ex.Message}");
+            return;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(SaveLevelFilePath);
+
+            CurrentLevelSaveData = JsonUtility.FromJson<LevelSaveData>(json);
+
+            if (CurrentLevelSaveData == null)
+            {
+                CreateDefaultSaveFile($"Save file was empty or invalid JSON at {SaveLevelFilePath}.");
+                return;
+            }
+
+            // CurrentLevelSaveData.EnsureInitialized()
+
+            // bool upgradedSaveVersion = CurrentLevelSaveData.version < SaveData.CurrentVersion;
+            // CurrentLevelSaveData.EnsureInitialized(defualtGameSaveSO);
+            // CurrentSaveData.version = SaveData.CurrentVersion;
+
+        }
+        catch (Exception ex)
+        {
+            CreateDefaultSaveFile($"Failed reading save file at {SaveLevelFilePath}. {ex.Message}");
             return;
         }
 
@@ -436,6 +462,11 @@ public class SaveManager : MonoBehaviour
             CurrentSaveData.groundEquipmentData.equippedRangedAttackId = attackId;
 
         MakeDirty();
+    }
+
+    public LevelSaveData GetCurrentLevelData()
+    {
+        return CurrentLevelSaveData;
     }
 
     #endregion

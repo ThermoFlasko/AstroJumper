@@ -132,6 +132,12 @@ public class Menu_Manager : MonoBehaviour
         SceneLoader.Instance.LoadNextScene("Tutorial Ground");
     }
 
+    public void ContinueGame()
+    {
+        LevelSaveData levelSaveData = SaveManager.instance.GetCurrentLevelData();
+        print($"level save data: {levelSaveData.currLevel}");
+    }
+
     public void ShowOptionsMenu()
     {
         CloseAllMenus();

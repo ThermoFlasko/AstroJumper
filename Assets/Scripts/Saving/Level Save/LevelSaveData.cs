@@ -3,12 +3,13 @@ using System;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class LevelSaveData
 {
     public int currLevel = 0;
     public PlanetLevelData planetLevelData = new PlanetLevelData();
     public SpaceLevelData spaceLevelData = new SpaceLevelData();
+    public List<string> completedEvents = new List<string>();
 
     public static LevelSaveData CreateDefaultSaveData()
     {
@@ -21,7 +22,6 @@ public class LevelSaveData
         public string levelName = "";
         public Vector3 playerPosition = new Vector3(0,0,0);
         public GameObject[] enemies = null;
-        public List<string> completedEvents = new List<string>();
     }
 
     [Serializable]
