@@ -601,8 +601,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // Don't translate empty strings
             if (string.IsNullOrEmpty(englishKeyName))
                 return englishKeyName;
-                
-            var locale = LocalizationSettings.SelectedLocale.Identifier.Code;
+            string locale = "";
+            try
+            {
+                locale = LocalizationSettings.SelectedLocale.Identifier.Code;
+            }
+            catch
+            {
+                Debug.LogWarning("Object reference not set to instance of an object");
+                return "";
+            }
             Debug.Log($"Translating '{englishKeyName}' for locale: {locale}");
             
             if (locale.StartsWith("ko"))

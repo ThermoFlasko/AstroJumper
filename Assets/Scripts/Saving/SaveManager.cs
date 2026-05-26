@@ -16,14 +16,18 @@ public class SaveManager : MonoBehaviour
 
     [SerializeField] private string saveFolderName = "Saves";
     [SerializeField] private string saveFileName = "savegame.json";
+    [SerializeField] private string saveLevelFileName = "savelevel.json";
 
     private const string LegacySaveFileName = "importantYAaaaa.json";
 
     private string SaveDirectoryPath => Path.Combine(Application.persistentDataPath, saveFolderName);
     private string SaveFilePath => Path.Combine(SaveDirectoryPath, saveFileName);
+    private string SaveLevelFilePath => Path.Combine(SaveDirectoryPath, saveLevelFileName);
+
     private string LegacySaveFilePath => Path.Combine(Application.persistentDataPath, LegacySaveFileName);
 
     public SaveData CurrentSaveData { get; private set; }
+    public LevelSaveData CurrentLevelSaveData {get; private set;}
     public DefualtGameSaveSO DefaultGameSaveSO => defualtGameSaveSO;
 
 
@@ -69,6 +73,7 @@ public class SaveManager : MonoBehaviour
             yield return new WaitForSeconds(autoSaveDelaySaveTime);
             if (dirty)
             {
+                print("saving");
                 SaveGame();
             }
         }
@@ -164,7 +169,7 @@ public class SaveManager : MonoBehaviour
             Directory.CreateDirectory(SaveDirectoryPath);
             string json = JsonUtility.ToJson(CurrentSaveData, true);
             string tempSavePath = SaveFilePath + ".tmp";
-
+            print(tempSavePath);
             File.WriteAllText(tempSavePath, json);
 
             if (File.Exists(SaveFilePath))
@@ -179,10 +184,36 @@ public class SaveManager : MonoBehaviour
 
             Debug.Log($"Saved game to {SaveFilePath}. Money={CurrentSaveData.newMoney}");
         }
+
+            
         catch (Exception ex)
         {
             Debug.LogError($"Failed writing save file at {SaveFilePath}. {ex}");
         }
+
+        try
+        {
+            string json = JsonUtility.ToJson(CurrentLevelSaveData, true);
+            print(CurrentLevelSaveData.planetLevelData.levelName);
+            string tempSavePath = SaveLevelFilePath + ".tmp";
+            print(tempSavePath);
+            File.WriteAllText(tempSavePath, json);
+
+            if (File.Exists(SaveLevelFilePath))
+            {
+                File.Copy(tempSavePath, SaveLevelFilePath, true);
+                File.Delete(tempSavePath);
+            }
+            else
+            {
+                File.Move(tempSavePath, SaveLevelFilePath);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Failed writing save file at {SaveLevelFilePath}. {ex}");
+        }
+
     }
 
     private void OnDisable()
@@ -418,6 +449,11 @@ public class SaveManager : MonoBehaviour
 
         CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
         CurrentSaveData.version = SaveData.CurrentVersion;
+
+        if (CurrentLevelSaveData == null)
+        {
+            CurrentLevelSaveData = LevelSaveData.CreateDefaultSaveData();
+        }
     }
 
     private void CreateDefaultSaveFile(string reason)
