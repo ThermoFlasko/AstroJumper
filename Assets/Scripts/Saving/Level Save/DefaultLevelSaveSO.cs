@@ -4,9 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DefualtLevelSaveSO", menuName = "Scriptable Objects/DefualtLevelSaveSO")]
 public class DefaultLevelSaveSO : ScriptableObject
 {
-    [Header("Upgrade Defualts   ")] public DefaultSpaceSaveSO defaultSpaceSaveSO = new DefaultSpaceSaveSO();
+    public DefaultSpaceSaveSO defaultSpaceSaveSO;
 
-    [Header("Ground Trooper Defaults")] public DefaultPlanetSaveSO defaultPlanetSaveSO = new DefaultPlanetSaveSO();
+    public DefaultPlanetSaveSO defaultPlanetSaveSO;
 
     public List<string> completedEvents = new List<string>();
+    
+    public string currLevel = "";
 }

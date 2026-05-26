@@ -3,10 +3,11 @@ using System;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 
+
 [Serializable]
 public class LevelSaveData
 {
-    public int currLevel = 0;
+    public string currLevel = "";
     public PlanetLevelData planetLevelData = new PlanetLevelData();
     public SpaceLevelData spaceLevelData = new SpaceLevelData();
     public List<string> completedEvents = new List<string>();
