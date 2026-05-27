@@ -69,6 +69,10 @@ public class EnemyAI : MonoBehaviour
 
     private Unit unit;
 
+    private bool isAttacking = false;
+    private bool isLowHealth = false;
+    private bool isDamaged = false;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -122,8 +126,37 @@ public class EnemyAI : MonoBehaviour
         //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
         //    this
         //);
+        ChangeAnimation(newState);
+        
 
         state = newState;
+    }
+
+    private void ChangeAnimation(State state)
+    {
+        Animator controller = GetComponent<Animator>();
+
+        if (controller == null) return;
+
+        controller.ResetControllerState();
+
+
+        switch (state)
+        {
+            case State.Patrol: 
+                break;
+            case State.Chase:
+                controller.SetTrigger("WalkState");
+                break;
+            case State.Attack:
+                controller.SetTrigger("AttackState");
+                break;
+            case State.Return: 
+                break;
+            case State.Knockback:
+                controller.SetTrigger("DamageState");
+                break;
+        }
     }
 
     private float GetMeleeEnterRange() => meleeRange + meleeEnterBuffer;
@@ -159,7 +192,14 @@ public class EnemyAI : MonoBehaviour
             motor.Flip();
         }
 
-        motor.Move();
+        if(isLowHealth)
+        {
+            motor.Limp();
+        }
+        else
+        {
+            motor.Move();
+        }
     }
 
     private void TickChase()
@@ -454,6 +494,11 @@ public class EnemyAI : MonoBehaviour
 
     private void ExitKnockback()
     {
+        if(unit.Health <= 40)
+        {
+            isLowHealth = true;
+        }
+
         ChangeState(State.Return, "Exiting knockback");
     }
 }

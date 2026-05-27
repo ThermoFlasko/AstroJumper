@@ -234,14 +234,20 @@ public class Unit : MonoBehaviour
 
     protected IEnumerator DamageEffect(SpriteRenderer spriteRenderer)
     {
+        //if(this.TryGetComponent<Animator>(out Animator anim))
+        //{
+        //    anim.SetBool("isDamaged", true);
+        //    yield return new WaitForSeconds(1f);
+        //    anim.SetBool("isDamaged", false);
+        //}
+
         isDamageAnimation = true;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 1; i++)
         {
             Color baseColor = spriteRenderer.color;
             spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(0.1f);
             spriteRenderer.color = baseColor;
-            yield return new WaitForSeconds(0.35f);
         }
         isDamageAnimation = false;
     }

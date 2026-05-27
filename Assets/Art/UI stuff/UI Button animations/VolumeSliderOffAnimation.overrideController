@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VolumeSliderOffAnimation
+  m_Controller: {fileID: 9100000, guid: aadd5df44d6202a49af4d7f6543ab615, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8df25c9ffea9e13488627176d791c8c8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 47f051aa75547e04395a5cf463af0d13, type: 2}

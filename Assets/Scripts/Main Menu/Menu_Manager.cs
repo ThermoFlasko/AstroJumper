@@ -20,8 +20,12 @@ public class Menu_Manager : MonoBehaviour
 
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
-    public Slider volumeSlider;
-    public TMP_Text volumeText;
+    public Slider masterVolumeSlider;
+    public Slider musicSlider;
+    public Slider soundSlider;
+    public TMP_Text masterVolumeText;
+    public TMP_Text musicVolumeText;
+    public TMP_Text soundVolumeText;
 
     private void OnEnable()
     {
@@ -31,9 +35,17 @@ public class Menu_Manager : MonoBehaviour
     private void OnDisable()
     {
         LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
-        if (volumeSlider != null)
+        if (masterVolumeSlider != null)
         {
-            volumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+            masterVolumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+        }
+        if (musicSlider != null)
+        {
+
+        }
+        if (soundSlider != null)
+        {
+
         }
     }
 
@@ -51,16 +63,28 @@ public class Menu_Manager : MonoBehaviour
         string savedLanguage = PlayerPrefs.GetString("SelectedLanguage", "en");
         StartCoroutine(LoadSavedLanguage(savedLanguage));
 
-        if (volumeSlider != null && volumeText != null)
+        if (masterVolumeSlider != null && masterVolumeText != null)
         {
             float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
-            volumeSlider.value = savedVolume;
+            masterVolumeSlider.value = savedVolume;
 
-            UpdateVolumeText(savedVolume);
+            UpdateVolumeText(savedVolume, masterVolumeText);
 
-            volumeSlider.onValueChanged.AddListener(SetMasterVolume);
+            masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
 
             SetMasterVolume(savedVolume);
+        }
+
+        if (musicSlider != null && musicVolumeText != null)
+        {
+            float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+            musicSlider.value = savedVolume;
+        }
+
+        if (soundSlider != null && soundVolumeText != null)
+        {
+            float savedVolume = PlayerPrefs.GetFloat("SoundVolume", 0.75f);
+            soundSlider.value = savedVolume;
         }
     }
 
@@ -75,17 +99,17 @@ public class Menu_Manager : MonoBehaviour
         float volumedB = Mathf.Log10(sliderValue) * 20;
         audioMixer.SetFloat("MasterVolume", volumedB);
 
-        UpdateVolumeText(sliderValue);
+        UpdateVolumeText(sliderValue, masterVolumeText);
 
         PlayerPrefs.SetFloat("MasterVolume", sliderValue);
     }
 
-    void UpdateVolumeText(float sliderValue)
+    void UpdateVolumeText(float sliderValue, TMP_Text sliderText)
     {
-        if (volumeText != null)
+        if (sliderText != null)
         {
             int volumePercent = Mathf.RoundToInt(sliderValue * 100);
-            volumeText.text = volumePercent.ToString() + "%";
+            sliderText.text = volumePercent.ToString() + "%";
         }
     }
 
@@ -176,3 +200,100 @@ public class Menu_Manager : MonoBehaviour
     //    upgradesScrapCounterText.text = currentMoney.ToString();
     //}
 }
+
+
+
+
+//public class OptionsScript : MonoBehaviour
+//{
+//    public AudioMixer audioMixer;
+
+//    [SerializeField] private GameObject[] sliders;
+
+//    // Alternate
+//    // [SerializeField] private Slider[] sliders;
+//    private float currSliderVolume;
+
+//    private void Start()
+//    {
+//        GameManager.Instance.OnOptionsAccessed += OptionsAccessed;
+//    }
+
+//    public void SetMasterVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("masterVolume", newVolume);
+//    }
+//    public void SetSFXVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("SFXVolume", newVolume);
+//    }
+//    public void SetMusicVolume(float newVolume)
+//    {
+//        audioMixer.SetFloat("musicVolume", newVolume);
+//    }
+
+//    public void SetFullscreen(bool isFullscreen)
+//    {
+//        Screen.fullScreen = isFullscreen;
+//    }
+
+
+//    void OptionsAccessed()
+//    {
+//        foreach (GameObject obj in sliders)
+//        {
+//            Slider slider = obj.GetComponentInChildren<Slider>();
+
+//            if (obj.name == "Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("masterVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//            else if (obj.name == "SFX Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("SFXVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//            else if (obj.name == "Music Volume Slider" && obj != null)
+//            {
+//                audioMixer.GetFloat("musicVolume", out currSliderVolume);
+
+//                slider.value = (int)currSliderVolume;
+//            }
+//        }
+
+//        // Alternate:
+
+//        //foreach (GameObject obj in sliders)
+//        //{
+//        //    Slider slider = obj.GetComponent<Slider>();
+
+//        //    if (obj.name == "Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("masterVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //    else if (obj.name == "SFX Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("SFXVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //    else if (obj.name == "Music Volume Slider" && obj != null)
+//        //    {
+//        //        audioMixer.GetFloat("musicVolume", out currSliderVolume);
+
+//        //        slider.value = (int)currSliderVolume;
+//        //    }
+//        //}
+//    }
+
+//    // Need to unsubscribe the function after Main Menu loads the Level scene, it is still trying to look at the sliders from the Main Menu
+//    private void OnDestroy()
+//    {
+//        GameManager.Instance.OnOptionsAccessed -= OptionsAccessed;
+//    }
+//}
