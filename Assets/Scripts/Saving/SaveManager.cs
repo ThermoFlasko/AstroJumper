@@ -3,6 +3,7 @@ using UnityEngine.Serialization;
 using System.Collections;
 using System;
 using System.IO;
+using Unity.VisualScripting;
 
 [DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
@@ -46,7 +47,8 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private KeyCode addMoneyTestKey = KeyCode.M;
     [SerializeField] private int addMoneyTestAmount = 100;
 
-
+    [Header("Debug")]
+    public bool isLoadingSaveData = false;
     private void Awake()
     {
         if (instance != null && instance != this)

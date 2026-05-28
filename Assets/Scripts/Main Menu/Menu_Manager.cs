@@ -131,6 +131,7 @@ public class Menu_Manager : MonoBehaviour
     {
         LevelSaveData levelSaveData = SaveManager.instance.GetCurrentLevelData();
         levelSaveData.currLevel = "Tutorial Ground";
+        SaveManager.instance.SaveGame();
         SceneLoader.Instance.LoadNextScene("Tutorial Ground");
     }
 
@@ -138,8 +139,7 @@ public class Menu_Manager : MonoBehaviour
     {
         // based on current Level, load right scene
         LevelSaveData levelSaveData = SaveManager.instance.GetCurrentLevelData();
-        print($"level save data: {levelSaveData.currLevel}");
-
+        SaveManager.instance.isLoadingSaveData = true;
         SceneLoader.Instance.LoadNextScene(levelSaveData.currLevel);
 
         
