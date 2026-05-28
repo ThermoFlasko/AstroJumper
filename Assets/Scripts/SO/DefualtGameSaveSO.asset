@@ -22,3 +22,6 @@ MonoBehaviour:
     jumpVelocityUpgradePerLevel: 0.75
     maxHealthStartingLevel: 0
     maxHealthUpgradePerLevel: 10
+  groundEquipmentDefaults:
+    equippedMeleeAttackId: ''
+    equippedRangedAttackId: Lobbed Ranged

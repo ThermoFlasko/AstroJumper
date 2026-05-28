@@ -22,7 +22,7 @@ public class GroundMovement : MonoBehaviour
     private int airJumpsRemaining;
 
     [Header("Variable Jump Height")]
-    [SerializeField] private float max_jumpHoldTime = 0.2f; // how long the player can hold the jump button to reach max jump height
+    [SerializeField, Range(0f, 1f)] private float jumpCutMultiplier = 0.45f; // lower = shorter tap jumps
 
 
     [Header("Ground Check")]
@@ -63,10 +63,7 @@ public class GroundMovement : MonoBehaviour
     private float xInput;
     private float coyoteTimer;
     private float jumpBufferTimer;
-
-    private float jumpHoldTimer;
-    private bool isJumpPressed = false;
-    private bool isJumpReleased = false;
+    private bool jumpCutQueued;
 
     private bool isGrounded;
     private bool isDropping;
@@ -181,53 +178,24 @@ public class GroundMovement : MonoBehaviour
 
         HandleJumpBuffered();
         CheckIfOnSlope();
-        
-
-        if (rb.linearVelocity.y > 0f && isJumpPressed)
-        {
-            //if the player is still holding the jump button and hasn't exceeded max hold time, apply extra gravity to allow for variable jump height
-            if (!isJumpReleased && jumpHoldTimer < max_jumpHoldTime)
-            {
-                jumpHoldTimer += Time.fixedDeltaTime;
-                //velocity.y += gravity_y * held_jump_gravity_scale * delta
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (rb.gravityScale - 5) * Time.fixedDeltaTime);
-            }
-            //if the player realsezes jump earlier than the max hold time, apply extra gravity immediately to create a snappier jump feel
-            else
-            {
-                if (jumpHoldTimer < max_jumpHoldTime && isJumpReleased)
-                {
-                    //apply extra gravity immediately on jump release for snappier feel
-                    //velocity.y += gravity_y * released_jump_gravity_scale * delta
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (rb.gravityScale - 5) * Time.fixedDeltaTime);
-                }    //velocity.y += gravity_y * released_jump_gravity_scale * delta
-                isJumpReleased = false; // reset for next jump
-            }
-
-        }
-        else
-        {
-            isJumpPressed = false;
-            jumpHoldTimer = 0f;
-        }
+        HandleVariableJumpCut();
     }
 
     private void ResetVariableJump()
     {
-        isJumpPressed = false;
-        isJumpReleased = false;
-        jumpHoldTimer = 0f;
+        if (jumpBufferTimer <= 0f)
+            jumpCutQueued = false;
     }
 
     private void OnJump(InputAction.CallbackContext ctx)
     {
         jumpBufferTimer = jumpBufferTime; // buffer jump press
-
+        jumpCutQueued = false;
     }
 
     private void OnJumpCanceled(InputAction.CallbackContext ctx)
     {
-        isJumpReleased = true;
+        jumpCutQueued = true;
     }
 
     private void OnDrop(InputAction.CallbackContext ctx)
@@ -293,9 +261,6 @@ public class GroundMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, GetJumpVelocityWithUpgrades());
 
             jumpBufferTimer = 0f;
-            isJumpPressed = true;
-            isJumpReleased = false;
-            jumpHoldTimer = 0f; // reset jump hold timer on new jump press
 
             if (canGroundJump)
             {
@@ -308,6 +273,18 @@ public class GroundMovement : MonoBehaviour
             }
 
         }
+    }
+
+    private void HandleVariableJumpCut()
+    {
+        if (!jumpCutQueued) return;
+
+        if (rb.linearVelocity.y > 0f)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+        }
+
+        jumpCutQueued = false;
     }
 
     private void CheckIfOnSlope()
