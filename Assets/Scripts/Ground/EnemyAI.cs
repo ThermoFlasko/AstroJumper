@@ -122,10 +122,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (state == newState) return;
 
-        //Debug.Log(
-        //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
-        //    this
-        //);
+        Debug.Log(
+            $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
+            this
+        );
         ChangeAnimation(newState);
         
 
@@ -437,6 +437,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
+    // Seems like error is stemming from knockback and another call to tick return
     private void TickReturn()
     {
         if (!homePoint)
