@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -56,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float maxLeashDistance = 15f;
 
 
-    private State state = State.Patrol;
+    [SerializeField] private State state = State.Patrol;
     private Transform player;
     private float nextAttackTime;
 
@@ -69,11 +70,11 @@ public class EnemyAI : MonoBehaviour
 
     private Unit unit;
 
-    private bool isAttacking = false;
-    private bool isLowHealth = false;
-    private bool isDamaged = false;
-    private bool isDead = false;
-
+    [SerializeField] private bool isAttacking = false;
+    [SerializeField] private bool isLowHealth = false;
+    [SerializeField] private bool isDamaged = false;
+    [SerializeField] private bool isDead = false;
+    [SerializeField] private bool restoreSpeed = false;
     private void Awake()
     {
         unit = GetComponent<Unit>();
@@ -104,6 +105,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if(restoreSpeed)
+        {
+            motor.RestoreSpeedToOriginal();
+        }
         // want to add sleep off screen for better performance later (pooling or sleep state idk yet)
         // if (!IsOnScreen()) return . . .
 
@@ -122,11 +127,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (state == newState) return;
 
-        //Debug.Log(
-        //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
-        //    this
-        //);
-        ChangeAnimation(newState);
+        Debug.Log(
+            $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
+            this
+        );
+        //ChangeAnimation(newState);
         
 
         state = newState;
@@ -192,14 +197,9 @@ public class EnemyAI : MonoBehaviour
             motor.Flip();
         }
 
-        if(isLowHealth)
-        {
-            motor.Limp();
-        }
-        else
-        {
-            motor.Move();
-        }
+        motor.RestoreSpeedToOriginal();
+        if (isLowHealth) motor.Limp();
+        motor.Move();
     }
 
     private void TickChase()
@@ -261,6 +261,8 @@ public class EnemyAI : MonoBehaviour
                 return;
             }
 
+            motor.Chase();
+            if (isLowHealth) motor.LimpChase();
             motor.Move();
             return;
         }
@@ -296,6 +298,8 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
+        motor.RestoreSpeedToOriginal();
+        if (isLowHealth) motor.Limp();
         motor.Move();
     }
 
@@ -350,7 +354,11 @@ public class EnemyAI : MonoBehaviour
 
             // Keep rushing
             if (dist > meleeRange * 0.5f)
+            {
+                motor.Chase();
+                if (isLowHealth) motor.LimpChase();
                 motor.Move();
+            }
             else
                 motor.StopHorizontal();
 
@@ -437,6 +445,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
+    // Seems like error is stemming from knockback and another call to tick return
     private void TickReturn()
     {
         if (!homePoint)
@@ -481,6 +490,8 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
+        motor.RestoreSpeedToOriginal();
+        if (isLowHealth) motor.Limp();
         motor.Move();
     }
 
@@ -494,7 +505,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ExitKnockback()
     {
-        if(unit.Health <= 40)
+        if (unit.Health <= 50)
         {
             isLowHealth = true;
         }

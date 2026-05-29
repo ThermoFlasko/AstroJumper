@@ -8,6 +8,7 @@ public class GroundEnemySpawner : MonoBehaviour
     //private InputAction spawnEnemy;
     public GameObject MeleeEnemyPrefab;
     public GameObject RangedEnemyPrefab;
+    InputAction spawnEnemy;
 
     public List<Transform> MeleeSpawnLocations;
     public List<Transform> RangedSpawnLocations;
@@ -16,7 +17,7 @@ public class GroundEnemySpawner : MonoBehaviour
     {
         MeleeSpawnLocations = new List<Transform>();
         RangedSpawnLocations = new List<Transform>();
-        //spawnEnemy = InputSystem.actions.FindAction("SpawnEnemy");
+        spawnEnemy = InputSystem.actions.FindAction("SpawnEnemy");
     }
 
     private IEnumerator Start()
@@ -33,11 +34,11 @@ public class GroundEnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        //if(spawnEnemy.WasReleasedThisFrame())
-        //{
-        //    SpawnEnemy(MeleeSpawnLocations, "MeleeSpawner", MeleeEnemyPrefab);
-        //    SpawnEnemy(RangedSpawnLocations, "RangedSpawner", RangedEnemyPrefab);
-        //}
+        if (spawnEnemy.WasReleasedThisFrame())
+        {
+            SpawnEnemy(MeleeSpawnLocations, "MeleeSpawner", MeleeEnemyPrefab);
+            SpawnEnemy(RangedSpawnLocations, "RangedSpawner", RangedEnemyPrefab);
+        }
     }
 
     private void SpawnEnemy(List<Transform> spawnLocations, string enemyTypeTagName, GameObject enemyPrefab)
