@@ -47,6 +47,7 @@ public class PauseManager : MonoBehaviour
 
     public void GoToMainMenuOptions()
     {
+        SaveManager.instance.SaveGame();
         Time.timeScale = 1f; // Unpause the game
     
         PlayerPrefs.SetInt("OpenOptionsOnLoad", 1);
@@ -82,6 +83,7 @@ public class PauseManager : MonoBehaviour
     
     public void QuitToMainMenu()
     {
+        SaveManager.instance.SaveGame();
         Time.timeScale = 1f; // Ensure time scale is reset
         SceneManager.LoadScene("Menus"); // Load the main menu scene
     }

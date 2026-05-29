@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public DialougeSO dialogue;
     public bool FoundFirstScrap = false;
+    public Item scrapSO;
 
     public List<Item> items = new List<Item>();
     public static event Action<Item> OnItemAdded;
@@ -52,5 +53,10 @@ public class Inventory : MonoBehaviour
     {
         DialogueTextManager.Instance.currentDialouge = dialogue;
         DialogueTextManager.Instance.StartDialouge();
+    }
+
+    public void GiveScrap()
+    {
+        AddItem(scrapSO);
     }
 }

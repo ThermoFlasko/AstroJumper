@@ -3,6 +3,9 @@ using UnityEngine.Serialization;
 using System.Collections;
 using System;
 using System.IO;
+using Unity.VisualScripting;
+using System.Linq;
+using UnityEditor;
 
 [DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
@@ -13,17 +16,22 @@ public class SaveManager : MonoBehaviour
     [Header("Defualts + Files")]
     [SerializeField]
     private DefualtGameSaveSO defualtGameSaveSO;
+    private DefaultLevelSaveSO defaultLevelSaveSO;
 
     [SerializeField] private string saveFolderName = "Saves";
     [SerializeField] private string saveFileName = "savegame.json";
+    [SerializeField] private string saveLevelFileName = "savelevel.json";
 
     private const string LegacySaveFileName = "importantYAaaaa.json";
 
     private string SaveDirectoryPath => Path.Combine(Application.persistentDataPath, saveFolderName);
     private string SaveFilePath => Path.Combine(SaveDirectoryPath, saveFileName);
+    private string SaveLevelFilePath => Path.Combine(SaveDirectoryPath, saveLevelFileName);
+
     private string LegacySaveFilePath => Path.Combine(Application.persistentDataPath, LegacySaveFileName);
 
     public SaveData CurrentSaveData { get; private set; }
+    public LevelSaveData CurrentLevelSaveData {get; private set;}
     public DefualtGameSaveSO DefaultGameSaveSO => defualtGameSaveSO;
 
 
@@ -41,6 +49,9 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private KeyCode addMoneyTestKey = KeyCode.M;
     [SerializeField] private int addMoneyTestAmount = 100;
 
+    [Header("Level Saving")]
+    public bool isLoadingSaveData = false;
+    public bool IsInLevel = false;
 
     private void Awake()
     {
@@ -69,6 +80,7 @@ public class SaveManager : MonoBehaviour
             yield return new WaitForSeconds(autoSaveDelaySaveTime);
             if (dirty)
             {
+                print("saving");
                 SaveGame();
             }
         }
@@ -105,7 +117,7 @@ public class SaveManager : MonoBehaviour
     {
         TryMigrateLegacySaveFile();
 
-        if (!File.Exists(SaveFilePath))
+        if (!File.Exists(SaveFilePath) || !File.Exists(SaveLevelFilePath))
         {
             CreateDefaultSaveFile("No save file found.");
             return;
@@ -142,6 +154,30 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
+        try
+        {
+            string json = File.ReadAllText(SaveLevelFilePath);
+            CurrentLevelSaveData = JsonUtility.FromJson<LevelSaveData>(json);
+
+            if (CurrentLevelSaveData == null)
+            {
+                CreateDefaultSaveFile($"Save file was empty or invalid JSON at {SaveLevelFilePath}.");
+                return;
+            }
+
+            // CurrentLevelSaveData.EnsureInitialized()
+
+            // bool upgradedSaveVersion = CurrentLevelSaveData.version < SaveData.CurrentVersion;
+            // CurrentLevelSaveData.EnsureInitialized(defualtGameSaveSO);
+            // CurrentSaveData.version = SaveData.CurrentVersion;
+
+        }
+        catch (Exception ex)
+        {
+            CreateDefaultSaveFile($"Failed reading save file at {SaveLevelFilePath}. {ex.Message}");
+            return;
+        }
+
         NotifyMoneyChanged();
     }
 
@@ -151,6 +187,8 @@ public class SaveManager : MonoBehaviour
 
         dirty = false;
         dirtyTimer = 0f;
+
+        UpdateLevelData();
 
         WriteToDisk();
     }
@@ -164,7 +202,6 @@ public class SaveManager : MonoBehaviour
             Directory.CreateDirectory(SaveDirectoryPath);
             string json = JsonUtility.ToJson(CurrentSaveData, true);
             string tempSavePath = SaveFilePath + ".tmp";
-
             File.WriteAllText(tempSavePath, json);
 
             if (File.Exists(SaveFilePath))
@@ -183,6 +220,29 @@ public class SaveManager : MonoBehaviour
         {
             Debug.LogError($"Failed writing save file at {SaveFilePath}. {ex}");
         }
+
+        // for level save data
+        try
+        {
+            string json = JsonUtility.ToJson(CurrentLevelSaveData, true);
+            string tempSavePath = SaveLevelFilePath + ".tmp";
+            File.WriteAllText(tempSavePath, json);
+
+            if (File.Exists(SaveLevelFilePath))
+            {
+                File.Copy(tempSavePath, SaveLevelFilePath, true);
+                File.Delete(tempSavePath);
+            }
+            else
+            {
+                File.Move(tempSavePath, SaveLevelFilePath);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Failed writing save file at {SaveLevelFilePath}. {ex}");
+        }
+
     }
 
     private void OnDisable()
@@ -195,7 +255,7 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        if (dirty) SaveGame();
+        SaveGame();
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -234,6 +294,54 @@ public class SaveManager : MonoBehaviour
         CurrentSaveData.newMoney += amount;
         NotifyMoneyChanged();
         MakeDirty();
+    }
+
+    public void UpdateLevelData()
+    {
+        if (!IsInLevel)
+        {
+            print("not in level, not saving level data");
+            return;
+        }
+        
+        if (CurrentLevelSaveData.isPlanetLevel)
+        {
+            // generate new planet save data, use method to update data
+            PlanetLevelData planetLevelData = new PlanetLevelData();
+
+            planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+            GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
+
+            print(meleeEnemies.transform.GetChild(0));
+            
+            foreach (Transform child in meleeEnemies.transform)
+            {
+                MeleeSaveData saveData = new MeleeSaveData();
+                saveData = (MeleeSaveData)LoadEnemyData(saveData, child.gameObject);
+                planetLevelData.meleeEnemies.Add(saveData);
+            }
+
+            GameObject rangedEnemies = GameObject.FindGameObjectWithTag("RangedRoot");
+
+            foreach (Transform child in rangedEnemies.transform)
+            {
+                RangedSaveData saveData = new RangedSaveData();
+                saveData = (RangedSaveData)LoadEnemyData(saveData, child.gameObject);
+                planetLevelData.rangedEnemies.Add(saveData);
+            }
+
+            CurrentLevelSaveData.UpdatePlanetLevelData(planetLevelData);
+            
+            Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+            CurrentLevelSaveData.scrapCount = playerInventory.GetScrapCount();
+
+        }
+        else
+        {
+            
+        }
     }
 
     public int GetUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
@@ -407,6 +515,43 @@ public class SaveManager : MonoBehaviour
         MakeDirty();
     }
 
+    public LevelSaveData GetCurrentLevelData()
+    {
+        return CurrentLevelSaveData;
+    }
+
+    public EnemySaveData LoadEnemyData(EnemySaveData data, GameObject go)
+    {
+        EnemySaveData saveData;
+        if (data is MeleeSaveData)
+        {
+            saveData = new MeleeSaveData();
+
+            Unit unit = go.GetComponent<Unit>();
+            saveData.health = unit.Health;
+
+            saveData.position = go.transform.position;
+        }
+        else if (data is RangedSaveData)
+        {
+            saveData = new RangedSaveData();
+
+            Unit unit = go.GetComponent<Unit>();
+            saveData.health = unit.Health;
+
+            saveData.position = go.transform.position;
+        }
+        else
+        {
+            // filler
+            saveData = new MeleeSaveData();
+
+        }
+
+
+        return saveData;
+    }
+
     #endregion
 
     private void EnsureCurrentSaveData()
@@ -418,6 +563,11 @@ public class SaveManager : MonoBehaviour
 
         CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
         CurrentSaveData.version = SaveData.CurrentVersion;
+
+        if (CurrentLevelSaveData == null)
+        {
+            CurrentLevelSaveData = LevelSaveData.CreateDefaultSaveData();
+        }
     }
 
     private void CreateDefaultSaveFile(string reason)

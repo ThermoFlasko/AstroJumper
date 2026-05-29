@@ -17,6 +17,6 @@ public class UIEventManager : MonoBehaviour
     private void UpdateHealthUI(Unit unit)
     {
         // Update the health UI based on the unit's current health
-        print("Updating health UI for " + unit.UnitName + ". Current health: " + unit.Health);
+        //print("Updating health UI for " + unit.UnitName + ". Current health: " + unit.Health);
     }
 }
