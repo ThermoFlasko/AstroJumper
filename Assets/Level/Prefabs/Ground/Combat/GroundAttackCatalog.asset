@@ -16,5 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fb7db984f0bced4a873a59425a88261, type: 2}
   - {fileID: 11400000, guid: 271a34ff79fb8724fa51217064f9a3c7, type: 2}
   - {fileID: 11400000, guid: e93067509fa38f44189c75cd9740e40a, type: 2}
+  - {fileID: 11400000, guid: c2e91f7832b14fd6bdd34ffa469c411a, type: 2}
   deufaltMeleeAttack: {fileID: 11400000, guid: 7fb7db984f0bced4a873a59425a88261, type: 2}
   deufaltRangedAttack: {fileID: 11400000, guid: 271a34ff79fb8724fa51217064f9a3c7, type: 2}

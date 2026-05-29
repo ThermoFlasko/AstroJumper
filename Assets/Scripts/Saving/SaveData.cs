@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 public class SaveData
 {
     //Any time we make changes pdate this so the game nows theres no information to be saved 
-    public const float CurrentVersion = 0.69f;
+    public const float CurrentVersion = 0.7f;
 
     public float version = CurrentVersion;
 
@@ -59,8 +59,10 @@ public class SaveData
 
         if (groundEquipmentData == null)
         {
-            groundEquipmentData = new GroundEquipmentData();
+            groundEquipmentData = CreateDefaultGroundEquipmentData(defaults != null ? defaults.groundEquipmentDefaults : null);
         }
+
+        ApplyDefaultGroundEquipmentData(groundEquipmentData, defaults != null ? defaults.groundEquipmentDefaults : null);
 
     }
 
@@ -71,6 +73,7 @@ public class SaveData
         d.newMoney = (defaults != null) ? defaults.startingNewMoney : 0;
         d.spaceshipUpgradeData = CreateDefaultUpgradeData(defaults != null ? defaults.playerSpaceshipUpgradesSO : null);
         d.groundTrooperUpgradeData = CreateDefaultGroundTrooperUpgradeData(defaults != null ? defaults.groundTrooperDefaults : null);
+        d.groundEquipmentData = CreateDefaultGroundEquipmentData(defaults != null ? defaults.groundEquipmentDefaults : null);
 
         return d;
     }
@@ -106,5 +109,24 @@ public class SaveData
         }
 
         return upgradeData;
+    }
+
+    private static GroundEquipmentData CreateDefaultGroundEquipmentData(GroundEquipmentDefaults equipmentDefaults)
+    {
+        var equipmentData = new GroundEquipmentData();
+        ApplyDefaultGroundEquipmentData(equipmentData, equipmentDefaults);
+        return equipmentData;
+    }
+
+    private static void ApplyDefaultGroundEquipmentData(GroundEquipmentData equipmentData, GroundEquipmentDefaults equipmentDefaults)
+    {
+        if (equipmentData == null || equipmentDefaults == null)
+            return;
+
+        if (string.IsNullOrWhiteSpace(equipmentData.equippedMeleeAttackId))
+            equipmentData.equippedMeleeAttackId = equipmentDefaults.equippedMeleeAttackId;
+
+        if (string.IsNullOrWhiteSpace(equipmentData.equippedRangedAttackId))
+            equipmentData.equippedRangedAttackId = equipmentDefaults.equippedRangedAttackId;
     }
 }

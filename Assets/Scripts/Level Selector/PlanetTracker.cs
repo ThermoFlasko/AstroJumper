@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Collections;
-using NUnit.Framework;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlanetTracker : MonoBehaviour
 {
@@ -108,20 +105,21 @@ public class PlanetTracker : MonoBehaviour
     void CreateUI(GameObject planetGO)
     {
         // create UI panel showing planet info
-        Vector3 parentTransform = new Vector3(0, 0, 0);
-        GameObject UI = Instantiate(UIpanelPrefab, parentTransform, Quaternion.identity);
+        GameObject UI = Instantiate(UIpanelPrefab, Vector3.zero, Quaternion.identity);
         
         print(GameObject.FindGameObjectWithTag("Canvas").transform);
 
         TextMeshProUGUI UIText = UI.GetComponentInChildren<TextMeshProUGUI>();
         Planet planet = planetGO.GetComponent<Planet>();
-        UIText.text = planet.planetName + "\n" + planet.dificulty + "\n" + planet.faction + "\n" + planet.resources;
+        UIText.text = planet.planetName + "\n\n" + planet.planetDescription;
 
         UI.GetComponent<RectTransform>().SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
         UI.GetComponent<PlanetUI>().sceneToLoad = planet.sceneToLoad;
 
-        
+        Image UISprite = UI.transform.GetChild(0).GetComponent<Image>();
+
+        UISprite.sprite = planetGO.GetComponent<SpriteRenderer>().sprite;
     }
 
     private bool IsUpgradeMenuOpen()
