@@ -12,6 +12,11 @@ public class PlayerSpaceshipCombat : MonoBehaviour
     [Tooltip("Default spawn point that gets rotated around the ship to sit between ship + aim direction.")]
     [SerializeField] private Transform projectileSpawn;
 
+    [Header("Pooling")]
+    [SerializeField] private bool prewarmLaserPools = true;
+    [SerializeField] private int prewarmProjectilesPerAttack = 48;
+    [SerializeField] private int prewarmHitVfxPerAttack = 48;
+
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset actionsAsset;
     [SerializeField] private string actionMapName = "Player";
@@ -20,6 +25,7 @@ public class PlayerSpaceshipCombat : MonoBehaviour
 
     private InputAction primaryFireAction;
     private InputAction secondaryFireAction;
+    private TeamAgent team;
 
     [Header("Debug")]
     [SerializeField] private bool drawDebug = false;
@@ -32,6 +38,9 @@ public class PlayerSpaceshipCombat : MonoBehaviour
     private void Awake()
     {
         if (!cam) cam = Camera.main;
+        team = GetComponent<TeamAgent>();
+
+        PrewarmAttackPools();
 
         if (projectileSpawn != null)
         {
@@ -100,6 +109,22 @@ public class PlayerSpaceshipCombat : MonoBehaviour
             : (Vector3)toMouse.normalized;
     }
 
+    private void PrewarmAttackPools()
+    {
+        if (!prewarmLaserPools || attacks == null)
+            return;
+
+        for (int i = 0; i < attacks.Length; i++)
+        {
+            SpaceAttackInfo attack = attacks[i];
+            if (attack != null && attack.projectile != null)
+                SpaceshipLaser.PrewarmProjectile(
+                    attack.projectile,
+                    prewarmProjectilesPerAttack,
+                    prewarmHitVfxPerAttack);
+        }
+    }
+
     private void RotateSpawnPointAroundCenter()
     {
         if (projectileSpawn == null) return;
@@ -133,7 +158,7 @@ public class PlayerSpaceshipCombat : MonoBehaviour
 
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, shotDirection);
 
-        Instantiate(attack.projectile, firePoint.position, rot);
+        SpaceshipLaser.Spawn(attack.projectile, firePoint.position, rot, team != null ? team.TeamId : 0);
 
         StartCoroutine(AttackCooldown(attack));
     }

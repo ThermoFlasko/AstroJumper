@@ -299,6 +299,8 @@ MonoBehaviour:
   deathVolume: 1
   deathVfxPrefab: {fileID: 3539175396477220020, guid: e3110dc05c7ec0e40bb02fc5e5c74fb9, type: 3}
   deathVfxDestroyPadding: 0.25
+  prewarmDeathVfxPool: 1
+  prewarmDeathVfxCount: 32
   currentHealth: 100
   maxHealth: 100
   maxShileds: 100
@@ -325,7 +327,7 @@ MonoBehaviour:
   fallbackArriveDistance: 1.25
   fallbackFullThrottleDistance: 8
   minimumThrottleWhenMoving: 0.2
-  useLocalAvoidance: 1
+  useLocalAvoidance: 0
   avoidFriendlyShips: 1
   avoidHostileShips: 1
   localAvoidanceRadius: 10
@@ -340,7 +342,7 @@ MonoBehaviour:
   reduceThrottleDuringAvoidance: 0
   avoidanceThrottleMinScale: 0.65
   avoidanceThrottleResponse: 0.85
-  useLineOfSightSteering: 1
+  useLineOfSightSteering: 0
   lineOfSightProbeCount: 5
   lineOfSightProbeArcDegrees: 80
   lineOfSightProbeRange: 55
@@ -386,6 +388,9 @@ MonoBehaviour:
   turretPivots: []
   shipProfile: {fileID: 11400000, guid: 81357e49726fbf240b1daaadd1ddbd89, type: 2}
   laserPrefab: {fileID: 659358672219713016, guid: 323e69ff10ed04747991fff7df429b60, type: 3}
+  prewarmLaserPool: 1
+  prewarmProjectileCount: 192
+  prewarmHitVfxCount: 96
   orbitFirePointAroundShip: 1
   rotateTurretPivotsTowardAim: 1
   autoUseFirePointChildrenAsTurretPivots: 1
@@ -393,8 +398,8 @@ MonoBehaviour:
   useFirePointAsTurretPivotFallback: 1
   requireTargetToRotateTurrets: 0
   turretTurnSpeedDegPerSec: 720
-  avoidFriendlyFire: 1
-  retargetIfUnsafe: 1
+  avoidFriendlyFire: 0
+  retargetIfUnsafe: 0
   lineOfFireMask:
     serializedVersion: 2
     m_Bits: 4294967295

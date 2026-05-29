@@ -19,6 +19,11 @@ public class EnemySpaceshipCombatAI : MonoBehaviour
     [SerializeField] private EnemyShipProfileSO shipProfile;
     [SerializeField] private GameObject laserPrefab;
 
+    [Header("Pooling")]
+    [SerializeField] private bool prewarmLaserPool = true;
+    [SerializeField] private int prewarmProjectileCount = 192;
+    [SerializeField] private int prewarmHitVfxCount = 96;
+
     [Header("Turret Motion")]
     [SerializeField] private bool orbitFirePointAroundShip = true;
     [SerializeField] private bool rotateTurretPivotsTowardAim = true;
@@ -81,6 +86,9 @@ public class EnemySpaceshipCombatAI : MonoBehaviour
 
         if (shipProfile == null || laserPrefab == null || firePoint == null)
             return;
+
+        if (prewarmLaserPool)
+            SpaceshipLaser.PrewarmProjectile(laserPrefab, prewarmProjectileCount, prewarmHitVfxCount);
 
         if (fireCo != null) StopCoroutine(fireCo);
         fireCo = StartCoroutine(FireLoop());
@@ -275,10 +283,7 @@ public class EnemySpaceshipCombatAI : MonoBehaviour
 
             Vector3 shotDirection = ApplySpread(baseDirection);
             Quaternion shotRotation = Quaternion.FromToRotation(Vector3.up, shotDirection);
-            GameObject proj = Instantiate(laserPrefab, firePoint.position, shotRotation);
-
-            if (proj.TryGetComponent<SpaceshipLaser>(out var laser))
-                laser.teamId = team != null ? team.TeamId : 0;
+            SpaceshipLaser.Spawn(laserPrefab, firePoint.position, shotRotation, team != null ? team.TeamId : 0);
         }
     }
 
