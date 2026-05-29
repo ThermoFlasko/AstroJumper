@@ -47,6 +47,7 @@ public class PauseManager : MonoBehaviour
 
     public void GoToMainMenuOptions()
     {
+        SaveManager.instance.SaveGame();
         Time.timeScale = 1f; // Unpause the game
     
         PlayerPrefs.SetInt("OpenOptionsOnLoad", 1);
