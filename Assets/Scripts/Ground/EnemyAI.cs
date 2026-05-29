@@ -1,9 +1,10 @@
-using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private enum State { Patrol, Chase, Attack, Knockback, Return }
+    private enum State { Patrol, Chase, Attack, Knockback, Return, Idle}
 
     [System.Flags]
     public enum AttackType // different attack types
@@ -61,6 +62,8 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private float nextAttackTime;
 
+    [Header("Idle")]
+    [SerializeField] private float idleTime = 2.0f;
 
     private Vector2 lastSeenPos;
     private float lastSeenTime = -999f;
@@ -119,6 +122,7 @@ public class EnemyAI : MonoBehaviour
             case State.Attack: TickAttack(); break;
             case State.Return: TickReturn(); break;
             case State.Knockback: break;
+            case State.Idle: break;
         }
     }
 
@@ -127,13 +131,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (state == newState) return;
 
-        Debug.Log(
-            $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
-            this
-        );
-        //ChangeAnimation(newState);
-        
+        //Debug.Log(
+        //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
+        //    this
+        //);
 
+        ChangeAnimation(newState);
         state = newState;
     }
 
@@ -143,24 +146,40 @@ public class EnemyAI : MonoBehaviour
 
         if (controller == null) return;
 
-        controller.ResetControllerState();
-
+        controller.SetBool("AttackState", false);
 
         switch (state)
         {
-            case State.Patrol: 
+            case State.Patrol:
+                CheckHealthForAnimation(controller);
                 break;
             case State.Chase:
-                controller.SetTrigger("WalkState");
+                CheckHealthForAnimation(controller);
                 break;
             case State.Attack:
-                controller.SetTrigger("AttackState");
+                controller.SetBool("AttackState", true);
                 break;
-            case State.Return: 
+            case State.Return:
+                CheckHealthForAnimation(controller);
                 break;
             case State.Knockback:
-                controller.SetTrigger("DamageState");
+                controller.SetTrigger("DamageTrigger");
                 break;
+            case State.Idle:
+                break;
+        }
+    }
+
+    private void CheckHealthForAnimation(Animator controller)
+    {
+        if (isLowHealth)
+        {
+            controller.SetBool("WalkState", false);
+            controller.SetBool("LimpState", true);
+        }
+        else
+        {
+            controller.SetBool("WalkState", true);
         }
     }
 
@@ -495,6 +514,21 @@ public class EnemyAI : MonoBehaviour
         motor.Move();
     }
 
+    // this should only occur when not in any of the other states
+    // this should happen when reaching the end of the leash range 
+
+    private void TickIdle()
+    {
+        float distFromHome = Mathf.Abs(transform.position.x - homePoint.position.x);
+        Transform seen = sensors.DetectPlayer();
+
+        if (distFromHome == 0)
+        {
+            motor.StopHorizontal();
+            ChangeState(State.Idle, "Entering Idle");
+        }
+    }
+
     // Call this from dmg system
     public void EnterKnockback(Vector2 force, float duration)
     {
@@ -511,5 +545,10 @@ public class EnemyAI : MonoBehaviour
         }
 
         ChangeState(State.Return, "Exiting knockback");
+    }
+
+    private IEnumerator IdleTimer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 }

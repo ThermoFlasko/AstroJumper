@@ -271,7 +271,7 @@ MonoBehaviour:
   hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
-  meleeAnimator: {fileID: 4144720731330400138, guid: fd9534f305d36f4428bada05ae945ef5, type: 3}
+  meleeAnimator: {fileID: 0}
   StartSprite: {fileID: 0}
 --- !u!114 &2916840892436311964
 MonoBehaviour:
@@ -305,10 +305,12 @@ MonoBehaviour:
   homeTolerance: 0.2
   maxLeashDistance: 8
   state: 0
+  idleTime: 2
   isAttacking: 0
   isLowHealth: 0
   isDamaged: 0
   isDead: 0
+  restoreSpeed: 0
 --- !u!114 &3096100077908708330
 MonoBehaviour:
   m_ObjectHideFlags: 0
