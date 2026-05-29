@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 7415500675629748956}
   - component: {fileID: 5862821998221709667}
   - component: {fileID: 6245293552459302686}
-  - component: {fileID: 3096100077908708330}
-  - component: {fileID: 2916840892436311964}
   - component: {fileID: 4063790636962236771}
+  - component: {fileID: 2916840892436311964}
+  - component: {fileID: 3096100077908708330}
   - component: {fileID: 7832879575391480077}
   - component: {fileID: 6216486578728765313}
   m_Layer: 12
@@ -251,7 +251,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3096100077908708330
+--- !u!114 &4063790636962236771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,12 +260,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8142058132746787800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eeddc7b89b0c54489fa76013877c5ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d90665e65388134aad4f7c59ae7c707, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMotor
-  moveSpeed: 4
-  chaseSpeedModifier: 2
-  limpSpeedModifier: -1.5
+  m_EditorClassIdentifier: Assembly-CSharp::Unit
+  _unitName: MeleeEnemy
+  _health: 100
+  _damage: 10
+  hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
+  hitBoxPrefab2: {fileID: 0}
+  hitBoxPrefab3: {fileID: 0}
+  unitProjectilePool: {fileID: 0}
+  DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
+  meleeAnimator: {fileID: 4144720731330400138, guid: fd9534f305d36f4428bada05ae945ef5, type: 3}
+  StartSprite: {fileID: 0}
 --- !u!114 &2916840892436311964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +304,12 @@ MonoBehaviour:
   homePoint: {fileID: 0}
   homeTolerance: 0.2
   maxLeashDistance: 8
---- !u!114 &4063790636962236771
+  state: 0
+  isAttacking: 0
+  isLowHealth: 0
+  isDamaged: 0
+  isDead: 0
+--- !u!114 &3096100077908708330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,19 +318,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8142058132746787800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d90665e65388134aad4f7c59ae7c707, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eeddc7b89b0c54489fa76013877c5ed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  _unitName: MeleeEnemy
-  _health: 100
-  _damage: 10
-  hitBoxPrefab: {fileID: 174109804372061078, guid: b454596e713e44f4daefd355156d1fcf, type: 3}
-  hitBoxPrefab2: {fileID: 0}
-  hitBoxPrefab3: {fileID: 0}
-  unitProjectilePool: {fileID: 0}
-  DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
-  meleeAnimator: {fileID: 4144720731330400138, guid: fd9534f305d36f4428bada05ae945ef5, type: 3}
-  StartSprite: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMotor
+  moveSpeed: 4
+  chaseSpeedModifier: 1.5
+  limpSpeedModifier: 0.6
 --- !u!70 &7832879575391480077
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

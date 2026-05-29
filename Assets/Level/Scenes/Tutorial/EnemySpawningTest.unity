@@ -149921,6 +149921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialougeContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 5626896301787443470, guid: d6562edf502f3364589e55703c281cf7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719242088231187832, guid: d6562edf502f3364589e55703c281cf7, type: 3}
       propertyPath: m_fontSize
       value: 72

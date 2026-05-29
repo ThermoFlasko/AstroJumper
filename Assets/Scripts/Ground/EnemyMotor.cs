@@ -4,8 +4,8 @@ using UnityEngine;
 public class EnemyMotor : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float chaseSpeedModifier = 2.0f;
-    [SerializeField] private float limpSpeedModifier = -1.5f;
+    [SerializeField] private float chaseSpeedModifier = 1.5f;
+    [SerializeField] private float limpSpeedModifier = 0.6f;
 
     private float originalSpeed;
 
@@ -17,24 +17,37 @@ public class EnemyMotor : MonoBehaviour
         originalSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
     }
+    
+
+    // these are constantly being called by the EnemyAI script
+    // need to register once only any updates to enemy speed so it doesnt keep making calls
+
+    // default call is Move() in most cases
+    // if the enemy gets low then enemy should now move with the limp modifier
 
     public void Move()
     {
-        moveSpeed = originalSpeed;
         rb.linearVelocity = new Vector2(FacingDir * moveSpeed, rb.linearVelocity.y);
-        //Debug.Log($"FacingDir={FacingDir}, velX={rb.linearVelocity.x}");
     }
 
     public void Chase()
     {
-        moveSpeed += chaseSpeedModifier;
-        rb.linearVelocity = new Vector2(FacingDir * moveSpeed, rb.linearVelocity.y);
+        moveSpeed = CalculateNewMoveSpeed(originalSpeed, chaseSpeedModifier);
+    }
+
+    public void LimpChase()
+    {
+        moveSpeed = CalculateNewMoveSpeed(originalSpeed, chaseSpeedModifier, limpSpeedModifier);
     }
 
     public void Limp()
     {
-        moveSpeed += limpSpeedModifier;
-        rb.linearVelocity = new Vector2(FacingDir * moveSpeed, rb.linearVelocity.y);
+        moveSpeed = CalculateNewMoveSpeed(originalSpeed, limpSpeedModifier);
+    }
+
+    public void RestoreSpeedToOriginal()
+    {
+        moveSpeed = originalSpeed;
     }
 
     public void StopHorizontal()
@@ -46,6 +59,11 @@ public class EnemyMotor : MonoBehaviour
     {
         FacingDir *= -1;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    private float CalculateNewMoveSpeed(float speed, float modifier, float modifier2 = 1f)
+    {
+        return speed * modifier * modifier2;
     }
 
     public void SetFacingToward(float targetX)
