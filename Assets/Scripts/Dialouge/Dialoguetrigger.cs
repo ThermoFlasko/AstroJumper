@@ -7,8 +7,12 @@ public class Dialoguetrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DialogueTextManager.Instance.currentDialouge = dialogue;
-            DialogueTextManager.Instance.StartDialouge();
+            if (!SaveManager.instance.CurrentLevelSaveData.completedEvents.Contains(gameObject.name))
+            {
+                SaveManager.instance.CurrentLevelSaveData.UpdateCompletedEvents(gameObject.name);
+                DialogueTextManager.Instance.currentDialouge = dialogue;
+                DialogueTextManager.Instance.StartDialouge();
+            }
             Destroy(gameObject);
         }
     }

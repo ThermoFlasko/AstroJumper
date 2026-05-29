@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Linq;
 using UnityEngine.Localization.Settings;
-using UnityEngine.Localization; 
+using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(TextMeshProUGUI))]
@@ -110,7 +111,16 @@ public class DialogueTextManager : MonoBehaviour
         
         DisableTextClick();
 
-        StartDialouge();
+        if (SceneManager.GetActiveScene().name == "Tutorial Ground" && !SaveManager.instance.CurrentLevelSaveData.completedEvents.Contains("TutorialStart"))
+        {
+            SaveManager.instance.CurrentLevelSaveData.UpdateCompletedEvents("TutorialStart");
+            StartDialouge();
+            return;
+        }
+        else if (SceneManager.GetActiveScene().name != "Tutorial Ground")
+        {
+            StartDialouge();
+        }
     }
 
     private void Update()

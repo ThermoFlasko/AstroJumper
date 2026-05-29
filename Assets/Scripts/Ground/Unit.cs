@@ -112,8 +112,9 @@ public class Unit : MonoBehaviour
         {
             GameObject enemyDrop = Instantiate(DeathDrop, transform.position, Quaternion.identity);
             Inventory inventory = FindFirstObjectByType<Inventory>();
-            if (!inventory.FoundFirstScrap)
+            if (!inventory.FoundFirstScrap && !SaveManager.instance.CurrentLevelSaveData.completedEvents.Contains("FoundFirstScrap"))
             {
+                SaveManager.instance.CurrentLevelSaveData.UpdateCompletedEvents("FoundFirstScrap");
                 inventory.FoundFirstScrap = true;
                 inventory.StartFirstScrapFoundEvent();
             }

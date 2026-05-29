@@ -94,6 +94,14 @@ public class LevelLoader : MonoBehaviour
             unit.Health = enemySavaData.health;
             go.transform.position = enemySavaData.position;
         }
+
+        // set scrap count
+        Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+        for (int i = 0; i < SaveManager.instance.CurrentLevelSaveData.scrapCount; i++)
+        {
+            playerInventory.GiveScrap();
+        }
     }
 
     public void SetUpSpaceLevel(LevelSaveData levelSaveData)

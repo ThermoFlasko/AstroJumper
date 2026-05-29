@@ -332,6 +332,10 @@ public class SaveManager : MonoBehaviour
             }
 
             CurrentLevelSaveData.UpdatePlanetLevelData(planetLevelData);
+            
+            Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+            CurrentLevelSaveData.scrapCount = playerInventory.GetScrapCount();
 
         }
         else
