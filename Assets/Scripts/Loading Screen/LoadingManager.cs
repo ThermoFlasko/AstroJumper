@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using System.Linq;
 
 public class LoadingManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LoadingManager : MonoBehaviour
 
     [Header("Loading Settings")]
     public string sceneToLoad = ""; // Name of the scene to load
+    private string[] levelNames = { "Tutorial Ground", "Space Level 1", "PCG_Sample" };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +35,14 @@ public class LoadingManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if (asyncLoad.progress >= 0.9f && elapsedTime >= minLoadingTime) // Check if the scene has finished loading (progress is 0.9 when loading is complete)
             {
+                if (levelNames.Contains(sceneToLoad))
+                {
+                    SaveManager.instance.IsInLevel = true;
+                }
+                else
+                {
+                    SaveManager.instance.IsInLevel = false;
+                }
                 asyncLoad.allowSceneActivation = true; // Allow the scene to activate
             }
             yield return null;

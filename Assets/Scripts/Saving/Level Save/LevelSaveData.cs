@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class LevelSaveData
 {
     public string currLevel = "";
+    public bool isPlanetLevel = false;
     public PlanetLevelData planetLevelData = new PlanetLevelData();
     public SpaceLevelData spaceLevelData = new SpaceLevelData();
     public List<string> completedEvents = new List<string>();
@@ -17,18 +18,35 @@ public class LevelSaveData
         return new LevelSaveData();
     }
 
-    [Serializable]
-    public class PlanetLevelData
+    public void UpdateCompletedEvents(string completedEvent)
     {
-        public string levelName = "";
-        public Vector3 playerPosition = new Vector3(0,0,0);
-        public GameObject[] enemies = null;
+        completedEvents.Add(completedEvent);
     }
 
-    [Serializable]
-    public class SpaceLevelData
+    public void UpdatePlanetLevelData(PlanetLevelData levelData)
     {
-        public Vector3 playerPosition;
-        public string levelName = "";
+        planetLevelData = levelData;
     }
+
+    public void UpdateSpaceLevelData(SpaceLevelData levelData)
+    {
+        spaceLevelData = levelData;
+    }
+}
+
+[Serializable]
+public class PlanetLevelData
+{
+    public Vector3 playerPosition = new Vector3(0,0,0);
+    public List<MeleeSaveData> meleeEnemies = new();
+    public int totalMeleeEnemies = 0;
+    public List<RangedSaveData> rangedEnemies = new();
+    public int totalRangedEnemies = 0;
+}
+
+[Serializable]
+public class SpaceLevelData
+{
+    public Vector3 playerPosition;
+    public string levelName;
 }

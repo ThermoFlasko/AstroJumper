@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,12 +39,65 @@ public class LevelLoader : MonoBehaviour
 
     public void SetUpSavedLevel(LevelSaveData levelSaveData)
     {
-        print($"Setting up saved level {levelSaveData.currLevel}");
-        print($"{SceneManager.GetSceneAt(SceneManager.sceneCount-1).name}");
-        GameObject testTag = GameObject.FindGameObjectWithTag("TESTTAG");
         Scene loadingInScene = SceneManager.GetSceneByName(levelSaveData.currLevel);
 
         GameObject[] roots = loadingInScene.GetRootGameObjects();
+        
+
+        if (levelSaveData.isPlanetLevel)
+        {
+            SetUpPlanetLevel(levelSaveData);    
+        }
+    }
+
+    public void SetUpPlanetLevel(LevelSaveData levelSaveData)
+    {
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerGO.transform.position = levelSaveData.planetLevelData.playerPosition;
+
+        // get data and update for the ones
+
+        GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
+
+        for (int i = 0; i < meleeEnemies.transform.childCount; i++)
+        {
+            if ( i > levelSaveData.planetLevelData.meleeEnemies.Count-1)
+            {
+                Destroy(meleeEnemies.transform.GetChild(i).gameObject);
+                continue;
+            }
+
+            MeleeSaveData enemySavaData = levelSaveData.planetLevelData.meleeEnemies[i];
+            GameObject go = meleeEnemies.transform.GetChild(i).gameObject;
+
+            Unit unit = go.GetComponent<Unit>();
+
+            unit.Health = enemySavaData.health;
+            go.transform.position = enemySavaData.position;
+        }
+
+        GameObject rangedEnemies = GameObject.FindGameObjectWithTag("RangedRoot");
+
+        for (int i = 0; i < rangedEnemies.transform.childCount; i++)
+        {
+            if ( i > levelSaveData.planetLevelData.rangedEnemies.Count-1)
+            {
+                Destroy(rangedEnemies.transform.GetChild(i).gameObject);
+                continue;
+            }
+
+            RangedSaveData enemySavaData = levelSaveData.planetLevelData.rangedEnemies[i];
+            GameObject go = rangedEnemies.transform.GetChild(i).gameObject;
+
+            Unit unit = go.GetComponent<Unit>();
+
+            unit.Health = enemySavaData.health;
+            go.transform.position = enemySavaData.position;
+        }
+    }
+
+    public void SetUpSpaceLevel(LevelSaveData levelSaveData)
+    {
         
     }
 }

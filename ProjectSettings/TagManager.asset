@@ -15,7 +15,8 @@ TagManager:
   - MeleeSpawner
   - RangedSpawner
   - FxTemporaire
-  - TESTTAG
+  - MeleeRoot
+  - RangedRoot
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,8 @@ using System.Collections;
 using System;
 using System.IO;
 using Unity.VisualScripting;
+using System.Linq;
+using UnityEditor;
 
 [DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
@@ -47,8 +49,10 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private KeyCode addMoneyTestKey = KeyCode.M;
     [SerializeField] private int addMoneyTestAmount = 100;
 
-    [Header("Debug")]
+    [Header("Level Saving")]
     public bool isLoadingSaveData = false;
+    public bool IsInLevel = false;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -153,7 +157,6 @@ public class SaveManager : MonoBehaviour
         try
         {
             string json = File.ReadAllText(SaveLevelFilePath);
-
             CurrentLevelSaveData = JsonUtility.FromJson<LevelSaveData>(json);
 
             if (CurrentLevelSaveData == null)
@@ -185,6 +188,8 @@ public class SaveManager : MonoBehaviour
         dirty = false;
         dirtyTimer = 0f;
 
+        UpdateLevelData();
+
         WriteToDisk();
     }
 
@@ -197,7 +202,6 @@ public class SaveManager : MonoBehaviour
             Directory.CreateDirectory(SaveDirectoryPath);
             string json = JsonUtility.ToJson(CurrentSaveData, true);
             string tempSavePath = SaveFilePath + ".tmp";
-            print(tempSavePath);
             File.WriteAllText(tempSavePath, json);
 
             if (File.Exists(SaveFilePath))
@@ -212,19 +216,16 @@ public class SaveManager : MonoBehaviour
 
             Debug.Log($"Saved game to {SaveFilePath}. Money={CurrentSaveData.newMoney}");
         }
-
-            
         catch (Exception ex)
         {
             Debug.LogError($"Failed writing save file at {SaveFilePath}. {ex}");
         }
 
+        // for level save data
         try
         {
             string json = JsonUtility.ToJson(CurrentLevelSaveData, true);
-            print(CurrentLevelSaveData.planetLevelData.levelName);
             string tempSavePath = SaveLevelFilePath + ".tmp";
-            print(tempSavePath);
             File.WriteAllText(tempSavePath, json);
 
             if (File.Exists(SaveLevelFilePath))
@@ -254,7 +255,7 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        if (dirty) SaveGame();
+        SaveGame();
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -293,6 +294,50 @@ public class SaveManager : MonoBehaviour
         CurrentSaveData.newMoney += amount;
         NotifyMoneyChanged();
         MakeDirty();
+    }
+
+    public void UpdateLevelData()
+    {
+        if (!IsInLevel)
+        {
+            print("not in level, not saving level data");
+            return;
+        }
+        
+        if (CurrentLevelSaveData.isPlanetLevel)
+        {
+            // generate new planet save data, use method to update data
+            PlanetLevelData planetLevelData = new PlanetLevelData();
+
+            planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+            GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
+
+            print(meleeEnemies.transform.GetChild(0));
+            
+            foreach (Transform child in meleeEnemies.transform)
+            {
+                MeleeSaveData saveData = new MeleeSaveData();
+                saveData = (MeleeSaveData)LoadEnemyData(saveData, child.gameObject);
+                planetLevelData.meleeEnemies.Add(saveData);
+            }
+
+            GameObject rangedEnemies = GameObject.FindGameObjectWithTag("RangedRoot");
+
+            foreach (Transform child in rangedEnemies.transform)
+            {
+                RangedSaveData saveData = new RangedSaveData();
+                saveData = (RangedSaveData)LoadEnemyData(saveData, child.gameObject);
+                planetLevelData.rangedEnemies.Add(saveData);
+            }
+
+            CurrentLevelSaveData.UpdatePlanetLevelData(planetLevelData);
+
+        }
+        else
+        {
+            
+        }
     }
 
     public int GetUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
@@ -469,6 +514,38 @@ public class SaveManager : MonoBehaviour
     public LevelSaveData GetCurrentLevelData()
     {
         return CurrentLevelSaveData;
+    }
+
+    public EnemySaveData LoadEnemyData(EnemySaveData data, GameObject go)
+    {
+        EnemySaveData saveData;
+        if (data is MeleeSaveData)
+        {
+            saveData = new MeleeSaveData();
+
+            Unit unit = go.GetComponent<Unit>();
+            saveData.health = unit.Health;
+
+            saveData.position = go.transform.position;
+        }
+        else if (data is RangedSaveData)
+        {
+            saveData = new RangedSaveData();
+
+            Unit unit = go.GetComponent<Unit>();
+            saveData.health = unit.Health;
+
+            saveData.position = go.transform.position;
+        }
+        else
+        {
+            // filler
+            saveData = new MeleeSaveData();
+
+        }
+
+
+        return saveData;
     }
 
     #endregion

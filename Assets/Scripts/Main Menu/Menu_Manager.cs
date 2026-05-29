@@ -131,6 +131,7 @@ public class Menu_Manager : MonoBehaviour
     {
         LevelSaveData levelSaveData = SaveManager.instance.GetCurrentLevelData();
         levelSaveData.currLevel = "Tutorial Ground";
+        levelSaveData.isPlanetLevel = true;
         SaveManager.instance.SaveGame();
         SceneLoader.Instance.LoadNextScene("Tutorial Ground");
     }
