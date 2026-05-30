@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor;
+using MilkShake;
+ 
 public class Player : Unit
 {
     
@@ -12,6 +14,7 @@ public class Player : Unit
     [SerializeField] private string attackActionName = "Attack";
     [SerializeField] private string attackActionName2 = "Attack2";
     [SerializeField] private GroundAttackCatalogSO groundAttackCatalog;
+   
     private InputAction attackAction;
     private InputAction attackAction2;
     public static event Action<Unit> onPlayerDeath;
@@ -20,6 +23,11 @@ public class Player : Unit
 
     public GameObject healthUIGameObject;
     private Animator  UIhealth;
+    public Shaker MyShaker;
+    public ShakePreset CameraShake;
+    
+
+    
 
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
@@ -103,7 +111,7 @@ public class Player : Unit
         HitBox.onDurationOver -= OnHitBoxDurationOver;
     }
 
-    private void OnAttack(InputAction.CallbackContext context)
+    private void OnAttack(InputAction.CallbackContext context) //GUN ATTACK
     {
         if (isAttacking)
             return;
@@ -114,18 +122,12 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
-            //print("Projectile attack from pool");
+            print("Projectile attack from pool");
             projectileCount++;
             BeginAttack(hitBoxPrefab);
             return;
         }
-        else if(hitBoxInfo.GetIsMelee())
-        {
-            //print("melee attack");
-            BeginAttack(hitBoxPrefab);
-            isAttacking = true;
-            return;
-        }
+        
         else if(projectileCount < maxProjectile)
         {
             //print("no projectile pool, creating projectile");
@@ -134,7 +136,7 @@ public class Player : Unit
         }
     }
 
-    private void OnAttack2(InputAction.CallbackContext context)
+    private void OnAttack2(InputAction.CallbackContext context) //MELEE ATTACK 
     {
         if (isAttacking2)
             return;
@@ -152,7 +154,7 @@ public class Player : Unit
         }
         else if(hitBoxInfo.GetIsMelee())
         {
-            //print("melee attack");
+            print("melee attack");
             BeginAttack(hitBoxPrefab2);
             isAttacking2 = true;
             return;
@@ -182,8 +184,9 @@ public class Player : Unit
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         InvokeKnockback(this, knockbackVector);
+        MyShaker.Shake(CameraShake);
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+      SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (!isDamageAnimation)
             StartCoroutine(DamageEffect(spriteRenderer)); //Im not sure why it plays twice after taking dmg once It was like this before and flashes twice im not sure where it is, 
         Debug.Log("Invoking onPlayerDamaged animation");// the animation plays an extra time after taking dmg like a second later, but this isn't being called twice so its most likely a sprite issue
