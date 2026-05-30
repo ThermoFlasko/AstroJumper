@@ -12,11 +12,8 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneWindows # Build a Windows 32-bit standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
           - StandaloneOSX # Build a macOS standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - WebGL # WebGL.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
