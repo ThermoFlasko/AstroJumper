@@ -324,6 +324,7 @@ public class SaveManager : MonoBehaviour
             PlanetLevelData planetLevelData = new PlanetLevelData();
 
             planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
 
             GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
 

@@ -58,6 +58,7 @@ public class LevelLoader : MonoBehaviour
     {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         playerGO.transform.position = levelSaveData.planetLevelData.playerPosition;
+        playerGO.GetComponent<Unit>().Health = levelSaveData.planetLevelData.playerHealth;
 
         // get data and update for the ones
 

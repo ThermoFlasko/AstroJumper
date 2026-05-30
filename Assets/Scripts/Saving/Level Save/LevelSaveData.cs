@@ -39,6 +39,7 @@ public class LevelSaveData
 public class PlanetLevelData
 {
     public Vector3 playerPosition = new Vector3(0,0,0);
+    public int playerHealth = 100;
     public List<MeleeSaveData> meleeEnemies = new();
     public int totalMeleeEnemies = 0;
     public List<RangedSaveData> rangedEnemies = new();
