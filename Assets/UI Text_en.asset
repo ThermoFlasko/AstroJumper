@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 866911248384
-    m_Localized: Credits & Controls
+    m_Localized: Credits
     m_Metadata:
       m_Items: []
   - m_Id: 608785391616
@@ -63,26 +63,457 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 72999418978304
-    m_Localized: 'Programming: Jonathan Ng, William Wu, Cody Karigaca, Justin Fong
+    m_Localized: 'PRODUCTION LEADS
 
-      UI:
-      Hojoun Yoon, William Wu
+      
 
-      Audio: Hojoun Yoon, Alfredo Barragan
+      Justin Fong
 
-      Art:
-      Hojoun Yoon, Alfredo Barragan, Justin Fong
-
-      Design: Nikolas Makranyi,
-      Cody Karigaca, Justin Fong
-
-      Writing: Nikolas Makranyi, Alfredo Barragan
-
-      Managing:
       Dylan Paras
 
+      
 
-      External: Denis & Char'
+      
+
+      
+
+      
+
+      CHARACTER
+      ART
+
+      
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      ENVIRONMENTAL
+      ART
+
+      
+
+      Justin Fong
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      ANIMATION
+
+      
+
+      Justin
+      Fong
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      UI
+      ART
+
+      
+
+      Justin Fong
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+      Hojoun
+      Yoon
+
+      
+
+      
+
+      
+
+      
+
+      VFX ART
+
+      
+
+      Charlize
+      Lefler
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      GAMEPLAY
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      SYSTEMS
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      
+
+      
+
+      
+
+      
+
+      ENEMY
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Nikolas Makranyi
+
+      William
+      Wu
+
+      
+
+      
+
+      
+
+      
+
+      PLAYER DESIGN
+
+      
+
+      Justin
+      Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      UI/UX
+      DESIGN
+
+      
+
+      Jonathan Ng
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      
+
+      PLAYER
+      PROGRAMMING
+
+      
+
+      Alfredo Barragan
+
+      Cody Karigaca
+
+      Jonathan
+      Ng
+
+      Dylan Paras
+
+      William Wu
+
+      
+
+      
+
+      
+
+      
+
+      ENEMY
+      AI PROGRAMMING
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      
+
+      SYSTEMS
+      PROGRAMMING
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      
+
+      DIALOGUE
+      PROGRAMMING
+
+      
+
+      Jonathan Ng
+
+      
+
+      
+
+      
+
+      
+
+      UI
+      PROGRAMMING
+
+      
+
+      Justin Fong
+
+      Jonathan Ng
+
+      Dylan
+      Paras
+
+      William Wu
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      
+
+      SOUND
+      PROGRAMMING
+
+      
+
+      Alfredo Barragan
+
+      
+
+      
+
+      
+
+      
+
+      ASSET
+      IMPLEMENTATION
+
+      
+
+      Alfredo Barragan
+
+      Cody Karigaca
+
+      Justin
+      Fong
+
+      
+
+      
+
+      
+
+      
+
+      SOUNDTRACK COMPOSITION
+
+      
+
+      Alfredo
+      Barragan
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      SFX
+      DESIGN
+
+      
+
+      Alfredo Barragan
+
+      
+
+      
+
+      
+
+      
+
+      WORLD
+      & STORY WRITING
+
+      
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      DIALOGUE
+      WRITING
+
+      
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      CHARACTER
+      WRITING
+
+      
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      LANGUAGE
+      TRANSLATIONS
+
+      
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      
+
+      TRAILER
+      RECORDING & EDITING
+
+      
+
+      Dylan Paras
+
+      
+
+      
+
+      
+
+      
+
+      TRAILER
+      MUSIC COMPOSITION
+
+      
+
+      Alfredo Barragan
+
+      Denis Sanoy
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 74495699181568
@@ -241,6 +672,358 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5152066698731520
     m_Localized: Level Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308676247552
+    m_Localized: Production Leads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384896
+    m_Localized: Character Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384897
+    m_Localized: Environmental Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384898
+    m_Localized: Animation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384899
+    m_Localized: UI Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384900
+    m_Localized: VFX Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384901
+    m_Localized: Gameplay Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384902
+    m_Localized: Systems Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384903
+    m_Localized: Enemy Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308722384904
+    m_Localized: Player Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579200
+    m_Localized: UI/UX Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579201
+    m_Localized: Player Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579202
+    m_Localized: Enemy AI Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579203
+    m_Localized: Boss Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579204
+    m_Localized: Systems Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579205
+    m_Localized: Dialogue Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579206
+    m_Localized: UI Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579207
+    m_Localized: Sound Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579208
+    m_Localized: Asset Implementation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579209
+    m_Localized: Soundtrack Composition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579210
+    m_Localized: SFX Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579211
+    m_Localized: World & Story Writing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579212
+    m_Localized: Dialogue Writing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579213
+    m_Localized: Character Concept Writing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579214
+    m_Localized: Description Writing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579215
+    m_Localized: Language Translations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579216
+    m_Localized: Trailer Recording & Editing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579217
+    m_Localized: Trailer Music Composition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579218
+    m_Localized: Exosuit Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579219
+    m_Localized: Astrojumper Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579220
+    m_Localized: Primary Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579221
+    m_Localized: Secondary Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579222
+    m_Localized: Exosuit Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579223
+    m_Localized: Astrojumper Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579224
+    m_Localized: Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579225
+    m_Localized: Player Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579226
+    m_Localized: Jump Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579227
+    m_Localized: Thrust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579228
+    m_Localized: Max Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579229
+    m_Localized: Boost Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579230
+    m_Localized: Roll Distance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579231
+    m_Localized: Roll Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579232
+    m_Localized: Fire Rate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579233
+    m_Localized: Max Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579234
+    m_Localized: Max Shields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579235
+    m_Localized: Exosuit Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579236
+    m_Localized: Weapon Loadout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579237
+    m_Localized: Equipped Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579238
+    m_Localized: Melee Slot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579239
+    m_Localized: Ranged Slot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579240
+    m_Localized: Weapon Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579241
+    m_Localized: Energy Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579242
+    m_Localized: Beam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579243
+    m_Localized: Blaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579244
+    m_Localized: Lobber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579245
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579246
+    m_Localized: 'SFX '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579247
+    m_Localized: Exit Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579248
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579249
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579250
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773504
+    m_Localized: Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773505
+    m_Localized: 'Language '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773506
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773507
+    m_Localized: Sound Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773508
+    m_Localized: Display Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773509
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773510
+    m_Localized: Maximized Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773511
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773512
+    m_Localized: Screen Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773513
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773514
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773515
+    m_Localized: Click
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773516
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773517
+    m_Localized: Exosuit Keybinds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773518
+    m_Localized: Astrojumper Keybinds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773519
+    m_Localized: Primary Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773520
+    m_Localized: Secondary Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773521
+    m_Localized: Scroll Wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773522
+    m_Localized: Zoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773523
+    m_Localized: Toggle Tooltips
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773524
+    m_Localized: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773525
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773526
+    m_Localized: Changelog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773527
+    m_Localized: What's New?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773528
+    m_Localized: Known Issues
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773529
+    m_Localized: Exosuit Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773530
+    m_Localized: Astrojumper Controls
     m_Metadata:
       m_Items: []
   references:
