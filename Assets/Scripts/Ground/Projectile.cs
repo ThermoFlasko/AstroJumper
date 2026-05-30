@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -8,8 +9,9 @@ public class Projectile : MonoBehaviour
     private float yValue = 0f;
     private Vector3 desiredTransform;
     private bool isDead = false; // prevent LateUpdate from moving after death
+   
 
-    [SerializeField] private LayerMask wallLayers;
+   [SerializeField] private LayerMask wallLayers;
 
     void OnEnable()
     {
@@ -54,4 +56,6 @@ public class Projectile : MonoBehaviour
     public void SetDirection(int dir) { direction = dir; }
     public void SetYValue(float y) { yValue = y; }
     public void SetSpeed(float newSpeed) { speed = newSpeed; }
+
+  
 }

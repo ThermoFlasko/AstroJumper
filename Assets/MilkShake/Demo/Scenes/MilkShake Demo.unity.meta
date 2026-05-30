@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 70b371795f5179e428600de9517116d8
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Scenes/MilkShake Demo.unity
+  uploadId: 360053

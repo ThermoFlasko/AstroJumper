@@ -10,14 +10,19 @@ public class ProjectilePool : MonoBehaviour
     public int poolSize = 10;
     public Queue<GameObject> projectilePool = new Queue<GameObject>();
     public ProjectileAudio playSound;
+   //vfx for bullets
+   //attach parent prefab in the unity inspector
+   public GameObject JuiceSFXBulletImpact;
 
-    void Awake()
+
+   void Awake()
     {
         projectilePrefab = GetComponentInParent<Unit>().GetProjectilePrefab();
         if(projectilePrefab == null)
         {
             print("Add a attack thats a projectile");
         }
+      
     }
 
     public GameObject GetProjectile()
@@ -28,8 +33,9 @@ public class ProjectilePool : MonoBehaviour
             projectile.SetActive(true);
             projectile.GetComponent<Projectile>().enabled = true; 
             projectile.transform.GetChild(0).gameObject.SetActive(true);
-            playSound.PlayRandomSound();
-            return projectile;
+         playSound.PlayRandomSound();
+           //SpawnVFX(projectile);
+           return projectile;
 
         }
         else
@@ -40,9 +46,20 @@ public class ProjectilePool : MonoBehaviour
 
     public void ReturnProjectile(GameObject projectile)
     {
-        projectile.SetActive(false);
-        projectile.GetComponent<Projectile>().enabled = false;
-        projectile.transform.GetChild(0).gameObject.SetActive(false); 
-        projectilePool.Enqueue(projectile);
-    }
+      PlayAtLocation(projectile.transform.position, projectile.transform.rotation);
+      projectile.SetActive(false);
+      projectile.GetComponent<Projectile>().enabled = false;
+      projectile.transform.GetChild(0).gameObject.SetActive(false);
+      projectilePool.Enqueue(projectile);
+   }
+      //probably dont need quaternion
+   public void PlayAtLocation(Vector3 targetPosition, Quaternion targetRotation)
+   {
+      JuiceSFXBulletImpact.transform.GetChild(0).gameObject.SetActive(true);
+      //Call and destroy impact juice from bullet in 3 seconds
+      Destroy(Instantiate(JuiceSFXBulletImpact, targetPosition, targetRotation), 3f);
+
+   }
+
+
 }
