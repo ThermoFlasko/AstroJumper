@@ -17,7 +17,6 @@ public class EnemyMotor : MonoBehaviour
         originalSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
     }
-    
 
     // these are constantly being called by the EnemyAI script
     // need to register once only any updates to enemy speed so it doesnt keep making calls
@@ -52,7 +51,8 @@ public class EnemyMotor : MonoBehaviour
 
     public void StopHorizontal()
     {
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        moveSpeed = 0f;
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void Flip()

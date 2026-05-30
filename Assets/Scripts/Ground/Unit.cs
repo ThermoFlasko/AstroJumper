@@ -183,7 +183,7 @@ public class Unit : MonoBehaviour
 
         // Use IsFacingRight() instead of GroundMovement
         float facingSign = IsFacingRight() ? 1f : -1f;
-        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x * facingSign, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
+        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
 
         if (hitBoxInfo.GetIsMelee())
         {

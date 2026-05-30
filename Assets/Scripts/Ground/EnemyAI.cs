@@ -73,11 +73,11 @@ public class EnemyAI : MonoBehaviour
 
     private Unit unit;
 
-    [SerializeField] private bool isAttacking = false;
+    private Animator controller;
+
     [SerializeField] private bool isLowHealth = false;
-    [SerializeField] private bool isDamaged = false;
     [SerializeField] private bool isDead = false;
-    [SerializeField] private bool restoreSpeed = false;
+
     private void Awake()
     {
         unit = GetComponent<Unit>();
@@ -86,6 +86,9 @@ public class EnemyAI : MonoBehaviour
 
         // knockback event and only react if it's own unit
         Unit.onKnockedBack += OnKnockedBack;
+
+        controller = GetComponent<Animator>();
+        if (controller == null) Debug.LogError("Aniamtor component not found"); return;
     }
 
     private void OnDestroy()
@@ -108,10 +111,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(restoreSpeed)
-        {
-            motor.RestoreSpeedToOriginal();
-        }
         // want to add sleep off screen for better performance later (pooling or sleep state idk yet)
         // if (!IsOnScreen()) return . . .
 
@@ -142,11 +141,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ChangeAnimation(State state)
     {
-        Animator controller = GetComponent<Animator>();
-
-        if (controller == null) return;
-
         controller.SetBool("AttackState", false);
+        controller.SetBool("IdleState", false);
 
         switch (state)
         {
@@ -166,6 +162,9 @@ public class EnemyAI : MonoBehaviour
                 controller.SetTrigger("DamageTrigger");
                 break;
             case State.Idle:
+                controller.SetBool("WalkState", false);
+                controller.SetBool("LimpState", false);
+                controller.SetBool("IdleState", true);
                 break;
         }
     }
@@ -193,7 +192,7 @@ public class EnemyAI : MonoBehaviour
             float distFromHome = Mathf.Abs(transform.position.x - homePoint.position.x);
             if (distFromHome > maxLeashDistance)
             {
-                ChangeState(State.Return, "Wandered too far from home during patrol");
+                StartCoroutine(IdleTimer(idleTime, State.Return, "Wandered too far from home during patrol"));
                 return;
             }
         }
@@ -211,7 +210,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Obstacle Handling (Only flip if we hit something)
-        if (sensors.WallAhead() || sensors.NoGroundAhead())
+        if (sensors.WallAhead() || sensors.NoGroundAhead() || sensors.AllyAhead())
         {
             motor.Flip();
         }
@@ -301,7 +300,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Mathf.Abs(lastSeenPos.x - transform.position.x) <= investigateTolerance)
         {
-            ChangeState(State.Return, "Reached last seen position, no player found");
+            StartCoroutine(IdleTimer(idleTime, State.Return, "Reached last seen position, no player found"));
             return;
         }
 
@@ -372,14 +371,13 @@ public class EnemyAI : MonoBehaviour
             }
 
             // Keep rushing
-            if (dist > meleeRange * 0.5f)
-            {
-                motor.Chase();
-                if (isLowHealth) motor.LimpChase();
-                motor.Move();
-            }
-            else
-                motor.StopHorizontal();
+            //if (dist > meleeRange * 0.5f)
+            //{
+            //    motor.Chase();
+            //    if (isLowHealth) motor.LimpChase();
+            //    motor.Move();
+            //}
+            
 
             return;
         }
@@ -417,6 +415,7 @@ public class EnemyAI : MonoBehaviour
         float dist = Mathf.Abs(player.position.x - transform.position.x);
         if (attackTypes.HasFlag(AttackType.Melee) && !attackTypes.HasFlag(AttackType.Ranged))
         {
+            motor.StopHorizontal();
             DoMeleeAttack();
             return;
         }
@@ -448,10 +447,23 @@ public class EnemyAI : MonoBehaviour
     private void DoMeleeAttack()
     {
         if (unit != null && unit.hitBoxPrefab != null)
-            unit.BeginAttack(unit.hitBoxPrefab);
+        {
+            motor.StopHorizontal();
+            controller.SetTrigger("AttackTrigger");
+        }
         else
             Debug.LogWarning($"{name}: No Unit or hitBoxPrefab assigned for melee attack");
         //Debug.Log($"{name} performs MELEE attack");
+    }
+
+    public void MakeHitbox()
+    {
+        unit.BeginAttack(unit.hitBoxPrefab);
+    }
+
+    public void ResetAttackTrigger()
+    {
+        controller.ResetTrigger("AttackTrigger");
     }
 
     private void DoRangedAttack()
@@ -519,14 +531,7 @@ public class EnemyAI : MonoBehaviour
 
     private void TickIdle()
     {
-        float distFromHome = Mathf.Abs(transform.position.x - homePoint.position.x);
-        Transform seen = sensors.DetectPlayer();
-
-        if (distFromHome == 0)
-        {
-            motor.StopHorizontal();
-            ChangeState(State.Idle, "Entering Idle");
-        }
+        
     }
 
     // Call this from dmg system
@@ -547,8 +552,11 @@ public class EnemyAI : MonoBehaviour
         ChangeState(State.Return, "Exiting knockback");
     }
 
-    private IEnumerator IdleTimer(float seconds)
+    private IEnumerator IdleTimer(float seconds, State newState, string reason = "")
     {
+        motor.StopHorizontal();
+        ChangeState(State.Idle, reason);
         yield return new WaitForSeconds(seconds);
+        ChangeState(newState, "Finished Idle Time");
     }
 }
