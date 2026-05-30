@@ -48,6 +48,9 @@ public class PlanetLevelData
 [Serializable]
 public class SpaceLevelData
 {
+    public FlagShipData allyFlagshipData = new();
+    public FlagShipData enemyFlagshipData = new();
     public Vector3 playerPosition;
-    public string levelName;
+    public int playerHealth = 100;
+    public float playerShield = 100.0f;
 }

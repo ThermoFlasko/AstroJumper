@@ -6,6 +6,9 @@ using System.IO;
 using Unity.VisualScripting;
 using System.Linq;
 using UnityEditor;
+using Unity.VectorGraphics;
+using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 [DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
@@ -304,6 +307,7 @@ public class SaveManager : MonoBehaviour
             return;
         }
         
+        CurrentLevelSaveData.currLevel = SceneManager.GetActiveScene().name;
         if (CurrentLevelSaveData.isPlanetLevel)
         {
             // generate new planet save data, use method to update data
@@ -340,7 +344,52 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
+            // fill out player data
+            SpaceLevelData spaceLevelData = new SpaceLevelData();
+
+            GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+
+            spaceLevelData.playerPosition = playerGO.transform.position;
+
+            spaceLevelData.playerHealth = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
+            spaceLevelData.playerShield = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipShield();
+
+            print(playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth());
+
+            // fill out flagship data
+            FlagShipData allyFlagShipData = new FlagShipData();
+            FlagShipData enemyFlagShipData = new FlagShipData();
+
+            FlagshipController[] flagships = FindObjectsByType<FlagshipController>(FindObjectsSortMode.InstanceID);
+
+            enemyFlagShipData.position = flagships[0].gameObject.transform.position;
+            enemyFlagShipData.health = flagships[0].gameObject.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
+            enemyFlagShipData.shield = flagships[0].gameObject.GetComponent<SpaceshipHealthComponent>().GetShipShield();
+            allyFlagShipData.position = flagships[1].gameObject.transform.position;
+            allyFlagShipData.health = flagships[1].gameObject.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
+            allyFlagShipData.shield = flagships[1].gameObject.GetComponent<SpaceshipHealthComponent>().GetShipShield();
+
+            FlagshipShieldNode[] enemyNodes = flagships[0].gameObject.GetComponentsInChildren<FlagshipShieldNode>();
+            FlagshipShieldNode[] allyNodes = flagships[1].gameObject.GetComponentsInChildren<FlagshipShieldNode>();
+
+            for (int i = 0; i < enemyNodes.Length; i++)
+            {
+                enemyFlagShipData.shieldNodes[i] = enemyNodes[i].GetNodeHealth();
+            }
+
+            for (int i = 0; i < allyNodes.Length; i++)
+            {
+                allyFlagShipData.shieldNodes[i] = allyNodes[i].GetNodeHealth();
+            }
+
+            spaceLevelData.allyFlagshipData = allyFlagShipData;
+            spaceLevelData.enemyFlagshipData = enemyFlagShipData;
+ 
             
+            print(flagships[0].name);
+
+            CurrentLevelSaveData.UpdateSpaceLevelData(spaceLevelData);
+            print(CurrentLevelSaveData.spaceLevelData.allyFlagshipData.health);
         }
     }
 
