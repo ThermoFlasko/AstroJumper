@@ -15216,6 +15216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c37d350936d6514799b7aab3b37e50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
+  isLoadingSaveData: 0
 --- !u!4 &1215911252
 Transform:
   m_ObjectHideFlags: 0
@@ -21222,7 +21223,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:d5792df4c40ed488aa6ec3741a76b0d7
     m_TableEntryReference:
-      m_KeyId: 736925573120
+      m_KeyId: 45033185280
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
