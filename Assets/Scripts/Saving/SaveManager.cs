@@ -299,6 +299,16 @@ public class SaveManager : MonoBehaviour
         MakeDirty();
     }
 
+    public void ResetSave()
+    {
+        LevelSaveData newSaveData = new();
+        newSaveData.currLevel = "Tutorial Ground";
+        CurrentLevelSaveData = newSaveData;
+
+        SaveGame();
+
+    }
+
     public void UpdateLevelData()
     {
         if (!IsInLevel)
