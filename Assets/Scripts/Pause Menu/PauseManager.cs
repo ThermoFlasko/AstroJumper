@@ -8,8 +8,8 @@ using System.Collections;
 public class PauseManager : MonoBehaviour
 {
     [Header("Menu Panels")]
-    public GameObject pauseMenuPanel;
-    public GameObject optionsMenuPanel;
+    public Canvas pauseMenuPanel;
+    public Canvas optionsMenuPanel;
 
     [Header("Audio Settings")]
     public AudioMixer audioMixer;
@@ -35,14 +35,14 @@ public class PauseManager : MonoBehaviour
 
     public void ShowPauseMenu()
     {
-        pauseMenuPanel.SetActive(true);
-        optionsMenuPanel.SetActive(false);
+        pauseMenuPanel.enabled = true;
+        optionsMenuPanel.enabled = false;
     }
 
     public void ShowOptionsMenu()
     {
-        pauseMenuPanel.SetActive(false);
-        optionsMenuPanel.SetActive(true);
+        pauseMenuPanel.enabled = false;
+        optionsMenuPanel.enabled = true;
     }
 
     public void GoToMainMenuOptions()
