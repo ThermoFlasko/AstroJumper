@@ -76,7 +76,6 @@ public class PlanetTracker : MonoBehaviour
 
     private void OnClick()
     {
-        print("clicked");
         mousePos = Mouse.current.position.ReadValue();
         mousePos.z = Camera.main.nearClipPlane;
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);

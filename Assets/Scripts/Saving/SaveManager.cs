@@ -305,8 +305,6 @@ public class SaveManager : MonoBehaviour
         newSaveData.currLevel = "Tutorial Ground";
         CurrentLevelSaveData = newSaveData;
 
-        SaveGame();
-
     }
 
     public void UpdateLevelData()
@@ -320,6 +318,16 @@ public class SaveManager : MonoBehaviour
         CurrentLevelSaveData.currLevel = SceneManager.GetActiveScene().name;
         if (CurrentLevelSaveData.isPlanetLevel)
         {
+            // check if pcg level
+            if (SceneManager.GetActiveScene().name == "PCG_Sample")
+            {
+                GroundLevelGenerator groundLevelGenerator = FindAnyObjectByType<GroundLevelGenerator>();
+
+                CurrentLevelSaveData.planetLevelData.PCGSeed = groundLevelGenerator.GetSeed();
+                print($"got pcg level seed {CurrentLevelSaveData.planetLevelData.PCGSeed}");
+                return;
+            }
+
             // generate new planet save data, use method to update data
             PlanetLevelData planetLevelData = new PlanetLevelData();
 

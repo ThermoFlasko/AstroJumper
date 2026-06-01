@@ -64,6 +64,7 @@ public class GroundLevelGenerator : MonoBehaviour
 
         lastRuntimeSeed = ResolveRuntimeSeed();
         random = new System.Random(lastRuntimeSeed);
+        print($"last run time seed {lastRuntimeSeed}");
 
         Transform playerTransform = ResolvePlayerTransform();
         GroundChunkDefinition previousChunk = null;
@@ -263,6 +264,11 @@ public class GroundLevelGenerator : MonoBehaviour
 
     private int ResolveRuntimeSeed()
     {
+        if (SaveManager.instance.CurrentLevelSaveData.planetLevelData.PCGSeed != 0)
+        {
+            print("giving previous seed");
+            return SaveManager.instance.CurrentLevelSaveData.planetLevelData.PCGSeed;
+        }
         return randomizeSeedOnPlay && Application.isPlaying ? Environment.TickCount : seed;
     }
 
@@ -305,6 +311,11 @@ public class GroundLevelGenerator : MonoBehaviour
             return string.Empty;
 
         return chunk.name.Replace("(Clone)", string.Empty).Trim();
+    }
+
+    public int GetSeed()
+    {
+        return lastRuntimeSeed;
     }
 
     private GroundChunkDefinition InstantiateChunkPrefab(GroundChunkDefinition prefab)
