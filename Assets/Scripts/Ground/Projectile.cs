@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -13,8 +14,9 @@ public class Projectile : MonoBehaviour
     private float lobGravity = 12f;
     private float lobMaxFallSpeed = 20f;
     private float verticalVelocity = 0f;
+   
 
-    [SerializeField] private LayerMask wallLayers;
+   [SerializeField] private LayerMask wallLayers;
 
     void OnEnable()
     {
@@ -85,4 +87,6 @@ public class Projectile : MonoBehaviour
         lobMaxFallSpeed = maxFallSpeed;
         verticalVelocity = lobInitialVerticalVelocity;
     }
+
+  
 }

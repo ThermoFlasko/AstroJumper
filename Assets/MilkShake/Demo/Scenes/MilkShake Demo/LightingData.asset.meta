@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8e388b663fd02b54cb3ca8966c27ddc2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Scenes/MilkShake Demo/LightingData.asset
+  uploadId: 360053

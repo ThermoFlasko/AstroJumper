@@ -61,6 +61,7 @@ public class Unit : MonoBehaviour
             }
             
         }
+       
         
     }
 
@@ -165,7 +166,7 @@ public class Unit : MonoBehaviour
 
             return projectile;
         }
-
+      Debug.Log("I am an idiot sandwich");
         GameObject attackSprite = GenerateAttackSprite(hitBoxPrefab);
         GenerateHitBox(hitBoxPrefab, attackSprite);
         return attackSprite;

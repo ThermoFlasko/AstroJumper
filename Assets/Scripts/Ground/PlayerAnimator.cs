@@ -11,6 +11,11 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int SpeedParam = Animator.StringToHash("Speed");
     private static readonly int IsGroundedParam = Animator.StringToHash("IsGrounded");
     private static readonly int YVelocityParam = Animator.StringToHash("YVelocity");
+    private static readonly int IsShootingParam = Animator.StringToHash("IsShooting");
+   
+   //Just cause
+   
+    public bool IfPlayerShooting { get; set; }
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
@@ -21,6 +26,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+      IfPlayerShooting = false;
+     
     }
 
 
@@ -36,5 +43,23 @@ public class PlayerAnimator : MonoBehaviour
         // Grounded check 
         bool isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundMask);
         animator.SetBool(IsGroundedParam, isGrounded);
+
+        if (IfPlayerShooting)
+      {
+         MakePlayerShoot();
+         
+      }
+
     }
+
+   //Shooting Animation Functions
+   public void MakePlayerShoot()
+   {
+      animator.SetBool(IsShootingParam, true);
+   }
+
+   public void DisableIfPlayerShooting()
+   {
+      animator.SetBool (IsShootingParam, false);
+   }
 }
