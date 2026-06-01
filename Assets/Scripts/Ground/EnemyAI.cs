@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
         Unit.onKnockedBack += OnKnockedBack;
 
         controller = GetComponent<Animator>();
-        if (controller == null) Debug.LogError("Aniamtor component not found"); return;
+        if (controller == null) Debug.LogError("Animator component not found on Enemy");
     }
 
     private void OnDestroy()
@@ -113,6 +113,12 @@ public class EnemyAI : MonoBehaviour
     {
         // want to add sleep off screen for better performance later (pooling or sleep state idk yet)
         // if (!IsOnScreen()) return . . .
+
+        if (isDead)
+        {
+            state = State.Idle;
+            return;
+        }
 
         switch (state)
         {
@@ -526,14 +532,6 @@ public class EnemyAI : MonoBehaviour
         motor.Move();
     }
 
-    // this should only occur when not in any of the other states
-    // this should happen when reaching the end of the leash range 
-
-    private void TickIdle()
-    {
-        
-    }
-
     // Call this from dmg system
     public void EnterKnockback(Vector2 force, float duration)
     {
@@ -547,6 +545,13 @@ public class EnemyAI : MonoBehaviour
         if (unit.Health <= 50)
         {
             isLowHealth = true;
+        }
+
+        if (unit.Health <= 0)
+        {
+            isDead = true;
+            state = State.Idle;
+            print("DEAD");
         }
 
         ChangeState(State.Return, "Exiting knockback");

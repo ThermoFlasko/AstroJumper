@@ -1,7 +1,6 @@
 // Unit is the base class for players and enemies.
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
 using System.Collections;
 
 public class Unit : MonoBehaviour
@@ -82,9 +81,13 @@ public class Unit : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
-            Death();
+            Animator controller = GetComponent<Animator>();
+            if (controller == null) 
+                Debug.LogError("Aniamtor component not found");
+            controller.SetTrigger("DeadTrigger");
             return;
         }
+
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         onKnockedBack?.Invoke(this, knockbackVector);
