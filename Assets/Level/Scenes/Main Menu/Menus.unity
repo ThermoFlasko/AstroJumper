@@ -14576,7 +14576,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1900184368}
   m_HandleRect: {fileID: 1900184367}
   m_Direction: 2
-  m_Value: 0.99999845
+  m_Value: 1
   m_Size: 0.9714286
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -15216,6 +15216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c37d350936d6514799b7aab3b37e50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
+  isLoadingSaveData: 0
 --- !u!4 &1215911252
 Transform:
   m_ObjectHideFlags: 0
@@ -15706,8 +15707,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 274077828}
   m_HandleRect: {fileID: 274077827}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.69743586
+  m_Value: 1
+  m_Size: 0.6974359
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18641,7 +18642,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1767333553}
   m_HandleRect: {fileID: 1767333552}
   m_Direction: 2
-  m_Value: 0.99999976
+  m_Value: 1
   m_Size: 0.85
   m_NumberOfSteps: 0
   m_OnValueChanged:

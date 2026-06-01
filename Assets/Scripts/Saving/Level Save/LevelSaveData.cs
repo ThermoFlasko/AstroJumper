@@ -39,6 +39,7 @@ public class LevelSaveData
 public class PlanetLevelData
 {
     public Vector3 playerPosition = new Vector3(0,0,0);
+    public int playerHealth = 100;
     public List<MeleeSaveData> meleeEnemies = new();
     public int totalMeleeEnemies = 0;
     public List<RangedSaveData> rangedEnemies = new();
@@ -48,6 +49,9 @@ public class PlanetLevelData
 [Serializable]
 public class SpaceLevelData
 {
+    public FlagShipData allyFlagshipData = new();
+    public FlagShipData enemyFlagshipData = new();
     public Vector3 playerPosition;
-    public string levelName;
+    public int playerHealth = 100;
+    public float playerShield = 100.0f;
 }

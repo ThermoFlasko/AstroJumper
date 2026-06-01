@@ -95,4 +95,14 @@ public class FlagshipShieldNode : MonoBehaviour, ISpaceDamagable
         if (destroyedVisual != null)
             destroyedVisual.SetActive(!active);
     }
+
+    public int GetNodeHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetNodeHealth(int value)
+    {
+        currentHealth = value;
+    }
 }

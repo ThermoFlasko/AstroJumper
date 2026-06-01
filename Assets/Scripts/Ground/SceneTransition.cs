@@ -21,6 +21,7 @@ public class SceneTransition : MonoBehaviour
         if (SceneLoader.Instance != null)
         {
             OnSceneChanged?.Invoke(SceneManager.GetActiveScene().name);
+            SaveManager.instance.CurrentLevelSaveData.currLevel = sceneToLoad;
             SceneLoader.Instance.LoadNextScene(sceneToLoad);
             return;
         }
