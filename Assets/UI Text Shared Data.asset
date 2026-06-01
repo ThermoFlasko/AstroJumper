@@ -59,10 +59,6 @@ MonoBehaviour:
     m_Key: Role_Assignments
     m_Metadata:
       m_Items: []
-  - m_Id: 72999418978304
-    m_Key: Tasks
-    m_Metadata:
-      m_Items: []
   - m_Id: 74495699181568
     m_Key: Engine_Tool
     m_Metadata:
@@ -201,6 +197,250 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5152066698731520
     m_Key: Level_Selector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579218
+    m_Key: Keybinds_Label_Exosuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579219
+    m_Key: Keybinds_Label_Astrojumper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579220
+    m_Key: KEYBIND_PrimaryFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579221
+    m_Key: KEYBIND_SecondaryFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579222
+    m_Key: Upgrades_Label_Exosuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579223
+    m_Key: Upgrades_Label_Astrojumper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579224
+    m_Key: Upgrades_Exosuit_Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579225
+    m_Key: Upgrades_Exosuit_Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579226
+    m_Key: Upgrades_Exosuit_Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579227
+    m_Key: Upgrades_Astrojumper_Thrust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579228
+    m_Key: Upgrades_Astrojumper_MaxSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579229
+    m_Key: Upgrades_Astrojumper_Boost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579230
+    m_Key: Upgrades_Astrojumper_RollDistance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579231
+    m_Key: Upgrades_Astrojumper_RollSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579232
+    m_Key: Upgrades_Astrojumper_Firerate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579233
+    m_Key: Upgrades_Astrojumper_Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579234
+    m_Key: Upgrades_Astrojumper_Shields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579235
+    m_Key: Loadout_Label_ExosuitWeapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579236
+    m_Key: Loadout_Label_Loadout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579237
+    m_Key: Loadout_Label_Equipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579238
+    m_Key: Loadout_Label_MeleeSlot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579239
+    m_Key: Loadout_Label_RangedSlot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579240
+    m_Key: Loadout_Label_Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579241
+    m_Key: Loadout_Weapon_Axe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579242
+    m_Key: Loadout_Weapon_Phasor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579243
+    m_Key: Loadout_Weapon_Blaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579244
+    m_Key: Loadout_Weapon_GrenadeLauncher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579245
+    m_Key: Options_Label_Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579246
+    m_Key: Options_Label_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579247
+    m_Key: Menu_Label_Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579248
+    m_Key: Menu_Label_Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579249
+    m_Key: Options_Label_Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308726579250
+    m_Key: Options_Label_Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773504
+    m_Key: Options_Label_Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773505
+    m_Key: Options_Label_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773506
+    m_Key: Options_Label_Audio_Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773507
+    m_Key: Options_Label_Audio_Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773508
+    m_Key: Options_Label_Video_Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773509
+    m_Key: Options_Label_Video_Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773510
+    m_Key: Options_Label_Video_MaxWindow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773511
+    m_Key: Options_Label_Video_Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773512
+    m_Key: Options_Label_Video_Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773513
+    m_Key: Options_Label_Game_Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773514
+    m_Key: Options_Label_Game_General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773515
+    m_Key: New Entry 00000
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773516
+    m_Key: KEYBIND_Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773517
+    m_Key: KEYBIND_Label_Exosuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773518
+    m_Key: KEYBIND_Label_Astrojumper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773519
+    m_Key: KEYBIND_Label_Primary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773520
+    m_Key: KEYBIND_Label_Secondary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773521
+    m_Key: KEYBIND_Label_ScrollWheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773522
+    m_Key: KEYBIND_Zoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773523
+    m_Key: Options_Label_Game_Tooltip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773524
+    m_Key: Options_Label_Game_Tooltip_On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773525
+    m_Key: Options_Label_Game_Tooltip_Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773526
+    m_Key: Menu_Label_Changelog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773527
+    m_Key: Menu_Label_New
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773528
+    m_Key: Menu_Label_Issues
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773529
+    m_Key: Options_Label_Game_ExosuitControls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32316308730773530
+    m_Key: Options_Label_Game_AstrojumperControls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72999418978304
+    m_Key: Tasks
     m_Metadata:
       m_Items: []
   m_Metadata:

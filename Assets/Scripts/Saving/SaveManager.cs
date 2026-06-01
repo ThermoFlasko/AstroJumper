@@ -3,12 +3,7 @@ using UnityEngine.Serialization;
 using System.Collections;
 using System;
 using System.IO;
-using Unity.VisualScripting;
-using System.Linq;
-using UnityEditor;
-using Unity.VectorGraphics;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
 
 [DefaultExecutionOrder(-100)]
 public class SaveManager : MonoBehaviour
