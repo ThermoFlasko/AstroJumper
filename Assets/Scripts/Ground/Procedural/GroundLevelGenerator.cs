@@ -22,7 +22,7 @@ public class GroundLevelGenerator : MonoBehaviour
     [Header("Scene References")]
     [SerializeField] private Transform generatedChunkParent;
     [SerializeField] private Transform playerOverride;
-    [SerializeField] private bool snapPlayerToStartChunk = true;
+    [SerializeField] public bool snapPlayerToStartChunk = true;
     [SerializeField] private bool movePlayerDuringEditorPreview = false;
 
     [Header("Chunk Pools")]
@@ -301,7 +301,7 @@ public class GroundLevelGenerator : MonoBehaviour
         Rigidbody2D rb = playerTransform.GetComponent<Rigidbody2D>();
         if (rb != null)
             rb.linearVelocity = Vector2.zero;
-
+        print("test");
         MarkSceneDirty();
     }
 

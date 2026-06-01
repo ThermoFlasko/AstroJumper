@@ -325,6 +325,13 @@ public class SaveManager : MonoBehaviour
 
                 CurrentLevelSaveData.planetLevelData.PCGSeed = groundLevelGenerator.GetSeed();
                 print($"got pcg level seed {CurrentLevelSaveData.planetLevelData.PCGSeed}");
+
+                CurrentLevelSaveData.planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
+                CurrentLevelSaveData.planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+                Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+                CurrentLevelSaveData.scrapCount = inventory.GetScrapCount();
                 return;
             }
 
