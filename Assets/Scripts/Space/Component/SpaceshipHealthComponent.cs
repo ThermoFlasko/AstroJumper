@@ -297,5 +297,26 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
         if (shieldVFX == null) return;
         shieldVFX.SetActive(currentShields > 0f);
     }
+
+    public int GetShipHealth()
+    {
+        return currentHealth;
+    }
+
+    public float GetShipShield()
+    {
+        return currentShields;
+    }
+
+    public void SetShipHealth(int value)
+    {
+        currentHealth = value;
+    }
+
+    public void SetShipShield(float value)
+    {
+        currentShields = value;
+    }
+
 }
 

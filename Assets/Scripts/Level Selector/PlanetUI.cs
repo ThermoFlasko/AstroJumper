@@ -15,6 +15,8 @@ public class PlanetUI : MonoBehaviour
         }
         
         print("Loading scene: " + sceneToLoad);
+        SaveManager.instance.CurrentLevelSaveData.currLevel = sceneToLoad;
+        SaveManager.instance.CurrentLevelSaveData.isPlanetLevel = false;
         SceneLoader.Instance.LoadNextScene(sceneToLoad);
     }
 }
