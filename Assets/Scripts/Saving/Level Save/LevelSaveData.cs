@@ -44,6 +44,7 @@ public class PlanetLevelData
     public int totalMeleeEnemies = 0;
     public List<RangedSaveData> rangedEnemies = new();
     public int totalRangedEnemies = 0;
+    public int PCGSeed = 0;
 }
 
 [Serializable]
