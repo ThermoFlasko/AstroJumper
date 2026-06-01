@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3df763bb22251d740b97a1774ded0098, type: 3}
+  m_Sprite: {fileID: 8852790277499114491, guid: 2895d4acb8cc3ff4db70c443eaf4ed58, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.66, y: 0.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,21 +109,28 @@ MonoBehaviour:
   damage: 10
   destroyEnemyProjectile: 1
   isPermanent: 0
-  duration: 0.3
+  duration: 0.15
   activationDelay: 0
   knockbackForce: 5
   knockbackVerticalForce: 3
   isMelee: 1
   projectileSpeed: 5
+  useLobbedProjectile: 0
+  lobInitialVerticalVelocity: 0
+  lobGravity: 12
+  lobMaxFallSpeed: 20
+  impactEffectPrefab: {fileID: 0}
+  impactEffectLifetime: 2
+  impactDamageRadius: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 65536
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 4096
-  offset: {x: 0.3, y: 0, z: 0}
+  offset: {x: -0.55, y: 0, z: 0}
   visualOffset: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  sprite: {fileID: 0}
   currentHitboxActiveDurration: 0
   displayHitbox: 1
   projectilePool: {fileID: 0}
@@ -165,12 +172,12 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 1.2666668, y: -3.5454547}
+    oldSize: {x: 0.15, y: 0.11}
+    newSize: {x: 0.66, y: 0.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.5}
   m_EdgeRadius: 0
