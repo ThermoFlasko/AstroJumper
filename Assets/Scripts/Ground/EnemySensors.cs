@@ -20,6 +20,11 @@ public class EnemySensors : MonoBehaviour
     // Blocks line of sight (typically Ground + Wall layers combined into one mask)
     [SerializeField] private LayerMask sightBlockMask;
 
+    [Header("Ally Check")]
+    [SerializeField] private Transform allyCheck;
+    [SerializeField] private float detectAllyDistance = 0.2f;
+    [SerializeField] private LayerMask allyMask;
+
     public bool WallAhead()
     {
         // points where the enemy faces
@@ -56,6 +61,13 @@ public class EnemySensors : MonoBehaviour
 
     }
 
+    public bool AllyAhead()
+    {
+        // points where the enemy faces
+        RaycastHit2D hit = Physics2D.Raycast(allyCheck.position, transform.right, detectAllyDistance, allyMask);
+        return hit.collider != null;
+    }
+
     private void OnDrawGizmos()
     {
         if (!wallCheck || !ledgeCheck) return;
@@ -74,5 +86,9 @@ public class EnemySensors : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(playerDetectOrigin.position, detectRadius);
         }
+
+        // green ray for ally check
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(allyCheck.position, transform.right * detectAllyDistance);
     }
 }

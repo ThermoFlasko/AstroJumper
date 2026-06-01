@@ -1,9 +1,10 @@
-using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private enum State { Patrol, Chase, Attack, Knockback, Return }
+    private enum State { Patrol, Chase, Attack, Knockback, Return, Idle}
 
     [System.Flags]
     public enum AttackType // different attack types
@@ -61,6 +62,8 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private float nextAttackTime;
 
+    [Header("Idle")]
+    [SerializeField] private float idleTime = 2.0f;
 
     private Vector2 lastSeenPos;
     private float lastSeenTime = -999f;
@@ -70,11 +73,11 @@ public class EnemyAI : MonoBehaviour
 
     private Unit unit;
 
-    [SerializeField] private bool isAttacking = false;
+    private Animator controller;
+
     [SerializeField] private bool isLowHealth = false;
-    [SerializeField] private bool isDamaged = false;
     [SerializeField] private bool isDead = false;
-    [SerializeField] private bool restoreSpeed = false;
+
     private void Awake()
     {
         unit = GetComponent<Unit>();
@@ -83,6 +86,9 @@ public class EnemyAI : MonoBehaviour
 
         // knockback event and only react if it's own unit
         Unit.onKnockedBack += OnKnockedBack;
+
+        controller = GetComponent<Animator>();
+        if (controller == null) Debug.LogError("Animator component not found on Enemy");
     }
 
     private void OnDestroy()
@@ -105,12 +111,14 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(restoreSpeed)
-        {
-            motor.RestoreSpeedToOriginal();
-        }
         // want to add sleep off screen for better performance later (pooling or sleep state idk yet)
         // if (!IsOnScreen()) return . . .
+
+        if (isDead)
+        {
+            state = State.Idle;
+            return;
+        }
 
         switch (state)
         {
@@ -119,6 +127,7 @@ public class EnemyAI : MonoBehaviour
             case State.Attack: TickAttack(); break;
             case State.Return: TickReturn(); break;
             case State.Knockback: break;
+            case State.Idle: break;
         }
     }
 
@@ -127,40 +136,55 @@ public class EnemyAI : MonoBehaviour
     {
         if (state == newState) return;
 
-        Debug.Log(
-            $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
-            this
-        );
-        //ChangeAnimation(newState);
-        
+        //Debug.Log(
+        //    $"[EnemyAI:{name}] {state} -> {newState} | Reason: {reason}",
+        //    this
+        //);
 
+        ChangeAnimation(newState);
         state = newState;
     }
 
     private void ChangeAnimation(State state)
     {
-        Animator controller = GetComponent<Animator>();
-
-        if (controller == null) return;
-
-        controller.ResetControllerState();
-
+        controller.SetBool("AttackState", false);
+        controller.SetBool("IdleState", false);
 
         switch (state)
         {
-            case State.Patrol: 
+            case State.Patrol:
+                CheckHealthForAnimation(controller);
                 break;
             case State.Chase:
-                controller.SetTrigger("WalkState");
+                CheckHealthForAnimation(controller);
                 break;
             case State.Attack:
-                controller.SetTrigger("AttackState");
+                controller.SetBool("AttackState", true);
                 break;
-            case State.Return: 
+            case State.Return:
+                CheckHealthForAnimation(controller);
                 break;
             case State.Knockback:
-                controller.SetTrigger("DamageState");
+                controller.SetTrigger("DamageTrigger");
                 break;
+            case State.Idle:
+                controller.SetBool("WalkState", false);
+                controller.SetBool("LimpState", false);
+                controller.SetBool("IdleState", true);
+                break;
+        }
+    }
+
+    private void CheckHealthForAnimation(Animator controller)
+    {
+        if (isLowHealth)
+        {
+            controller.SetBool("WalkState", false);
+            controller.SetBool("LimpState", true);
+        }
+        else
+        {
+            controller.SetBool("WalkState", true);
         }
     }
 
@@ -174,7 +198,7 @@ public class EnemyAI : MonoBehaviour
             float distFromHome = Mathf.Abs(transform.position.x - homePoint.position.x);
             if (distFromHome > maxLeashDistance)
             {
-                ChangeState(State.Return, "Wandered too far from home during patrol");
+                StartCoroutine(IdleTimer(idleTime, State.Return, "Wandered too far from home during patrol"));
                 return;
             }
         }
@@ -192,7 +216,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Obstacle Handling (Only flip if we hit something)
-        if (sensors.WallAhead() || sensors.NoGroundAhead())
+        if (sensors.WallAhead() || sensors.NoGroundAhead() || sensors.AllyAhead())
         {
             motor.Flip();
         }
@@ -282,7 +306,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Mathf.Abs(lastSeenPos.x - transform.position.x) <= investigateTolerance)
         {
-            ChangeState(State.Return, "Reached last seen position, no player found");
+            StartCoroutine(IdleTimer(idleTime, State.Return, "Reached last seen position, no player found"));
             return;
         }
 
@@ -353,14 +377,13 @@ public class EnemyAI : MonoBehaviour
             }
 
             // Keep rushing
-            if (dist > meleeRange * 0.5f)
-            {
-                motor.Chase();
-                if (isLowHealth) motor.LimpChase();
-                motor.Move();
-            }
-            else
-                motor.StopHorizontal();
+            //if (dist > meleeRange * 0.5f)
+            //{
+            //    motor.Chase();
+            //    if (isLowHealth) motor.LimpChase();
+            //    motor.Move();
+            //}
+            
 
             return;
         }
@@ -398,6 +421,7 @@ public class EnemyAI : MonoBehaviour
         float dist = Mathf.Abs(player.position.x - transform.position.x);
         if (attackTypes.HasFlag(AttackType.Melee) && !attackTypes.HasFlag(AttackType.Ranged))
         {
+            motor.StopHorizontal();
             DoMeleeAttack();
             return;
         }
@@ -429,10 +453,23 @@ public class EnemyAI : MonoBehaviour
     private void DoMeleeAttack()
     {
         if (unit != null && unit.hitBoxPrefab != null)
-            unit.BeginAttack(unit.hitBoxPrefab);
+        {
+            motor.StopHorizontal();
+            controller.SetTrigger("AttackTrigger");
+        }
         else
             Debug.LogWarning($"{name}: No Unit or hitBoxPrefab assigned for melee attack");
         //Debug.Log($"{name} performs MELEE attack");
+    }
+
+    public void MakeHitbox()
+    {
+        unit.BeginAttack(unit.hitBoxPrefab);
+    }
+
+    public void ResetAttackTrigger()
+    {
+        controller.ResetTrigger("AttackTrigger");
     }
 
     private void DoRangedAttack()
@@ -510,6 +547,21 @@ public class EnemyAI : MonoBehaviour
             isLowHealth = true;
         }
 
+        if (unit.Health <= 0)
+        {
+            isDead = true;
+            state = State.Idle;
+            print("DEAD");
+        }
+
         ChangeState(State.Return, "Exiting knockback");
+    }
+
+    private IEnumerator IdleTimer(float seconds, State newState, string reason = "")
+    {
+        motor.StopHorizontal();
+        ChangeState(State.Idle, reason);
+        yield return new WaitForSeconds(seconds);
+        ChangeState(newState, "Finished Idle Time");
     }
 }
