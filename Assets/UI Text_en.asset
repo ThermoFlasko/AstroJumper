@@ -674,118 +674,6 @@ MonoBehaviour:
     m_Localized: Level Selector
     m_Metadata:
       m_Items: []
-  - m_Id: 32316308676247552
-    m_Localized: Production Leads
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384896
-    m_Localized: Character Art
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384897
-    m_Localized: Environmental Art
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384898
-    m_Localized: Animation
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384899
-    m_Localized: UI Art
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384900
-    m_Localized: VFX Art
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384901
-    m_Localized: Gameplay Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384902
-    m_Localized: Systems Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384903
-    m_Localized: Enemy Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384904
-    m_Localized: Player Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579200
-    m_Localized: UI/UX Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579201
-    m_Localized: Player Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579202
-    m_Localized: Enemy AI Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579203
-    m_Localized: Boss Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579204
-    m_Localized: Systems Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579205
-    m_Localized: Dialogue Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579206
-    m_Localized: UI Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579207
-    m_Localized: Sound Programming
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579208
-    m_Localized: Asset Implementation
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579209
-    m_Localized: Soundtrack Composition
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579210
-    m_Localized: SFX Design
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579211
-    m_Localized: World & Story Writing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579212
-    m_Localized: Dialogue Writing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579213
-    m_Localized: Character Concept Writing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579214
-    m_Localized: Description Writing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579215
-    m_Localized: Language Translations
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579216
-    m_Localized: Trailer Recording & Editing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579217
-    m_Localized: Trailer Music Composition
-    m_Metadata:
-      m_Items: []
   - m_Id: 32316308726579218
     m_Localized: Exosuit Controls
     m_Metadata:
@@ -879,7 +767,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579241
-    m_Localized: Energy Sword
+    m_Localized: Energy Axe
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579242
@@ -891,7 +779,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579244
-    m_Localized: Lobber
+    m_Localized: Grenade Launcher
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579245

@@ -59,10 +59,6 @@ MonoBehaviour:
     m_Key: Role_Assignments
     m_Metadata:
       m_Items: []
-  - m_Id: 72999418978304
-    m_Key: Tasks
-    m_Metadata:
-      m_Items: []
   - m_Id: 74495699181568
     m_Key: Engine_Tool
     m_Metadata:
@@ -203,356 +199,248 @@ MonoBehaviour:
     m_Key: Level_Selector
     m_Metadata:
       m_Items: []
-  - m_Id: 32316308676247552
-    m_Key: New Entry
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384896
-    m_Key: New Entry 1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384897
-    m_Key: New Entry 2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384898
-    m_Key: New Entry 3
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384899
-    m_Key: New Entry 4
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384900
-    m_Key: New Entry 5
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384901
-    m_Key: New Entry 6
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384902
-    m_Key: New Entry 7
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384903
-    m_Key: New Entry 8
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308722384904
-    m_Key: New Entry 9
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579200
-    m_Key: New Entry 10
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579201
-    m_Key: New Entry 11
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579202
-    m_Key: New Entry 12
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579203
-    m_Key: New Entry 13
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579204
-    m_Key: New Entry 14
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579205
-    m_Key: New Entry 15
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579206
-    m_Key: New Entry 16
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579207
-    m_Key: New Entry 17
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579208
-    m_Key: New Entry 18
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579209
-    m_Key: New Entry 19
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579210
-    m_Key: New Entry 20
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579211
-    m_Key: New Entry 21
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579212
-    m_Key: New Entry 22
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579213
-    m_Key: New Entry 23
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579214
-    m_Key: New Entry 24
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579215
-    m_Key: New Entry 25
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579216
-    m_Key: New Entry 26
-    m_Metadata:
-      m_Items: []
-  - m_Id: 32316308726579217
-    m_Key: New Entry 27
-    m_Metadata:
-      m_Items: []
   - m_Id: 32316308726579218
-    m_Key: New Entry 28
+    m_Key: Keybinds_Label_Exosuit
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579219
-    m_Key: New Entry 29
+    m_Key: Keybinds_Label_Astrojumper
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579220
-    m_Key: New Entry 30
+    m_Key: KEYBIND_PrimaryFire
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579221
-    m_Key: New Entry 31
+    m_Key: KEYBIND_SecondaryFire
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579222
-    m_Key: New Entry 32
+    m_Key: Upgrades_Label_Exosuit
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579223
-    m_Key: New Entry 33
+    m_Key: Upgrades_Label_Astrojumper
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579224
-    m_Key: New Entry 34
+    m_Key: Upgrades_Exosuit_Speed
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579225
-    m_Key: New Entry 35
+    m_Key: Upgrades_Exosuit_Health
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579226
-    m_Key: New Entry 36
+    m_Key: Upgrades_Exosuit_Jump
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579227
-    m_Key: New Entry 37
+    m_Key: Upgrades_Astrojumper_Thrust
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579228
-    m_Key: New Entry 38
+    m_Key: Upgrades_Astrojumper_MaxSpeed
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579229
-    m_Key: New Entry 39
+    m_Key: Upgrades_Astrojumper_Boost
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579230
-    m_Key: New Entry 40
+    m_Key: Upgrades_Astrojumper_RollDistance
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579231
-    m_Key: New Entry 41
+    m_Key: Upgrades_Astrojumper_RollSpeed
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579232
-    m_Key: New Entry 42
+    m_Key: Upgrades_Astrojumper_Firerate
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579233
-    m_Key: New Entry 43
+    m_Key: Upgrades_Astrojumper_Health
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579234
-    m_Key: New Entry 44
+    m_Key: Upgrades_Astrojumper_Shields
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579235
-    m_Key: New Entry 45
+    m_Key: Loadout_Label_ExosuitWeapon
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579236
-    m_Key: New Entry 46
+    m_Key: Loadout_Label_Loadout
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579237
-    m_Key: New Entry 47
+    m_Key: Loadout_Label_Equipped
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579238
-    m_Key: New Entry 48
+    m_Key: Loadout_Label_MeleeSlot
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579239
-    m_Key: New Entry 49
+    m_Key: Loadout_Label_RangedSlot
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579240
-    m_Key: New Entry 50
+    m_Key: Loadout_Label_Options
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579241
-    m_Key: New Entry 51
+    m_Key: Loadout_Weapon_Axe
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579242
-    m_Key: New Entry 52
+    m_Key: Loadout_Weapon_Phasor
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579243
-    m_Key: New Entry 53
+    m_Key: Loadout_Weapon_Blaster
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579244
-    m_Key: New Entry 54
+    m_Key: Loadout_Weapon_GrenadeLauncher
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579245
-    m_Key: New Entry 55
+    m_Key: Options_Label_Music
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579246
-    m_Key: New Entry 56
+    m_Key: Options_Label_SFX
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579247
-    m_Key: New Entry 57
+    m_Key: Menu_Label_Exit
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579248
-    m_Key: New Entry 58
+    m_Key: Menu_Label_Credits
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579249
-    m_Key: New Entry 59
+    m_Key: Options_Label_Audio
     m_Metadata:
       m_Items: []
   - m_Id: 32316308726579250
-    m_Key: New Entry 60
+    m_Key: Options_Label_Video
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773504
-    m_Key: New Entry 61
+    m_Key: Options_Label_Game
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773505
-    m_Key: New Entry 62
+    m_Key: Options_Label_Language
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773506
-    m_Key: New Entry 63
+    m_Key: Options_Label_Audio_Music
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773507
-    m_Key: New Entry 64
+    m_Key: Options_Label_Audio_Sound
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773508
-    m_Key: New Entry 65
+    m_Key: Options_Label_Video_Display
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773509
-    m_Key: New Entry 66
+    m_Key: Options_Label_Video_Fullscreen
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773510
-    m_Key: New Entry 67
+    m_Key: Options_Label_Video_MaxWindow
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773511
-    m_Key: New Entry 68
+    m_Key: Options_Label_Video_Windowed
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773512
-    m_Key: New Entry 69
+    m_Key: Options_Label_Video_Resolution
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773513
-    m_Key: New Entry 70
+    m_Key: Options_Label_Game_Controls
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773514
-    m_Key: New Entry 71
+    m_Key: Options_Label_Game_General
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773515
-    m_Key: New Entry 72
+    m_Key: New Entry 00000
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773516
-    m_Key: New Entry 73
+    m_Key: KEYBIND_Pause
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773517
-    m_Key: New Entry 74
+    m_Key: KEYBIND_Label_Exosuit
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773518
-    m_Key: New Entry 75
+    m_Key: KEYBIND_Label_Astrojumper
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773519
-    m_Key: New Entry 76
+    m_Key: KEYBIND_Label_Primary
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773520
-    m_Key: New Entry 77
+    m_Key: KEYBIND_Label_Secondary
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773521
-    m_Key: New Entry 78
+    m_Key: KEYBIND_Label_ScrollWheel
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773522
-    m_Key: New Entry 79
+    m_Key: KEYBIND_Zoom
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773523
-    m_Key: New Entry 80
+    m_Key: Options_Label_Game_Tooltip
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773524
-    m_Key: New Entry 81
+    m_Key: Options_Label_Game_Tooltip_On
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773525
-    m_Key: New Entry 82
+    m_Key: Options_Label_Game_Tooltip_Off
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773526
-    m_Key: New Entry 83
+    m_Key: Menu_Label_Changelog
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773527
-    m_Key: New Entry 84
+    m_Key: Menu_Label_New
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773528
-    m_Key: New Entry 85
+    m_Key: Menu_Label_Issues
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773529
-    m_Key: New Entry 86
+    m_Key: Options_Label_Game_ExosuitControls
     m_Metadata:
       m_Items: []
   - m_Id: 32316308730773530
-    m_Key: New Entry 87
+    m_Key: Options_Label_Game_AstrojumperControls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72999418978304
+    m_Key: Tasks
     m_Metadata:
       m_Items: []
   m_Metadata:
