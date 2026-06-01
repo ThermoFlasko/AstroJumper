@@ -25,7 +25,9 @@ public class Player : Unit
     private Animator  UIhealth;
     public Shaker MyShaker;
     public ShakePreset CameraShake;
-    
+  
+
+
 
     
 
@@ -124,6 +126,7 @@ public class Player : Unit
         {
             print("Projectile attack from pool");
             projectileCount++;
+            
             BeginAttack(hitBoxPrefab);
             return;
         }
@@ -219,6 +222,7 @@ public class Player : Unit
         ApplyGroundTrooperDefaultUpgrades();
         transform.position = playerSpawn.transform.position;
         GetComponent<SpriteRenderer>().flipX = false;
+
     }
 
     private void ApplyGroundTrooperDefaultUpgrades()

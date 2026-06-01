@@ -1,4 +1,6 @@
 using System.Collections;
+//using System.Numerics;
+//using System.Threading.Tasks.Dataflow;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -68,6 +70,9 @@ public class GroundMovement : MonoBehaviour
     private bool isGrounded;
     private bool isDropping;
     public bool isFacingRight = true;
+    
+
+    
 
 
 
@@ -231,17 +236,23 @@ public class GroundMovement : MonoBehaviour
 
 
         // Only update facing direction when not knocked back so sprite doesn't flip
+        //Edit Alfredo:
+        //Instead of flipping spriteRenderer in Inspector It will be Flipping the whole gameobject
         if (!isKnockedBack)
         {
             if (xInput > 0.01f)
             {
                 isFacingRight = true;
-                GetComponent<SpriteRenderer>().flipX = false;
+                Vector2 PositiveXScale = transform.localScale;
+                PositiveXScale.x = Mathf.Abs(PositiveXScale.x);
+                transform.localScale = PositiveXScale;
             }
             else if (xInput < -0.01f)
             {
                 isFacingRight = false;
-                GetComponent<SpriteRenderer>().flipX = true;
+                 Vector2 negativeScale = transform.localScale;
+                negativeScale.x = -Mathf.Abs(negativeScale.x);
+                transform.localScale = negativeScale;
             }
         }
     }
