@@ -39,6 +39,13 @@ public class VideoSettings : MonoBehaviour
 
     private void Awake()
     {
+        defaultResolution = new()
+        {
+            resolutionString = "1920 x 1080",
+            width = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1920),
+            height = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1080)
+        };
+
         // every time the game is opened, check if the resolution was ever changed before, if not, set and store defaults
         CheckPlayerPrefResolution();
     }
@@ -228,7 +235,7 @@ public class VideoSettings : MonoBehaviour
             return;
         }
 
-        if (PlayerPrefs.GetInt("Screenmanager Resolution Width") == 0 || PlayerPrefs.GetInt("Screenmanager Resolution Height") == 0 || PlayerPrefs.GetString("Resolution String") == null)
+        if (PlayerPrefs.GetInt("Screenmanager Resolution Width", 0) == 0 || PlayerPrefs.GetInt("Screenmanager Resolution Height", 0) == 0 || PlayerPrefs.GetString("Resolution String", null) == null)
         {
             print("No saved resolutions found, setting to default resolution!");
             SetDefaultVideoSettings();
