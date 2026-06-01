@@ -25,6 +25,23 @@ public class LevelLoader : MonoBehaviour
     {
         LevelSaveData levelSaveData = SaveManager.instance.GetCurrentLevelData();
 
+        //double check that the levelsavedata is not just the default data
+        if (SaveManager.instance.CurrentLevelSaveData.isPlanetLevel)
+        {
+            if (SaveManager.instance.CurrentLevelSaveData.planetLevelData.playerPosition == new Vector3(0,0,0) && SaveManager.instance.CurrentLevelSaveData.planetLevelData.meleeEnemies.Count < 1)
+            {
+                return;
+            }
+
+        }
+        else
+        {
+            if (SaveManager.instance.CurrentLevelSaveData.spaceLevelData.enemyFlagshipData.position == new Vector3(0,0,0) && SaveManager.instance.CurrentLevelSaveData.spaceLevelData.playerPosition == new Vector3(0,0,0))
+            {
+                return;
+            }
+        }
+
         if (SaveManager.instance.isLoadingSaveData && next.name == levelSaveData.currLevel)
         {
             SetUpSavedLevel(levelSaveData);
