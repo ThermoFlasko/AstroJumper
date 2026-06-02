@@ -2613,15 +2613,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   currentDisplayMode: 0
-  displayModeStrings: []
-  displayModeText: {fileID: 1258448045}
+  displayModeTextObj:
+  - {fileID: 1258448045}
+  - {fileID: 1904801425}
+  - {fileID: 554090206}
+  activeDisplayModeObject: {fileID: 0}
   currentResolution: 0
   storedResolutions: []
   resolutionText: {fileID: 1287624948}
   defaultResolution:
-    resolutionString: 1920 x 1080
-    width: 1920
-    height: 1080
+    resolutionString: 
+    width: 0
+    height: 0
 --- !u!1 &274077826
 GameObject:
   m_ObjectHideFlags: 0
@@ -6064,9 +6067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:d5792df4c40ed488aa6ec3741a76b0d7
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 32316308730773511
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -15098,9 +15101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:d5792df4c40ed488aa6ec3741a76b0d7
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 32316308730773509
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -22363,9 +22366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:d5792df4c40ed488aa6ec3741a76b0d7
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 32316308730773510
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
