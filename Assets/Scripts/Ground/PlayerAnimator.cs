@@ -12,10 +12,11 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int IsGroundedParam = Animator.StringToHash("IsGrounded");
     private static readonly int YVelocityParam = Animator.StringToHash("YVelocity");
     private static readonly int IsShootingParam = Animator.StringToHash("IsShooting");
-   
-   //Just cause
-   
+    private static readonly int IsMeleeParam = Animator.StringToHash("IsMeeleing");
+    //Just cause
+
     public bool IfPlayerShooting { get; set; }
+    public bool isGrounded;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
@@ -27,6 +28,8 @@ public class PlayerAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
       IfPlayerShooting = false;
+        isGrounded = true;
+        
      
     }
 
@@ -41,7 +44,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetFloat(YVelocityParam, rb.linearVelocity.y);
 
         // Grounded check 
-        bool isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundMask);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundMask);
         animator.SetBool(IsGroundedParam, isGrounded);
 
         if (IfPlayerShooting)
@@ -62,4 +65,21 @@ public class PlayerAnimator : MonoBehaviour
    {
       animator.SetBool (IsShootingParam, false);
    }
+
+   public void MakePlayerMelee()
+    {
+        animator.SetBool(IsMeleeParam, true);
+    }
+
+    public void DisableIfPlayerMelee()
+    {
+        animator.SetBool(IsMeleeParam, false);
+    }
+
+    public bool getGroundedCheck()
+    {
+        return isGrounded;
+    }
+
+    
 }

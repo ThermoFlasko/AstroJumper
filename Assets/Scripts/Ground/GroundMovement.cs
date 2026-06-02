@@ -355,4 +355,20 @@ public class GroundMovement : MonoBehaviour
         float jumpVelocityUpgrade = SaveManager.instance != null ? SaveManager.instance.GetGroundJumpVelocityUpgradeBoost() : 0f;
         return jumpVelocity + jumpVelocityUpgrade;
     }
+
+    private void DisableMovementForMelee()
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+        dropAction.Disable();
+        sprintAction.Disable();
+    }
+
+    private void EnableMovementForMelee()
+    {
+        moveAction.Enable();
+        jumpAction.Enable();
+        dropAction.Enable();
+        sprintAction.Enable();
+    }
 }

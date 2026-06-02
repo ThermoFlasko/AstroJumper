@@ -25,11 +25,12 @@ public class Player : Unit
     private Animator  UIhealth;
     public Shaker MyShaker;
     public ShakePreset CameraShake;
-  
+
+    private PlayerAnimator playerAnimator;
+    private bool inMeleeAnimation = false;
 
 
 
-    
 
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
@@ -60,6 +61,7 @@ public class Player : Unit
                 return;
             }
         }
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,6 +89,9 @@ public class Player : Unit
         {
             Debug.LogWarning($"{name} is missing a health UI GameObject. Damage UI animations will be skipped.", this);
         }
+
+        playerAnimator = null;
+        playerAnimator = GetComponent<PlayerAnimator>();
 
    }
     private void OnEnable()
@@ -147,27 +152,41 @@ public class Player : Unit
         if (!TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo))
             return;
 
-        // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
+        //// check for projectile attack
+        //if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
+        //{
+        //    //print("Projectile attack from pool");
+        //    projectileCount++;
+        //    BeginAttack(hitBoxPrefab2);
+        //    return;
+        //}
+
+        //Changing and moving attack into Player script
+        //else if(hitBoxInfo.GetIsMelee())
+        //{
+        //    print("melee attack");
+        //    BeginAttack(hitBoxPrefab2);
+        //    isAttacking2 = true;
+        //    return;
+        //}
+        //else if(projectileCount < maxProjectile)
+        //{
+        //    //print("no projectile pool, creating projectile");
+        //    BeginAttack(hitBoxPrefab2);
+        //    return;
+        //}
+        if (playerAnimator.isGrounded && !inMeleeAnimation)
         {
-            //print("Projectile attack from pool");
-            projectileCount++;
-            BeginAttack(hitBoxPrefab2);
-            return;
+            Debug.Log("Hit the melee");
+            inMeleeAnimation = true;
+            DisableInputs();
+            playerAnimator.MakePlayerMelee();
+
         }
-        else if(hitBoxInfo.GetIsMelee())
-        {
-            print("melee attack");
-            BeginAttack(hitBoxPrefab2);
-            isAttacking2 = true;
-            return;
-        }
-        else if(projectileCount < maxProjectile)
-        {
-            //print("no projectile pool, creating projectile");
-            BeginAttack(hitBoxPrefab2);
-            return;
-        }
+
+
+
+
     }
 
     public override void TakeDamage(int amount, float knockbackForce, float knockbackVerticalForce, Vector2 sourcePosition)
@@ -314,6 +333,7 @@ public class Player : Unit
     {
         attackAction.Enable();
         attackAction2.Enable();
+        inMeleeAnimation = false;
     }
 }
 

@@ -39,7 +39,8 @@ public class ProjectilePool : MonoBehaviour
             projectile.GetComponent<Projectile>().enabled = true; 
             projectile.transform.GetChild(0).gameObject.SetActive(true);
             playSound.PlayRandomSound();
-         SetAttackBool.MakePlayerShoot();
+            SetAttackBool.MakePlayerShoot();
+
             return projectile;
 
         }
