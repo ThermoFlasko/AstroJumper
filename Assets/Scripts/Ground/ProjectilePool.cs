@@ -13,6 +13,8 @@ public class ProjectilePool : MonoBehaviour
    public GameObject JuiceSFXBulletImpact;
    public PlayerAnimator SetAttackBool;
 
+   public float xOffset;
+
    void Awake()
     {
       //Update: not needed if attatched from inspector screen
@@ -50,7 +52,15 @@ public class ProjectilePool : MonoBehaviour
 
     public void ReturnProjectile(GameObject projectile)
     {
-      PlayAtLocation(projectile.transform.position, projectile.transform.rotation);
+      float moveDirectionX = projectile.GetComponent<Projectile>().GetHorizontalVelocity();
+
+      float zRotation = (moveDirectionX > 0) ? 0f : 180f;
+      float xImpactOffset = projectile.transform.position.x + ((moveDirectionX > 0) ? -xOffset : xOffset);
+
+      Vector3 adjustTransform = new Vector3(xImpactOffset, projectile.transform.position.y, 0f);
+      Quaternion rotation = Quaternion.Euler(0, 0, zRotation);
+
+      PlayAtLocation(adjustTransform, rotation);
       
       projectile.SetActive(false);
       projectile.GetComponent<Projectile>().enabled = false;
@@ -58,11 +68,11 @@ public class ProjectilePool : MonoBehaviour
       
       projectilePool.Enqueue(projectile);
    }
-      //probably dont need quaternion
+      //you need quaternion for flipping
    public void PlayAtLocation(Vector3 targetPosition, Quaternion targetRotation)
    {
-      JuiceSFXBulletImpact.transform.GetChild(0).gameObject.SetActive(true);
-      //Call and destroy impact juice from bullet in 3 seconds
+     
+      
       Destroy(Instantiate(JuiceSFXBulletImpact, targetPosition, targetRotation), 3f);
 
    }

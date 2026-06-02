@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
     private float lobGravity = 12f;
     private float lobMaxFallSpeed = 20f;
     private float verticalVelocity = 0f;
+
+   public float horizontalMove { get; set; }
    
 
    [SerializeField] private LayerMask wallLayers;
@@ -29,7 +31,7 @@ public class Projectile : MonoBehaviour
     {
         if (isDead) return;
 
-        float horizontalMove = speed * direction * Time.deltaTime;
+        horizontalMove = speed * direction * Time.deltaTime;
         float verticalMove = 0f;
 
         if (useLobbedMovement)
@@ -44,7 +46,7 @@ public class Projectile : MonoBehaviour
         float moveDistance = movement.magnitude;
         Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y);
         Vector2 rayDir = moveDistance > 0f ? (Vector2)movement.normalized : (direction == 1 ? Vector2.right : Vector2.left);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, moveDistance + 0.5f, wallLayers);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, moveDistance + 0.1f, wallLayers);
 
         if (hit.collider != null)
         {
@@ -87,6 +89,11 @@ public class Projectile : MonoBehaviour
         lobMaxFallSpeed = maxFallSpeed;
         verticalVelocity = lobInitialVerticalVelocity;
     }
+
+   public float GetHorizontalVelocity()
+   {
+      return horizontalMove;
+   }
 
   
 }
