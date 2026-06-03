@@ -90,4 +90,16 @@ public class GrayscaleToggle : MonoBehaviour
     {
         return grayscaleEnabled;
     }
+
+    public static void Toggle()
+    {
+        if (Instance != null)
+        {
+            Instance.ToggleGrayscale();
+        }
+        else
+        {
+            Debug.LogWarning("GrayscaleToggle.Instance is missing.");
+        }
+    }
 }
