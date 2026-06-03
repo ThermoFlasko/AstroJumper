@@ -71,6 +71,66 @@ MonoBehaviour:
     m_Key: DIALOG_FLEETS_MOBILIZED
     m_Metadata:
       m_Items: []
+  - m_Id: 29923535844532224
+    m_Key: TOOLTIP_MOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535869698048
+    m_Key: TOOLTIP_JUMP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535869698049
+    m_Key: TOOLTIP_DOUBLEJUMP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892352
+    m_Key: TOOLTIP_SPRINT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892353
+    m_Key: TOOLTIP_SHOOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892354
+    m_Key: TOOLTIP_MELEE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892355
+    m_Key: DIALOG_EXOSUIT_GOAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892356
+    m_Key: TOOLTIP_ASTROJUMPER_SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892357
+    m_Key: TOOLTIP_ASTROJUMPER_TURN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892358
+    m_Key: TOOLTIP_ASTROJUMPER_SLOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892359
+    m_Key: TOOLTIP_ASTROJUMPER_BOOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892360
+    m_Key: TOOLTIP_ASTROJUMPER_ZOOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892361
+    m_Key: TOOLTIP_ASTROJUMPER_SHOOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892362
+    m_Key: TOOLTIP_ASTROJUMPER_ALTSHOOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892363
+    m_Key: DIALOG_ASTROJUMPER_GOAL
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

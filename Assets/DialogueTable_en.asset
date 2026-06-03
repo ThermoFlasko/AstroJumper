@@ -78,6 +78,67 @@ MonoBehaviour:
     m_Localized: Alright. Our fleets have mobilized, and are waiting for your signal.
     m_Metadata:
       m_Items: []
+  - m_Id: 29923535844532224
+    m_Localized: Press A or D to move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535869698048
+    m_Localized: Press W or SPACE to jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535869698049
+    m_Localized: Press W or SPACE twice to double jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892352
+    m_Localized: Press SHIFT to sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892353
+    m_Localized: Press LMB to shoot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892354
+    m_Localized: Press RMB to melee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892355
+    m_Localized: I need to get to my Astrojumper.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892356
+    m_Localized: Press W to accelerate speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892357
+    m_Localized: Press A or D to turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892358
+    m_Localized: Press S to slow down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892359
+    m_Localized: Press SHIFT to boost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892360
+    m_Localized: SCROLL to control zoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892361
+    m_Localized: Press LMB to fire blasters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892362
+    m_Localized: Press RMB to use alternative firing mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29923535873892363
+    m_Localized: The ship is protected by a shield. I need to target the pylons to
+      disable it.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

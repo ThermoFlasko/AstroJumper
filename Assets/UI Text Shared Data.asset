@@ -443,6 +443,30 @@ MonoBehaviour:
     m_Key: Tasks
     m_Metadata:
       m_Items: []
+  - m_Id: 33808891169988608
+    m_Key: Menu_Label_Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33809001790562304
+    m_Key: Menu_Label_Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33809059659374592
+    m_Key: Menu_Label_Accessibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33809093373190144
+    m_Key: Options_Label_RestoreDefault
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33809176118419456
+    m_Key: Options_Label_Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33809230740840448
+    m_Key: KEYBINDS_Escape
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
