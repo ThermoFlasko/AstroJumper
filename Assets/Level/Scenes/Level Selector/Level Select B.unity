@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2108,7 +2108,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 84704258}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2119,7 +2119,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 998
   m_TargetDisplay: 0
 --- !u!224 &1361977986
 RectTransform:
@@ -2335,8 +2335,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1088386844}
     - target: {fileID: 1807995558640093333, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 84704258}
+    - target: {fileID: 1807995558640093333, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807995558640093333, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807995558640093333, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_SortingOrder
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807995558640093333, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504044188616228847, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Pivot.x

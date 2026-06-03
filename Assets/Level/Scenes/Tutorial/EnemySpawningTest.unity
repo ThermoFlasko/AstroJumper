@@ -403,6 +403,11 @@ Transform:
   - {fileID: 702740800}
   m_Father: {fileID: 660597663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &204907457 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3963149401530857526, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
+  m_PrefabInstance: {fileID: 5679665033423960230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238069676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7878,8 +7883,8 @@ Canvas:
   m_GameObject: {fileID: 832337145}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 204907457}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -150740,6 +150745,10 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 11400000, guid: 19bcbd3c064e1f541bf3183288af1353, type: 2}
+    - target: {fileID: 5474416190012589060, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6183770750080872876, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: m_Name
       value: GPlayer
