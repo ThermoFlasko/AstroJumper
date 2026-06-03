@@ -1,16 +1,32 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class AccessibilityManager : MonoBehaviour
 {
-    public GameObject grayscaleOverlay;
+    [SerializeField] private Volume volume;
+
+    private ColorAdjustments colorAdjustments;
+    private bool grayscaleOn = false;
+
+    private void Start()
+    {
+        if (volume.profile.TryGet(out colorAdjustments))
+        {
+            SetGrayscale(false);
+        }
+    }
 
     public void ToggleGrayscale()
     {
-        grayscaleOverlay.SetActive(!grayscaleOverlay.activeSelf);
+        grayscaleOn = !grayscaleOn;
+        SetGrayscale(grayscaleOn);
     }
 
-    void Awake()
+    public void SetGrayscale(bool enabled)
     {
-        DontDestroyOnLoad(gameObject);
+        if (colorAdjustments == null) return;
+
+        colorAdjustments.saturation.Override(enabled ? -100f : 0f);
     }
 }
