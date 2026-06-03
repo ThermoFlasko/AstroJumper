@@ -32,12 +32,14 @@ public class GameOverManager : MonoBehaviour
     // Called by Level Select button
     public void GoToLevelSelect()
     {
+        SaveManager.instance.CurrentLevelSaveData.currLevel = "Level Selector 2";
         SceneLoader.Instance.LoadNextScene("Level Selector 2");
     }
 
     // Called by Main Menu button
     public void GoToMainMenu()
     {
+        SaveManager.instance.SaveGame();
         SceneLoader.Instance.LoadNextScene("Menus");
     }
 }

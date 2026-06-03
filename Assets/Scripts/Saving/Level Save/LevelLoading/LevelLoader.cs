@@ -73,6 +73,17 @@ public class LevelLoader : MonoBehaviour
 
     public void SetUpPlanetLevel(LevelSaveData levelSaveData)
     {
+        if (SceneManager.GetActiveScene().name == "PCG_Sample")
+        {
+            GroundLevelGenerator groundLevelGenerator = FindFirstObjectByType<GroundLevelGenerator>();
+            groundLevelGenerator.snapPlayerToStartChunk = false;
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.transform.position = levelSaveData.planetLevelData.playerPosition;
+            player.GetComponent<Unit>().Health = levelSaveData.planetLevelData.playerHealth;
+            return;
+        }
+
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         playerGO.transform.position = levelSaveData.planetLevelData.playerPosition;
         playerGO.GetComponent<Unit>().Health = levelSaveData.planetLevelData.playerHealth;
