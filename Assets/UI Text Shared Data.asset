@@ -467,6 +467,10 @@ MonoBehaviour:
     m_Key: KEYBINDS_Escape
     m_Metadata:
       m_Items: []
+  - m_Id: 33817137603665920
+    m_Key: Options_Label_Accessibility_Grayscale
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
