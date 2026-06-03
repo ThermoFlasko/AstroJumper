@@ -14067,8 +14067,8 @@ Canvas:
   m_GameObject: {fileID: 832337145}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1063333291}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -16132,6 +16132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9327566fb4b17934992bb979093e2583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundEventManager
+--- !u!20 &1063333291 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3963149401530857526, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
+  m_PrefabInstance: {fileID: 5679665033423960230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1173072212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18901,6 +18906,10 @@ PrefabInstance:
     - target: {fileID: 4127802456410072963, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: groundMask.m_Bits
       value: 1835008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474416190012589060, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6183770750080872876, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: m_Name
