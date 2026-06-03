@@ -25,7 +25,9 @@ public class GrayscaleToggle : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        grayscaleEnabled = PlayerPrefs.GetInt(GrayscalePrefKey, 0) == 1;
+        grayscaleEnabled = false;
+        PlayerPrefs.SetInt(GrayscalePrefKey, 0);
+        PlayerPrefs.Save();
 
         SetupVolume();
         SetGrayscale(grayscaleEnabled);
