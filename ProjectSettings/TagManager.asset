@@ -15,8 +15,8 @@ TagManager:
   - MeleeSpawner
   - RangedSpawner
   - FxTemporaire
-  - MeleeRoot
-  - RangedRoot
+  - SweetSpot
+  - SourSpot
   layers:
   - Default
   - TransparentFX

@@ -48,7 +48,9 @@ public class EnemyAI : MonoBehaviour
 
 
     [Header("Knockback")]
-    [SerializeField] private float knockbackDuration = 0.2f;
+    [SerializeField] private float knockbackDuration = 0.5f;
+
+    public bool canBeDamagedByWall;
 
     //leash distance that makes the enemy give up and return back to home point
     [Header("Return")]
@@ -83,6 +85,7 @@ public class EnemyAI : MonoBehaviour
 
         // knockback event and only react if it's own unit
         Unit.onKnockedBack += OnKnockedBack;
+        canBeDamagedByWall = false;
     }
 
     private void OnDestroy()
@@ -500,6 +503,7 @@ public class EnemyAI : MonoBehaviour
     {
         ChangeState(State.Knockback, "Entered knockback");
         motor.ApplyKnockback(force);
+        canBeDamagedByWall = true;
         Invoke(nameof(ExitKnockback), duration);
     }
 
@@ -509,7 +513,7 @@ public class EnemyAI : MonoBehaviour
         {
             isLowHealth = true;
         }
-
+        canBeDamagedByWall = false;
         ChangeState(State.Return, "Exiting knockback");
     }
 }

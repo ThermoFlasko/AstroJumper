@@ -96,7 +96,20 @@ public class Unit : MonoBehaviour
             Death();
             return;
         }
-        Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
+        Vector2 knockbackDir;
+        if ((Vector2)transform.position  == sourcePosition) {
+                    
+                    
+             // Default knockback direction if source position is the same as unit position
+            knockbackDir = IsFacingRight() ? Vector2.left : Vector2.right;
+            Debug.Log("Knockback Direction: if " + knockbackDir);
+        }
+        else {
+         knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
+                 Debug.Log("Knockback Direction: else " + knockbackDir);
+
+        }
+
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         onKnockedBack?.Invoke(this, knockbackVector);
 

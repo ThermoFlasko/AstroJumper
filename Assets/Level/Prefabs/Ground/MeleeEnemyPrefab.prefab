@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 3096100077908708330}
   - component: {fileID: 7832879575391480077}
   - component: {fileID: 6216486578728765313}
+  - component: {fileID: 708484131849568830}
   m_Layer: 12
   m_Name: MeleeEnemyPrefab
   m_TagString: Enemy
@@ -300,7 +301,7 @@ MonoBehaviour:
   projectilePool: {fileID: 0}
   projectileSpeed: 8
   minShootRange: 0
-  knockbackDuration: 0.2
+  knockbackDuration: 1
   homePoint: {fileID: 0}
   homeTolerance: 0.2
   maxLeashDistance: 8
@@ -309,6 +310,7 @@ MonoBehaviour:
   isLowHealth: 0
   isDamaged: 0
   isDead: 0
+  restoreSpeed: 0
 --- !u!114 &3096100077908708330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +385,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &708484131849568830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142058132746787800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f333c85a3c9e4c52a026c036f5124a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewEnemyHitboxScript
 --- !u!1 &9037043406219051716
 GameObject:
   m_ObjectHideFlags: 0
