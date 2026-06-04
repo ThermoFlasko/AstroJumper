@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ee5476107e76f4db643781a7186779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipLaser
-  speed: 500
-  maxSpeed: 500
+  speed: 250
+  maxSpeed: 250
   lifeTime: 5
 --- !u!70 &2434537823436840192
 CapsuleCollider2D:
@@ -312,8 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ee5476107e76f4db643781a7186779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipLaser
-  speed: 500
-  maxSpeed: 500
+  speed: 250
+  maxSpeed: 250
   lifeTime: 5
 --- !u!70 &2865953849592039507
 CapsuleCollider2D:

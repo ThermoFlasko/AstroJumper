@@ -149,6 +149,8 @@ MonoBehaviour:
   deathVolume: 1
   deathVfxPrefab: {fileID: 0}
   deathVfxDestroyPadding: 0.25
+  prewarmDeathVfxPool: 1
+  prewarmDeathVfxCount: 32
   currentHealth: 75
   maxHealth: 75
   maxShileds: 50
@@ -202,6 +204,9 @@ MonoBehaviour:
     canFire: 1
   cam: {fileID: 0}
   projectileSpawn: {fileID: 8310198182133585324}
+  prewarmLaserPools: 1
+  prewarmProjectilesPerAttack: 48
+  prewarmHitVfxPerAttack: 48
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: Player
   primaryFireActionName: PrimaryFire
