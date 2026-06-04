@@ -15,24 +15,32 @@ MonoBehaviour:
   moveForceStartingLevel: 1
   moveForceUpgradePerLevel: 5
   moveForceCostPerLevel: 5
+  moveForceMaxLevel: 5
   maxSpeedStartingLevel: 1
   maxSpeedUpgradePerLevel: 7
   maxSpeedCostPerLevel: 5
+  maxSpeedMaxLevel: 5
   boostForceStartingLevel: 1
   boostForceUpgradePerLevel: 5
   boostForceCostPerLevel: 5
+  boostForceMaxLevel: 5
   barrelRollDistanceStartingLevel: 1
   barrelRollDistanceUpgradePerLevel: 2
   barrelRollDistanceCostPerLevel: 5
+  barrelRollDistanceMaxLevel: 5
   barrelRollSpeedStartingLevel: 1
   barrelRollSpeedUpgradePerLevel: 0.05
   barrelRollSpeedCostPerLevel: 5
+  barrelRollSpeedMaxLevel: 5
   fireRateStartingLevel: 1
   fireRateUpgradePerLevel: 0.05
   fireRateCostPerLevel: 5
+  fireRateMaxLevel: 5
   maxHealthStartingLevel: 1
   maxHealthUpgradePerLevel: 15
   maxHealthUpgradeCostPerLevel: 5
+  maxHealthMaxLevel: 5
   maxShieldsStartingLevel: 1
   maxShieldsPerLevel: 7.5
   maxShieldCostPerLevel: 5
+  maxShieldsMaxLevel: 5

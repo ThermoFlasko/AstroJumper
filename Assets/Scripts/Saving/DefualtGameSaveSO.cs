@@ -14,10 +14,34 @@ public class GroundTrooperUpgradeDefaults
     public int universalUpgradeCostPerLevel = 5;
     public int moveSpeedStartingLevel = 1;
     public float moveSpeedUpgradePerLevel = 0.75f;
+    [Min(0)] public int moveSpeedMaxLevel = 5;
     public int jumpVelocityStartingLevel = 0;
     public float jumpVelocityUpgradePerLevel = 0.75f;
+    [Min(0)] public int jumpVelocityMaxLevel = 5;
     public int maxHealthStartingLevel = 0;
     public int maxHealthUpgradePerLevel = 10;
+
+    [Min(0)] public int maxHealthMaxLevel = 5;
+
+    public int GetMaxUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case GroundTrooperUpgradeType.MoveSpeed:
+                return Mathf.Max(0, moveSpeedMaxLevel);
+            case GroundTrooperUpgradeType.JumpVelocity:
+                return Mathf.Max(0, jumpVelocityMaxLevel);
+            case GroundTrooperUpgradeType.MaxHealth:
+                return Mathf.Max(0, maxHealthMaxLevel);
+        }
+
+        return 0;
+    }
+
+    public int ClampUpgradeLevel(GroundTrooperUpgradeType upgradeType, int level)
+    {
+        return Mathf.Clamp(level, 0, GetMaxUpgradeLevel(upgradeType));
+    }
 }
 
 [Serializable]

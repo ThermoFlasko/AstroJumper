@@ -69,15 +69,17 @@ public class UpgradeButton : MonoBehaviour
         }
 
         int upgradeCost = GetUpgradeCost();
-        if (upgradeCost >= 0 && SaveManager.instance.GetNewMoney() >= upgradeCost)
+        int currentLevel = GetCurrentUpgradeLevel();
+        int maxLevel = GetMaxUpgradeLevel();
+        if (upgradeCost >= 0 && !IsAtMaxLevel(currentLevel, maxLevel) && SaveManager.instance.GetNewMoney() >= upgradeCost)
         {
             print("can afford upgrade");
-            SaveManager.instance.AddNewMoney(-upgradeCost);
+            bool upgraded = IsSpaceshipUpgrade()
+                ? SaveManager.instance.TryAddUpgradeLevel(ToSpaceshipUpgradeType())
+                : SaveManager.instance.TryAddGroundUpgradeLevel(ToGroundUpgradeType());
 
-            if (IsSpaceshipUpgrade())
-                SaveManager.instance.AddUpgradeLevel(ToSpaceshipUpgradeType());
-            else
-                SaveManager.instance.AddGroundUpgradeLevel(ToGroundUpgradeType());
+            if (upgraded)
+                SaveManager.instance.AddNewMoney(-upgradeCost);
         }
 
         RefreshView();
@@ -104,11 +106,12 @@ public class UpgradeButton : MonoBehaviour
 
         int upgradeCost = GetUpgradeCost();
         int currentLevel = GetCurrentUpgradeLevel();
+        int maxLevel = GetMaxUpgradeLevel();
         int currentMoney = SaveManager.instance.GetNewMoney();
         string currentSummary = GetUpgradeSummary(currentLevel);
-        string nextSummary = GetUpgradeSummary(currentLevel + 1);
+        string nextSummary = IsAtMaxLevel(currentLevel, maxLevel) ? string.Empty : GetUpgradeSummary(currentLevel + 1);
 
-        ApplyButtonState(upgradeCost, currentLevel, currentMoney, currentSummary, nextSummary);
+        ApplyButtonState(upgradeCost, currentLevel, maxLevel, currentMoney, currentSummary, nextSummary);
     }
 
     private void HandleMoneyChanged(int _)
@@ -141,25 +144,28 @@ public class UpgradeButton : MonoBehaviour
             return;
         }
 
-        int previewLevel = Mathf.Max(0, editorPreviewLevel);
+        int maxLevel = GetMaxUpgradeLevel();
+        int previewLevel = Mathf.Clamp(editorPreviewLevel, 0, maxLevel);
         int previewMoney = Mathf.Max(0, editorPreviewMoney);
         int upgradeCost = GetUpgradeCost();
         string currentSummary = GetUpgradeSummary(previewLevel);
-        string nextSummary = GetUpgradeSummary(previewLevel + 1);
+        string nextSummary = IsAtMaxLevel(previewLevel, maxLevel) ? string.Empty : GetUpgradeSummary(previewLevel + 1);
 
-        ApplyButtonState(upgradeCost, previewLevel, previewMoney, currentSummary, nextSummary);
+        ApplyButtonState(upgradeCost, previewLevel, maxLevel, previewMoney, currentSummary, nextSummary);
     }
 
-    private void ApplyButtonState(int upgradeCost, int currentLevel, int currentMoney, string currentSummary, string nextSummary)
+    private void ApplyButtonState(int upgradeCost, int currentLevel, int maxLevel, int currentMoney, string currentSummary, string nextSummary)
     {
+        bool isAtMaxLevel = IsAtMaxLevel(currentLevel, maxLevel);
+
         if (upgradeCostLabel != null)
-            upgradeCostLabel.text = upgradeCost >= 0 ? $"Cost: {upgradeCost}\nNext: {nextSummary}" : "Cost: -\nNext: -";
+            upgradeCostLabel.text = isAtMaxLevel ? "MAX\nNext: -" : upgradeCost >= 0 ? $"Cost: {upgradeCost}\nNext: {nextSummary}" : "Cost: -\nNext: -";
 
         if (currentLevelLabel != null)
-            currentLevelLabel.text = $"Lv. {currentLevel}\nNow: {currentSummary}";
+            currentLevelLabel.text = $"Lv. {currentLevel}/{maxLevel}\nNow: {currentSummary}";
 
         if (cachedButton != null)
-            cachedButton.interactable = upgradeCost >= 0 && currentMoney >= upgradeCost;
+            cachedButton.interactable = !isAtMaxLevel && upgradeCost >= 0 && currentMoney >= upgradeCost;
     }
 
     private void ApplyUnavailableState(int previewLevel)
@@ -207,6 +213,28 @@ public class UpgradeButton : MonoBehaviour
             return SaveManager.instance.GetUpgradeLevel(ToSpaceshipUpgradeType());
 
         return SaveManager.instance.GetGroundUpgradeLevel(ToGroundUpgradeType());
+    }
+
+    private int GetMaxUpgradeLevel()
+    {
+        if (Application.isPlaying && SaveManager.instance != null)
+        {
+            if (IsSpaceshipUpgrade())
+                return SaveManager.instance.GetMaxUpgradeLevel(ToSpaceshipUpgradeType());
+
+            return SaveManager.instance.GetGroundMaxUpgradeLevel(ToGroundUpgradeType());
+        }
+
+        if (IsSpaceshipUpgrade())
+            return upgradesSO != null ? upgradesSO.GetMaxUpgradeLevel(ToSpaceshipUpgradeType()) : 0;
+
+        GroundTrooperUpgradeDefaults groundDefaults = ResolveGroundDefaults();
+        return groundDefaults != null ? groundDefaults.GetMaxUpgradeLevel(ToGroundUpgradeType()) : 0;
+    }
+
+    private bool IsAtMaxLevel(int currentLevel, int maxLevel)
+    {
+        return currentLevel >= maxLevel;
     }
 
     private string GetUpgradeDisplayName()
