@@ -582,6 +582,7 @@ MonoBehaviour:
   planetExpandedScale: {x: 3.5, y: 3.5, z: 1}
   expandTime: 5
   planetExpanding: 
+  dialogueTextManager: {fileID: 1006893034}
 --- !u!4 &438613777
 Transform:
   m_ObjectHideFlags: 0
