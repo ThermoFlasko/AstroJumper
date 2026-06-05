@@ -15,6 +15,7 @@ public class PlanetTracker : MonoBehaviour
     [SerializeField] Vector3 planetExpandedScale = new Vector3(3,3,1);
     [SerializeField] float expandTime = 1f;
     [SerializeField]private string planetExpanding = "";
+    public DialogueTextManager dialogueTextManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +30,7 @@ public class PlanetTracker : MonoBehaviour
             return;
         }
 
-        if (IsUpgradeMenuOpen())
+        if (IsUpgradeMenuOpen() || dialogueTextManager.IsInDialouge)
         {
             return;
         }
@@ -76,7 +77,6 @@ public class PlanetTracker : MonoBehaviour
 
     private void OnClick()
     {
-        print("clicked");
         mousePos = Mouse.current.position.ReadValue();
         mousePos.z = Camera.main.nearClipPlane;
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);

@@ -18,10 +18,13 @@ MonoBehaviour:
     universalUpgradeCostPerLevel: 5
     moveSpeedStartingLevel: 1
     moveSpeedUpgradePerLevel: 0.75
+    moveSpeedMaxLevel: 5
     jumpVelocityStartingLevel: 0
     jumpVelocityUpgradePerLevel: 0.75
+    jumpVelocityMaxLevel: 5
     maxHealthStartingLevel: 0
     maxHealthUpgradePerLevel: 10
+    maxHealthMaxLevel: 5
   groundEquipmentDefaults:
-    equippedMeleeAttackId: ''
-    equippedRangedAttackId: Lobbed Ranged
+    equippedMeleeAttackId: 
+    equippedRangedAttackId: 

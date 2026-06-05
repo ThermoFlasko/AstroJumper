@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2523804742718596429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1829909816288587560}
+  m_Layer: 12
+  m_Name: AllyCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1829909816288587560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523804742718596429}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.35, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 172542505390404257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3019144364372635178
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +269,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -272,7 +303,7 @@ MonoBehaviour:
   hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 6932504488287900922, guid: fc7e4e176758be245bfaea0f427f9e9d, type: 3}
-  meleeAnimator: {fileID: 4144720731330400138, guid: fd9534f305d36f4428bada05ae945ef5, type: 3}
+  meleeAnimator: {fileID: 0}
   StartSprite: {fileID: 0}
 --- !u!114 &2916840892436311964
 MonoBehaviour:
@@ -294,8 +325,8 @@ MonoBehaviour:
   investigateDuration: 2
   investigateTolerance: 0.15
   attackTypes: 1
-  meleeEnterBuffer: 0.75
-  meleeRange: 2
+  meleeEnterBuffer: 0.5
+  meleeRange: 0.8
   rangedRange: 5
   firePoint: {fileID: 4124021642724615479}
   projectilePool: {fileID: 0}
@@ -306,9 +337,8 @@ MonoBehaviour:
   homeTolerance: 0.2
   maxLeashDistance: 8
   state: 0
-  isAttacking: 0
+  idleTime: 2
   isLowHealth: 0
-  isDamaged: 0
   isDead: 0
   restoreSpeed: 0
 --- !u!114 &3096100077908708330
@@ -430,6 +460,7 @@ Transform:
   - {fileID: 8678557902034983744}
   - {fileID: 8897213448893803018}
   - {fileID: 6656321853175989257}
+  - {fileID: 1829909816288587560}
   m_Father: {fileID: 7415500675629748956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4255045886575685431
@@ -459,6 +490,11 @@ MonoBehaviour:
   sightBlockMask:
     serializedVersion: 2
     m_Bits: 262144
+  allyCheck: {fileID: 1829909816288587560}
+  detectAllyDistance: 0.5
+  allyMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1001 &5687031291518118164
 PrefabInstance:
   m_ObjectHideFlags: 0

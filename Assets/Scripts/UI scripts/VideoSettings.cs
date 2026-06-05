@@ -22,31 +22,30 @@ public class VideoSettings : MonoBehaviour
 
     [Header("Display Modes")]
     public DisplayModes currentDisplayMode = DisplayModes.Fullscreen;
-    public List<string> displayModeStrings;
-    public TextMeshProUGUI displayModeText;
+    public List<TextMeshProUGUI> displayModeTextObj;
+    public GameObject activeDisplayModeObject;
 
     [Header("Resolutions")]
     public int currentResolution;
     public List<StoredResolution> storedResolutions;
     public TextMeshProUGUI resolutionText;
 
-    public StoredResolution defaultResolution = new()
-    {
-        resolutionString = "1920 x 1080",
-        width = 1920,
-        height = 1080
-    };
+    public StoredResolution defaultResolution;
 
     private void Awake()
     {
+        defaultResolution = new()
+        {
+            resolutionString = PlayerPrefs.GetString("Resolution String", "1920 x 1080"),
+            width = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1920),
+            height = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1080)
+        };
+
         // every time the game is opened, check if the resolution was ever changed before, if not, set and store defaults
         CheckPlayerPrefResolution();
-    }
 
-    private void Start()
-    {
-        displayModeStrings = new() { "Fullscreen", "Maximized Window", "Windowed" };
-        displayModeText.text = displayModeStrings[0];
+        activeDisplayModeObject = displayModeTextObj[0].gameObject;
+        activeDisplayModeObject.SetActive(true);
 
         storedResolutions = new();
 
@@ -71,7 +70,7 @@ public class VideoSettings : MonoBehaviour
             }
         }
 
-        // look through the list of StoredResolutions, if there is a matching resolution string
+        // look through the list of possible resolutions and store the index so the resolution can be adjusted
         foreach (var res in storedResolutions)
         {
             string currResString = res.resolutionString;
@@ -82,15 +81,14 @@ public class VideoSettings : MonoBehaviour
             }
         }
 
-        if(PlayerPrefs.GetString("Resolution String") == null)
+        // check if the PlayerPref in the registry exists already, if not set the default string, if it is then set the resolution
+        if (PlayerPrefs.GetString("Resolution String") == string.Empty)
         {
-            resolutionText.text = $"{defaultResolution.resolutionString}";
-        }
-        else
-        {
-            ChangeResolution(currentResolution);
+            SetDefaultVideoSettings();
+            return;
         }
 
+        ChangeResolution(currentResolution);
         GetFullScreenModeFromPlayerPref();
         ChangeDisplayMode();
     }
@@ -147,7 +145,11 @@ public class VideoSettings : MonoBehaviour
 
     public void ChangeDisplayMode()
     {
-        displayModeText.text = displayModeStrings[(int)currentDisplayMode];
+        //displayModeText.text = displayModeStrings[(int)currentDisplayMode];
+
+        activeDisplayModeObject.SetActive(false);
+        activeDisplayModeObject = displayModeTextObj[(int)currentDisplayMode].gameObject;
+        activeDisplayModeObject.SetActive(true);
 
         switch (currentDisplayMode)
         {
@@ -221,28 +223,30 @@ public class VideoSettings : MonoBehaviour
 
     public void CheckPlayerPrefResolution()
     {
-        if (PlayerPrefs.GetInt("Screenmanager Resolution Width") != 0 && PlayerPrefs.GetInt("Screenmanager Resolution Height") != 0 && PlayerPrefs.GetString("Resolution String") != null)
+        if (PlayerPrefs.GetInt("Screenmanager Resolution Width") != 0 && PlayerPrefs.GetInt("Screenmanager Resolution Height") != 0 && PlayerPrefs.GetString("Resolution String") != string.Empty)
         {
             print("Found and setting to saved resolution!");
             Screen.SetResolution(PlayerPrefs.GetInt("Screenmanager Resolution Width"), PlayerPrefs.GetInt("Screenmanager Resolution Height"), GetFullScreenModeFromPlayerPref());
             return;
         }
 
-        if (PlayerPrefs.GetInt("Screenmanager Resolution Width") == 0 || PlayerPrefs.GetInt("Screenmanager Resolution Height") == 0 || PlayerPrefs.GetString("Resolution String") == null)
+        if (PlayerPrefs.GetInt("Screenmanager Resolution Width", 0) == 0 || PlayerPrefs.GetInt("Screenmanager Resolution Height", 0) == 0 || PlayerPrefs.GetString("Resolution String", string.Empty) == string.Empty)
         {
             print("No saved resolutions found, setting to default resolution!");
             SetDefaultVideoSettings();
         }
     }
 
-    // this would only get called if either the player hits reset on video settings or if there is no default resolution
+    // this would only get called if either the player hits reset on video settings or if this is the first time opening the game
     public void SetDefaultVideoSettings()
     {
         PlayerPrefs.SetString("Resolution String", defaultResolution.resolutionString);
         PlayerPrefs.SetInt("Screenmanager Resolution Width", defaultResolution.width);
         PlayerPrefs.SetInt("Screenmanager Resolution Height", defaultResolution.height);
+        resolutionText.text = $"{defaultResolution.resolutionString}";
+
         PlayerPrefs.SetInt("Screenmanager Fullscreen mode", 1);
-        Screen.SetResolution(defaultResolution.width, defaultResolution.height, FullScreenMode.FullScreenWindow);
+        Screen.SetResolution(PlayerPrefs.GetInt("Screenmanager Resolution Width", defaultResolution.width), PlayerPrefs.GetInt("Screenmanager Resolution Height", defaultResolution.height), FullScreenMode.FullScreenWindow);
     }
 
 }

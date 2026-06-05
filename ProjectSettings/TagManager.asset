@@ -15,6 +15,9 @@ TagManager:
   - MeleeSpawner
   - RangedSpawner
   - FxTemporaire
+  - MeleeRoot
+  - RangedRoot
+  - Flagship
   - SweetSpot
   - SourSpot
   layers:

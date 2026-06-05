@@ -551,6 +551,7 @@ MonoBehaviour:
   planetExpandedScale: {x: 3.5, y: 3.5, z: 1}
   expandTime: 5
   planetExpanding: 
+  dialogueTextManager: {fileID: 1006893034}
 --- !u!4 &438613777
 Transform:
   m_ObjectHideFlags: 0
@@ -1490,7 +1491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006893033}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0547df27231ff1b45a22de818d94f741, type: 3}
   m_Name: 
@@ -1499,7 +1500,7 @@ MonoBehaviour:
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: UI
   dialougeContainer: {fileID: 0}
-  currentDialouge: {fileID: 11400000, guid: 418436105b588954db090b9f143f9db7, type: 2}
+  currentDialouge: {fileID: 0}
   dialogueText: {fileID: 693869164}
   nameTextGO: {fileID: 712705445}
   nameText: {fileID: 2036158558}

@@ -103,6 +103,16 @@ public class SimpleTeamSpawner : MonoBehaviour
         fleetSpawner = GetComponent<FleetSpawner>();
         if (fleetSpawner == null)
             fleetSpawner = FleetSpawner.Instance;
+
+        if (fleetSpawner != null)
+        {
+            fleetSpawner.SetTrackedEnemyTeams(new List<int> { EnemyTeamId });
+            if (disableFleetSpawnerAutoFulfill)
+                fleetSpawner.SetAutoFulfillReinforcementRequests(false);
+        }
+
+        if (autoSpawnOnStart)
+            SpawnBattle();
     }
 
     private void OnEnable()
@@ -120,15 +130,7 @@ public class SimpleTeamSpawner : MonoBehaviour
     private void Start()
     {
 
-        if (fleetSpawner != null)
-        {
-            fleetSpawner.SetTrackedEnemyTeams(new List<int> { EnemyTeamId });
-            if (disableFleetSpawnerAutoFulfill)
-                fleetSpawner.SetAutoFulfillReinforcementRequests(false);
-        }
-
-        if (autoSpawnOnStart)
-            SpawnBattle();
+        
     }
 
     private void Update()

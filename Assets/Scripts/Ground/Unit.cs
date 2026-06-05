@@ -1,7 +1,6 @@
 // Unit is the base class for players and enemies.
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
 using System.Collections;
 
 public class Unit : MonoBehaviour
@@ -93,23 +92,14 @@ public class Unit : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
-            Death();
+            Animator controller = GetComponent<Animator>();
+            if (controller == null) 
+                Debug.LogError("Aniamtor component not found");
+            controller.SetTrigger("DeadTrigger");
             return;
         }
-        Vector2 knockbackDir;
-        if ((Vector2)transform.position  == sourcePosition) {
-                    
-                    
-             // Default knockback direction if source position is the same as unit position
-            knockbackDir = IsFacingRight() ? Vector2.left : Vector2.right;
-            Debug.Log("Knockback Direction: if " + knockbackDir);
-        }
-        else {
-         knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
-                 Debug.Log("Knockback Direction: else " + knockbackDir);
 
-        }
-
+        Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         onKnockedBack?.Invoke(this, knockbackVector);
 
@@ -207,7 +197,7 @@ public class Unit : MonoBehaviour
 
         // Use IsFacingRight() instead of GroundMovement
         float facingSign = IsFacingRight() ? 1f : -1f;
-        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x * facingSign, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
+        Vector3 offset = new Vector3(hitBoxInfo.GetOffset().x, hitBoxInfo.GetOffset().y, hitBoxInfo.GetOffset().z);
 
         if (hitBoxInfo.GetIsMelee())
         {

@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 840438540604748135}
   - component: {fileID: 8290834329959521489}
   m_Layer: 12
-  m_Name: Sensor (1)
+  m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +95,7 @@ Transform:
   - {fileID: 4352336119248971437}
   - {fileID: 3011895998120404585}
   - {fileID: 8440172888546649125}
+  - {fileID: 5505376455366589158}
   m_Father: {fileID: 3075443926583324366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8290834329959521489
@@ -120,10 +121,46 @@ MonoBehaviour:
   ledgeCheck: {fileID: 3011895998120404585}
   ledgeCheckDistance: 0.4
   playerDetectOrigin: {fileID: 8440172888546649125}
-  detectRadius: 7
+  detectRadius: 5
   sightBlockMask:
     serializedVersion: 2
     m_Bits: 262144
+  allyCheck: {fileID: 5505376455366589158}
+  detectAllyDistance: 0.5
+  allyMask:
+    serializedVersion: 2
+    m_Bits: 4096
+--- !u!1 &1897600852570371240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5505376455366589158}
+  m_Layer: 12
+  m_Name: AllyCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5505376455366589158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897600852570371240}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.35, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840438540604748135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2676203520584879081
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,11 +421,9 @@ MonoBehaviour:
   homeTolerance: 0.2
   maxLeashDistance: 15
   state: 0
-  isAttacking: 0
+  idleTime: 2
   isLowHealth: 0
-  isDamaged: 0
   isDead: 0
-  restoreSpeed: 0
 --- !u!114 &6569328820202535863
 MonoBehaviour:
   m_ObjectHideFlags: 0

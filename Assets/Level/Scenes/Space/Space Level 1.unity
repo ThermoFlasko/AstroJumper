@@ -1558,6 +1558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328587808026187841, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1029587659160723094, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
       propertyPath: m_Name
       value: Spaceship Player HUD
@@ -1674,6 +1678,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4008565824423086410, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4290392395574374901, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -1753,6 +1761,14 @@ PrefabInstance:
     - target: {fileID: 6498689746096383989, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927984497628020752, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178956412157898227, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8387691912158285487, guid: 24864c5f7cc558a4bb8aa67f64db9923, type: 3}
       propertyPath: m_Pivot.x
@@ -1856,6 +1872,10 @@ PrefabInstance:
     - target: {fileID: 2719807712092849044, guid: 0c408d1be629c404a88b3bc91f3ca708, type: 3}
       propertyPath: m_Name
       value: SaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432111490660151381, guid: 0c408d1be629c404a88b3bc91f3ca708, type: 3}
+      propertyPath: IsInLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7697147978856731979, guid: 0c408d1be629c404a88b3bc91f3ca708, type: 3}
       propertyPath: m_LocalPosition.x
