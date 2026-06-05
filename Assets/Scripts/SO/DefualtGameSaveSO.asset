@@ -26,5 +26,5 @@ MonoBehaviour:
     maxHealthUpgradePerLevel: 10
     maxHealthMaxLevel: 5
   groundEquipmentDefaults:
-    equippedMeleeAttackId: ''
-    equippedRangedAttackId: Lobbed Ranged
+    equippedMeleeAttackId: 
+    equippedRangedAttackId: 
