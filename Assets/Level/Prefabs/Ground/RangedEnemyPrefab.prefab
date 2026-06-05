@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 6100491850485219385}
   - component: {fileID: 1024968848392739870}
   - component: {fileID: 7005532629968361342}
+  - component: {fileID: 4269593916918894065}
   m_Layer: 12
   m_Name: RangedEnemyPrefab
   m_TagString: Enemy
@@ -415,7 +416,7 @@ MonoBehaviour:
   projectilePool: {fileID: 6100491850485219385}
   projectileSpeed: 8
   minShootRange: 0
-  knockbackDuration: 0.2
+  knockbackDuration: 1
   homePoint: {fileID: 0}
   homeTolerance: 0.2
   maxLeashDistance: 15
@@ -496,6 +497,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4269593916918894065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673901974885723949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f333c85a3c9e4c52a026c036f5124a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewEnemyHitboxScript
 --- !u!1001 &386073407040165042
 PrefabInstance:
   m_ObjectHideFlags: 0

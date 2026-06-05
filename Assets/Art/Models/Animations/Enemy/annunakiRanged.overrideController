@@ -8,4 +8,14 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: annunakiRanged
   m_Controller: {fileID: 9100000, guid: 39f52129f32926a4295b713a648ffe9b, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8b8551d50d773fb4db4bbad7e8b377a1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 45e33bb6cf904d5498bee6bb1c76cfdf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8ed7f31ed134dd0429d549233f23b2a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5982d26388bdde34393ad27e12486433, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 38daae3a0f50a6c43b35485bc9526551, type: 2}
