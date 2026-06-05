@@ -297,10 +297,16 @@ public class SaveManager : MonoBehaviour
 
     public void ResetSave()
     {
-        LevelSaveData newSaveData = new();
+        CurrentSaveData = SaveData.CreateDefualtSaveData(defualtGameSaveSO);
+
+        LevelSaveData newSaveData = LevelSaveData.CreateDefaultSaveData();
         newSaveData.currLevel = "Tutorial Ground";
+        newSaveData.isPlanetLevel = true;
         CurrentLevelSaveData = newSaveData;
 
+        isLoadingSaveData = false;
+        NotifyMoneyChanged();
+        MakeDirty();
     }
 
     public void UpdateLevelData()
