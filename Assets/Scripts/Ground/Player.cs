@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor;
+using MilkShake;
+ 
 public class Player : Unit
 {
     
@@ -12,6 +14,7 @@ public class Player : Unit
     [SerializeField] private string attackActionName = "Attack";
     [SerializeField] private string attackActionName2 = "Attack2";
     [SerializeField] private GroundAttackCatalogSO groundAttackCatalog;
+   
     private InputAction attackAction;
     private InputAction attackAction2;
     public static event Action<Unit> onPlayerDeath;
@@ -20,6 +23,14 @@ public class Player : Unit
 
     public GameObject healthUIGameObject;
     private Animator  UIhealth;
+    public Shaker MyShaker;
+    public ShakePreset CameraShake;
+
+    private PlayerAnimator playerAnimator;
+    private bool inMeleeAnimation = false;
+
+
+
 
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
@@ -50,6 +61,7 @@ public class Player : Unit
                 return;
             }
         }
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,6 +90,9 @@ public class Player : Unit
             Debug.LogWarning($"{name} is missing a health UI GameObject. Damage UI animations will be skipped.", this);
         }
 
+        playerAnimator = null;
+        playerAnimator = GetComponent<PlayerAnimator>();
+
    }
     private void OnEnable()
     {
@@ -103,7 +118,7 @@ public class Player : Unit
         HitBox.onDurationOver -= OnHitBoxDurationOver;
     }
 
-    private void OnAttack(InputAction.CallbackContext context)
+    private void OnAttack(InputAction.CallbackContext context) //GUN ATTACK
     {
         if (isAttacking)
             return;
@@ -114,18 +129,13 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
-            //print("Projectile attack from pool");
+            print("Projectile attack from pool");
             projectileCount++;
+            
             BeginAttack(hitBoxPrefab);
             return;
         }
-        else if(hitBoxInfo.GetIsMelee())
-        {
-            //print("melee attack");
-            BeginAttack(hitBoxPrefab);
-            isAttacking = true;
-            return;
-        }
+        
         else if(projectileCount < maxProjectile)
         {
             //print("no projectile pool, creating projectile");
@@ -134,7 +144,7 @@ public class Player : Unit
         }
     }
 
-    private void OnAttack2(InputAction.CallbackContext context)
+    private void OnAttack2(InputAction.CallbackContext context) //MELEE ATTACK 
     {
         if (isAttacking2)
             return;
@@ -142,27 +152,41 @@ public class Player : Unit
         if (!TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo))
             return;
 
-        // check for projectile attack
-        if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
+        //// check for projectile attack
+        //if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
+        //{
+        //    //print("Projectile attack from pool");
+        //    projectileCount++;
+        //    BeginAttack(hitBoxPrefab2);
+        //    return;
+        //}
+
+        //Changing and moving attack into Player script
+        //else if(hitBoxInfo.GetIsMelee())
+        //{
+        //    print("melee attack");
+        //    BeginAttack(hitBoxPrefab2);
+        //    isAttacking2 = true;
+        //    return;
+        //}
+        //else if(projectileCount < maxProjectile)
+        //{
+        //    //print("no projectile pool, creating projectile");
+        //    BeginAttack(hitBoxPrefab2);
+        //    return;
+        //}
+        if (playerAnimator.isGrounded && !inMeleeAnimation)
         {
-            //print("Projectile attack from pool");
-            projectileCount++;
-            BeginAttack(hitBoxPrefab2);
-            return;
+            Debug.Log("Hit the melee");
+            inMeleeAnimation = true;
+            DisableInputs();
+            playerAnimator.MakePlayerMelee();
+
         }
-        else if(hitBoxInfo.GetIsMelee())
-        {
-            //print("melee attack");
-            BeginAttack(hitBoxPrefab2);
-            isAttacking2 = true;
-            return;
-        }
-        else if(projectileCount < maxProjectile)
-        {
-            //print("no projectile pool, creating projectile");
-            BeginAttack(hitBoxPrefab2);
-            return;
-        }
+
+
+
+
     }
 
     public override void TakeDamage(int amount, float knockbackForce, float knockbackVerticalForce, Vector2 sourcePosition)
@@ -182,8 +206,9 @@ public class Player : Unit
         Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         InvokeKnockback(this, knockbackVector);
+        MyShaker.Shake(CameraShake);
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+      SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (!isDamageAnimation)
             StartCoroutine(DamageEffect(spriteRenderer)); //Im not sure why it plays twice after taking dmg once It was like this before and flashes twice im not sure where it is, 
         Debug.Log("Invoking onPlayerDamaged animation");// the animation plays an extra time after taking dmg like a second later, but this isn't being called twice so its most likely a sprite issue
@@ -216,6 +241,7 @@ public class Player : Unit
         ApplyGroundTrooperDefaultUpgrades();
         transform.position = playerSpawn.transform.position;
         GetComponent<SpriteRenderer>().flipX = false;
+
     }
 
     private void ApplyGroundTrooperDefaultUpgrades()
@@ -307,6 +333,7 @@ public class Player : Unit
     {
         attackAction.Enable();
         attackAction2.Enable();
+        inMeleeAnimation = false;
     }
 }
 

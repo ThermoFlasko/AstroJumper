@@ -18,6 +18,8 @@ TagManager:
   - MeleeRoot
   - RangedRoot
   - Flagship
+  - SweetSpot
+  - SourSpot
   layers:
   - Default
   - TransparentFX

@@ -167,6 +167,7 @@ public class DialogueTextManager : MonoBehaviour
         characterIconRenderer.sprite = currentDialouge.CharacterIcon;
 
         isInDialouge = true;
+        IsInDialouge = true;
         if(characterIconRenderer.sprite != null)
         {
             characterIconRenderer.enabled = true;

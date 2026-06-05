@@ -7,29 +7,39 @@ public class Unit : MonoBehaviour
 {
     [Header("Unit Info")]
     [SerializeField] private string _unitName;
-    public string UnitName
-    {get; set;}
+
+    public string UnitName {get; set;}
+
+
     [SerializeField] protected int _health = 100;
+
+
     public int Health
     {
         get { return _health; }
         set { _health = value; }
     }
+
+
     [SerializeField] private int _damage = 10;
+
+
     public int Damage
     {
         get { return _damage; }
         set { _damage = value; }
     }
-    public static event Action<Unit> onDeath;
-    public static event Action<Unit> onDamaged;
+
+
+   public static event Action<Unit> onDeath;
+   public static event Action<Unit> onDamaged;
+
     public static event Action<Unit, Vector2> onKnockedBack;
 
     protected bool isDamageAnimation = false;
     protected bool isAttacking = false;
 
-    //[SerializeField] protected GameObject hitBoxPrefab;
-    //[SerializeField] protected GameObject hitBoxPrefab2; 
+    
 
     public GameObject hitBoxPrefab;
     public GameObject hitBoxPrefab2;
@@ -61,6 +71,7 @@ public class Unit : MonoBehaviour
             }
             
         }
+       
         
     }
 
@@ -165,7 +176,7 @@ public class Unit : MonoBehaviour
 
             return projectile;
         }
-
+     
         GameObject attackSprite = GenerateAttackSprite(hitBoxPrefab);
         GenerateHitBox(hitBoxPrefab, attackSprite);
         return attackSprite;
