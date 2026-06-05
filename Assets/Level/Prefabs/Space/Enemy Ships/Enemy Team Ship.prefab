@@ -387,7 +387,7 @@ MonoBehaviour:
   firePoint: {fileID: 3234909650482045839}
   turretPivots: []
   shipProfile: {fileID: 11400000, guid: 81357e49726fbf240b1daaadd1ddbd89, type: 2}
-  laserPrefab: {fileID: 659358672219713016, guid: 323e69ff10ed04747991fff7df429b60, type: 3}
+  laserPrefab: {fileID: 659358672219713016, guid: 826fb1379221c754a86b8e454abba1eb, type: 3}
   prewarmLaserPool: 1
   prewarmProjectileCount: 192
   prewarmHitVfxCount: 96
