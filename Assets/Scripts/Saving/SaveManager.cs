@@ -377,6 +377,13 @@ public class SaveManager : MonoBehaviour
 
             GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
 
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            if (currentScene == "YouWin" || currentScene == "YouLose")
+            {
+                return;
+            }
+
             spaceLevelData.playerPosition = playerGO.transform.position;
 
             spaceLevelData.playerHealth = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
