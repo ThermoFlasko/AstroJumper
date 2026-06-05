@@ -98,8 +98,15 @@ public class Unit : MonoBehaviour
             controller.SetTrigger("DeadTrigger");
             return;
         }
-
-        Vector2 knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
+        Vector2 knockbackDir;
+        if ((Vector2)transform.position == sourcePosition)
+        {
+           //Default knockback duration
+           knockbackDir = IsFacingRight() ? Vector2.left : Vector2.right;
+        } else
+        {
+            knockbackDir = ((Vector2)transform.position - sourcePosition).normalized;
+        }
         Vector2 knockbackVector = new Vector2(knockbackDir.x * knockbackForce, knockbackVerticalForce);
         onKnockedBack?.Invoke(this, knockbackVector);
 
