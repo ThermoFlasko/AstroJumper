@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 248b8a0131e4c5e429b42dd520b481b1, type: 3}
-  m_Name: Flagship Enemy Profile
+  m_Name: Flagship Player
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShipProfileSO
   forwardThrust: 12
   maxSpeed: 60
@@ -53,6 +53,6 @@ MonoBehaviour:
   minSpreadAngle: -2.5
   maxSpreadAngle: 2.5
   maxHealth: 50
-  maxShields: 400
-  startingShields: 400
+  maxShields: 1000
+  startingShields: 1000
   canSelfRechargeShields: 0

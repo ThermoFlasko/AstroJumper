@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5814344269580952661}
+  - component: {fileID: 4458372919710005187}
   m_Layer: 0
   m_Name: FlagShipShields
   m_TagString: Untagged
@@ -35,6 +36,42 @@ Transform:
   - {fileID: 3770397066171758243}
   m_Father: {fileID: 6134351781619663024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4458372919710005187
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807921140550422135}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 8.57, y: -34.2}
+  m_Radius: 80
 --- !u!1 &5549628142487207619
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +108,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.1, y: -1.0644, z: 0}
-  m_LocalScale: {x: 350, y: 350, z: 1}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6922643051680918765}
@@ -275,12 +312,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   isPlayer: 0
   playerUpgradeState: {fileID: 0}
-  shipProfile: {fileID: 11400000, guid: b003770edc5b4de40aa975c38a6b3e51, type: 2}
+  shipProfile: {fileID: 11400000, guid: d2db9dd60d955fe4385e882721e2fb01, type: 2}
   shieldVFX: {fileID: 5700664030587308242}
   deathSfx: {fileID: 8300000, guid: fd9d2439687099945bd16cb5b176f80c, type: 3}
   deathVolume: 1
   deathVfxPrefab: {fileID: 0}
   deathVfxDestroyPadding: 0.25
+  prewarmDeathVfxPool: 1
+  prewarmDeathVfxCount: 32
   currentHealth: 100
   maxHealth: 100
   maxShileds: 100
@@ -320,10 +359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7344ffbad6df0b444b8aebe661450d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagshipSlowMovement
-  moveSpeed: 10
+  moveSpeed: 20
   turnSpeedDegPerSec: 10
   roamRadius: 0
-  arriveDistance: 200
+  arriveDistance: 100
   minRetargetDelay: 15
   maxRetargetDelay: 30
   useBoundaryControllerRoam: 1
@@ -334,15 +373,15 @@ MonoBehaviour:
   sidePreference: 0
   innerExclusionRadiusRatio: 0.45
   innerExclusionPadding: 213.8
-  drawRoamRadiusDebug: 0
+  drawRoamRadiusDebug: 1
   drawRoamRadiusOnlyWhenSelected: 1
   roamRadiusDebugColor: {r: 1, g: 0.39696717, b: 0.19999999, a: 0.95}
-  drawPathTrailDebug: 0
+  drawPathTrailDebug: 1
   drawPathForNonPlayerTeamsOnly: 1
   maxPathSamples: 96
   pathSampleInterval: 0.2
   minPathSampleDistance: 20
-  drawCurrentTargetDebug: 0
+  drawCurrentTargetDebug: 1
   targetMarkerRadius: 120
   pathTrailColor: {r: 1, g: 0.45, b: 0.15, a: 0.95}
   targetLinkColor: {r: 1, g: 0.9, b: 0.2, a: 0.9}
@@ -358,9 +397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c3c813380129348812fe3272297391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagshipNoFlyZone
-  radius: 275
-  buffer: 60
-  drawDebug: 0
+  radius: 120
+  buffer: 20
+  drawDebug: 1
   drawOnlyWhenSelected: 0
   coreColor: {r: 1, g: 0.15, b: 0.15, a: 0.95}
   bufferColor: {r: 1, g: 0.15, b: 0.15, a: 0.45}
@@ -611,6 +650,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5814344269580952661}
     m_Modifications:
+    - target: {fileID: 2801833028371322791, guid: 79eace214384e7c469974ffa315899a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3966399182797805240, guid: 79eace214384e7c469974ffa315899a4, type: 3}
       propertyPath: m_LocalScale.x
       value: 864.7232
@@ -662,6 +705,10 @@ PrefabInstance:
     - target: {fileID: 6267756547917284016, guid: 79eace214384e7c469974ffa315899a4, type: 3}
       propertyPath: m_Name
       value: ShieldVFX (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267756547917284016, guid: 79eace214384e7c469974ffa315899a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
