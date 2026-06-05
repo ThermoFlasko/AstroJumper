@@ -24,6 +24,10 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
     [SerializeField] private ParticleSystem deathVfxPrefab;
     [SerializeField] private float deathVfxDestroyPadding = 0.25f;
 
+    [Header("Pooling")]
+    [SerializeField] private bool prewarmDeathVfxPool = true;
+    [SerializeField] private int prewarmDeathVfxCount = 32;
+
     [Tooltip(
         "These will all be overtin by player state or enemy ship profile, just visual indicators to see what the acutaly numbers are")]
     [Header("Health & Shields")]
@@ -57,6 +61,9 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
         _collider2D = GetComponent<Collider2D>();
         baseMaxHealth = maxHealth;
         baseMaxShields = maxShileds;
+
+        if (prewarmDeathVfxPool && deathVfxPrefab != null)
+            SpaceshipLaser.PrewarmVfx(deathVfxPrefab, prewarmDeathVfxCount);
     }
 
     private void OnEnable()
@@ -231,42 +238,7 @@ public class SpaceshipHealthComponent : MonoBehaviour, ISpaceDamagable
     {
         if (deathVfxPrefab == null) return;
 
-        ParticleSystem vfx = Instantiate(deathVfxPrefab, transform.position, Quaternion.identity);
-        float lifetime = GetParticleSystemTotalLifetime(vfx);
-        Destroy(vfx.gameObject, lifetime + deathVfxDestroyPadding);
-    }
-
-    private static float GetParticleSystemTotalLifetime(ParticleSystem ps)
-    {
-        var main = ps.main;
-
-        float duration = main.duration;
-        float startLifetimeMax = main.startLifetime.mode switch
-        {
-            ParticleSystemCurveMode.TwoConstants => main.startLifetime.constantMax,
-            ParticleSystemCurveMode.Constant => main.startLifetime.constant,
-            _ => main.startLifetime.constantMax
-        };
-
-        float childMax = 0f;
-        ParticleSystem[] children = ps.GetComponentsInChildren<ParticleSystem>(true);
-        for (int i = 0; i < children.Length; i++)
-        {
-            if (children[i] == ps) continue;
-            var childMain = children[i].main;
-
-            float childDuration = childMain.duration;
-            float childStartLifetime = childMain.startLifetime.mode switch
-            {
-                ParticleSystemCurveMode.TwoConstants => childMain.startLifetime.constantMax,
-                ParticleSystemCurveMode.Constant => childMain.startLifetime.constant,
-                _ => childMain.startLifetime.constantMax
-            };
-
-            childMax = Mathf.Max(childMax, childDuration + childStartLifetime);
-        }
-
-        return Mathf.Max(duration + startLifetimeMax, childMax);
+        SpaceshipLaser.SpawnPooledVfx(deathVfxPrefab, transform.position, Quaternion.identity, deathVfxDestroyPadding);
     }
 
     public void HealShields(float amount)
