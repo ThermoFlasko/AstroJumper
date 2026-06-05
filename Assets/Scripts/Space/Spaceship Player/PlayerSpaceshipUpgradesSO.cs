@@ -6,32 +6,40 @@ public class PlayerSpaceshipUpgradesSO : ScriptableObject
     [Header("Movement Upgrades")] public int moveForceStartingLevel = 1;
     public float moveForceUpgradePerLevel = 2f;
     public float moveForceCostPerLevel = 100f;
+    [Min(0)] public int moveForceMaxLevel = 5;
     public int maxSpeedStartingLevel = 1;
     public float maxSpeedUpgradePerLevel = 4f;
     public float maxSpeedCostPerLevel = 100f;
+    [Min(0)] public int maxSpeedMaxLevel = 5;
 
     [Header("Boost Upgrades")] public int boostForceStartingLevel = 1;
     public float boostForceUpgradePerLevel = 5f;
     public float boostForceCostPerLevel = 100f;
+    [Min(0)] public int boostForceMaxLevel = 5;
 
     [Header("Barrel Roll Upgrades")] public int barrelRollDistanceStartingLevel = 1;
     public float barrelRollDistanceUpgradePerLevel = 2f;
     public float barrelRollDistanceCostPerLevel = 100f;
+    [Min(0)] public int barrelRollDistanceMaxLevel = 5;
     public int barrelRollSpeedStartingLevel = 1;
     public float barrelRollSpeedUpgradePerLevel = 0.1f;
     public float barrelRollSpeedCostPerLevel = 100f;
+    [Min(0)] public int barrelRollSpeedMaxLevel = 5;
 
     [Header("Combat Upgrades")] public int fireRateStartingLevel = 1;
     public float fireRateUpgradePerLevel = 0.05f;
     public float fireRateCostPerLevel = 100f;
+    [Min(0)] public int fireRateMaxLevel = 5;
 
     [Header("Health Upgrades")] public int maxHealthStartingLevel = 1;
     public int maxHealthUpgradePerLevel = 15;
     public float maxHealthUpgradeCostPerLevel = 100f;
+    [Min(0)] public int maxHealthMaxLevel = 5;
 
     [Header("Shields Upgrades")] public int maxShieldsStartingLevel = 1;
     public float maxShieldsPerLevel = 7.5f;
     public float maxShieldCostPerLevel = 100f;
+    [Min(0)] public int maxShieldsMaxLevel = 5;
 
     //---------------------Helpers---------------------------------------
 
@@ -64,6 +72,36 @@ public class PlayerSpaceshipUpgradesSO : ScriptableObject
         }
 
         return -1;
+    }
+
+    public int GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+                return Mathf.Max(0, moveForceMaxLevel);
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+                return Mathf.Max(0, maxSpeedMaxLevel);
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+                return Mathf.Max(0, boostForceMaxLevel);
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+                return Mathf.Max(0, barrelRollDistanceMaxLevel);
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+                return Mathf.Max(0, barrelRollSpeedMaxLevel);
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return Mathf.Max(0, fireRateMaxLevel);
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return Mathf.Max(0, maxHealthMaxLevel);
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return Mathf.Max(0, maxShieldsMaxLevel);
+        }
+
+        return 0;
+    }
+
+    public int ClampUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType, int level)
+    {
+        return Mathf.Clamp(level, 0, GetMaxUpgradeLevel(upgradeType));
     }
 
     public string GetUpgradeDisplayName(PlayerUpgradeState.UpgradeType upgradeType)

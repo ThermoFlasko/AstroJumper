@@ -139,10 +139,11 @@ public class SaveManager : MonoBehaviour
             bool upgradedSaveVersion = CurrentSaveData.version < SaveData.CurrentVersion;
             CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
             CurrentSaveData.version = SaveData.CurrentVersion;
+            bool clampedUpgradeLevels = ClampUpgradeLevelsToCaps();
 
-            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || repairedMissingGroundEquipmentData || upgradedSaveVersion)
+            if (repairedMissingSpaceshipUpgradeData || repairedMissingGroundUpgradeData || repairedMissingGroundEquipmentData || upgradedSaveVersion || clampedUpgradeLevels)
             {
-                Debug.LogWarning($"Save file at {SaveFilePath} was missing migrated data or was on an older version. Rewriting it with the current schema.");
+                Debug.LogWarning($"Save file at {SaveFilePath} was missing migrated data, was on an older version, or had upgrade levels outside their caps. Rewriting it with the current schema.");
                 WriteToDisk();
             }
         }
@@ -443,40 +444,62 @@ public class SaveManager : MonoBehaviour
         return 0;
     }
 
-    public void AddUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
+    public int GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
     {
         EnsureCurrentSaveData();
-        if (CurrentSaveData == null) return;
+
+        PlayerSpaceshipUpgradesSO upgrades = defualtGameSaveSO != null ? defualtGameSaveSO.playerSpaceshipUpgradesSO : null;
+        return upgrades != null ? upgrades.GetMaxUpgradeLevel(upgradeType) : int.MaxValue;
+    }
+
+    public bool IsUpgradeAtMaxLevel(PlayerUpgradeState.UpgradeType upgradeType)
+    {
+        return GetUpgradeLevel(upgradeType) >= GetMaxUpgradeLevel(upgradeType);
+    }
+
+    public bool TryAddUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
+    {
+        EnsureCurrentSaveData();
+        if (CurrentSaveData == null || IsUpgradeAtMaxLevel(upgradeType))
+            return false;
+
+        int maxLevel = GetMaxUpgradeLevel(upgradeType);
 
         switch (upgradeType)
         {
             case PlayerUpgradeState.UpgradeType.MoveForce:
-                CurrentSaveData.spaceshipUpgradeData.moveForceLevel++;
+                CurrentSaveData.spaceshipUpgradeData.moveForceLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.moveForceLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.MaxSpeed:
-                CurrentSaveData.spaceshipUpgradeData.maxSpeedLevel++;
+                CurrentSaveData.spaceshipUpgradeData.maxSpeedLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.maxSpeedLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.BoostForce:
-                CurrentSaveData.spaceshipUpgradeData.boostForceLevel++;
+                CurrentSaveData.spaceshipUpgradeData.boostForceLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.boostForceLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
-                CurrentSaveData.spaceshipUpgradeData.barrelRollSpeedLevel++;
+                CurrentSaveData.spaceshipUpgradeData.barrelRollSpeedLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.barrelRollSpeedLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
-                CurrentSaveData.spaceshipUpgradeData.barrelRollDistanceLevel++;
+                CurrentSaveData.spaceshipUpgradeData.barrelRollDistanceLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.barrelRollDistanceLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.FireRate:
-                CurrentSaveData.spaceshipUpgradeData.fireRateLevel++;
+                CurrentSaveData.spaceshipUpgradeData.fireRateLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.fireRateLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.MaxHealth:
-                CurrentSaveData.spaceshipUpgradeData.maxHealthLevel++;
+                CurrentSaveData.spaceshipUpgradeData.maxHealthLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.maxHealthLevel + 1, maxLevel);
                 break;
             case PlayerUpgradeState.UpgradeType.MaxShields:
-                CurrentSaveData.spaceshipUpgradeData.maxShieldsLevel++;
+                CurrentSaveData.spaceshipUpgradeData.maxShieldsLevel = Mathf.Min(CurrentSaveData.spaceshipUpgradeData.maxShieldsLevel + 1, maxLevel);
                 break;
         }
 
         MakeDirty();
+        return true;
+    }
+
+    public void AddUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
+    {
+        TryAddUpgradeLevel(upgradeType);
     }
 
     public float GetGroundMoveSpeedUpgradeBoost()
@@ -528,6 +551,19 @@ public class SaveManager : MonoBehaviour
         return 0;
     }
 
+    public int GetGroundMaxUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        EnsureCurrentSaveData();
+
+        GroundTrooperUpgradeDefaults groundDefaults = defualtGameSaveSO != null ? defualtGameSaveSO.groundTrooperDefaults : null;
+        return groundDefaults != null ? groundDefaults.GetMaxUpgradeLevel(upgradeType) : int.MaxValue;
+    }
+
+    public bool IsGroundUpgradeAtMaxLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        return GetGroundUpgradeLevel(upgradeType) >= GetGroundMaxUpgradeLevel(upgradeType);
+    }
+
     public int GetGroundUpgradeCost(GroundTrooperUpgradeType upgradeType)
     {
         EnsureCurrentSaveData();
@@ -537,26 +573,34 @@ public class SaveManager : MonoBehaviour
         return defualtGameSaveSO.groundTrooperDefaults.universalUpgradeCostPerLevel;
     }
 
-    public void AddGroundUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    public bool TryAddGroundUpgradeLevel(GroundTrooperUpgradeType upgradeType)
     {
         EnsureCurrentSaveData();
-        if (CurrentSaveData?.groundTrooperUpgradeData == null)
-            return;
+        if (CurrentSaveData?.groundTrooperUpgradeData == null || IsGroundUpgradeAtMaxLevel(upgradeType))
+            return false;
+
+        int maxLevel = GetGroundMaxUpgradeLevel(upgradeType);
 
         switch (upgradeType)
         {
             case GroundTrooperUpgradeType.MoveSpeed:
-                CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel++;
+                CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel = Mathf.Min(CurrentSaveData.groundTrooperUpgradeData.moveSpeedLevel + 1, maxLevel);
                 break;
             case GroundTrooperUpgradeType.JumpVelocity:
-                CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel++;
+                CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel = Mathf.Min(CurrentSaveData.groundTrooperUpgradeData.jumpVelocityLevel + 1, maxLevel);
                 break;
             case GroundTrooperUpgradeType.MaxHealth:
-                CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel++;
+                CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel = Mathf.Min(CurrentSaveData.groundTrooperUpgradeData.maxHealthLevel + 1, maxLevel);
                 break;
         }
 
         MakeDirty();
+        return true;
+    }
+
+    public void AddGroundUpgradeLevel(GroundTrooperUpgradeType upgradeType)
+    {
+        TryAddGroundUpgradeLevel(upgradeType);
     }
 
     public string GetEquippedGroundAttackId(GroundAttackType attackType)
@@ -634,10 +678,55 @@ public class SaveManager : MonoBehaviour
         CurrentSaveData.EnsureInitialized(defualtGameSaveSO);
         CurrentSaveData.version = SaveData.CurrentVersion;
 
+        if (ClampUpgradeLevelsToCaps())
+        {
+            MakeDirty();
+        }
+
         if (CurrentLevelSaveData == null)
         {
             CurrentLevelSaveData = LevelSaveData.CreateDefaultSaveData();
         }
+    }
+
+    private bool ClampUpgradeLevelsToCaps()
+    {
+        bool changed = false;
+
+        PlayerSpaceshipUpgradesSO spaceshipUpgrades = defualtGameSaveSO != null ? defualtGameSaveSO.playerSpaceshipUpgradesSO : null;
+        if (CurrentSaveData?.spaceshipUpgradeData != null && spaceshipUpgrades != null)
+        {
+            SaveData.SpaceshipUpgradeData data = CurrentSaveData.spaceshipUpgradeData;
+            changed |= ClampUpgradeLevel(ref data.moveForceLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.MoveForce));
+            changed |= ClampUpgradeLevel(ref data.maxSpeedLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.MaxSpeed));
+            changed |= ClampUpgradeLevel(ref data.boostForceLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.BoostForce));
+            changed |= ClampUpgradeLevel(ref data.barrelRollDistanceLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.BarrelRollDistance));
+            changed |= ClampUpgradeLevel(ref data.barrelRollSpeedLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.BarrelRollSpeed));
+            changed |= ClampUpgradeLevel(ref data.fireRateLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.FireRate));
+            changed |= ClampUpgradeLevel(ref data.maxHealthLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.MaxHealth));
+            changed |= ClampUpgradeLevel(ref data.maxShieldsLevel, spaceshipUpgrades.GetMaxUpgradeLevel(PlayerUpgradeState.UpgradeType.MaxShields));
+        }
+
+        GroundTrooperUpgradeDefaults groundDefaults = defualtGameSaveSO != null ? defualtGameSaveSO.groundTrooperDefaults : null;
+        if (CurrentSaveData?.groundTrooperUpgradeData != null && groundDefaults != null)
+        {
+            SaveData.GroundTrooperUpgradeData data = CurrentSaveData.groundTrooperUpgradeData;
+            changed |= ClampUpgradeLevel(ref data.moveSpeedLevel, groundDefaults.GetMaxUpgradeLevel(GroundTrooperUpgradeType.MoveSpeed));
+            changed |= ClampUpgradeLevel(ref data.jumpVelocityLevel, groundDefaults.GetMaxUpgradeLevel(GroundTrooperUpgradeType.JumpVelocity));
+            changed |= ClampUpgradeLevel(ref data.maxHealthLevel, groundDefaults.GetMaxUpgradeLevel(GroundTrooperUpgradeType.MaxHealth));
+        }
+
+        return changed;
+    }
+
+    private static bool ClampUpgradeLevel(ref int level, int maxLevel)
+    {
+        int clampedLevel = Mathf.Clamp(level, 0, Mathf.Max(0, maxLevel));
+        if (level == clampedLevel)
+            return false;
+
+        level = clampedLevel;
+        return true;
     }
 
     private void CreateDefaultSaveFile(string reason)

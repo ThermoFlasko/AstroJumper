@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 public class SaveData
 {
     //Any time we make changes pdate this so the game nows theres no information to be saved 
-    public const float CurrentVersion = 0.7f;
+    public const float CurrentVersion = 0.8f;
 
     public float version = CurrentVersion;
 
