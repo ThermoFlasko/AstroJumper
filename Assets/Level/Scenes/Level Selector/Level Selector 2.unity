@@ -551,6 +551,7 @@ MonoBehaviour:
   planetExpandedScale: {x: 3.5, y: 3.5, z: 1}
   expandTime: 5
   planetExpanding: 
+  dialogueTextManager: {fileID: 1006893034}
 --- !u!4 &438613777
 Transform:
   m_ObjectHideFlags: 0
@@ -1499,7 +1500,7 @@ MonoBehaviour:
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: UI
   dialougeContainer: {fileID: 0}
-  currentDialouge: {fileID: 11400000, guid: 418436105b588954db090b9f143f9db7, type: 2}
+  currentDialouge: {fileID: 0}
   dialogueText: {fileID: 693869164}
   nameTextGO: {fileID: 712705445}
   nameText: {fileID: 2036158558}
