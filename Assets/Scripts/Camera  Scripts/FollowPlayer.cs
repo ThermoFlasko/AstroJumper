@@ -13,15 +13,16 @@ public class FollowPlayer : MonoBehaviour
 
     void Start()
     {
-        offset = transform.position - player.position;
+        //offset = transform.position - player.position;
+        offset = new Vector3(0.41f,4.63f,-11);
         posValAdjust = new Vector3(xValAdjust, yValAdjust);
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-      posValAdjust.Set(xValAdjust, yValAdjust, 0f);
+        posValAdjust.Set(xValAdjust, yValAdjust, 0f);
         transform.position = player.position + offset + posValAdjust;
+        print(offset);
     }
 }

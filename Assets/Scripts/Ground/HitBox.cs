@@ -50,7 +50,7 @@ public class HitBox : MonoBehaviour
         hitBoxCollider = GetComponent<Collider2D>();
         if (hitBoxCollider == null)
         {
-            Debug.LogError("HitBox: No Collider2D found on the GameObject.");
+            Debug.LogError("HitBox: No Collider2D found on the " + gameObject.name);
         }
 
         spriteRenderer = GetComponent<SpriteRenderer>();
