@@ -1158,8 +1158,8 @@ MonoBehaviour:
   enableFlagshipSlowMovement: 1
   defendRatio: 0.5
   attackRatio: 0.5
-  defendOrbitRadius: 60
-  attackOrbitRadius: 70
+  defendOrbitRadius: 30
+  attackOrbitRadius: 20
   objectiveOrbitSpeedDegPerSec: 14
   roamCorridorHalfWidth: 140
   roamProgressSpeed: 0.18

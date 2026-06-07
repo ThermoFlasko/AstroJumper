@@ -119,16 +119,18 @@ Material:
     - _Usecenterglow: 0
     - _Usecustomrandom: 0
     - _Usedepth: 0
+    - _VertexAlphaRef: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveEdgeColor: {r: 1, g: 0, b: 0, a: 1}
+    - _DissolveEdgeColor: {r: 0.1018263, g: 0.5849056, b: 0, a: 1}
     - _DistortionSpeedXYPowerZ: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OverlayColor: {r: 0.41875714, g: 0.7264151, b: 0.03769135, a: 1}
     - _OverlayFlowSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 1.4, g: 1.3254564, b: 1.2455883, a: 1}
+    - _TintColor: {r: 0.8870961, g: 1.8691097, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
