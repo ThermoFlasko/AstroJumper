@@ -65,41 +65,41 @@ MonoBehaviour:
   - m_Id: 72999418978304
     m_Localized: 'PRODUCTION LEADS
 
-
+      
 
       Justin Fong
 
       Dylan Paras
 
+      
 
+      
 
+      
 
-
-
-
-
+      
 
       CHARACTER
       ART
 
-
+      
 
       Charlize Lefler
 
       Denis Sanoy
 
+      
 
+      
 
+      
 
-
-
-
-
+      
 
       ENVIRONMENTAL
       ART
 
-
+      
 
       Justin Fong
 
@@ -107,36 +107,17 @@ MonoBehaviour:
 
       Denis Sanoy
 
+      
 
+      
 
+      
 
-
-
-
-
+      
 
       ANIMATION
 
-
-
-      Justin
-      Fong
-
-      Charlize Lefler
-
-      Denis Sanoy
-
-
-
-
-
-
-
-
-
-      UI ART
-
-
+      
 
       Justin
       Fong
@@ -145,238 +126,261 @@ MonoBehaviour:
 
       Denis Sanoy
 
-      Hojoun Yoon
+      
 
+      
 
+      
 
+      
 
-
-
-
-
-
-      VFX
+      UI
       ART
 
+      
 
+      Justin Fong
 
       Charlize Lefler
 
       Denis Sanoy
-
-
-
-
-
-
-
-
-
-      GAMEPLAY DESIGN
-
-
-
-      Justin
-      Fong
-
-      Cody Karigaca
-
-      Nikolas Makranyi
-
-
-
-
-
-
-
-
-
-      SYSTEMS DESIGN
-
-
-
-      Justin
-      Fong
-
-      Cody Karigaca
-
-
-
-
-
-
-
-
-
-      ENEMY DESIGN
-
-
-
-      Justin Fong
-
-      Nikolas
-      Makranyi
-
-      William Wu
-
-
-
-
-
-
-
-
-
-      PLAYER DESIGN
-
-
-
-      Justin Fong
-
-      Cody
-      Karigaca
-
-      Nikolas Makranyi
-
-
-
-
-
-
-
-
-
-      UI/UX DESIGN
-
-
-
-      Jonathan
-      Ng
-
-      Hojoun Yoon
-
-
-
-
-
-
-
-
-
-      PLAYER PROGRAMMING
-
-
-
-      Alfredo Barragan
-
-      Cody
-      Karigaca
-
-      Jonathan Ng
-
-      Dylan Paras
-
-      William Wu
-
-
-
-
-
-
-
-
-
-      ENEMY
-      AI PROGRAMMING
-
-
-
-      Cody Karigaca
-
-      William Wu
-
-
-
-
-
-
-
-
-
-      SYSTEMS
-      PROGRAMMING
-
-
-
-      Cody Karigaca
-
-      William Wu
-
-
-
-
-
-
-
-
-
-      DIALOGUE
-      PROGRAMMING
-
-
-
-      Jonathan Ng
-
-
-
-
-
-
-
-
-
-      UI PROGRAMMING
-
-
-
-      Justin
-      Fong
-
-      Jonathan Ng
-
-      Dylan Paras
-
-      William Wu
 
       Hojoun
       Yoon
 
+      
 
+      
 
+      
 
+      
 
+      VFX ART
 
+      
 
+      Charlize
+      Lefler
 
+      Denis Sanoy
 
-      SOUND PROGRAMMING
+      
 
+      
 
+      
+
+      
+
+      GAMEPLAY
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      SYSTEMS
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Cody Karigaca
+
+      
+
+      
+
+      
+
+      
+
+      ENEMY
+      DESIGN
+
+      
+
+      Justin Fong
+
+      Nikolas Makranyi
+
+      William
+      Wu
+
+      
+
+      
+
+      
+
+      
+
+      PLAYER DESIGN
+
+      
+
+      Justin
+      Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
+
+      UI/UX
+      DESIGN
+
+      
+
+      Jonathan Ng
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      
+
+      PLAYER
+      PROGRAMMING
+
+      
 
       Alfredo Barragan
 
+      Cody Karigaca
 
+      Jonathan
+      Ng
 
+      Dylan Paras
 
+      William Wu
 
+      
 
+      
 
+      
 
+      
+
+      ENEMY
+      AI PROGRAMMING
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      
+
+      SYSTEMS
+      PROGRAMMING
+
+      
+
+      Cody Karigaca
+
+      William Wu
+
+      
+
+      
+
+      
+
+      
+
+      DIALOGUE
+      PROGRAMMING
+
+      
+
+      Jonathan Ng
+
+      
+
+      
+
+      
+
+      
+
+      UI
+      PROGRAMMING
+
+      
+
+      Justin Fong
+
+      Jonathan Ng
+
+      Dylan
+      Paras
+
+      William Wu
+
+      Hojoun Yoon
+
+      
+
+      
+
+      
+
+      
+
+      SOUND
+      PROGRAMMING
+
+      
+
+      Alfredo Barragan
+
+      
+
+      
+
+      
+
+      
 
       ASSET
       IMPLEMENTATION
 
-
+      
 
       Alfredo Barragan
 
@@ -385,127 +389,129 @@ MonoBehaviour:
       Justin
       Fong
 
+      
 
+      
 
+      
 
-
-
-
-
+      
 
       SOUNDTRACK COMPOSITION
 
+      
 
+      Alfredo
+      Barragan
+
+      Denis Sanoy
+
+      
+
+      
+
+      
+
+      
+
+      SFX
+      DESIGN
+
+      
 
       Alfredo Barragan
 
-      Denis
-      Sanoy
+      
 
+      
 
+      
 
-
-
-
-
-
-
-      SFX DESIGN
-
-
-
-      Alfredo Barragan
-
-
-
-
-
-
-
-
+      
 
       WORLD
       & STORY WRITING
 
-
-
-      Nikolas Makranyi
-
-
-
-
-
-
-
-
-
-      DIALOGUE WRITING
-
-
-
-      Nikolas
-      Makranyi
-
-
-
-
-
-
-
-
-
-      CHARACTER WRITING
-
-
+      
 
       Nikolas Makranyi
 
+      
 
+      
 
+      
 
+      
 
+      DIALOGUE
+      WRITING
 
+      
 
+      Nikolas Makranyi
 
+      
+
+      
+
+      
+
+      
+
+      CHARACTER
+      WRITING
+
+      
+
+      Nikolas Makranyi
+
+      
+
+      
+
+      
+
+      
 
       LANGUAGE
       TRANSLATIONS
 
-
+      
 
       Hojoun Yoon
 
+      
 
+      
 
+      
 
+      
 
+      TRAILER
+      RECORDING & EDITING
 
+      
 
+      Dylan Paras
 
+      
 
-      TRAILER RECORDING & EDITING
+      
 
+      
 
+      
 
-      Dylan
-      Paras
+      TRAILER
+      MUSIC COMPOSITION
 
-
-
-
-
-
-
-
-
-      TRAILER MUSIC COMPOSITION
-
-
+      
 
       Alfredo Barragan
 
-      Denis
-      Sanoy
+      Denis Sanoy
 
 '
     m_Metadata:
