@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HologramTexture:
-        m_Texture: {fileID: 2800000, guid: 5e2af197d8b17994bac4bbaef3968e37, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8ab6e08489f04cd4eb8dd3b7edac71cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:

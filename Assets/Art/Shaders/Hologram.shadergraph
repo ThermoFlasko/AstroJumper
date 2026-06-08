@@ -491,10 +491,10 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10203,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": false
+        "preventRotation": true
     },
     "m_Path": "Shader Graphs",
     "m_GraphPrecision": 1,
@@ -1929,7 +1929,7 @@
     "m_ObjectId": "80661247d76e4f289aa0d8f53f3a7809",
     "m_Title": "Extract Sprite",
     "m_Position": {
-        "x": -2049.999755859375,
+        "x": -2050.0,
         "y": -437.0
     }
 }
@@ -2354,7 +2354,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0,
-        "y": 0.5
+        "y": 0.5199999809265137
     },
     "m_DefaultValue": {
         "x": 1.0,
