@@ -552,9 +552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eeddc7b89b0c54489fa76013877c5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMotor
-  moveSpeed: 3
-  chaseSpeedModifier: 2
-  limpSpeedModifier: -1.5
+  moveSpeed: 4
+  chaseSpeedModifier: 1.5
+  limpSpeedModifier: 0.6
 --- !u!114 &6100491850485219385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ Animator:
   m_GameObject: {fileID: 6673901974885723949}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: e50270955bbf72443b494954a901840c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 39f52129f32926a4295b713a648ffe9b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
