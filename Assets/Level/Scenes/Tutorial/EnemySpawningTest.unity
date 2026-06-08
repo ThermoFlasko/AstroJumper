@@ -18205,8 +18205,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5862821998221709667, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862821998221709667, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862821998221709667, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7415500675629748956, guid: 62fa248fbaa615f4a833c82547c3ed48, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19210,7 +19218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1749487117
 Transform:
   m_ObjectHideFlags: 0
@@ -19220,7 +19228,7 @@ Transform:
   m_GameObject: {fileID: 1749487116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.87, y: 4.27, z: 0}
+  m_LocalPosition: {x: -55.79, y: -17.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
