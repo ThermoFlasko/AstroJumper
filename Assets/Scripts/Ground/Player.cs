@@ -283,10 +283,10 @@ public class Player : Unit
 
         slot = attack.HitBoxPrefab;
 
-        if (attackType == GroundAttackType.Melee && attack.MeleeAttackAnimation != null)
-        {
-            meleeAnimator = attack.MeleeAttackAnimation;
-        }
+        //if (attackType == GroundAttackType.Melee && attack.MeleeAttackAnimation != null)
+        //{
+        //    meleeAnimator = attack.MeleeAttackAnimation;
+        //}
     }
 
     private void AssignAttackListIndices()

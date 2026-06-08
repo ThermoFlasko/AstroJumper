@@ -554,6 +554,7 @@ public class EnemyAI : MonoBehaviour
 
         if (unit.Health <= 0)
         {
+            motor.StopHorizontal();
             isDead = true;
             state = State.Idle;
             print("DEAD");

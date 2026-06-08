@@ -50,8 +50,7 @@ public class Unit : MonoBehaviour
     public GameObject DeathDrop;
 
     [Header("Melee Animator")]
-    public Animator meleeAnimator;
-    public Sprite StartSprite;
+    public Animator deathAnimator;
 
     public StateMachine stateMachine = new StateMachine();
     void Start()
@@ -142,7 +141,20 @@ public class Unit : MonoBehaviour
         }
     }
 
-    
+    public void DeathAnimation()
+    {
+        if (deathAnimator != null)
+        {
+            deathAnimator.gameObject.SetActive(true);
+            deathAnimator.SetTrigger("DeathTrigger");
+        }
+        else
+        {
+            Debug.LogWarning($"{name} is missing a deathAnimator reference.", this);
+        }
+    }
+
+
     #region Attacking
 
     public GameObject GenerateProjectile(GameObject hitBoxPrefab)
@@ -228,16 +240,6 @@ public class Unit : MonoBehaviour
 
             SpriteRenderer spriteRenderer = attackVisual.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = hitBoxInfo.GetSprite();
-
-            Animator anim = attackVisual.AddComponent<Animator>();
-            if (meleeAnimator != null)
-            {
-                anim.runtimeAnimatorController = meleeAnimator.runtimeAnimatorController;
-            }
-            else
-            {
-                Debug.LogWarning($"{name} is missing a meleeAnimator reference.", this);
-            }
 
             return attackRoot;
         }
