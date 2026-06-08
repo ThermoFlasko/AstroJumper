@@ -154,6 +154,20 @@ MonoBehaviour:
       \uBB34\uB825\uD654\uC2DC\uCF1C\uC57C \uD574\uC694."
     m_Metadata:
       m_Items: []
+  - m_Id: 31596842549501952
+    m_Localized: "{dropKey}\uB85C \uC544\uB798\uB85C \uD1B5\uACFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596844076228608
+    m_Localized: "{jumpKey} \uB610\uB294 {SPACE}\uB97C \uAE38\uAC8C \uB20C\uB7EC
+      \uB354 \uB192\uC774 \uC810\uD504\uD558\uC138\uC694"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596845380657152
+    m_Localized: "\uC635\uC158 \uBA54\uB274\uC5D0\uC11C \uD234\uD301\uC744 \uBE44\uD65C\uC131\uD654\uD560
+      \uC218 \uC788\uC2B5\uB2C8\uB2E4"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
