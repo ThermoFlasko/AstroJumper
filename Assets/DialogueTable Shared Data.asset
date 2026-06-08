@@ -131,6 +131,18 @@ MonoBehaviour:
     m_Key: DIALOG_ASTROJUMPER_GOAL
     m_Metadata:
       m_Items: []
+  - m_Id: 31596842549501952
+    m_Key: TOOLTIP_DROP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596844076228608
+    m_Key: TOOLTIP_VARIABLEJUMP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596845380657152
+    m_Key: TOOLTIP_DISABLETOOLTIP
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

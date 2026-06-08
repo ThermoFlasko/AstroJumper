@@ -139,6 +139,18 @@ MonoBehaviour:
       disable it.
     m_Metadata:
       m_Items: []
+  - m_Id: 31596842549501952
+    m_Localized: Press S to drop through platforms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596844076228608
+    m_Localized: Press and Hold W or SPACE to jump higher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31596845380657152
+    m_Localized: You can disable tooltips in the options menu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
