@@ -23,6 +23,5 @@ public class FollowPlayer : MonoBehaviour
     {
         posValAdjust.Set(xValAdjust, yValAdjust, 0f);
         transform.position = player.position + offset + posValAdjust;
-        print(offset);
     }
 }
