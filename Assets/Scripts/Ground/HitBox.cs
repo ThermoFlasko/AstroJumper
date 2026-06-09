@@ -201,7 +201,6 @@ public class HitBox : MonoBehaviour
 
     public void DestroyAttack()
     {
-        print($"destroying {gameObject.name} attack");
         onDurationOver?.Invoke(attackListIndex, owner);
         if (!isMelee)
         {
