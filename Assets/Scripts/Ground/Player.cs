@@ -215,13 +215,20 @@ public class Player : Unit
 
     }
 
-    private void OnHitBoxDurationOver(int attackIndex)
+    private void OnHitBoxDurationOver(int attackIndex, string owner)
     {
+        if (owner != this.gameObject.name)
+        {
+            print($"{owner} is not equal to {this.gameObject.name}");
+            return;
+        }
+    
         if(attackIndex == 1)
         {
             isAttacking = false;
             if(TryGetHitBox(hitBoxPrefab, nameof(hitBoxPrefab), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
+                print("error");
                 projectileCount--;
             }
         }
@@ -230,6 +237,7 @@ public class Player : Unit
             isAttacking2 = false;
             if(TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
+                print("error");
                 projectileCount--;
             }
         }

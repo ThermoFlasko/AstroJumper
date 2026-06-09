@@ -64,6 +64,7 @@ public class Unit : MonoBehaviour
                 {
                     GameObject projectile = GenerateProjectile(GetProjectilePrefab());
                     projectile.GetComponentInChildren<HitBox>().setPool(unitProjectilePool);
+                    projectile.GetComponentInChildren<HitBox>().owner = "GPlayer";
                     projectile.SetActive(false);
                     unitProjectilePool.projectilePool.Enqueue(projectile);
                 }
@@ -87,7 +88,6 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(int amount, float knockbackForce, float knockbackVerticalForce, Vector2 sourcePosition)
     {
-        print("Taking damage");
         Health -= amount;
         if (Health <= 0)
         {
@@ -175,6 +175,8 @@ public class Unit : MonoBehaviour
     public GameObject CreateAttack(GameObject hitBoxPrefab)
     {
         HitBox hitBoxInfo = hitBoxPrefab.GetComponent<HitBox>();
+
+        hitBoxInfo.owner = this.gameObject.name;
 
         // takes projectile from projectile pool.
         if(!hitBoxInfo.GetIsMelee() && unitProjectilePool != null)

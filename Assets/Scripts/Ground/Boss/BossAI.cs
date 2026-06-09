@@ -20,7 +20,7 @@ public class BossAI : Unit
         HitBox.onDurationOver -= AttackOver;
     }
 
-    private void AttackOver(int value)
+    private void AttackOver(int value, string Go)
     {
         
     }

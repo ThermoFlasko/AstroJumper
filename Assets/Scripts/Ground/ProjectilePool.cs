@@ -23,11 +23,6 @@ public class ProjectilePool : MonoBehaviour
         {
             print("Add a attack thats a projectile");
         }
-      
-
-
-
-
    }
 
    public GameObject GetProjectile()

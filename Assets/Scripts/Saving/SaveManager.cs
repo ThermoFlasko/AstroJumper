@@ -78,7 +78,6 @@ public class SaveManager : MonoBehaviour
             yield return new WaitForSeconds(autoSaveDelaySaveTime);
             if (dirty)
             {
-                print("saving");
                 SaveGame();
             }
         }
@@ -313,7 +312,6 @@ public class SaveManager : MonoBehaviour
     {
         if (!IsInLevel)
         {
-            print("not in level, not saving level data");
             return;
         }
         

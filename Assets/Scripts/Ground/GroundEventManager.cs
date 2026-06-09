@@ -30,7 +30,7 @@ public class GroundEventManager : MonoBehaviour
 
     public void UnitDamaged(Unit unit)
     {
-        print(unit.UnitName + " was damaged! Remaining health: " + unit.Health);
+        return;
     }
     
     public void UnitDeath(Unit unit)
