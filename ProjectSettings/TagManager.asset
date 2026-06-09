@@ -21,6 +21,7 @@ TagManager:
   - SweetSpot
   - SourSpot
   - Tooltip
+  - EnemyMeleeHitbox
   layers:
   - Default
   - TransparentFX
