@@ -374,7 +374,7 @@ public class SaveManager : MonoBehaviour
         }
         catch
         {
-            
+            return;
         }
         try
         {
