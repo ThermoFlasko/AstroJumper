@@ -10,6 +10,7 @@ using System;
 
 public class HitBox : MonoBehaviour
 {
+    [SerializeField] public string owner = "";
     [Header("HitBox Settings")]
     [SerializeField] private string hitBoxName = "BaseHitBox";
     [SerializeField] private int damage = 10;
@@ -41,7 +42,7 @@ public class HitBox : MonoBehaviour
     [SerializeField] private bool displayHitbox = false;
     private Coroutine activationCoroutine;
 
-    public static event Action<int> onDurationOver;
+    public static event Action<int, string> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
 
@@ -194,7 +195,8 @@ public class HitBox : MonoBehaviour
 
     public void DestroyAttack()
     {
-        onDurationOver?.Invoke(attackListIndex);
+        print($"destroying {gameObject.name} attack");
+        onDurationOver?.Invoke(attackListIndex, owner);
         if (!isMelee)
         {
             projectilePool.ReturnProjectile(transform.parent.gameObject);
