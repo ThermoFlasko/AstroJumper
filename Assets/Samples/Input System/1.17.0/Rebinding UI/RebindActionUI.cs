@@ -611,7 +611,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 Debug.LogWarning("Object reference not set to instance of an object");
                 return "";
             }
-            Debug.Log($"Translating '{englishKeyName}' for locale: {locale}");
             
             if (locale.StartsWith("ko"))
             {

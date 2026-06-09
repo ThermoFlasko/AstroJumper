@@ -344,8 +344,6 @@ public class SaveManager : MonoBehaviour
             planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
 
             GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
-
-            print(meleeEnemies.transform.GetChild(0));
             
             foreach (Transform child in meleeEnemies.transform)
             {
