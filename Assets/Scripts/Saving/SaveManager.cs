@@ -393,8 +393,6 @@ public class SaveManager : MonoBehaviour
             spaceLevelData.playerHealth = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
             spaceLevelData.playerShield = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipShield();
 
-            print(playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth());
-
             // fill out flagship data
             FlagShipData allyFlagShipData = new FlagShipData();
             FlagShipData enemyFlagShipData = new FlagShipData();
@@ -424,11 +422,7 @@ public class SaveManager : MonoBehaviour
             spaceLevelData.allyFlagshipData = allyFlagShipData;
             spaceLevelData.enemyFlagshipData = enemyFlagShipData;
  
-            
-            print(flagships[0].name);
-
             CurrentLevelSaveData.UpdateSpaceLevelData(spaceLevelData);
-            print(CurrentLevelSaveData.spaceLevelData.allyFlagshipData.health);
         }
         catch
         {
