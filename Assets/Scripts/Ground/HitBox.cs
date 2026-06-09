@@ -160,6 +160,12 @@ public class HitBox : MonoBehaviour
 
         }
 
+        if(other.gameObject.CompareTag("EnemyMeleeHitbox") == true)
+        {
+            //print("HITTHEENEMYGENERATEDHITBOX LMAOOOOO");
+            return;
+        }
+
         if (!isMelee)
         {
             Vector3 impactPosition = other.ClosestPoint(transform.position);
