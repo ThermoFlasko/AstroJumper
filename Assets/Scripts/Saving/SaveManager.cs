@@ -345,8 +345,6 @@ public class SaveManager : MonoBehaviour
 
                 GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
 
-                print(meleeEnemies.transform.GetChild(0));
-                
                 foreach (Transform child in meleeEnemies.transform)
                 {
                     MeleeSaveData saveData = new MeleeSaveData();
