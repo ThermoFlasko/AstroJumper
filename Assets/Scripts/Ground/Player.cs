@@ -129,7 +129,6 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
-            print("Projectile attack from pool");
             projectileCount++;
             
             BeginAttack(hitBoxPrefab);
@@ -219,7 +218,6 @@ public class Player : Unit
     {
         if (owner != this.gameObject.name)
         {
-            print($"{owner} is not equal to {this.gameObject.name}");
             return;
         }
     
@@ -228,7 +226,6 @@ public class Player : Unit
             isAttacking = false;
             if(TryGetHitBox(hitBoxPrefab, nameof(hitBoxPrefab), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
-                print("error");
                 projectileCount--;
             }
         }
@@ -237,7 +234,6 @@ public class Player : Unit
             isAttacking2 = false;
             if(TryGetHitBox(hitBoxPrefab2, nameof(hitBoxPrefab2), out HitBox hitBoxInfo) && !hitBoxInfo.GetIsMelee())
             {
-                print("error");
                 projectileCount--;
             }
         }
