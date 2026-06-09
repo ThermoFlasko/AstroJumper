@@ -471,6 +471,58 @@ MonoBehaviour:
     m_Key: Options_Label_Accessibility_Grayscale
     m_Metadata:
       m_Items: []
+  - m_Id: 36006858345930752
+    m_Key: UPGRADES_EFFECT_SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36006860334030848
+    m_Key: UPGRADES_EFFECT_DURATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36006861927866368
+    m_Key: UPGRADES_EFFECT_SHOTDELAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007022628429824
+    m_Key: UPGRADES_EFFECT_BONUSSHIELD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007024197099520
+    m_Key: MENU_LABEL_NEWGAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007039514697728
+    m_Key: MENU_LABEL_HOWPLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007050797375488
+    m_Key: MENU_LABEL_CLOSEMENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007070586101760
+    m_Key: MENU_LABEL_RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007088256704512
+    m_Key: MENU_LABEL_SCRAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007093977735168
+    m_Key: UPGRADES_LABEL_COST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007115251245056
+    m_Key: UPGRADES_LABEL_NEWCOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007125858639872
+    m_Key: UPGRADES_LABEL_LEVELNUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007135404875776
+    m_Key: UPGRADES_LABEL_LEVEL_TRUNCATED
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

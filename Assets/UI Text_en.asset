@@ -65,59 +65,29 @@ MonoBehaviour:
   - m_Id: 72999418978304
     m_Localized: 'PRODUCTION LEADS
 
-      
 
       Justin Fong
 
       Dylan Paras
 
-      
 
-      
 
-      
 
-      
 
       CHARACTER
       ART
 
-      
 
       Charlize Lefler
 
       Denis Sanoy
 
-      
 
-      
 
-      
 
-      
 
-      ENVIRONMENTAL
-      ART
+      ENVIRONMENTAL ART
 
-      
-
-      Justin Fong
-
-      Charlize Lefler
-
-      Denis Sanoy
-
-      
-
-      
-
-      
-
-      
-
-      ANIMATION
-
-      
 
       Justin
       Fong
@@ -126,149 +96,120 @@ MonoBehaviour:
 
       Denis Sanoy
 
-      
 
-      
 
-      
 
-      
 
-      UI
-      ART
+      ANIMATION
 
-      
 
-      Justin Fong
+      Justin
+      Fong
 
       Charlize Lefler
 
       Denis Sanoy
+
+
+
+
+
+      UI ART
+
+
+      Justin
+      Fong
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+      Hojoun Yoon
+
+
+
+
+
+      VFX
+      ART
+
+
+      Charlize Lefler
+
+      Denis Sanoy
+
+
+
+
+
+      GAMEPLAY DESIGN
+
+
+      Justin
+      Fong
+
+      Cody Karigaca
+
+      Nikolas Makranyi
+
+
+
+
+
+      SYSTEMS DESIGN
+
+
+      Justin
+      Fong
+
+      Cody Karigaca
+
+
+
+
+
+      ENEMY DESIGN
+
+
+      Justin Fong
+
+      Nikolas
+      Makranyi
+
+      William Wu
+
+
+
+
+
+      PLAYER DESIGN
+
+
+      Justin Fong
+
+      Cody
+      Karigaca
+
+      Nikolas Makranyi
+
+
+
+
+
+      UI/UX DESIGN
+
+
+      Jonathan Ng
 
       Hojoun
       Yoon
 
-      
 
-      
 
-      
 
-      
 
-      VFX ART
+      PLAYER PROGRAMMING
 
-      
-
-      Charlize
-      Lefler
-
-      Denis Sanoy
-
-      
-
-      
-
-      
-
-      
-
-      GAMEPLAY
-      DESIGN
-
-      
-
-      Justin Fong
-
-      Cody Karigaca
-
-      Nikolas Makranyi
-
-      
-
-      
-
-      
-
-      
-
-      SYSTEMS
-      DESIGN
-
-      
-
-      Justin Fong
-
-      Cody Karigaca
-
-      
-
-      
-
-      
-
-      
-
-      ENEMY
-      DESIGN
-
-      
-
-      Justin Fong
-
-      Nikolas Makranyi
-
-      William
-      Wu
-
-      
-
-      
-
-      
-
-      
-
-      PLAYER DESIGN
-
-      
-
-      Justin
-      Fong
-
-      Cody Karigaca
-
-      Nikolas Makranyi
-
-      
-
-      
-
-      
-
-      
-
-      UI/UX
-      DESIGN
-
-      
-
-      Jonathan Ng
-
-      Hojoun Yoon
-
-      
-
-      
-
-      
-
-      
-
-      PLAYER
-      PROGRAMMING
-
-      
 
       Alfredo Barragan
 
@@ -281,106 +222,74 @@ MonoBehaviour:
 
       William Wu
 
-      
 
-      
 
-      
 
-      
 
-      ENEMY
-      AI PROGRAMMING
+      ENEMY AI PROGRAMMING
 
-      
+
+      Cody
+      Karigaca
+
+      William Wu
+
+
+
+
+
+      SYSTEMS PROGRAMMING
+
 
       Cody Karigaca
 
-      William Wu
+      William
+      Wu
 
-      
 
-      
 
-      
 
-      
 
-      SYSTEMS
-      PROGRAMMING
+      DIALOGUE PROGRAMMING
 
-      
-
-      Cody Karigaca
-
-      William Wu
-
-      
-
-      
-
-      
-
-      
-
-      DIALOGUE
-      PROGRAMMING
-
-      
 
       Jonathan Ng
 
-      
 
-      
 
-      
 
-      
 
-      UI
-      PROGRAMMING
+      UI PROGRAMMING
 
-      
 
-      Justin Fong
+      Justin
+      Fong
 
       Jonathan Ng
 
-      Dylan
-      Paras
+      Dylan Paras
 
       William Wu
 
-      Hojoun Yoon
+      Hojoun
+      Yoon
 
-      
 
-      
 
-      
 
-      
 
-      SOUND
-      PROGRAMMING
+      SOUND PROGRAMMING
 
-      
 
       Alfredo Barragan
 
-      
 
-      
 
-      
 
-      
 
       ASSET
       IMPLEMENTATION
 
-      
 
       Alfredo Barragan
 
@@ -389,131 +298,87 @@ MonoBehaviour:
       Justin
       Fong
 
-      
 
-      
 
-      
 
-      
 
       SOUNDTRACK COMPOSITION
 
-      
-
-      Alfredo
-      Barragan
-
-      Denis Sanoy
-
-      
-
-      
-
-      
-
-      
-
-      SFX
-      DESIGN
-
-      
 
       Alfredo Barragan
 
-      
+      Denis
+      Sanoy
 
-      
 
-      
 
-      
 
-      WORLD
-      & STORY WRITING
 
-      
+      SFX DESIGN
 
-      Nikolas Makranyi
 
-      
+      Alfredo Barragan
 
-      
 
-      
 
-      
 
-      DIALOGUE
+
+      WORLD & STORY
       WRITING
 
-      
 
       Nikolas Makranyi
 
-      
 
-      
 
-      
 
-      
 
-      CHARACTER
-      WRITING
+      DIALOGUE WRITING
 
-      
+
+      Nikolas
+      Makranyi
+
+
+
+
+
+      CHARACTER WRITING
+
 
       Nikolas Makranyi
 
-      
 
-      
 
-      
 
-      
 
       LANGUAGE
       TRANSLATIONS
 
-      
 
       Hojoun Yoon
 
-      
 
-      
 
-      
 
-      
 
-      TRAILER
-      RECORDING & EDITING
+      TRAILER RECORDING & EDITING
 
-      
 
-      Dylan Paras
+      Dylan
+      Paras
 
-      
 
-      
 
-      
 
-      
 
-      TRAILER
-      MUSIC COMPOSITION
+      TRAILER MUSIC COMPOSITION
 
-      
 
       Alfredo Barragan
 
-      Denis Sanoy
-
-'
+      Denis
+      Sanoy'
     m_Metadata:
       m_Items: []
   - m_Id: 74495699181568
@@ -940,6 +805,58 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 33817137603665920
     m_Localized: Grayscale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36006858345930752
+    m_Localized: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36006860334030848
+    m_Localized: Duration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36006861927866368
+    m_Localized: Shot Delay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007022628429824
+    m_Localized: Bonus Shields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007024197099520
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007039514697728
+    m_Localized: How to Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007050797375488
+    m_Localized: Close Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007070586101760
+    m_Localized: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007088256704512
+    m_Localized: Scrap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007093977735168
+    m_Localized: 'Cost: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007115251245056
+    m_Localized: 'Now:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007125858639872
+    m_Localized: 'Level:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007135404875776
+    m_Localized: Lv.
     m_Metadata:
       m_Items: []
   references:
