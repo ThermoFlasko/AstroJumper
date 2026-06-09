@@ -39,7 +39,7 @@ public class GameOverManager : MonoBehaviour
     // Called by Main Menu button
     public void GoToMainMenu()
     {
-        SaveManager.instance.SaveGame();
+        SaveManager.instance.ResetSave();
         SceneLoader.Instance.LoadNextScene("Menus");
     }
 }
