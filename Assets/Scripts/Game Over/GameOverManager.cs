@@ -16,6 +16,8 @@ public class GameOverManager : MonoBehaviour
 
         // Unpause the game if it was paused
         Time.timeScale = 1f;
+
+        // check if it is from the ground level
     }
 
     // Called by Retry button
@@ -27,6 +29,12 @@ public class GameOverManager : MonoBehaviour
     public void RetrySpaceLevel()
     {
         SceneLoader.Instance.LoadNextScene("Space Level 1");
+    }
+
+    public void RetryLastLevel()
+    {
+        SaveManager.instance.isLoadingSaveData = false;
+        SceneLoader.Instance.LoadNextScene(SaveManager.instance.CurrentLevelSaveData.currLevel);
     }
 
     // Called by Level Select button
