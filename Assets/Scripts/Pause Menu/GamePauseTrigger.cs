@@ -7,7 +7,7 @@ public class GamePauseTrigger : MonoBehaviour
     [Header("Settings")]
     public string pauseSceneName = "PauseMenu";
 
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     private InputAction gamePause;
 
@@ -18,13 +18,16 @@ public class GamePauseTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (gamePause != null && gamePause.WasPressedThisFrame() && !isPaused)
+        if (gamePause != null && gamePause.WasPressedThisFrame())
         {
-            PauseGame();
-        }
-        else if (gamePause != null && gamePause.WasPressedThisFrame() && isPaused)
-        {
-            ResumeGame();
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
     }
 
