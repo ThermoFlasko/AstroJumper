@@ -32,6 +32,7 @@ public class Player : Unit
 
 
 
+
     [Header("Projectile Variables")]
     [SerializeField] private int projectileCount = 0; 
     [SerializeField] private int maxProjectile = 3;
@@ -176,11 +177,12 @@ public class Player : Unit
         //}
         if (playerAnimator.isGrounded && !inMeleeAnimation)
         {
-            Debug.Log("Hit the melee");
+            //Debug.Log("Hit the melee");
             inMeleeAnimation = true;
             DisableInputs();
             playerAnimator.MakePlayerMelee();
-
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 1);
+            print("sounds");
         }
 
 

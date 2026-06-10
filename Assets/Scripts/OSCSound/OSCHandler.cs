@@ -94,6 +94,7 @@ public class OSCHandler : MonoBehaviour
 	/// </summary>
 	public void Init()
 	{
+		print("hi");
         //Initialize OSC clients (transmitters)
         //Example:		
         CreateClient("pd", IPAddress.Parse("127.0.0.1"), 8000);
