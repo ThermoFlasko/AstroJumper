@@ -439,8 +439,8 @@ MonoBehaviour:
   investigateDuration: 2
   investigateTolerance: 0.15
   attackTypes: 1
-  meleeEnterBuffer: 0.5
-  meleeRange: 0.8
+  meleeEnterBuffer: 0.4
+  meleeRange: 0.7
   rangedRange: 5
   firePoint: {fileID: 4124021642724615479}
   projectilePool: {fileID: 0}
@@ -606,7 +606,7 @@ MonoBehaviour:
   detectRadius: 5
   sightBlockMask:
     serializedVersion: 2
-    m_Bits: 262144
+    m_Bits: 786432
   allyCheck: {fileID: 1829909816288587560}
   detectAllyDistance: 0.5
   allyMask:
