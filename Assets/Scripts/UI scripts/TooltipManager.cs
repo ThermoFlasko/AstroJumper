@@ -14,14 +14,12 @@ public class TooltipManager : MonoBehaviour
         // if the key didnt exist, default to on
         if (!PlayerPrefs.HasKey("Tooltips Active"))
         {
-            print("DONT EXIST FOR TOOLTIP");
             PlayerPrefs.SetInt("Tooltips Active", 1);
             isTooltipsActive = true;
             SwapActiveText();
             return;
         }
 
-        print("EXIST FOR TOOLTIP");
         if (PlayerPrefs.GetInt("Tooltips Active") == 0)
         {
             isTooltipsActive = false;

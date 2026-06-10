@@ -572,6 +572,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             { "↓", "아래쪽 화살표" },
             { "←", "왼쪽 화살표" },
             { "→", "오른쪽 화살표" },
+            { "Esc", "Esc 키" },
+            { "Scroll", "스크롤 휠" }
         };
 
         private static Dictionary<string, string> englishToChinese = new Dictionary<string, string>()
@@ -593,6 +595,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             { "↓", "下箭头" },
             { "←", "左箭头" },
             { "→", "右箭头" },
+            { "Esc", "Esc键" },
+            { "Scroll", "滚轮" }
         };
 
         private string TranslateKeyName(string englishKeyName)
