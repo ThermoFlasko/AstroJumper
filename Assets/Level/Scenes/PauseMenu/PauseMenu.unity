@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shift
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LMB
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4030,7 +4030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: W/A/S/D
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -4057,7 +4057,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5839,8 +5839,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 103365133}
   m_BindingText: {fileID: 366405959}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -6726,8 +6726,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1155611952}
   m_BindingText: {fileID: 1101218237}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -7040,8 +7040,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1297449643}
   m_BindingText: {fileID: 1610350294}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -7415,7 +7415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LMB
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -7442,7 +7442,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scroll
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -8051,7 +8051,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8795,7 +8795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RMB
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -8822,7 +8822,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9326,8 +9326,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 22305528}
   m_BindingText: {fileID: 703179668}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -9995,7 +9995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: W
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -10022,7 +10022,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11103,7 +11103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' /Left/ /Right'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -11130,7 +11130,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11508,7 +11508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RMB
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -11535,7 +11535,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13746,7 +13746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Esc
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -13773,7 +13773,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13921,8 +13921,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1981973616}
   m_BindingText: {fileID: 729211085}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -16412,8 +16412,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 341941008}
   m_BindingText: {fileID: 163275}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -16796,8 +16796,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 814777739}
   m_BindingText: {fileID: 807260163}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -17986,8 +17986,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 982142961}
   m_BindingText: {fileID: 652643147}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -18616,7 +18616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Space
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -18643,7 +18643,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19526,8 +19526,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1758676954}
   m_BindingText: {fileID: 915408094}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -20191,7 +20191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: S
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -20218,7 +20218,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22305,8 +22305,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1881576024}
   m_BindingText: {fileID: 1501147607}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -22761,8 +22761,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 733228682}
   m_BindingText: {fileID: 1891704759}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -23823,8 +23823,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 2033028430}
   m_BindingText: {fileID: 50683507}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
@@ -25120,7 +25120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LMB
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
   m_sharedMaterial: {fileID: 1811558722457428070, guid: f8c7ee3eaf354784d91cd565e5814446, type: 2}
@@ -25147,7 +25147,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -28225,8 +28225,8 @@ MonoBehaviour:
   m_DisplayStringOptions: 0
   m_ActionLabel: {fileID: 1544147174}
   m_BindingText: {fileID: 953696589}
-  m_RebindOverlay: {fileID: 0}
-  m_RebindText: {fileID: 0}
+  m_RebindOverlay: {fileID: 1873154650}
+  m_RebindText: {fileID: 1828866352}
   m_RebindInfo: {fileID: 0}
   m_RebindCancelButton: {fileID: 0}
   m_RebindTimeout: 0
