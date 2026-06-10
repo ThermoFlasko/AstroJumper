@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 90227982}
   - component: {fileID: 90227981}
   - component: {fileID: 90227985}
+  - component: {fileID: 90227986}
   m_Layer: 5
   m_Name: BarrelRoll
   m_TagString: Untagged
@@ -892,7 +893,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 90227986}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &90227982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,6 +1023,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &90227986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90227979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &97691608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2475,7 @@ GameObject:
   - component: {fileID: 213861880}
   - component: {fileID: 213861879}
   - component: {fileID: 213861878}
+  - component: {fileID: 213861883}
   m_Layer: 5
   m_Name: Zoom
   m_TagString: Untagged
@@ -2529,7 +2556,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 213861883}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &213861880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,6 +2664,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213861876}
   m_CullTransparentMesh: 1
+--- !u!114 &213861883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213861876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &225684742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,6 +6230,7 @@ GameObject:
   - component: {fileID: 531411772}
   - component: {fileID: 531411771}
   - component: {fileID: 531411770}
+  - component: {fileID: 531411775}
   m_Layer: 5
   m_Name: AstroMove
   m_TagString: Untagged
@@ -6258,7 +6311,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531411775}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &531411772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6354,6 +6419,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531411768}
   m_CullTransparentMesh: 1
+--- !u!114 &531411775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531411768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &544118287
 GameObject:
   m_ObjectHideFlags: 0
@@ -9376,6 +9454,7 @@ GameObject:
   - component: {fileID: 835170897}
   - component: {fileID: 835170896}
   - component: {fileID: 835170900}
+  - component: {fileID: 835170901}
   m_Layer: 5
   m_Name: Attack2
   m_TagString: Untagged
@@ -9434,7 +9513,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 835170901}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &835170897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9552,6 +9643,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &835170901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835170894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &840633757
 GameObject:
   m_ObjectHideFlags: 0
@@ -11446,6 +11550,7 @@ GameObject:
   - component: {fileID: 982713889}
   - component: {fileID: 982713888}
   - component: {fileID: 982713892}
+  - component: {fileID: 982713893}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -11504,7 +11609,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982713893}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &982713889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11622,6 +11739,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &982713893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982713886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &993343694
 GameObject:
   m_ObjectHideFlags: 0
@@ -17488,6 +17618,7 @@ GameObject:
   - component: {fileID: 1380044035}
   - component: {fileID: 1380044034}
   - component: {fileID: 1380044033}
+  - component: {fileID: 1380044038}
   m_Layer: 5
   m_Name: Escape/Pause
   m_TagString: Untagged
@@ -17568,7 +17699,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1380044038}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1380044035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17664,6 +17807,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380044031}
   m_CullTransparentMesh: 1
+--- !u!114 &1380044038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380044031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1380476527
 GameObject:
   m_ObjectHideFlags: 0
@@ -18076,6 +18232,7 @@ GameObject:
   - component: {fileID: 1398120305}
   - component: {fileID: 1398120304}
   - component: {fileID: 1398120308}
+  - component: {fileID: 1398120309}
   m_Layer: 5
   m_Name: Primary Fire
   m_TagString: Untagged
@@ -18134,7 +18291,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1398120309}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1398120305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18252,6 +18421,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1398120309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398120302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1410879873
 GameObject:
   m_ObjectHideFlags: 0
@@ -21663,6 +21845,7 @@ GameObject:
   - component: {fileID: 1650420255}
   - component: {fileID: 1650420254}
   - component: {fileID: 1650420258}
+  - component: {fileID: 1650420259}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -21721,7 +21904,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1650420259}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1650420255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21839,6 +22034,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1650420259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650420252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1657004539
 GameObject:
   m_ObjectHideFlags: 0
@@ -25326,6 +25534,7 @@ GameObject:
   - component: {fileID: 1958680090}
   - component: {fileID: 1958680089}
   - component: {fileID: 1958680093}
+  - component: {fileID: 1958680094}
   m_Layer: 5
   m_Name: Secondary Fire
   m_TagString: Untagged
@@ -25384,7 +25593,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1958680094}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1958680090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25502,6 +25723,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1958680094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958680087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1960459251
 GameObject:
   m_ObjectHideFlags: 0
@@ -27108,6 +27342,7 @@ GameObject:
   - component: {fileID: 2027871342}
   - component: {fileID: 2027871341}
   - component: {fileID: 2027871345}
+  - component: {fileID: 2027871346}
   m_Layer: 5
   m_Name: Boost
   m_TagString: Untagged
@@ -27166,7 +27401,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2027871346}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2027871342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27284,6 +27531,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2027871346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027871339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &2034084941
 GameObject:
   m_ObjectHideFlags: 0
@@ -27298,6 +27558,7 @@ GameObject:
   - component: {fileID: 2034084944}
   - component: {fileID: 2034084943}
   - component: {fileID: 2034084947}
+  - component: {fileID: 2034084948}
   m_Layer: 5
   m_Name: Drop
   m_TagString: Untagged
@@ -27356,7 +27617,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034084948}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2034084944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27474,6 +27747,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2034084948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034084941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &2058458150
 GameObject:
   m_ObjectHideFlags: 0
@@ -27666,6 +27952,7 @@ GameObject:
   - component: {fileID: 2058497674}
   - component: {fileID: 2058497673}
   - component: {fileID: 2058497677}
+  - component: {fileID: 2058497678}
   m_Layer: 5
   m_Name: ExoMove
   m_TagString: Untagged
@@ -27724,7 +28011,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2058497678}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2058497674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27842,6 +28141,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2058497678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058497671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &2063023840
 GameObject:
   m_ObjectHideFlags: 0
@@ -28524,6 +28836,7 @@ GameObject:
   - component: {fileID: 2081299480}
   - component: {fileID: 2081299479}
   - component: {fileID: 2081299483}
+  - component: {fileID: 2081299484}
   m_Layer: 5
   m_Name: Click
   m_TagString: Untagged
@@ -28582,7 +28895,19 @@ MonoBehaviour:
       m_Calls: []
   m_RebindStopEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2081299484}
+        m_TargetAssemblyTypeName: InputRebindSaveSystem, Assembly-CSharp
+        m_MethodName: SaveRebinds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2081299480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28700,6 +29025,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2081299484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081299477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3768eb960f5d5c4493a7e5859656933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputRebindSaveSystem
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &2083511438
 MonoBehaviour:
   m_ObjectHideFlags: 0
