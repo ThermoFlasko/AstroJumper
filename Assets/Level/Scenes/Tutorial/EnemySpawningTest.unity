@@ -2290,6 +2290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemyPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6673901974885723949, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9149890058055871049, guid: 332ecf6d81038f149b3267de2f549a21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18936,6 +18940,10 @@ PrefabInstance:
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 9184704342594544888, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
+      propertyPath: _health
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184704342594544888, guid: e4557610789992e4cab689dc81e7b21d, type: 3}
       propertyPath: MyShaker
       value: 
       objectReference: {fileID: 860226844}
@@ -19283,7 +19291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1749487117
 Transform:
   m_ObjectHideFlags: 0

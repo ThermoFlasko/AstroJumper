@@ -18,11 +18,13 @@ public class PlanetUI : MonoBehaviour
         SaveManager.instance.CurrentLevelSaveData.currLevel = sceneToLoad;
         if (sceneToLoad == "PCG_Sample")
         {
+            SaveManager.instance.CurrentLevelSaveData.currLevel = "PCG_Sample";
             SaveManager.instance.CurrentLevelSaveData.isPlanetLevel = true;
             print("PCG");
         }
         else if (sceneToLoad == "Space Level 1")
         {
+            SaveManager.instance.CurrentLevelSaveData.currLevel = "Space Level 1";
             SaveManager.instance.CurrentLevelSaveData.isPlanetLevel = false;
         }
 

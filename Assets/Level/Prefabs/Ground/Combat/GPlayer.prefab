@@ -586,8 +586,7 @@ MonoBehaviour:
   hitBoxPrefab3: {fileID: 0}
   unitProjectilePool: {fileID: 0}
   DeathDrop: {fileID: 0}
-  meleeAnimator: {fileID: 4144720731330400138, guid: b9f00aa44aee55a469c961d8f52d8e8f, type: 3}
-  StartSprite: {fileID: 0}
+  deathAnimator: {fileID: 0}
   actionsAsset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   actionMapName: Player
   attackActionName: Attack
@@ -635,6 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ced18b7e6ce6a459a3998190012be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
+  isGrounded: 0
   groundCheck: {fileID: 5682925755960935691}
   groundCheckSize: {x: 0.6, y: 0.1}
   groundMask:
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   dialogue: {fileID: 11400000, guid: 19bcbd3c064e1f541bf3183288af1353, type: 2}
   FoundFirstScrap: 0
-  scrapSO: {fileID: 0}
+  scrapSO: {fileID: 11400000, guid: 758c282f4a8398549be050e6119b318d, type: 2}
   items: []
 --- !u!82 &2442551665834918446
 AudioSource:
@@ -837,6 +837,8 @@ MonoBehaviour:
   poolSize: 10
   playSound: {fileID: 2793611637587857061}
   JuiceSFXBulletImpact: {fileID: 4094251973640961512}
+  SetAttackBool: {fileID: 0}
+  xOffset: 0
 --- !u!82 &1210714631378207143
 AudioSource:
   m_ObjectHideFlags: 0

@@ -131,6 +131,14 @@ public class LevelLoader : MonoBehaviour
         // set scrap count
         Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
+        
+        if (playerInventory.GetScrapCount() > 0)
+        {
+            // poor fix for this function being called twice for some reason
+            return;
+        }
+
+        print($"giving {SaveManager.instance.CurrentLevelSaveData.scrapCount} scrap");
         for (int i = 0; i < SaveManager.instance.CurrentLevelSaveData.scrapCount; i++)
         {
             playerInventory.GiveScrap();

@@ -557,7 +557,6 @@ public class EnemyAI : MonoBehaviour
             motor.StopHorizontal();
             isDead = true;
             state = State.Idle;
-            print("DEAD");
         }
 
         ChangeState(State.Return, "Exiting knockback");

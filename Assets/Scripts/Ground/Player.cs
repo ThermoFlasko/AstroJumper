@@ -129,7 +129,6 @@ public class Player : Unit
         // check for projectile attack
         if(unitProjectilePool && projectileCount < maxProjectile && !hitBoxInfo.GetIsMelee())
         {
-            print("Projectile attack from pool");
             projectileCount++;
             
             BeginAttack(hitBoxPrefab);
@@ -215,8 +214,13 @@ public class Player : Unit
 
     }
 
-    private void OnHitBoxDurationOver(int attackIndex)
+    private void OnHitBoxDurationOver(int attackIndex, string owner)
     {
+        if (owner != this.gameObject.name)
+        {
+            return;
+        }
+    
         if(attackIndex == 1)
         {
             isAttacking = false;

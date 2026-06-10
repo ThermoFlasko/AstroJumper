@@ -10,6 +10,7 @@ using System;
 
 public class HitBox : MonoBehaviour
 {
+    [SerializeField] public string owner = "";
     [Header("HitBox Settings")]
     [SerializeField] private string hitBoxName = "BaseHitBox";
     [SerializeField] private int damage = 10;
@@ -41,7 +42,7 @@ public class HitBox : MonoBehaviour
     [SerializeField] private bool displayHitbox = false;
     private Coroutine activationCoroutine;
 
-    public static event Action<int> onDurationOver;
+    public static event Action<int, string> onDurationOver;
     public ProjectilePool projectilePool;
     public int attackListIndex = 0;
 
@@ -159,6 +160,12 @@ public class HitBox : MonoBehaviour
 
         }
 
+        if(other.gameObject.CompareTag("EnemyMeleeHitbox") == true)
+        {
+            //print("HITTHEENEMYGENERATEDHITBOX LMAOOOOO");
+            return;
+        }
+
         if (!isMelee)
         {
             Vector3 impactPosition = other.ClosestPoint(transform.position);
@@ -194,7 +201,7 @@ public class HitBox : MonoBehaviour
 
     public void DestroyAttack()
     {
-        onDurationOver?.Invoke(attackListIndex);
+        onDurationOver?.Invoke(attackListIndex, owner);
         if (!isMelee)
         {
             projectilePool.ReturnProjectile(transform.parent.gameObject);

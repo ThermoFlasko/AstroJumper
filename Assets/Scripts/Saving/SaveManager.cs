@@ -78,7 +78,6 @@ public class SaveManager : MonoBehaviour
             yield return new WaitForSeconds(autoSaveDelaySaveTime);
             if (dirty)
             {
-                print("saving");
                 SaveGame();
             }
         }
@@ -313,64 +312,69 @@ public class SaveManager : MonoBehaviour
     {
         if (!IsInLevel)
         {
-            print("not in level, not saving level data");
             return;
         }
         
         CurrentLevelSaveData.currLevel = SceneManager.GetActiveScene().name;
-        if (CurrentLevelSaveData.isPlanetLevel)
+        try
         {
-            // check if pcg level
-            if (SceneManager.GetActiveScene().name == "PCG_Sample")
+            if (CurrentLevelSaveData.isPlanetLevel)
             {
-                GroundLevelGenerator groundLevelGenerator = FindAnyObjectByType<GroundLevelGenerator>();
+                // check if pcg level
+                if (SceneManager.GetActiveScene().name == "PCG_Sample")
+                {
+                    GroundLevelGenerator groundLevelGenerator = FindAnyObjectByType<GroundLevelGenerator>();
 
-                CurrentLevelSaveData.planetLevelData.PCGSeed = groundLevelGenerator.GetSeed();
-                print($"got pcg level seed {CurrentLevelSaveData.planetLevelData.PCGSeed}");
+                    CurrentLevelSaveData.planetLevelData.PCGSeed = groundLevelGenerator.GetSeed();
+                    print($"got pcg level seed {CurrentLevelSaveData.planetLevelData.PCGSeed}");
 
-                CurrentLevelSaveData.planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
-                CurrentLevelSaveData.planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+                    CurrentLevelSaveData.planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
+                    CurrentLevelSaveData.planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-                Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+                    Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
-                CurrentLevelSaveData.scrapCount = inventory.GetScrapCount();
+                    CurrentLevelSaveData.scrapCount = inventory.GetScrapCount();
+                    return;
+                }
+
+                // generate new planet save data, use method to update data
+                PlanetLevelData planetLevelData = new PlanetLevelData();
+
+                planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+                planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
+
+                GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
+
+                foreach (Transform child in meleeEnemies.transform)
+                {
+                    MeleeSaveData saveData = new MeleeSaveData();
+                    saveData = (MeleeSaveData)LoadEnemyData(saveData, child.gameObject);
+                    planetLevelData.meleeEnemies.Add(saveData);
+                }
+
+                GameObject rangedEnemies = GameObject.FindGameObjectWithTag("RangedRoot");
+
+                foreach (Transform child in rangedEnemies.transform)
+                {
+                    RangedSaveData saveData = new RangedSaveData();
+                    saveData = (RangedSaveData)LoadEnemyData(saveData, child.gameObject);
+                    planetLevelData.rangedEnemies.Add(saveData);
+                }
+
+                CurrentLevelSaveData.UpdatePlanetLevelData(planetLevelData);
+                
+                Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+                CurrentLevelSaveData.scrapCount = playerInventory.GetScrapCount();
+
                 return;
             }
-
-            // generate new planet save data, use method to update data
-            PlanetLevelData planetLevelData = new PlanetLevelData();
-
-            planetLevelData.playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            planetLevelData.playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>().Health;
-
-            GameObject meleeEnemies = GameObject.FindGameObjectWithTag("MeleeRoot");
-
-            print(meleeEnemies.transform.GetChild(0));
-            
-            foreach (Transform child in meleeEnemies.transform)
-            {
-                MeleeSaveData saveData = new MeleeSaveData();
-                saveData = (MeleeSaveData)LoadEnemyData(saveData, child.gameObject);
-                planetLevelData.meleeEnemies.Add(saveData);
-            }
-
-            GameObject rangedEnemies = GameObject.FindGameObjectWithTag("RangedRoot");
-
-            foreach (Transform child in rangedEnemies.transform)
-            {
-                RangedSaveData saveData = new RangedSaveData();
-                saveData = (RangedSaveData)LoadEnemyData(saveData, child.gameObject);
-                planetLevelData.rangedEnemies.Add(saveData);
-            }
-
-            CurrentLevelSaveData.UpdatePlanetLevelData(planetLevelData);
-            
-            Inventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-
-            CurrentLevelSaveData.scrapCount = playerInventory.GetScrapCount();
-
         }
-        else
+        catch
+        {
+            return;
+        }
+        try
         {
             // fill out player data
             SpaceLevelData spaceLevelData = new SpaceLevelData();
@@ -388,8 +392,6 @@ public class SaveManager : MonoBehaviour
 
             spaceLevelData.playerHealth = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth();
             spaceLevelData.playerShield = playerGO.GetComponent<SpaceshipHealthComponent>().GetShipShield();
-
-            print(playerGO.GetComponent<SpaceshipHealthComponent>().GetShipHealth());
 
             // fill out flagship data
             FlagShipData allyFlagShipData = new FlagShipData();
@@ -420,12 +422,13 @@ public class SaveManager : MonoBehaviour
             spaceLevelData.allyFlagshipData = allyFlagShipData;
             spaceLevelData.enemyFlagshipData = enemyFlagShipData;
  
-            
-            print(flagships[0].name);
-
             CurrentLevelSaveData.UpdateSpaceLevelData(spaceLevelData);
-            print(CurrentLevelSaveData.spaceLevelData.allyFlagshipData.health);
         }
+        catch
+        {
+            
+        }
+            
     }
 
     public int GetUpgradeLevel(PlayerUpgradeState.UpgradeType upgradeType)
