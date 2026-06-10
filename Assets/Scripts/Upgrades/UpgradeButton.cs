@@ -1,4 +1,6 @@
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,14 @@ public enum UpgradeButtonType
 
 public class UpgradeButton : MonoBehaviour
 {
+    private const string UiTextTable = "UI Text";
+    private const string CostLabelKey = "UPGRADES_LABEL_COST";
+    private const string CurrentValueLabelKey = "UPGRADES_LABEL_NEWCOST";
+    private const string LevelShortLabelKey = "UPGRADES_LABEL_LEVEL_TRUNCATED";
+    private const string NextLabelKey = "UPGRADES_LABEL_NEXT";
+    private const string MaxLabelKey = "UPGRADES_LABEL_MAX";
+    private const string BaseValueKey = "UPGRADES_VALUE_BASE";
+
     [Header("References")] [SerializeField]
     private UpgradeButtonType upgradeType;
 
@@ -45,12 +55,14 @@ public class UpgradeButton : MonoBehaviour
     private void OnEnable()
     {
         SaveManager.NewMoneyChanged += HandleMoneyChanged;
+        LocalizationSettings.SelectedLocaleChanged += HandleLocaleChanged;
         RefreshView();
     }
 
     private void OnDisable()
     {
         SaveManager.NewMoneyChanged -= HandleMoneyChanged;
+        LocalizationSettings.SelectedLocaleChanged -= HandleLocaleChanged;
     }
 
     public void Start()
@@ -119,6 +131,11 @@ public class UpgradeButton : MonoBehaviour
         RefreshView();
     }
 
+    private void HandleLocaleChanged(Locale _)
+    {
+        RefreshView();
+    }
+
     [ContextMenu("Refresh Preview")]
     private void RefreshPreviewFromContextMenu()
     {
@@ -157,12 +174,17 @@ public class UpgradeButton : MonoBehaviour
     private void ApplyButtonState(int upgradeCost, int currentLevel, int maxLevel, int currentMoney, string currentSummary, string nextSummary)
     {
         bool isAtMaxLevel = IsAtMaxLevel(currentLevel, maxLevel);
+        string costLabel = GetLocalizedText(CostLabelKey, "Cost: ");
+        string currentValueLabel = GetLocalizedText(CurrentValueLabelKey, "Now:");
+        string levelShortLabel = GetLocalizedText(LevelShortLabelKey, "Lv.");
+        string nextLabel = GetLocalizedText(NextLabelKey, "Next:");
+        string maxLabel = GetLocalizedText(MaxLabelKey, "MAX");
 
         if (upgradeCostLabel != null)
-            upgradeCostLabel.text = isAtMaxLevel ? "MAX\nNext: -" : upgradeCost >= 0 ? $"Cost: {upgradeCost}\nNext: {nextSummary}" : "Cost: -\nNext: -";
+            upgradeCostLabel.text = isAtMaxLevel ? $"{maxLabel}\n{nextLabel} -" : upgradeCost >= 0 ? $"{costLabel}{upgradeCost}\n{nextLabel} {nextSummary}" : $"{costLabel}-\n{nextLabel} -";
 
         if (currentLevelLabel != null)
-            currentLevelLabel.text = $"Lv. {currentLevel}/{maxLevel}\nNow: {currentSummary}";
+            currentLevelLabel.text = $"{levelShortLabel} {currentLevel}/{maxLevel}\n{currentValueLabel} {currentSummary}";
 
         if (cachedButton != null)
             cachedButton.interactable = !isAtMaxLevel && upgradeCost >= 0 && currentMoney >= upgradeCost;
@@ -170,11 +192,17 @@ public class UpgradeButton : MonoBehaviour
 
     private void ApplyUnavailableState(int previewLevel)
     {
+        string costLabel = GetLocalizedText(CostLabelKey, "Cost: ");
+        string currentValueLabel = GetLocalizedText(CurrentValueLabelKey, "Now:");
+        string levelShortLabel = GetLocalizedText(LevelShortLabelKey, "Lv.");
+        string nextLabel = GetLocalizedText(NextLabelKey, "Next:");
+        string baseValue = GetLocalizedText(BaseValueKey, "Base");
+
         if (upgradeCostLabel != null)
-            upgradeCostLabel.text = "Cost: -\nNext: -";
+            upgradeCostLabel.text = $"{costLabel}-\n{nextLabel} -";
 
         if (currentLevelLabel != null)
-            currentLevelLabel.text = $"Lv. {Mathf.Max(0, previewLevel)}\nNow: Base";
+            currentLevelLabel.text = $"{levelShortLabel} {Mathf.Max(0, previewLevel)}\n{currentValueLabel} {baseValue}";
 
         if (cachedButton != null)
             cachedButton.interactable = false;
@@ -239,6 +267,11 @@ public class UpgradeButton : MonoBehaviour
 
     private string GetUpgradeDisplayName()
     {
+        return GetLocalizedText(GetUpgradeDisplayNameKey(), GetUpgradeDisplayNameFallback());
+    }
+
+    private string GetUpgradeDisplayNameFallback()
+    {
         if (IsSpaceshipUpgrade())
             return upgradesSO != null ? upgradesSO.GetUpgradeDisplayName(ToSpaceshipUpgradeType()) : upgradeType.ToString();
 
@@ -255,34 +288,119 @@ public class UpgradeButton : MonoBehaviour
         return upgradeType.ToString();
     }
 
+    private string GetUpgradeDisplayNameKey()
+    {
+        switch (upgradeType)
+        {
+            case UpgradeButtonType.MoveForce:
+                return "Upgrades_Astrojumper_Thrust";
+            case UpgradeButtonType.MaxSpeed:
+                return "Upgrades_Astrojumper_MaxSpeed";
+            case UpgradeButtonType.BoostForce:
+                return "Upgrades_Astrojumper_Boost";
+            case UpgradeButtonType.BarrelRollDistance:
+                return "Upgrades_Astrojumper_RollDistance";
+            case UpgradeButtonType.BarrelRollSpeed:
+                return "Upgrades_Astrojumper_RollSpeed";
+            case UpgradeButtonType.FireRate:
+                return "Upgrades_Astrojumper_Firerate";
+            case UpgradeButtonType.MaxHealth:
+                return "Upgrades_Astrojumper_Health";
+            case UpgradeButtonType.MaxShields:
+                return "Upgrades_Astrojumper_Shields";
+            case UpgradeButtonType.PlayerMoveSpeed:
+                return "Upgrades_Exosuit_Speed";
+            case UpgradeButtonType.PlayerJumpVelocity:
+                return "Upgrades_Exosuit_Jump";
+            case UpgradeButtonType.PlayerMaxHealth:
+                return "Upgrades_Exosuit_Health";
+            default:
+                return string.Empty;
+        }
+    }
+
     private string GetUpgradeSummary(int level)
     {
         if (IsSpaceshipUpgrade())
         {
-            return upgradesSO != null ? upgradesSO.GetUpgradeSummary(ToSpaceshipUpgradeType(), level) : "Base";
+            return upgradesSO != null ? GetSpaceshipUpgradeSummary(ToSpaceshipUpgradeType(), level) : GetLocalizedText(BaseValueKey, "Base");
         }
 
         return GetGroundUpgradeSummary(ToGroundUpgradeType(), level, ResolveGroundDefaults());
     }
 
+    private string GetSpaceshipUpgradeSummary(PlayerUpgradeState.UpgradeType spaceshipUpgradeType, int level)
+    {
+        if (level <= 0)
+            return GetLocalizedText(BaseValueKey, "Base");
+
+        float totalUpgrade = GetSpaceshipUpgradeAmountForLevel(spaceshipUpgradeType, level);
+
+        switch (spaceshipUpgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return $"+{totalUpgrade:0.##}";
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return $"+{totalUpgrade:0}";
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return $"-{totalUpgrade:0.##}s";
+            default:
+                return $"+{totalUpgrade:0.##}";
+        }
+    }
+
+    private float GetSpaceshipUpgradeAmountForLevel(PlayerUpgradeState.UpgradeType spaceshipUpgradeType, int level)
+    {
+        if (upgradesSO == null)
+            return 0f;
+
+        int clampedLevel = Mathf.Max(0, level);
+
+        switch (spaceshipUpgradeType)
+        {
+            case PlayerUpgradeState.UpgradeType.MoveForce:
+                return clampedLevel * upgradesSO.moveForceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxSpeed:
+                return clampedLevel * upgradesSO.maxSpeedUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BoostForce:
+                return clampedLevel * upgradesSO.boostForceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BarrelRollDistance:
+                return clampedLevel * upgradesSO.barrelRollDistanceUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.BarrelRollSpeed:
+                return clampedLevel * upgradesSO.barrelRollSpeedUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.FireRate:
+                return clampedLevel * upgradesSO.fireRateUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxHealth:
+                return clampedLevel * upgradesSO.maxHealthUpgradePerLevel;
+            case PlayerUpgradeState.UpgradeType.MaxShields:
+                return clampedLevel * upgradesSO.maxShieldsPerLevel;
+            default:
+                return 0f;
+        }
+    }
+
     private string GetGroundUpgradeSummary(GroundTrooperUpgradeType groundUpgradeType, int level, GroundTrooperUpgradeDefaults groundDefaults)
     {
         if (level <= 0)
-            return "Base";
+            return GetLocalizedText(BaseValueKey, "Base");
 
         if (groundDefaults == null)
-            return $"Lv. {level}";
+            return $"{GetLocalizedText(LevelShortLabelKey, "Lv.")} {level}";
 
         float totalUpgrade = GetGroundUpgradeAmountForLevel(groundUpgradeType, level, groundDefaults);
 
         switch (groundUpgradeType)
         {
             case GroundTrooperUpgradeType.MoveSpeed:
-                return $"+{totalUpgrade:0.##} move";
             case GroundTrooperUpgradeType.JumpVelocity:
-                return $"+{totalUpgrade:0.##} jump";
+                return $"+{totalUpgrade:0.##}";
             case GroundTrooperUpgradeType.MaxHealth:
-                return $"+{totalUpgrade:0} health";
+                return $"+{totalUpgrade:0}";
         }
 
         return $"+{totalUpgrade:0.##}";
@@ -317,6 +435,15 @@ public class UpgradeButton : MonoBehaviour
             return SaveManager.instance.DefaultGameSaveSO.groundTrooperDefaults;
 
         return null;
+    }
+
+    private string GetLocalizedText(string textKey, string fallback)
+    {
+        if (string.IsNullOrEmpty(textKey) || !Application.isPlaying)
+            return fallback;
+
+        string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString(UiTextTable, textKey);
+        return string.IsNullOrEmpty(localizedText) ? fallback : localizedText;
     }
 
     private PlayerUpgradeState.UpgradeType ToSpaceshipUpgradeType()
