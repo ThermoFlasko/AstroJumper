@@ -876,7 +876,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000004
-    m_Localized: health
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523797346508800
+    m_Localized: Caledonia Prime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523799015841792
+    m_Localized: Caledonia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523803180785664
+    m_Localized: Helia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523804703318016
+    m_Localized: Alba
     m_Metadata:
       m_Items: []
   references:

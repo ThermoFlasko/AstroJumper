@@ -558,15 +558,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000000
-    m_Localized: MISSINGTRANSLATION
+    m_Localized: "\uB2E4\uC74C \uB808\uBCA8:"
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000001
-    m_Localized: MISSINGTRANSLATION
+    m_Localized: "\uCD5C\uB300"
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000002
-    m_Localized: MISSINGTRANSLATION
+    m_Localized: "\uAE30\uBCF8"
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000003
@@ -574,7 +574,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36007140000000004
-    m_Localized: MISSINGTRANSLATION
+    m_Localized: "\uCCB4\uB825"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523797346508800
+    m_Localized: "\uCE7C\uB808\uB3C4\uB2C8\uC544 \uD504\uB77C\uC784"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523799015841792
+    m_Localized: "\uCE7C\uB808\uB3C4\uB2C8\uC544"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523804703318016
+    m_Localized: "\uC54C\uBC14"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523803180785664
+    m_Localized: "\uD5EC\uB9AC\uC544"
     m_Metadata:
       m_Items: []
   references:
