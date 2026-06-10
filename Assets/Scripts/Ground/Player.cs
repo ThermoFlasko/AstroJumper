@@ -181,7 +181,7 @@ public class Player : Unit
             inMeleeAnimation = true;
             DisableInputs();
             playerAnimator.MakePlayerMelee();
-            OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 1);
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 100);
             print("sounds");
         }
 
