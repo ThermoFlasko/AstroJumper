@@ -30,13 +30,20 @@ public class OSCManager : MonoBehaviour
     {
         if (isActive)
         {
+            print("disable dsp");
             OSCHandler.Instance.SendMessageToClient("pd", "/unity/activatedsp", 0);
         }
         else
         {
+            print("enable dsp");
             OSCHandler.Instance.SendMessageToClient("pd", "/unity/activatedsp", 1);
         }
         
         isActive = !isActive;
+    }
+
+    void OnApplicationQuit()
+    {
+        DSPActivate();
     }
 }
