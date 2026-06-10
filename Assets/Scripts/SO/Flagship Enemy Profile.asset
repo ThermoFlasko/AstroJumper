@@ -53,6 +53,6 @@ MonoBehaviour:
   minSpreadAngle: -2.5
   maxSpreadAngle: 2.5
   maxHealth: 50
-  maxShields: 400
-  startingShields: 400
+  maxShields: 800
+  startingShields: 800
   canSelfRechargeShields: 0
