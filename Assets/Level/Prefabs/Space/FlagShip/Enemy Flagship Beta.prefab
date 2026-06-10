@@ -344,7 +344,7 @@ MonoBehaviour:
   boardingSceneName: 
   boardWhenShieldsFail: 0
   playerFlagshipShieldFailureSceneName: GameOver
-  enemyFlagshipShieldFailureSceneName: YouWin
+  enemyFlagshipShieldFailureSceneName: Level Selector 2
   autoCollectShieldNodes: 1
   shieldNodes: []
 --- !u!114 &8529934722949041833
