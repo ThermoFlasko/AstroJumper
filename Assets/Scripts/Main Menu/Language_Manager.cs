@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Language_Manager : MonoBehaviour
 {
@@ -41,6 +42,15 @@ public class Language_Manager : MonoBehaviour
         else
         {
             Debug.LogWarning("Locale not found: " + localeCode);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level Selector 2" || SceneManager.GetActiveScene().name == "Level Select B")
+        {
+            // change language of planets
+            print("updating planet data");
+            InfoManager infoManager = FindAnyObjectByType<InfoManager>();
+            infoManager.SetLanguage(localeCode);
+            infoManager.readCSV();
         }
     }
 }
