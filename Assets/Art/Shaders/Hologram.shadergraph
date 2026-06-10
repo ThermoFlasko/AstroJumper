@@ -180,20 +180,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "3fb0a2439dce45899f5e3e36bec43dbc"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "3a2f0dfa9ab140d69d5f11d66159a757"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "41ac8320468e4ac8889d41e1e7b62524"
                 },
                 "m_SlotId": 0
@@ -494,7 +480,7 @@
             "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": true
+        "preventRotation": false
     },
     "m_Path": "Shader Graphs",
     "m_GraphPrecision": 1,
@@ -1796,10 +1782,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1475.9998779296875,
-            "y": 335.9999694824219,
-            "width": 208.0001220703125,
-            "height": 302.0000305175781
+            "x": -1639.0,
+            "y": 391.0,
+            "width": 208.0,
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1930,7 +1916,7 @@
     "m_Title": "Extract Sprite",
     "m_Position": {
         "x": -2050.0,
-        "y": -437.0
+        "y": -437.0000305175781
     }
 }
 
@@ -2129,7 +2115,7 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": 0.0010000000474974514,
+    "m_Value": 0.008999999612569809,
     "m_FloatType": 1,
     "m_LiteralFloatMode": false,
     "m_RangeValues": {
@@ -2354,7 +2340,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0,
-        "y": 0.5199999809265137
+        "y": -0.15000000596046449
     },
     "m_DefaultValue": {
         "x": 1.0,
@@ -3313,10 +3299,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1844.999755859375,
-            "y": 668.9999389648438,
-            "width": 208.0001220703125,
-            "height": 432.99993896484377
+            "x": -1877.9998779296875,
+            "y": 669.0,
+            "width": 208.0,
+            "height": 433.0
         }
     },
     "m_Slots": [
@@ -3356,7 +3342,7 @@
         "m_SerializableColors": []
     },
     "m_TextureType": 0,
-    "m_NormalMapSpace": 0,
+    "m_NormalMapSpace": 1,
     "m_EnableGlobalMipBias": true,
     "m_MipSamplingMode": 0
 }
