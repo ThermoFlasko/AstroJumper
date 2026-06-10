@@ -523,6 +523,42 @@ MonoBehaviour:
     m_Key: UPGRADES_LABEL_LEVEL_TRUNCATED
     m_Metadata:
       m_Items: []
+  - m_Id: 36007140000000000
+    m_Key: UPGRADES_LABEL_NEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000001
+    m_Key: UPGRADES_LABEL_MAX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000002
+    m_Key: UPGRADES_VALUE_BASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000003
+    m_Key: UPGRADES_VALUE_NONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000004
+    m_Key: UPGRADES_EFFECT_HEALTH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523797346508800
+    m_Key: PLANET_LABEL_CALEDONIAPRIME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523799015841792
+    m_Key: PLANET_LABEL_CALEDONIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523803180785664
+    m_Key: PLANET_LABEL_HELIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523804703318016
+    m_Key: PLANET_LABEL_ALBA
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

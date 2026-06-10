@@ -859,6 +859,42 @@ MonoBehaviour:
     m_Localized: Lv.
     m_Metadata:
       m_Items: []
+  - m_Id: 36007140000000000
+    m_Localized: 'Next:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000001
+    m_Localized: MAX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000002
+    m_Localized: Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000003
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36007140000000004
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523797346508800
+    m_Localized: Caledonia Prime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523799015841792
+    m_Localized: Caledonia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523803180785664
+    m_Localized: Helia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36523804703318016
+    m_Localized: Alba
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
