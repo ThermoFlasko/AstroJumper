@@ -5,10 +5,29 @@ using UnityEngine;
 public class InfoManager : MonoBehaviour
 {
     public TextAsset textAssetData;
+    public TextAsset EnText;
+    public TextAsset CnText;
+    public TextAsset KorText;
     public GameObject[] planets;
 
     void Start()
     {
+
+        string selectedLanguage = PlayerPrefs.GetString("SelectedLanguage", "en"); 
+
+        if (selectedLanguage == "zh-Hans")
+        {
+            textAssetData = CnText;
+        }
+        else if (selectedLanguage == "en")
+        {
+            textAssetData = EnText;
+        }
+        else if (selectedLanguage == "ko")
+        {
+            textAssetData = CnText;
+        }
+
         readCSV();
     }
 
