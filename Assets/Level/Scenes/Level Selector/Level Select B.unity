@@ -637,6 +637,33 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &419730254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 767375290741735161, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+  m_PrefabInstance: {fileID: 1923952653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &419730259
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419730254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &438613775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2921,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089252189425019189, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1742120509484335254, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3010,6 +3041,14 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3518287840161481459, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+    - target: {fileID: 4023522870631441759, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1088386844}
     - target: {fileID: 4332809526372530583, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Name
       value: Upgrade Menu Screen
@@ -3018,14 +3057,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1088386844}
-    - target: {fileID: 6375855798790158146, guid: 67e84647156c45d4b8759885a744e658, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 5418776282158009702, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+      objectReference: {fileID: 1088386844}
     - target: {fileID: 7048984415339474448, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+    - target: {fileID: 7048984415339474448, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7290081369353414522, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -3034,19 +3077,23 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1778352258913320881, guid: a10532ceedb09f644b64fdede1d3f448, type: 3}
+    - target: {fileID: 8265226920733501898, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1395580684873375093, guid: 67e84647156c45d4b8759885a744e658, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2045790725}
     - targetCorrespondingSourceObject: {fileID: 3976807336649606150, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2100124635}
     - targetCorrespondingSourceObject: {fileID: 1914622701005059046, guid: 67e84647156c45d4b8759885a744e658, type: 3}
       insertIndex: -1
       addedObject: {fileID: 171995100}
+    - targetCorrespondingSourceObject: {fileID: 767375290741735161, guid: 67e84647156c45d4b8759885a744e658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 419730259}
   m_SourcePrefab: {fileID: 100100000, guid: 67e84647156c45d4b8759885a744e658, type: 3}
 --- !u!114 &1923952657 stripped
 MonoBehaviour:
@@ -3070,33 +3117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &2045790720 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1395580684873375093, guid: 67e84647156c45d4b8759885a744e658, type: 3}
-  m_PrefabInstance: {fileID: 1923952653}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2045790725
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045790720}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d288812f0a4d3984f9394909f7e56513, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2082169963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7660689936957905769, guid: 6b39fa3b3db899d418cd0eb763bf1a58, type: 3}
