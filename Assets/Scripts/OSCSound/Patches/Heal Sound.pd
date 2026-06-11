@@ -1,4 +1,4 @@
-#N canvas 3318 223 1560 997 12;
+#N canvas 62 0 1560 849 12;
 #X obj 16 9 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X msg 16 34 \; pd dsp \$1;
@@ -71,21 +71,21 @@
 #X restore 289 234 pd oscillators;
 #X obj 525 204 hsl 128 15 0 1 0 1 oscgain2 oscgain2 Osc_Gain2 -2 -8
 0 10 #fcfcfc #000000 #000000 3050 1;
-#X obj 530 1540 hsl 128 15 0 1 0 1 mastergain mastergain Master_Gain
+#X obj 530 1540 hsl 128 15 0 4 0 1 mastergain1 mastergain1 Master_Gain
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 527 165 hsl 128 15 0 1 0 1 oscgain1 oscgain1 Osc_Gain1 -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
-#N canvas 183 60 329 214 masterGain 0;
+#N canvas 182 60 330 215 masterGain 0;
 #X obj 84 126 *~;
 #X floatatom 104 102 5 0 0 0 - - -, f 5;
-#X obj 106 73 receive mastergain;
 #X obj 56 28 inlet~;
 #X obj 76 191 outlet~;
-#X connect 0 0 4 0;
+#X obj 106 73 receive mastergain1;
+#X connect 0 0 3 0;
 #X connect 1 0 0 1;
-#X connect 2 0 1 0;
-#X connect 3 0 0 0;
-#X restore 323 1553 pd masterGain;
+#X connect 2 0 0 0;
+#X connect 4 0 1 0;
+#X restore 320 1550 pd masterGain;
 #X obj 267 1611 dac~;
 #X obj 525 246 hsl 128 15 0 1 0 1 oscgain3 oscgain3 Osc_Gain3 -2 -8
 0 10 #fcfcfc #000000 #000000 3200 1;
@@ -624,16 +624,16 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 20 0 21 0;
 #X connect 21 0 18 0;
 #X restore 242 1444 pd reverb;
-#N canvas 183 60 329 214 masterGain 0;
+#N canvas 182 60 330 215 masterGain 0;
 #X obj 84 126 *~;
 #X floatatom 104 102 5 0 0 0 - - -, f 5;
-#X obj 106 73 receive mastergain;
 #X obj 56 28 inlet~;
 #X obj 76 191 outlet~;
-#X connect 0 0 4 0;
+#X obj 106 73 receive mastergain1;
+#X connect 0 0 3 0;
 #X connect 1 0 0 1;
-#X connect 2 0 1 0;
-#X connect 3 0 0 0;
+#X connect 2 0 0 0;
+#X connect 4 0 1 0;
 #X restore 219 1552 pd masterGain;
 #X obj 411 530 hsl 128 15 0 1 0 1 flangerShift flangerShift Flanger:_Shift
 -2 -8 0 10 #fcfcfc #000000 #000000 5000 1;
@@ -956,7 +956,7 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X text 958 518 creation arguments are OSC address;
 #X text 960 479 set message to change OSC address;
 #X floatatom 824 435 5 0 0 0 - - -, f 5;
-#N canvas 1238 422 1253 831 oscReceive 1;
+#N canvas 1238 422 1253 831 oscReceive 0;
 #X obj 55 184 netreceive -u -b;
 #X msg 78 143 listen 0;
 #X text 152 143 stop listening;
