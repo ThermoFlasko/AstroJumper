@@ -36,9 +36,9 @@ public class VideoSettings : MonoBehaviour
     {
         defaultResolution = new()
         {
-            resolutionString = $"{PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1920)} x {PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1080)}",
+            resolutionString = $"{PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1920)} x {PlayerPrefs.GetInt("Screenmanager Resolution Height Default", 1080)}",
             width = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1920),
-            height = PlayerPrefs.GetInt("Screenmanager Resolution Width Default", 1080)
+            height = PlayerPrefs.GetInt("Screenmanager Resolution Height Default", 1080)
         };
 
         // every time the game is opened, check if the resolution was ever changed before, if not, set and store defaults
