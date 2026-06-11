@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,11 +17,11 @@ public class BackgroundMoveScript : MonoBehaviour
     {
         if (moveAlongYAxis)
         {
-            InvokeRepeating("MoveBackgroundDiagonal", 0, time);
+            StartCoroutine(RepeatMoveRealtime(time));
             return;
         }
 
-        InvokeRepeating("MoveBackground", 0, time);
+        StartCoroutine(RepeatMoveDiagonalRealtime(time));
     }
 
 
@@ -36,5 +37,23 @@ public class BackgroundMoveScript : MonoBehaviour
     {
         moveBackground = new Rect(backGround.uvRect.x + moveValue, backGround.uvRect.y + moveValue, backGround.uvRect.width, backGround.uvRect.height);
         backGround.uvRect = moveBackground;
+    }
+
+    IEnumerator RepeatMoveRealtime(float interval)
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(interval);
+            MoveBackground();
+        }
+    }
+
+    IEnumerator RepeatMoveDiagonalRealtime(float interval)
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(interval);
+            MoveBackgroundDiagonal();
+        }
     }
 }
