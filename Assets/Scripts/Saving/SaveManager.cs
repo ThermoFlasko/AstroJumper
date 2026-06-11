@@ -297,24 +297,26 @@ public class SaveManager : MonoBehaviour
     public void ResetSave()
     {
         CurrentSaveData = SaveData.CreateDefualtSaveData(defualtGameSaveSO);
+        NotifyMoneyChanged();
+        MakeDirty();
 
         LevelSaveData newSaveData = LevelSaveData.CreateDefaultSaveData();
         newSaveData.currLevel = "Tutorial Ground";
         newSaveData.isPlanetLevel = true;
+        IsInLevel = false;
         CurrentLevelSaveData = newSaveData;
 
         isLoadingSaveData = false;
-        NotifyMoneyChanged();
-        MakeDirty();
     }
 
     public void UpdateLevelData()
     {
         if (!IsInLevel)
         {
+
             return;
         }
-        
+        print("setting curr level");
         CurrentLevelSaveData.currLevel = SceneManager.GetActiveScene().name;
         try
         {

@@ -1820,7 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85c0dbf81340e1478dd5f3c7a4206cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
-  sceneToLoad: Level Selector 2
+  sceneToLoad: YouWin
 --- !u!60 &3310290212269029666
 PolygonCollider2D:
   m_ObjectHideFlags: 0

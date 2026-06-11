@@ -2660,6 +2660,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoManager
   textAssetData: {fileID: 4900000, guid: 5883b298c37231f4a91f9cfe4c30f830, type: 3}
+  EnText: {fileID: 4900000, guid: 5883b298c37231f4a91f9cfe4c30f830, type: 3}
+  CnText: {fileID: 4900000, guid: d90306cc29cbaff4394f7c1971909152, type: 3}
+  KorText: {fileID: 4900000, guid: c2df002a9047a25438ffd808beb6ec05, type: 3}
+  currentLanguage: 
   planets:
   - {fileID: 1475648946}
   - {fileID: 368864421}

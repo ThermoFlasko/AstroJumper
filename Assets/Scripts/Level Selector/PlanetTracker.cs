@@ -51,7 +51,6 @@ public class PlanetTracker : MonoBehaviour
                     // mouse is hovering over planet, do some stuff, rn make bigger
                     planetExpanding = planet.name;
                     expandPlanet(planet);
-                    print("Hovering over " + planet.name);
                 }
             }
         }
