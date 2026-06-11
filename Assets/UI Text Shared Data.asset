@@ -559,6 +559,10 @@ MonoBehaviour:
     m_Key: PLANET_LABEL_ALBA
     m_Metadata:
       m_Items: []
+  - m_Id: 36597128787648512
+    m_Key: SHIELDS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
