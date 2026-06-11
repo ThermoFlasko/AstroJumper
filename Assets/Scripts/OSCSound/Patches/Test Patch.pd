@@ -1,7 +1,7 @@
-#N canvas 2911 89 1425 1042 12;
-#X obj 16 9 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
-0 1;
-#X msg 16 34 \; pd dsp \$1;
+#N canvas 3243 206 1425 1042 12;
+#X obj 112 -1547 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 112 -1522 \; pd dsp \$1;
 #N canvas 816 130 504 454 oscillators 0;
 #X obj 206 2 inlet;
 #X obj 194 487 outlet~;
@@ -68,16 +68,13 @@
 #X connect 26 0 27 0;
 #X connect 27 0 2 0;
 #X connect 28 0 4 0;
-#X restore 295 196 pd oscillators;
-#X obj 525 204 hsl 128 15 0 1 0 1 oscgain2 oscgain2 Osc_Gain2 -2 -8
-0 10 #fcfcfc #000000 #000000 3050 1;
-#X obj 451 1537 hsl 128 15 0 1 0 1 mastergain mastergain Master_Gain
--2 -8 0 10 #fcfcfc #000000 #000000 9399 1;
-#X obj 527 165 hsl 128 15 0 1 0 1 oscgain1 oscgain1 Osc_Gain1 -2 -8
-0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 525 204 hsl 128 15 0 1 0 1 oscgain2 oscgain2 Osc_Gain2 -2 -8 0 10 #fcfcfc #000000 #000000 3050 1;
-#X obj 451 1537 hsl 128 15 0 1 0 1 mastergain mastergain Master_Gain -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 527 165 hsl 128 15 0 1 0 1 oscgain1 oscgain1 Osc_Gain1 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
+#X restore 391 -1360 pd oscillators;
+#X obj 621 -1352 hsl 128 15 0 1 0 1 oscgain2 oscgain2 Osc_Gain2 -2
+-8 0 10 #fcfcfc #000000 #000000 3050 1;
+#X obj 547 -19 hsl 128 15 0 1 0 1 mastergain mastergain Master_Gain
+-2 -8 0 10 #fcfcfc #000000 #000000 4800 1;
+#X obj 623 -1391 hsl 128 15 0 1 0 1 oscgain1 oscgain1 Osc_Gain1 -2
+-8 0 10 #fcfcfc #000000 #000000 12700 1;
 #N canvas 183 60 329 214 masterGain 0;
 #X obj 84 126 *~;
 #X floatatom 104 102 5 0 0 0 - - -, f 5;
@@ -88,11 +85,11 @@
 #X connect 1 0 0 1;
 #X connect 2 0 1 0;
 #X connect 3 0 0 0;
-#X restore 323 1553 pd masterGain;
-#X obj 267 1611 dac~;
-#X obj 525 246 hsl 128 15 0 1 0 1 oscgain3 oscgain3 Osc_Gain3 -2 -8
-0 10 #fcfcfc #000000 #000000 3200 1;
-#X obj 409 369 hsl 128 15 0 1 0 1 distortionWetDry distortionWetDry
+#X restore 419 -3 pd masterGain;
+#X obj 363 55 dac~;
+#X obj 621 -1310 hsl 128 15 0 1 0 1 oscgain3 oscgain3 Osc_Gain3 -2
+-8 0 10 #fcfcfc #000000 #000000 3200 1;
+#X obj 505 -1187 hsl 128 15 0 1 0 1 distortionWetDry distortionWetDry
 Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #N canvas 75 124 712 563 distortion 0;
 #X obj 147 32 inlet~;
@@ -129,9 +126,9 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 15 0 14 0;
 #X connect 16 0 17 0;
 #X connect 17 0 14 0;
-#X restore 293 345 pd distortion;
-#X obj 410 331 hsl 128 15 0.5 6 0 1 distortionAmnt distortionAmnt Distortion_Amount
--2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
+#X restore 389 -1211 pd distortion;
+#X obj 506 -1225 hsl 128 15 0.5 6 0 1 distortionAmnt distortionAmnt
+Distortion_Amount -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #N canvas 78 386 710 599 filterbank 0;
 #X obj 195 311 *~;
 #X floatatom 210 283 5 0 0 0 - - -, f 5;
@@ -193,7 +190,7 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 26 0 27 0;
 #X connect 27 0 22 0;
 #X connect 28 0 5 0;
-#X restore 367 1000 pd filterbank;
+#X restore 463 -556 pd filterbank;
 #N canvas 940 295 740 505 reverb 0;
 #X obj 162 49 inlet~;
 #X obj 144 364 outlet~;
@@ -237,38 +234,38 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 19 0 14 0;
 #X connect 20 0 21 0;
 #X connect 21 0 18 0;
-#X restore 329 1443 pd reverb;
-#X obj 427 1450 hsl 128 15 0 1 0 1 reverbWetDry reverbWetDry Reverb:_Dry_---_Wet
+#X restore 425 -113 pd reverb;
+#X obj 523 -106 hsl 128 15 0 1 0 1 reverbWetDry reverbWetDry Reverb:_Dry_---_Wet
 -2 -8 0 10 #fcfcfc #000000 #000000 1350 1;
-#X obj 712 991 hsl 128 15 0 1 0 0 lopGain lopGain LowPass_Gain -2 -8
-0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 569 988 hsl 128 15 50 4000 0 0 lopFreq lopFreq LowPass_Frequency
+#X obj 808 -565 hsl 128 15 0 1 0 0 lopGain lopGain LowPass_Gain -2
+-8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 665 -568 hsl 128 15 50 4000 0 0 lopFreq lopFreq LowPass_Frequency
 -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 712 1034 hsl 128 15 0 1 0 1 bpGain bpGain BandPass_Gain -2 -8
+#X obj 808 -522 hsl 128 15 0 1 0 1 bpGain bpGain BandPass_Gain -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 569 1029 hsl 128 15 1000 4000 0 1 bpFreq bpFreq BandPass_Frequency
+#X obj 665 -527 hsl 128 15 1000 4000 0 1 bpFreq bpFreq BandPass_Frequency
 -2 -8 0 10 #fcfcfc #000000 #000000 4450 1;
-#X obj 712 1078 hsl 128 15 0 1 0 1 hpGain hpGain HighPass_Gain -2 -8
+#X obj 808 -478 hsl 128 15 0 1 0 1 hpGain hpGain HighPass_Gain -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 564 1073 hsl 128 15 1000 4000 0 1 hpFreq hpFreq HighPass_Frequency
+#X obj 660 -483 hsl 128 15 1000 4000 0 1 hpFreq hpFreq HighPass_Frequency
 -2 -8 0 10 #fcfcfc #000000 #000000 2400 1;
-#X obj 425 157 s oscpitch1;
-#X floatatom 425 130 5 0 0 0 - - -, f 5;
-#X floatatom 424 180 5 0 0 0 - - -, f 5;
-#X obj 424 207 s oscpitch2;
-#X floatatom 423 230 5 0 0 0 - - -, f 5;
-#X obj 423 257 s oscpitch3;
-#X obj 336 1354 *~;
-#X floatatom 496 1293 5 0 0 0 - - -, f 5;
-#X floatatom 477 1264 5 0 0 0 - - -, f 5;
-#X floatatom 460 1239 5 0 0 0 - - -, f 5;
-#X floatatom 425 1192 5 0 0 0 - - -, f 5;
-#X floatatom 441 1216 5 0 0 0 - - -, f 5;
-#X text 463 1190 peak level;
-#X text 484 1212 attack duration (ms);
-#X text 498 1234 decay duration (ms);
-#X text 518 1260 sustain level (% of peak);
-#X text 530 1290 release duration (ms);
+#X obj 521 -1399 s oscpitch1;
+#X floatatom 521 -1426 5 0 0 0 - - -, f 5;
+#X floatatom 520 -1376 5 0 0 0 - - -, f 5;
+#X obj 520 -1349 s oscpitch2;
+#X floatatom 519 -1326 5 0 0 0 - - -, f 5;
+#X obj 519 -1299 s oscpitch3;
+#X obj 432 -202 *~;
+#X floatatom 592 -263 5 0 0 0 - - -, f 5;
+#X floatatom 573 -292 5 0 0 0 - - -, f 5;
+#X floatatom 556 -317 5 0 0 0 - - -, f 5;
+#X floatatom 521 -364 5 0 0 0 - - -, f 5;
+#X floatatom 537 -340 5 0 0 0 - - -, f 5;
+#X text 559 -366 peak level;
+#X text 580 -344 attack duration (ms);
+#X text 594 -322 decay duration (ms);
+#X text 614 -296 sustain level (% of peak);
+#X text 626 -266 release duration (ms);
 #N canvas 251 52 707 458 envelope_adsr 0;
 #X obj 209 53 moses;
 #X obj 112 56 inlet;
@@ -320,20 +317,20 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 18 0 17 1;
 #X connect 19 0 20 0;
 #X connect 21 0 15 0;
-#X restore 402 1331 pd envelope_adsr;
-#X msg 475 1155 1;
-#X msg 603 1159 0.8;
-#X obj 548 1130 loadbang;
-#X obj 519 1006 tgl 15 1 bypassFilterBank bypassFilterBank empty 17
+#X restore 498 -225 pd envelope_adsr;
+#X msg 571 -401 1;
+#X msg 699 -397 0.8;
+#X obj 644 -426 loadbang;
+#X obj 615 -550 tgl 15 1 bypassFilterBank bypassFilterBank empty 17
 7 0 10 #fcfcfc #000000 #000000 1 1;
-#X text 508 982 Bypass;
-#X obj 295 163 r pitch;
-#X obj 25 291 vsl 15 128 0 127 0 1 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 4500 1;
-#X obj 77 549 s pitch;
-#X floatatom 78 522 5 0 0 0 - - -, f 5;
-#X obj 801 1163 select 32;
-#X obj 795 1139 key;
+#X text 604 -574 Bypass;
+#X obj 391 -1393 r pitch;
+#X obj 120 -1250 vsl 15 128 0 127 0 1 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 7700 1;
+#X obj 173 -1007 s pitch;
+#X floatatom 174 -1034 5 0 0 0 - - -, f 5;
+#X obj 897 -393 select 32;
+#X obj 891 -417 key;
 #N canvas 270 86 1178 553 chorus 0;
 #X obj 23 259 delwrite~ \$0-delay 1000;
 #X obj 221 106 osc~ 0.05;
@@ -435,7 +432,7 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 46 0 31 0;
 #X connect 46 0 32 0;
 #X connect 47 0 0 0;
-#X restore 295 838 pd chorus;
+#X restore 391 -718 pd chorus;
 #N canvas 124 135 364 640 flanger 0;
 #X obj 75 208 +~ 1;
 #X obj 75 235 *~ 0.5;
@@ -484,7 +481,7 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 21 0 14 0;
 #X connect 22 0 15 0;
 #X connect 24 0 12 0;
-#X restore 316 508 pd flanger;
+#X restore 412 -1048 pd flanger;
 #N canvas 70 339 943 470 xpand 0;
 #X obj 381 16 inlet~;
 #X obj 482 17 inlet~;
@@ -518,9 +515,9 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 11 0 10 0;
 #X connect 12 0 8 0;
 #X connect 13 0 9 0;
-#X restore 295 915 pd xpand;
-#X obj 383 920 hsl 128 15 0 5 0 0 xpandAmount xpandAmount Xpand:_Amount
--2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X restore 391 -641 pd xpand;
+#X obj 479 -636 hsl 128 15 0 5 0 0 xpandAmount xpandAmount Xpand:_Amount
+-2 -8 0 10 #fcfcfc #000000 #000000 2100 1;
 #N canvas 62 84 2560 1304 filterbank 0;
 #X obj 195 311 *~;
 #X floatatom 210 283 5 0 0 0 - - -, f 5;
@@ -582,8 +579,8 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 26 0 27 0;
 #X connect 27 0 22 0;
 #X connect 28 0 5 0;
-#X restore 223 1004 pd filterbank;
-#X obj 258 1356 *~;
+#X restore 319 -552 pd filterbank;
+#X obj 354 -200 *~;
 #N canvas 940 295 740 505 reverb 0;
 #X obj 162 49 inlet~;
 #X obj 144 364 outlet~;
@@ -627,7 +624,7 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 19 0 14 0;
 #X connect 20 0 21 0;
 #X connect 21 0 18 0;
-#X restore 242 1444 pd reverb;
+#X restore 338 -112 pd reverb;
 #N canvas 183 60 329 214 masterGain 0;
 #X obj 84 126 *~;
 #X floatatom 104 102 5 0 0 0 - - -, f 5;
@@ -638,14 +635,14 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 1 0 0 1;
 #X connect 2 0 1 0;
 #X connect 3 0 0 0;
-#X restore 219 1552 pd masterGain;
-#X obj 411 530 hsl 128 15 0 1 0 1 flangerShift flangerShift Flanger:_Shift
+#X restore 315 -4 pd masterGain;
+#X obj 507 -1026 hsl 128 15 0 1 0 1 flangerShift flangerShift Flanger:_Shift
 -2 -8 0 10 #fcfcfc #000000 #000000 5000 1;
-#X obj 408 493 hsl 128 15 0 1 0 1 flangerDepth flangerDepth Flanger:_Depth
+#X obj 504 -1063 hsl 128 15 0 1 0 1 flangerDepth flangerDepth Flanger:_Depth
 -2 -8 0 10 #fcfcfc #000000 #000000 3100 1;
-#X obj 411 572 hsl 128 15 0 1 0 0 flangerFeedback flangerFeedback Flanger:_Feedback
--2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 407 458 hsl 128 15 0 5 0 1 flangerRate flangerRate Flanger:_Rate
+#X obj 507 -984 hsl 128 15 0 1 0 0 flangerFeedback flangerFeedback
+Flanger:_Feedback -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 503 -1098 hsl 128 15 0 5 0 1 flangerRate flangerRate Flanger:_Rate
 -2 -8 0 10 #fcfcfc #000000 #000000 4750 1;
 #N canvas 81 165 504 767 phasor 0;
 #X obj 113 164 +~ 1;
@@ -929,39 +926,39 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 26 0 16 0;
 #X connect 27 0 17 0;
 #X connect 28 0 18 0;
-#X restore 310 716 pd phasor;
-#X obj 406 735 hsl 128 15 0 1 0 1 phasorShift phasorShift Phasor:_Shift
+#X restore 406 -840 pd phasor;
+#X obj 502 -821 hsl 128 15 0 1 0 1 phasorShift phasorShift Phasor:_Shift
 -2 -8 0 10 #fcfcfc #000000 #000000 6500 1;
-#X obj 403 698 hsl 128 15 0 1 0 1 phasorDepth phasorDepth Phasor:_Depth
+#X obj 499 -858 hsl 128 15 0 1 0 1 phasorDepth phasorDepth Phasor:_Depth
 -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 406 777 hsl 128 15 0 1 0 1 phasorFeedback phasorFeedback Phasor:_Feedback
+#X obj 502 -779 hsl 128 15 0 1 0 1 phasorFeedback phasorFeedback Phasor:_Feedback
 -2 -8 0 10 #fcfcfc #000000 #000000 950 1;
-#X obj 402 663 hsl 128 15 0 5 0 1 phasorRate phasorRate Phasor:_Rate
+#X obj 498 -893 hsl 128 15 0 5 0 1 phasorRate phasorRate Phasor:_Rate
 -2 -8 0 10 #fcfcfc #000000 #000000 1500 1;
-#X floatatom 873 1369 5 0 0 0 - - -, f 5;
-#X obj 782 1291 line;
-#X obj 874 1391 sel 1;
-#X obj 629 1331 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000
+#X floatatom 969 -187 5 0 0 0 - - -, f 5;
+#X obj 878 -265 line;
+#X obj 970 -165 sel 1;
+#X obj 725 -225 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000
 #000000 0 100;
-#X msg 830 1248 0 \, 1 90;
-#X obj 467 67 loadbang;
-#X floatatom 450 98 5 0 0 0 - - -, f 5;
-#X text 128 22 Instructions;
-#X text 128 37 Enable dsp;
-#X text 128 52 Press spacebar to enable play sound;
-#X msg 515 1156 200;
-#X msg 549 1163 175;
-#X msg 573 1163 330;
-#X msg 833 233 \; pd dsp \$1;
-#X obj 833 33 r activatedsp;
-#X obj 833 143 select 0 1;
-#X floatatom 833 93 5 0 0 0 - - -, f 5;
-#X obj 833 203 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 926 -308 0 \, 1 90;
+#X obj 563 -1489 loadbang;
+#X floatatom 546 -1458 5 0 0 0 - - -, f 5;
+#X text 224 -1534 Instructions;
+#X text 224 -1519 Enable dsp;
+#X text 224 -1504 Press spacebar to enable play sound;
+#X msg 611 -400 200;
+#X msg 645 -393 175;
+#X msg 669 -393 330;
+#X msg 929 -1323 \; pd dsp \$1;
+#X obj 929 -1523 r activatedsp;
+#X obj 929 -1413 select 0 1;
+#X floatatom 929 -1463 5 0 0 0 - - -, f 5;
+#X obj 929 -1353 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 933 33 signal to turn on/off DSP from Unity;
-#X text 958 518 creation arguments are OSC address;
-#X text 960 479 set message to change OSC address;
-#X floatatom 824 435 5 0 0 0 - - -, f 5;
+#X text 1029 -1523 signal to turn on/off DSP from Unity;
+#X text 1054 -1038 creation arguments are OSC address;
+#X text 1056 -1077 set message to change OSC address;
+#X floatatom 920 -1121 5 0 0 0 - - -, f 5;
 #N canvas 768 281 1253 825 oscReceive 0;
 #X obj 55 184 netreceive -u -b;
 #X msg 78 143 listen 0;
@@ -1016,9 +1013,9 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 27 0 28 0;
 #X connect 29 0 31 0;
 #X connect 30 0 29 0;
-#X restore 828 383 pd oscReceive;
-#X obj 800 520 oscformat PD message;
-#X msg 857 480 set PD message;
+#X restore 924 -1173 pd oscReceive;
+#X obj 921 -1037 oscformat PD message;
+#X msg 953 -1076 set PD message;
 #N canvas 32 227 1293 998 oscSend 0;
 #X msg 158 207 disconnect;
 #X obj 61 253 netsend -u -b;
@@ -1036,12 +1033,12 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 5 0 2 0;
 #X connect 7 0 1 0;
 #X connect 8 0 7 0;
-#X restore 828 359 pd oscSend;
-#X obj 825 554 s oscOut;
-#X obj 1000 890 r melee;
-#X obj 1036 991 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000
+#X restore 924 -1197 pd oscSend;
+#X obj 921 -1002 s oscOut;
+#X obj 1098 -664 r melee;
+#X obj 1132 -565 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000
 #000000 100 100;
-#X obj 1095 978 print;
+#X obj 1191 -578 print;
 #X connect 0 0 1 0;
 #X connect 2 0 10 0;
 #X connect 6 0 7 1;
@@ -1104,4 +1101,3 @@ Distortion:_Dry_---_Wet -2 -8 0 10 #fcfcfc #000000 #000000 2600 1;
 #X connect 94 0 71 0;
 #X connect 94 0 95 0;
 #X connect 94 0 96 0;
-#X connect 94 0 47 0;

@@ -1,6 +1,6 @@
-#N canvas 2776 24 2107 1232 10;
+#N canvas 3165 628 2107 1232 10;
 #X obj 22 -77 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#000000 0 1;
 #X msg 22 -52 \; pd dsp \$1;
 #X obj 1250 205 soundfiler;
 #X obj 1359 -40 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
@@ -22,7 +22,7 @@
 #X obj 514 2 metro 1000;
 #X obj 572 -46 r loopTime;
 #X obj 514 -32 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#000000 1 1;
 #X floatatom 571 -22 5 0 0 0 - - -, f 5;
 #N canvas 52 386 661 298 delayLine 0;
 #X obj 36 147 delwrite~ del_line 2000;
@@ -104,9 +104,9 @@
 #X obj 1186 842 hsl 128 15 0 1 0 0 delayFeedback delayFeedback Delay_Feedback
 -2 -8 0 10 #fcfcfc #000000 #000000 2100 1;
 #X obj 1090 680 hsl 128 15 0 1 0 0 reverbWetDry reverbWetDry Reverb_Wet/Dry
--2 -8 0 10 #fcfcfc #000000 #000000 1550 1;
+-2 -8 0 10 #fcfcfc #000000 #000000 1350 1;
 #X obj 1090 750 hsl 128 15 0 4 0 0 distortionAmnt distortionAmnt Distortion_Amount
--2 -8 0 10 #fcfcfc #000000 #000000 7150 1;
+-2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 1040 840 hsl 128 15 0 10 0 0 delayTime delayTime Delay_Time
 -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #N canvas 1096 666 450 300 masterGain 0;
@@ -121,7 +121,7 @@
 #X connect 3 0 0 0;
 #X restore 510 630 pd masterGain;
 #X obj 680 670 hsl 128 15 0 3 0 1 mastergain mastergain Master_Gain
--1 -8 0 10 #fcfcfc #000000 #000000 2333 1;
+-1 -8 0 10 #fcfcfc #000000 #000000 1600 1;
 #N canvas 212 36 450 300 (subpatch) 0;
 #X array BassGuitar 769745 float 0 black black;
 #X coords 0 1 769744 -1 300 100 1;
@@ -168,7 +168,7 @@
 #X connect 4 0 1 0;
 #X restore 510 140 pd BassGuitar sound;
 #X obj 880 620 hsl 128 15 0 1 0 1 BassGuitar BassGuitar BASS\\\ GUITAR
--1 -8 0 10 #fcfcfc #000000 #000000 0 1;
+-1 -8 0 10 #fcfcfc #000000 #000000 6350 1;
 #N canvas 1047 516 450 300 Lead1 0;
 #X obj 120 135 *~;
 #X floatatom 140 111 5 0 0 0 - - -, f 5;
@@ -199,7 +199,7 @@
 #X text 1053 404 creation arguments are OSC address;
 #X text 1055 365 set message to change OSC address;
 #X floatatom 920 320 5 0 0 0 - - -, f 5;
-#N canvas 3733 256 1253 825 oscReceive 0;
+#N canvas 2711 228 1253 825 oscReceive 0;
 #X obj 55 184 netreceive -u -b;
 #X msg 78 143 listen 0;
 #X text 152 143 stop listening;
@@ -240,6 +240,9 @@
 #X obj 250 510 s Lead2;
 #X obj 220 570 s BassGuitar;
 #X obj 230 550 s Percussion;
+#X floatatom 418 516 5 0 0 0 - - -, f 5;
+#X obj 419 481 route health;
+#X obj 420 550 s health;
 #X connect 0 0 6 0;
 #X connect 0 0 8 0;
 #X connect 1 0 0 0;
@@ -252,6 +255,7 @@
 #X connect 12 0 33 0;
 #X connect 12 0 34 0;
 #X connect 12 0 35 0;
+#X connect 12 0 41 0;
 #X connect 13 0 10 0;
 #X connect 15 0 0 0;
 #X connect 16 0 15 0;
@@ -269,6 +273,8 @@
 #X connect 33 0 39 0;
 #X connect 34 0 36 0;
 #X connect 35 0 37 0;
+#X connect 40 0 42 0;
+#X connect 41 0 40 0;
 #X restore 923 269 pd oscReceive;
 #X obj 920 405 oscformat PD message;
 #X msg 950 370 set PD message;

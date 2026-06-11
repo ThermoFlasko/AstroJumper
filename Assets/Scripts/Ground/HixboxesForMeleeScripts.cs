@@ -25,7 +25,7 @@ public class HixboxesForMeleeScripts : MonoBehaviour
 
    public void MakeSound()
    {
-      OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 100);
+      OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 45);
       print("sounds");
    }
 
