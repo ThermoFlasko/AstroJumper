@@ -15,7 +15,15 @@ public class PickupSound : MonoBehaviour
    // Called by animation event
    public void PlayPickupSound()
    {
-      Debug.Log("Played sound");
-      audioSource.PlayOneShot(pickupAudio);
+      if (pickupAudio != null)
+      {
+         Debug.Log(pickupAudio);
+         Debug.Log("Played sound");
+         audioSource.PlayOneShot(pickupAudio);
+         return;
+      }
+
+      OSCHandler.Instance.SendMessageToClient("pd", "/unity/health", 100);
+      
    }
 }

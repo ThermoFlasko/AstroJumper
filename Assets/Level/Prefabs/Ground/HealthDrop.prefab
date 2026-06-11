@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e5269d347972149b33de721a402e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupSound
-  pickupAudio: {fileID: 8300000, guid: e430e97b69a2f814bb92a5602b1c2edd, type: 3}
+  pickupAudio: {fileID: 0}
 --- !u!50 &8329644689151798110
 Rigidbody2D:
   serializedVersion: 5
