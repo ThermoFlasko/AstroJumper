@@ -780,13 +780,6 @@ public class SaveManager : MonoBehaviour
         NewMoneyChanged?.Invoke(CurrentSaveData.newMoney);
     }
 
-    [ContextMenu("Debug Equip Green Blast Melee")]
-    private void DebugEquipGreenBlastMelee()
-    {
-        SetEquippedGroundAttackId(GroundAttackType.Melee, "Green Blast");
-        SaveGame();
-    }
-
     [ContextMenu("Debug Clear Ground Equipment")]
     private void DebugClearGroundEquipment()
     {
