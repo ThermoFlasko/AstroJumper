@@ -22,6 +22,10 @@ TagManager:
   - SourSpot
   - Tooltip
   - EnemyMeleeHitbox
+  - Checkpoint1
+  - Checkpoint2
+  - Checkpoint3
+  - Checkpoint4
   layers:
   - Default
   - TransparentFX

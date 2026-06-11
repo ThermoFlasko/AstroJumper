@@ -23,6 +23,12 @@ public class HixboxesForMeleeScripts : MonoBehaviour
         sourSpot.enabled = false;
     }
 
+   public void MakeSound()
+   {
+      OSCHandler.Instance.SendMessageToClient("pd", "/unity/melee", 100);
+      print("sounds");
+   }
+
    
 
 }
