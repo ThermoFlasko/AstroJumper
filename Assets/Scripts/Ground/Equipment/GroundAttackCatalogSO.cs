@@ -62,8 +62,8 @@ public class GroundAttackCatalogSO : ScriptableObject
         if (hitBox == null)
             return false;
 
-        bool prefabIsMeleee = hitBox.GetIsMelee();
+        bool prefabIsMelee = hitBox.GetIsMelee();
 
-        return expectedType == GroundAttackType.Melee ? prefabIsMeleee : !prefabIsMeleee;
+        return expectedType == GroundAttackType.Melee ? prefabIsMelee : !prefabIsMelee;
     }
 }
